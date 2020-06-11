@@ -1,0 +1,760 @@
+\documentclass{beamer}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+
+\title[Formalité opéradique \& homotopie esp. conf.]{Formalité opéradique et homotopie des espaces de configuration}
+\subtitle{Operadic Formality and Homotopy of Configuration Spaces}
+\author{\href{https://operad.fr}{Najib Idrissi}}
+\date[Soutenance de thèse]{Soutenance de thèse -- 17 novembre 2017}
+\institute[Université Lille 1]{%
+  \centering
+  \href{http://www.univ-lille1.fr}{\raisebox{-.5\height}{\includegraphics[height=1.7cm]{img/logo_univ.pdf}}}%
+  \qquad%
+  \href{https://math.univ-lille1.fr}{\raisebox{-.5\height}{\includegraphics[height=1.4cm]{img/logo_labo.pdf}}}%
+  \qquad%
+  \href{http://www.ens.fr}{\raisebox{-.5\height}{\includegraphics[height=1.5cm]{img/logo_ens.jpg}}}
+}
+
+\usepackage{amsmath, amssymb, mathtools, mathrsfs}
+\usepackage[only,mapsfrom]{stmaryrd}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning,arrows,cd,fit,tikzmark}
+\usepackage{animate}
+\usepackage{cancel}
+\usepackage{import}
+\usepackage{array,booktabs}
+
+\usetheme[block=fill, numbering=counter, progressbar=foot, sectionpage=simple]{metropolis}
+\setbeamersize{text margin left = 3mm, text margin right = 3mm}
+
+\hypersetup{pdfencoding=auto}
+
+\input{math.tex}
+
+% Include Inkscape graphics
+% \inklude{width}{name}
+% width is in multiples of \linewidth
+\newcommand{\inklude}[2]{
+  \begin{center}
+    \def\svgwidth{#1\linewidth} \import{fig/}{#2.pdf_tex}
+  \end{center}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+  \frametitle{Introduction}
+  \begin{block}{Overall Goal}
+    Study configuration spaces of manifolds:
+    \[ \Conf_{k}(M) \coloneqq \{ (x_{1}, \dots, x_{k}) \in M^{k} \mid \forall i \neq j, \; x_{i} \neq x_{j} \} \]
+  \end{block}
+
+  \inklude{.7}{conf}
+
+  \pause
+  \begin{exampleblock}{Idea}
+    Use ``formality of the little disks operads'' = results for $\Conf_{k}(\R^{n})$.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Plan}
+\tableofcontents
+\end{frame}
+
+\section{Little Disks Operads}
+
+\begin{frame}
+  \frametitle{Little Disks Operads}
+  Boardmann--Vogt, May (70's): \alert{little disks operads $\DD_{n} \uncover<2->{= \{ \DD_{n}(r) \}_{r \geq 0}}$}
+  \[
+    \uncover<2->{
+      \begin{tikzpicture}[scale=0.8, baseline]
+        \filldraw[fill=gray!40] (0,0) circle (2);
+        \filldraw[fill=gray!60] (0.7,0.3) circle (0.8) node {$1$};
+        \filldraw[fill=gray!60] (-0.6,-0.6) circle (0.7) node {$2$};
+        \filldraw[fill=gray!60] (-0.7,0.6) circle (0.4) node {$3$};
+      \end{tikzpicture}
+      \in \DD_{2}(3)
+    }
+    \uncover<3->{
+      \mapsto
+      \begin{tikzpicture}[scale=0.8, baseline]
+        \filldraw[fill=gray!40] (0,0) circle (2);
+        \draw[dotted] (0.7,0.3) circle (0.8) node [solid, pt, label={\tiny 1}] {};
+        \draw[dotted] (-0.6,-0.6) circle (0.7) node [solid, pt, label={\tiny 2}] {};
+        \draw[dotted] (-0.7,0.6) circle (0.4) node [solid, pt, label={\tiny 3}] {};
+      \end{tikzpicture}
+      \in \Conf_{3}(\R^{2})
+    }
+  \]
+\end{frame}
+
+\begin{frame}
+  \frametitle{New structure: insertion}
+  One can insert a configuration into a disk:
+    \[
+      \begin{tikzpicture}[scale=0.8, baseline]
+        \filldraw[fill=gray!40] (0,0) circle (2);
+        \filldraw[fill=gray!60] (0.7,0.3) circle (0.8) node {$1$};
+        \filldraw[red,fill=gray!60] (-0.6,-0.6) circle (0.7) node{$2$};
+      \end{tikzpicture}
+      \circ_{2}
+      \begin{tikzpicture}[scale=0.8, baseline]
+        \filldraw[red,fill=gray!40] (0,0) circle (2);
+        \filldraw[fill=blue!40] (-0.4,0.6) circle (0.9) node{$1$};
+        \filldraw[fill=blue!40] (1, -0.7) circle (0.7) node{$2$};
+      \end{tikzpicture}
+      =
+      \begin{tikzpicture}[scale=0.8, baseline]
+        \filldraw[fill=gray!40] (0,0) circle (2);
+        \filldraw[fill=gray!60] (0.7,0.3) circle (0.8) node {$1$};
+        \filldraw[dashed, red, fill=gray!50] (-0.6,-0.6) circle (0.7);
+        \begin{scope}[shift = {(-0.6,-0.6)}, scale = 0.35]
+          \filldraw[fill=blue!40] (-0.4,0.6) circle (0.9) node{$2$};
+          \filldraw[fill=blue!40] (1, -0.7) circle (0.7) node{$3$};
+        \end{scope}
+      \end{tikzpicture}
+    \]
+
+    \uncover<2->{$\implies$ \alert{operad structure}, cannot be seen on $\Conf_{\bullet}(\R^{n})$}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Configuration spaces of manifolds}
+   If $M$ is ``framed'':
+   \[ \alert{\DD_{M}(k)} \coloneqq \Emb^{\mathrm{fr}} \bigl( \mathbb{D}^{n} \sqcup \dots \sqcup \mathbb{D}^{n}, M \bigr) \uncover<2->{\qiso \Conf_{k}(M) } \]
+
+   \inklude{.8}{emb_mfd}
+
+   \pause[3]
+   \vspace{-0.7cm}
+   $\implies \DD_{M}$ is a ``right module'' over $\DD_{n}$
+
+   \begin{block}{Idea}
+     Use this extra structure to study $\Conf_{k}(M)$.
+   \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algebras over $\DD_{n}$ in the topological world}
+  An \alert{algebra} over $\DD_{n}$ is a space on which $\DD_{n}$ ``acts'':
+  \[ \DD_{n}(k) \times X^{k} \to X \]
+
+  \pause
+  \begin{theorem}[Boardmann--Vogt, May 1972]
+    \begin{itemize}
+    \item If $X = \Omega^{n} Y$, then $\DD_{n}$ acts on $X$;
+    \item if $\DD_{n}$ acts on $X$ (+ grouplike), then $X \simeq \Omega^{n} Y$ for some $Y$.
+  \end{itemize}
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Algebraic world}
+  Operad $\DD_{n} \mapsto$ homology $H_{*}(\DD_{n})$
+
+  \pause
+  \begin{theorem}[Cohen 1976]
+    An algebra over $H_{*}(\DD_{n})$ is:
+    \begin{itemize}
+    \item<2-> an associative algebra $(A, \cdot)$ for $n = 1$;
+    \item<3-> an $n$-Gerstenhaber algebra $(B, \wedge, [,])$ for $n \geq 2$.
+    \end{itemize}
+  \end{theorem}
+
+  \begin{columns}
+    \begin{column}{0.5\linewidth}
+      \pause[2]
+      Associativity for $n \geq 1$:
+      \begin{center}
+        \begin{tikzpicture}[xscale=1.2, yscale=0.8]
+          \draw[|-|] (0,0) to[edge label=1] (1,0);
+          \draw[|-|] (1,0) to[edge label=2] (1.5,0);
+          \draw[|-|] (1.5,0) to[edge label=3] (2,0);
+          \node at (1,1) {$\simeq$};
+          \draw[|-|] (0,2) to[edge label=1] (0.5,2);
+          \draw[|-|] (0.5,2) to[edge label=2] (1,2);
+          \draw[|-|] (1,2) to[edge label=3] (2,2);
+        \end{tikzpicture}
+      \end{center}
+    \end{column}
+    \begin{column}{0.5\linewidth}
+      \pause[3]
+      Commutativity for $n \geq 2$:
+      \inklude{.5}{braid_d2}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Swiss-Cheese Operad and Drinfeld Center}
+
+\begin{frame}
+  \frametitle{Categorical world}
+  Operad $\DD_{n} \mapsto$ fundamental groupoid $\pi \DD_{n}$
+
+  \begin{block}{Proposition}
+    For $n \in \{ 1, 2 \}$, no loss of information: $\DD_{n} \qiso \operatorname{B} (\pi \DD_{n})$.
+  \end{block}
+
+  \pause
+  \begin{theorem}[Tamarkin, Fresse]
+    $\pi \DD_{n} \simeq$ operad whose algebras are:
+    \begin{itemize}
+    \item<2-> monoidal categories $(\cM, \otimes)$ for $n = 1$;
+    \item<3-> braided monoidal categories $(\cN, \otimes, \tau)$ for $n = 2$.
+    \end{itemize}
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Swiss-Cheese operad}
+  Swiss-Cheese operad $\SC$: ``$\DD_{2}$-algebras acting on $\DD_{1}$-algebras''
+  \pause
+  \begin{equation*}
+    \begin{tikzpicture}[scale=0.85, baseline=5mm]
+      \filldraw[fill=gray!40] (-2,0) -- (2,0) arc (0:180:2);
+      \filldraw[fill=gray!60] (-1.5,0) -- (0,0) node[above,midway]{$1$} arc (0:180:0.75);
+      \filldraw[fill=gray!60] (0.5,0) -- (1.5,0) node[above,midway]{$2$} arc (0:180:0.5);
+      \filldraw[red,fill=gray!60] (0.4,1.4) circle (0.5) node{$3$};
+      \draw (0,0) node[below] {$\SC^{\col o}(2,1)$};
+    \end{tikzpicture}
+    \circ_{3}
+    \begin{tikzpicture}[scale=0.4, baseline=-2.5mm]
+      \filldraw[red,fill=gray!40] (0,0) circle (2);
+      \filldraw[fill=blue!40] (-0.4,0.6) circle (0.9) node{$1$};
+      \filldraw[fill=blue!40] (1, -0.7) circle (0.7) node{$2$};
+      \draw (0,-2) node[below] {$\SC^{\col c}(0,2) = \DD_{2}(2)$};
+    \end{tikzpicture}
+    =
+    \begin{tikzpicture}[scale=0.85, baseline=5mm]
+      \filldraw[fill=gray!40] (-2,0) -- (2,0) arc (0:180:2);
+      \filldraw[fill=gray!60] (-1.5,0) -- (0,0) node[above,midway]{$1$} arc (0:180:0.75);
+      \filldraw[fill=gray!60] (0.5,0) -- (1.5,0) node[above,midway]{$2$} arc (0:180:0.5);
+      \filldraw[red,dashed,fill=gray!60] (0.4,1.4) circle (0.5);
+      \begin{scope}[shift={(0.4,1.4)}, scale=0.25]
+        \filldraw[fill=blue!40] (-0.4,0.6) circle (0.9) node{$\scriptstyle 3$};
+        \filldraw[fill=blue!40] (1, -0.7) circle (0.7) node{$\scriptstyle 4$};
+      \end{scope}
+      \draw (0,0) node[below] {$\SC^{\col o}(2,2)$};
+    \end{tikzpicture}
+  \end{equation*}
+  \pause
+  \begin{equation*}
+    \begin{tikzpicture}[scale=0.85, baseline=5mm]
+      \filldraw[fill=gray!40] (-2,0) -- (2,0) arc (0:180:2);
+      \filldraw[red,fill=gray!60] (-1.5,0) -- (0,0) node[above,midway]{$1$} arc (0:180:0.75);
+      \filldraw[fill=gray!60] (0.5,0) -- (1.5,0) node[above,midway]{$2$} arc (0:180:0.5);
+      \filldraw[fill=gray!60] (0.4,1.4) circle (0.5) node{$3$};
+      \draw (0,0) node[below] {$\SC^{\col o}(2,1)$};
+    \end{tikzpicture}
+    \circ_{1}
+    \begin{tikzpicture}[scale=0.85, baseline=5mm]
+      \fill[fill=gray!40] (-2,0) -- (2,0) arc (0:180:2);
+      \draw[red] (-2,0) -- (2,0) arc (0:180:2);
+      \filldraw[fill=blue!40] (-1,1) circle (0.55) node{$1$};
+      \draw (0,0) node[below] {$\SC^{\col o}(0,1)$};
+    \end{tikzpicture}
+    =
+    \begin{tikzpicture}[scale=0.85, baseline=5mm]
+      \filldraw[fill=gray!40] (-2,0) -- (2,0) arc (0:180:2);
+      \begin{scope}[shift={(-.75,0)}, scale=0.375]
+        \filldraw[fill=blue!40] (-1,1) circle (0.55) node{$\scriptstyle 1$};
+      \end{scope}
+      \draw[red,dashed] (-1.5,0) -- (0,0) arc (0:180:0.75);
+      \filldraw[fill=gray!60] (0.5,0) -- (1.5,0) node[above,midway]{$2$} arc (0:180:0.5);
+      \filldraw[fill=gray!60] (0.4,1.4) circle (0.5) node{$3$};
+      \draw (0,0) node[below] {$\SC^{\col o}(1,2)$};
+    \end{tikzpicture}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Homology vs fundamental groupoid of $\SC$}
+  \begin{theorem}[Voronov 1999, Hoefel 2009]
+    An algebra over $H_{*}(\SC)$ is a triplet $(A, B, f)$ where:
+    \begin{itemize}
+    \item $(A, \cdot)$ is an associative algebra;
+    \item $(B, \wedge, [,])$ is a Gerstenhaber algebra;
+    \item $f : B \to Z(A)$ is a central morphism of algebras.
+    \end{itemize}
+  \end{theorem}
+
+  \pause
+  \begin{theorem}
+    $\pi\SC \simeq$ an operad whose algebras are triplets $(\cM, \cN, F)$ where:
+    \begin{itemize}
+    \item $(\cM, \otimes)$ is a monoidal category;
+    \item $(\cN, \otimes, \tau)$ is a braided monoidal category;
+    \item $F : \cN \to \Zd(\cM)$ is a braided functor to the ``Drinfeld center''
+    \end{itemize}
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Recap}
+  \begin{tabular}{rlll}
+    \toprule
+    {}
+    & \tikz[remember picture, baseline]{\node (x1) {Topological};}
+    & \tikz[remember picture, baseline]{\node (x2) {Algebraical $H_{*}(-)$};}
+    & \tikz[remember picture, baseline]{\node (x3) {Categorical $\pi(-)$};} \\
+    \midrule
+    $\DD_{1}$
+    & \raisebox{-.5\height}{
+      \begin{tikzpicture}
+        \draw[|-|] (0,0) to[edge label=1] (1,0);
+        \draw[-|] (1,0) to[edge label=3] (1.5,0);
+        \draw[-|] (1.5, 0) to[edge label=2] (2,0);
+      \end{tikzpicture}
+      }
+    & associative $(A, \cdot)$
+    & monoidal $(\cM, \otimes)$ \\
+    \addlinespace[1mm]
+    $\DD_{2}$
+    & \raisebox{-.5\height}{\tikz[scale=0.8]{\filldraw[fill=gray!40] (0,0) circle (1); \filldraw[fill=gray!60] (0.3,0.5) circle (0.4) node{1}; \filldraw[fill=gray!60] (-0.2,-0.6) circle (0.3) node{2};}}
+    & Gerstenhaber $(B, \wedge, [,])$
+    & braided $(\cN, \otimes, \tau)$ \\
+    \addlinespace[1mm]
+    $\SC$
+    & \raisebox{-.5\height}{\tikz{\filldraw[fill=gray!40] (0,0) -- (2,0) arc (0:180:1); \filldraw[fill=gray!60] (1,0) -- (2,0) node[above,midway] {\tiny 1} arc (0:180:0.5); \filldraw[fill=gray!60] (0.2,0) -- (0.7,0) node[above,midway] {\tiny 2} arc (0:180:0.25); \filldraw[fill=gray!60] (0.8,0.7) circle (0.25) node{\tiny 1};}}
+    & $(B, \wedge, [,]) \xrightarrow{f} Z(A, \cdot)$
+    & $(\cN, \otimes, \tau) \xrightarrow{F} \Zd(\cM, \otimes)$ \\
+    \bottomrule
+  \end{tabular}
+
+  \uncover<2->{%
+    \begin{tikzpicture}[remember picture, overlay]
+      \draw[-implies, double equal sign distance] (x1) to (x2);
+      \draw[implies-implies, double equal sign distance] (x1.north east) to[bend left] (x3);
+      \draw[-implies, double equal sign distance] (x3) to (x2);
+    \end{tikzpicture}
+  }
+  \begin{block}{Remark}<3>
+    I also build a model $\PaPCD^{\phi} = \text{``}\PaP \rtimes_{\phi} \CDh_{+}\text{''}$ out of a Drinfeld associator $\phi$, following Tamarkin's proof of the formality of $\DD_{2}$.
+  \end{block}
+\end{frame}
+
+\section{The Lambrechts--Stanley Model of Configuration Spaces}
+
+\begin{frame}
+  \frametitle{Models}
+  We are interested in rational/real models
+  \[ A \simeq \Omega^{*}(M) \text{ ``forms on } M \text{'' \tiny (e.g.\ de Rham, piecewise polynomial...)} \]
+  where $A$ is an ``explicit'' CDGA {\tiny (= Commutative Differential Graded Algebra)}
+
+  ~
+
+  \pause $M$ nilpotent of finite type $\implies A$ contains all the rational/real homotopy type of $M$
+
+  ~
+
+  \pause We're looking for a CDGA $\simeq \Omega^{*}(\Conf_{k}(M))$ built from $A$
+\end{frame}
+
+\begin{frame}
+  \frametitle{Formality of $\Conf_{k}(\R^n)$}
+  $\Conf_{k}(\R^{n})$ is a formal space, i.e. [Kontsevich]:
+  \[H^{*}(\Conf_{k}(\R^{n})) \simeq \Omega^{*}(\Conf_{k}(\R^{n}))\]
+  completely determines the rational homotopy type of $\Conf_{k}(\R^{n})$
+
+  \pause
+  \begin{theorem}[Arnold 1969, Cohen 1976]
+    \begin{itemize}
+    \item $H^{*}(\Conf_{k}(\R^{n})) = S(\omega_{ij})_{1 \leq i \neq j \leq k} / I$
+    \item $\deg \omega_{ij} = n-1$
+    \item $I = \bigl( \omega_{ji} = \pm \omega_{ij},\; \omega_{ij}^{2} = 0,\; \omega_{ij} \omega_{jk} + \omega_{jk} \omega_{ki} + \omega_{ki} \omega_{ij} = 0 \bigr)$
+    \end{itemize}
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Poincaré duality models}
+  \alert<1-3>{Poincaré duality CDGA} $(A, \varepsilon)$ {\tiny \hfill (example: $M$ is closed \& oriented)}
+  \begin{itemize}[<+->]
+  \item $A$: finite type connected CDGA; {\tiny \hfill (e.g.\ $(H^{*}(M), d=0)$)}
+  \item $\varepsilon : A^{n} \to \Bbbk$ such that $\varepsilon \circ d = 0$; {\tiny \hfill (e.g.\ $\int_{M} (-)$)}
+  \item $A^{k} \otimes A^{n-k} \to \Bbbk, \, a \otimes b \mapsto \varepsilon(ab)$ non degenerate. {\tiny \hfill (e.g.\ $H^{k}(M) \otimes H^{n-k}(M) \to \Bbbk$)}
+  \end{itemize}
+
+  \pause[\thebeamerpauses]
+  \begin{columns}
+    \begin{column}{0.6\linewidth}
+      \begin{theorem}[Lambrechts--Stanley 2004]
+        Any \alert<3>{simply connected} manifold has such a model
+      \end{theorem}
+    \end{column}
+    \begin{column}{0.4\linewidth}
+      \[ \begin{tikzcd}[ampersand replacement=\&, row sep = tiny, column sep = small]
+          \Omega^{*}(M) \ar[dr, "\int_{M}" swap] \& \cdot \ar[l, "\sim" swap] \ar[r, "\sim"] \& \exists A \ar[dl, "\exists \varepsilon"] \\
+          {} \& \Bbbk
+        \end{tikzcd} \]
+    \end{column}
+  \end{columns}
+
+  \pause
+  \begin{block}{Remark}
+    By a result of Longoni--Salvatore (2005), $\exists$ non simply-connected $L \simeq L'$ but $\Conf_{k}(L) \not\simeq \Conf_{k}(L')$
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Lambrechts--Stanley model}
+  $\alert{\GG{A}(k)}$ conjectured model of $\Conf_{k}(M) = M^{\times k} \setminus \bigcup_{i \neq j} \tikzmark{delta}\Delta_{ij}$
+  \tikz[remember picture, overlay]
+    \draw[->] ($(pic cs:delta)+(0.2,-0.2)$) to[bend right] +(0.5,-0.3) node[right] {\scriptsize $\coloneqq \{x_{i} = x_{j}\}$};
+  \begin{itemize}
+  \item<2-> ``Generators'': $A^{\otimes k} \otimes S(\omega_{ij})_{1 \leq i \neq j \leq k}$
+  \item<3-> Relations:
+    \begin{itemize}
+    \item Arnold relations \hfill{} {\tiny ($\omega_{ji} = \pm \omega_{ij}, \omega_{ij}^{2} = \omega_{ij} \omega_{jk} + \omega_{jk} \omega_{ki} + \omega_{ki} \omega_{ij} = 0$)}
+    \item $p_{i}^{*}(a) \cdot \omega_{ij} = p_{j}^{*}(a) \cdot \omega_{ij}$. \hfill{} {\tiny $(p_{i}^{*}(a) = 1 \otimes \dots \otimes 1 \otimes a \otimes 1 \otimes \dots \otimes 1)$}
+    \end{itemize}
+  \item<4-> $d \omega_{ij} = (p_{i}^{*} \cdot p_{j}^{*})(\Delta_{A})$ kills the dual of $[ \Delta_{ij} ]$.
+  \end{itemize}
+
+  \pause[5]
+  \begin{theorem}[Lambrechts--Stanley 2008]
+    \[ \dim_{\Q} H^{i}(\Conf_{k}(M)) = \dim_{\Q} H^{i}(\GG{A}(k)) \]
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{First part of the theorem}
+  $\GG{A}(k)$ was known to be a rational model of $\Conf_{k}(M)$ in a few cases:
+  \begin{itemize}
+  \item $M$ smooth projective complex variety [Kriz];
+  \item $k = 2$ and $M$ is $2$-connected [Lambrechts--Stanley];
+  \item $k = 2$ and $\dim M$ is even [Cordova Bulens]\dots
+\end{itemize}
+
+
+  \pause
+  \begin{theorem}
+    Let $M$ be a smooth, closed, simply connected manifold \alert{of dimension $\geq 4$}. Then $\GG{A}(k)$ is a model \alert{over $\R$} of $\Conf_{k}(M)$ for all $k \geq 0$.
+  \end{theorem}
+
+  \pause
+  \begin{block}{Corollary}
+    The real homotopy type of $\Conf_{k}(M)$ only depends on the real homotopy type of $M$:
+    \[ M \simeq_{\R} N \implies \Conf_{k}(M) \simeq_{\R} \Conf_{k}(N). \]
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Operads}
+  \begin{block}{Ideas \& Goals}
+    Adapt the construction for $\DD_{n}$ \& keep track of the $\DD_{n}$-action whenever it exists
+  \end{block}
+
+  \pause
+  Fulton--MacPherson compactification $\Conf_{k}(M) \xhookrightarrow{\sim} \alert{\FM_{M}(k)}$
+  \begin{center}
+    \tikzset{every picture/.append style={scale=0.9}}
+    \input{fig/fmm}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Understanding $\FM_M$ (\#1)}
+  \begin{center}
+    \animategraphics[width=0.8\linewidth]{10}{fig/anim}{1}{16}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Understanding $\FM_M$ (\#2)}
+  \begin{center}
+    \animategraphics[width=0.7\linewidth]{10}{fig/anim}{17}{33}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Understanding $\FM_M$ (\#3)}
+  \begin{center}
+    \animategraphics[width=0.7\linewidth]{10}{fig/anim}{34}{51}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Compactifying $\Conf_{k}(\R^{n})$}
+  Can also compactify $\Conf_{k}(\R^{n}) \xrightarrow{\sim} \only<2->{\Conf_{k}(\R^{n}) / (\R^{n} \rtimes \R_{+}^{*}) \xhookrightarrow{\sim}} \alert{\FM_{n}(k)}$
+  \begin{center}
+    \input{fig/fmrn}
+
+    \uncover<2->{\scriptsize (+ normalization to deal with $\R^{n}$ being noncompact)}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Operads}
+  $\FM_{n} = \{ \FM_{n}(k) \}_{k \geq 0}$ is an operad $\simeq \DD_{n}$
+
+  \input{fig/operad}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Modules over operads}
+  $M$ framed $\implies \FM_{M} = \{\FM_{M}(k)\}_{k \geq 0}$ is a right $\FM_{n}$-module $\simeq \DD_{M}$
+
+  \input{fig/module}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cohomology of $\FM_n$ and coaction on $\GG{A}$}
+  $H^{*}(\FM_{n})$ inherits a Hopf cooperad structure
+
+  \pause One can rewrite:
+  \[ \GG{A}(k) = (A^{\otimes k} \otimes H^{*}(\FM_{n}(k)) / \text{relations}, d) \]
+
+  \pause
+  \begin{block}{Proposition}
+    $\chi(M) = 0 \implies \GG{A} = \{ \GG{A}(k) \}_{k \geq 0}$ is a Hopf right $H^{*}(\FM_{n})$-comodule
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Motivation}
+  We are looking for something to put here:
+  \[ \GG{A}(k) \qiso* \alert<1>{?} \qiso \Omega^{*}(\FM_{M}(k)) \]
+
+  \pause If true, then hopefully it fits in a diagram like this:
+  \[ \begin{tikzcd}[ampersand replacement=\&, row sep = 0, remember picture]
+      \GG{A} \& \ar[l, "\sim" swap] \alert<2>{?} \ar[r, "\sim"] \& \Omega^{*}(\FM_{M}) \\
+      \circlearrowleft \& \alert<2>{\circlearrowleft} \& \circlearrowleft \\
+      |[alias=y1]|
+      H^{*}(\FM_{n}) \&
+      \ar[l, "\sim" swap] \alert<2>{?} \ar[r, "\sim"] \&
+      |[alias=y2]|
+      \Omega^{*}(\FM_{n})
+    \end{tikzcd} \]
+
+  \pause
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[draw,rectangle,fit=(y1.north west) (y2.south east), inner sep=0pt] (box) {};
+    \draw[->] (box.south) -- ++(0,-0.5) node[below] {Already known: \alert<3>{formality of the little disks operads}};
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Kontsevich's graph complexes}
+  [Kontsevich] Hopf cooperad $\Graphs_{n} = \{ \Graphs_{n}(k) \}_{k \geq 0}$
+  \[
+    d \left(
+      \begin{tikzpicture}[scale = 0.5, baseline]
+        \node[intv] (int) {};
+        \node[extv] (1) [above = 0.3cm of int] {$1$};
+        \node[extv] (2) [below left = 0.4cm of int] {$2$};
+        \node[extv] (3) [below right = 0.4cm of int] {$3$};
+        \draw (1) -- (int); \draw (2) -- (int); \draw (3) -- (int);
+      \end{tikzpicture}
+    \right) =
+    \pm
+    \begin{tikzpicture}[scale = 0.5, baseline]
+      \node (int) {};
+      \node[extv] (1) [above = 0.3cm of int] {$1$};
+      \node[extv] (2) [below left = 0.4cm of int] {$2$};
+      \node[extv] (3) [below right = 0.4cm of int] {$3$};
+      \draw (1) -- (2); \draw (2) -- (3);
+    \end{tikzpicture}
+    \pm
+    \begin{tikzpicture}[scale = 0.5, baseline]
+      \node (int) {};
+      \node[extv] (1) [above = 0.3cm of int] {$1$};
+      \node[extv] (2) [below left = 0.4cm of int] {$2$};
+      \node[extv] (3) [below right = 0.4cm of int] {$3$};
+      \draw (2) -- (3); \draw (3) -- (1);
+    \end{tikzpicture}
+    \pm
+    \begin{tikzpicture}[scale = 0.5, baseline]
+      \node (int) {};
+      \node[extv] (1) [above = 0.3cm of int] {$1$};
+      \node[extv] (2) [below left = 0.4cm of int] {$2$};
+      \node[extv] (3) [below right = 0.4cm of int] {$3$};
+      \draw (3) -- (1); \draw (1) -- (2);
+    \end{tikzpicture}
+  \]
+
+  \uncover<2->{
+    \begin{theorem}[Kontsevich 1999, Lambrechts--Volić 2014]
+      \begin{equation*}
+        \begin{tikzcd}[ampersand replacement=\&, row sep = tiny]
+          H^{*}(\FM_{n}; \R) \&
+          \Graphs_{n} \ar[l, "\sim" swap] \ar[r, "\sim"] \&
+          \OmPA^{*}(\FM_{n}) \\
+          \omega_{ij} \&
+          \begin{tikzpicture}[scale=0.3]
+            \node[circle, draw, minimum size = 0.5cm, inner sep=0pt] (1) {$i$};
+            \node[circle, draw, minimum size = 0.5cm, inner sep=0pt] (2) [right = 0.5cm of 1] {$j$};
+            \draw (1) -- (2);
+          \end{tikzpicture}
+          \ar[l, mapsto] \ar[r, mapsto] \&
+          \text{explicit representatives}\\
+          0 \&
+          \tikz[scale=0.5]{\node[intv] (1) {};}
+          \ar[l, mapsto] \ar[r, mapsto] \&
+          \text{``explicit'' integrals}
+        \end{tikzcd}
+      \end{equation*}
+    \end{theorem}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Complete version of the theorem}
+  \begin{block}{Idea}
+    Build $\Graphs^{\ze}_{R}$ from $\Graphs_{n}$ similar to how $\GG{A}$ is built from $H^{*}(\FM_{n})$
+  \end{block}
+
+  \pause
+  \begin{theorem}[Complete version]
+    $M$: closed, simply connected, smooth manifold with $\dim \ge 4$
+    \[ \begin{tikzcd}[ampersand replacement=\&, row sep = 0]
+        \GG{A} \& \ar[l, "\sim" swap] \Graphs^{\ze}_{R} \ar[r, dashed, "\sim"] \& \OmPA^{*}(\FM_{M}) \\
+        \circlearrowleft^{\dagger} \& \circlearrowleft^{\dagger} \& \circlearrowleft^{\ddagger} \\
+        H^{*}(\FM_{n}) \& \ar[l, "\sim" swap] \Graphs_{n} \ar[r, "\sim"] \& \OmPA^{*}(\FM_{n})
+      \end{tikzcd} \]
+    $^{\dagger}$ When $\chi(M) = 0$ \\
+    $^{\ddagger}$ When $M$ is framed \hfill $A \qiso* R \qiso \OmPA^{*}(M)$
+  \end{theorem}
+\end{frame}
+
+\section{Configuration Spaces of Manifolds with Boundary}
+
+\begin{frame}
+  \frametitle{Poincaré--Lefschetz duality models}
+  Now: $\partial M \neq \varnothing \implies H^{*}(M) \cong H_{n-*}(M, \partial M)$ for $M$ oriented
+
+  \pause \alert{Poincaré--Lefschetz duality pair} $(B \xrightarrow{\lambda} B_{\partial})$:
+  \begin{itemize}[<+->]
+  \item $(B_{\partial}, \varepsilon_{\partial})$ Poincaré duality CDGA of dimension $n-1$; {\tiny \hfill (models $\partial M$, $\int_{\partial M}$)}
+  \item $B$: fin. type connected CDGA; {\tiny \hfill (models $M$)}
+  \item $\lambda : B \twoheadrightarrow B_{\partial}$: surjective CDGA morphism; {\tiny \hfill (models $\partial M \hookrightarrow M$)}
+  \item $\varepsilon : B^{n} \to \R$ s.t.\ $\varepsilon(dy) = \varepsilon_{\partial}(\lambda(y))$; {\tiny \hfill (models $\int_{M}(-)$ \& Stokes formula)}
+  \item if $K = \ker \lambda$, then $\theta : B \to K^{\vee}[-n]$, $b \mapsto \varepsilon(b \cdot -)$ is a surjective quasi-isomorphism. {\tiny \hfill ($K \simeq \Omega^{*}(M, \partial M)$)}
+  \end{itemize}
+
+  \pause[\thebeamerpauses]
+  In this case, $A \coloneqq B / \ker \theta$ is a model of $M$, and $\theta : A \xrightarrow{\cong} K^{\vee}[-n]$
+\end{frame}
+\begin{frame}
+  \frametitle{Existence \& example of PLD models}
+  \begin{exampleblock}{Example}
+    If $M = N \setminus \{ * \}$ with $N$ closed:
+    \pause
+    take $P$ a Poincaré duality model of $N$
+    \[ B = (P \oplus \R v_{n-1}, d v = \vol_{P}) \twoheadrightarrow B_{\partial} = H^{*}(S^{n-1}) = (\R \oplus \R v_{n-1}, d = 0) \]
+  \end{exampleblock}
+
+  \pause
+  \begin{block}{Proposition}
+    If $M$ is simply connected, $\partial M$ is simply connected, and $\dim M \geq 7$, then $(M, \partial M)$ admits a PLD model.
+  \end{block}
+
+  \pause
+  \begin{block}{Remark}
+    Also true if $M$ admits a ``surjective pretty model'', cf.\ theorems of Cordova Bulens and Cordova Bulens--Lambrechts--Stanley.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The ``naïve'' dg-module $\GG{A}$}
+  Given a PLD model $(B, B_{\partial})$ and $A = B / \ker \theta$, can build \alert<1>{$\GG{A}(k)$} as before.
+
+  \pause
+  \begin{theorem}
+    \[ \dim H^{i}(\Conf_{k}(M)) = \dim H^{i}(\GG{A}(k)) \]
+  \end{theorem}
+
+  \pause
+  \begin{block}{Idea of proof}
+    Combine:
+    \begin{itemize}
+    \item Techniques of Lambrechts--Stanley to compute homology of spaces of the type $M^{k} \setminus \bigcup_{i \neq j} \Delta_{ij}$;
+    \item Techniques of Cordova Bulens--L--S to compute homology of $M = N \setminus X$ where $N$ is a closed manifold and $X \subset N$ is a sub-polyhedron.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The actual model}
+  In general, $\GG{A}(k)$ is not actually a CDGA model for $\Conf_{k}(M)$.
+
+  \pause
+  \begin{block}{Motivation}
+    $M = S^{1} \times (0,1) \cong \R^{2} \setminus \{ 0 \} \implies \Conf_{2}(M) \simeq \Conf_{3}(\R^{2})$
+
+    \pause
+    Then $A = H^{*}(M) = \R \oplus \R \eta$.
+    In $\GG{A}(2)$, relation $(1 \otimes \eta) \omega_{12} = (\eta \otimes 1) \omega_{12}$.
+    \pause
+    But in $\Conf_{3}(\R^{2})$, Arnold relation: $(1 \otimes \eta) \omega_{12} = (\eta \otimes 1) \omega_{12} \pm (\eta \otimes \eta)$.
+  \end{block}
+
+  \pause
+  $\implies$ must define a ``perturbed model'' $\GGt{A}(k)$
+
+  \begin{block}{Proposition}
+    Isomorphism of dg-modules $\GG{A}(k) \cong \GGt{A}(k)$.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Swiss-Cheese \& graphs}
+  $M$ looks like $\mathbb{H}^{n}$ (locally) $\implies$ Swiss-Cheese operad
+
+  \pause
+  \begin{equation*}
+    \begin{tikzpicture}[scale=0.85, baseline = 5mm]
+      \filldraw[fill=gray!40] (-2,0) -- (2,0) arc (0:180:2);
+      \filldraw[fill=gray!60] (-1.5,0) -- (0,0) node[above,midway]{$1$} arc (0:180:0.75);
+      \filldraw[fill=gray!60] (0.5,0) -- (1.5,0) node[above,midway]{$2$} arc (0:180:0.5);
+      \filldraw[fill=gray!60] (0.4,1.4) circle (0.5) node{$3$};
+      \draw (0,0) node[below] {$\SC_{2}^{\col o}(2,1)$};
+    \end{tikzpicture}
+    \mapsto
+    \begin{tikzpicture}[scale=0.85, baseline=5mm]
+      \filldraw[fill=gray!40] (-2,0) -- (2,0) arc (0:180:2);
+      \draw[dashed] (-1.5,0) -- (0,0) node[midway,solid,pt,label={\tiny 1}]{} arc (0:180:0.75);
+      \draw[dashed] (0.5,0) -- (1.5,0) node[midway,solid,pt,label={\tiny 2}]{} arc (0:180:0.5);
+      \draw[dashed] (0.4,1.4) circle (0.5) node[solid,pt,label={\tiny 3}]{};
+      \draw (0,0) node[below] {$\Conf_{2,1}(\mathbb{H}^{2})$};
+    \end{tikzpicture}
+  \end{equation*}
+
+  \pause
+  \begin{theorem}[Willwacher 2015]
+    Model $\SGraphs_{n}$ for $\SFM_{n} = \overline{\Conf_{\bullet,\bullet}(\mathbb{H}^{n})} \simeq \SC_{n}$:
+    \input{fig/sgraphs}
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Theorem for manifolds with boundary}
+  Using similar techniques:
+  \begin{theorem}
+    For $M$ a smooth, compact manifold of dimension at least $\geq 7$, $M$ and $\partial M$ simply connected:
+    \[ \begin{tikzcd}[ampersand replacement=\&, row sep = 0]
+        \GGt{A} \& \ar[l, "\sim" swap] \Graphs^{\ze}_{R} \ar[r, dashed, "\sim"] \& \OmPA^{*}(\SFM_{M}(\varnothing, -)) \\
+        \circlearrowleft \& \circlearrowleft \& \circlearrowleft^{\dagger} \\
+        H^{*}(\FM_{n}) \& \ar[l, "\sim" swap] \Graphs_{n} \ar[r, "\sim"] \& \OmPA^{*}(\FM_{n})
+      \end{tikzcd} \]
+
+    Moreover: model $\SGraphs^{c_{M}, \szphi}_{R,R_{\partial}}(k,l)$ of $\SFM_{M}(k,l)$, compatible with the (co)action of $\SGraphs_{n}$ / $\SFM_{n}$
+  \end{theorem}
+\end{frame}
+
+\begin{frame}[standout]
+  \small Fin de la présentation
+\end{frame}
+
+\end{document}
+
+% Local Variables:
+% TeX-engine: luatex
+% TeX-master: t
+% End:

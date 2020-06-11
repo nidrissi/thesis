@@ -1,0 +1,35 @@
+% thesis.tex
+
+\input{preamble}
+
+\begin{document}
+
+\frontmatter
+\begin{french}
+  \include{content/title}
+  \include{content/merci}
+\end{french}
+\include{content/liminary}
+\begin{french}
+  \include{content/resume}
+\end{french}
+\disfrpt{}
+\tableofcontents
+
+\mainmatter
+\begin{english}
+  \include{content/intro}
+  \include{content/swiss-cheese}
+  \include{content/conf-sp}
+  \include{content/conf-sp-bnd}
+\end{english}
+
+\backmatter
+\printbibliography
+\printindex
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,5 @@
+#+TITLE: Formalité opéradique et homotopie des espaces de configuration
+#+AUTHOR: Najib
+
+My PhD thesis, entitled /Formalité opéradique et homotopie des espaces de configuration/, written under the supervision of Benoit Fresse at Université Lille-1 (now called Université de Lille).
+I defended it on November 17th, 2017.

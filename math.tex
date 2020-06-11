@@ -1,0 +1,157 @@
+% math.tex -*- mode: latex -*-
+
+% Fields
+\newcommand{\K}{\Bbbk}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+% quasi-iso ; qiso* = à l'envers
+\NewDocumentCommand{\tkextarrow}{sO{}m}{%
+  \mathrel{\vcenter{\hbox{%
+    \begin{tikzpicture}
+      \node[minimum width=0.5cm, align=center, anchor=south] (tmp) {$\scriptstyle #3$\\[-1ex]$\scriptstyle #2$};
+      \path[draw,\IfBooleanTF{#1}{<-}{->}] (tmp.west) -- (tmp.east);
+    \end{tikzpicture}%
+  }}}%
+}
+\NewDocumentCommand{\tkrightarrow}{O{}m}{\tkextarrow[#1]{#2}}
+\NewDocumentCommand{\tkleftarrow}{O{}m}{\tkextarrow*[#1]{#2}}
+\NewDocumentCommand{\qiso}{s}{
+  \mathrel{%
+    \IfBooleanTF #1
+    {\tkleftarrow{\sim}}
+    {\tkrightarrow{\sim}}%
+  }
+}
+
+% misc
+\newcommand{\EE}{\mathsf{E}}
+\newcommand{\vol}{\mathrm{vol}}
+
+% Operads
+\newcommand{\operadify}[1]{\mathtt{#1}}
+% Anonymous
+\newcommand{\PP}{\operadify{P}}
+\newcommand{\QQ}{\operadify{Q}}
+\newcommand{\CC}{\operadify{C}}
+\newcommand{\DD}{\operadify{D}}
+\newcommand{\MM}{\operadify{M}}
+\newcommand{\NN}{\operadify{N}}
+% Standard
+\newcommand{\End}{\operadify{End}}
+\newcommand{\Ass}{\operadify{Ass}}
+\newcommand{\Ger}{\operadify{Ger}}
+\newcommand{\Com}{\operadify{Com}}
+\newcommand{\SC}{\operadify{SC}}
+\newcommand{\Sc}{\operadify{sc}}
+\newcommand{\en}[1][n]{\operadify{e}_{#1}}
+\newcommand{\enV}[1][n]{\en[#1]^{\vee}}
+\newcommand{\Lie}{\operadify{Lie}}
+\newcommand{\hoLie}{\operadify{hoLie}}
+\newcommand{\magma}{\Omega}
+\newcommand{\tMagma}{{\magma\magma}}
+\newcommand{\II}{\operadify{I}}
+\newcommand{\Ln}{\operadify{L}_{n}}
+% Braids & cie
+\newcommand{\CoB}{\operadify{CoB}}
+\newcommand{\CoP}{\operadify{CoP}}
+\newcommand{\PaB}{\operadify{PaB}}
+\newcommand{\PaP}{\operadify{PaP}}
+\newcommand{\CoPB}{\operadify{CoPB}}
+\newcommand{\PaPB}{\operadify{PaPB}}
+\newcommand{\CD}{\operadify{CD}}
+\newcommand{\Sh}{\operadify{Sh}}
+\newcommand{\PaSh}{\operadify{PaSh}}
+\newcommand{\PaCD}{\operadify{PaCD}}
+% completions
+\newcommand{\CDh}{\widehat{\CD}}
+\newcommand{\PaBh}{\widehat{\PaB}}
+\newcommand{\PaCDhp}{\widehat{\PaCD}_{+}}
+\newcommand{\PaPCD}{\operadify{PaP}\widehat{\operadify{CD}}_{+}}
+% Two-colored operads
+\newcommand{\col}[1]{\mathfrak{#1}}
+% Configuration spaces
+\newcommand{\GG}[1]{\mathtt{G}_{#1}}
+\newcommand{\GGt}[1]{\tilde{\mathtt{G}}_{#1}}
+\newcommand{\FM}{\mathtt{FM}}
+\newcommand{\ff}{\operadify{f}}
+\newcommand{\SFM}{\mathtt{SFM}}
+\newcommand{\OmPA}{\Omega_{\mathrm{PA}}}
+\newcommand{\Disk}{\mathtt{Disk}}
+\newcommand{\Embfr}{\operatorname{Emb}^{\mathrm{fr}}}
+% Graphs
+\newcommand{\Gra}{\mathtt{Gra}}
+\newcommand{\Graphs}{\mathtt{Graphs}}
+\newcommand{\SGra}{\mathtt{SGra}}
+\newcommand{\SGraphs}{\mathtt{SGraphs}}
+\newcommand{\fGC}{\mathrm{fGC}}
+\newcommand{\fLoop}{\mathrm{fLoop}}
+\newcommand{\GC}{\mathrm{GC}}
+\newcommand{\SGC}{\mathrm{SGC}}
+\newcommand{\fSGC}{\mathrm{fSGC}}
+% Hadamard product
+\newcommand{\hadprod}{\boxtimes}
+% Partition function
+\newcommand{\ZZ}[1]{\mathrm{Z}_{#1}}
+\newcommand{\Zphi}{\ZZ{\varphi}}
+\newcommand{\Ze}{\ZZ{\varepsilon}}
+\newcommand{\SZphi}{\ZZ{\varphi}^{S}}
+\newcommand{\SZe}{\ZZ{\varepsilon}^{S}}
+\newcommand{\zz}[1]{\mathrm{z}_{#1}}
+\newcommand{\zphi}{\zz{\varphi}}
+\newcommand{\ze}{\zz{\varepsilon}}
+\newcommand{\szz}[1]{\mathrm{z}^{S}_{#1}}
+\newcommand{\szphi}{\szz{\varphi}}
+\newcommand{\sze}{\szz{\varepsilon}}
+
+% Operators
+\DeclareMathOperator{\Conf}{Conf}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Tw}{Tw}
+\DeclareMathOperator{\Def}{Def}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\hoker}{hoker}
+\DeclareMathOperator{\TotCof}{TotCof}
+\DeclareMathOperator{\Emb}{Emb}
+
+\newcommand{\CCE}{\mathrm{C}_{*}^{\mathrm{CE}}}
+
+% Categories
+\newcommand{\categorify}[1]{\mathsf{#1}}
+\newcommand{\Zd}{\mathcal{Z}}  % centre de Drinfeld
+\newcommand{\cC}{\categorify{C}}
+\newcommand{\cM}{\categorify{M}}
+\newcommand{\cN}{\categorify{N}}
+\newcommand{\cdga}{\categorify{CDGA}}
+\newcommand{\Set}{\categorify{Set}}
+\newcommand{\rlz}[1]{\langle #1 \rangle^{\mathbb{L}}}
+
+% orphans
+\newcommand{\OO}{\mathcal{O}}
+% boundary faces
+\newcommand{\BF}{\mathcal{BF}}
+
+% Pictures
+\newcommand{\bdot}[2]{\draw (#1) node [fill=black, circle, inner
+  sep=1.5pt] {} node[above] {#2}}
+\newcommand{\wdot}[2]{\draw (#1) node [draw = black, fill=white, circle, inner
+  sep=1.5pt] {} node[above] {#2}}
+% Elements of CoB
+\tikzstyle{cob}=[<->]
+
+% Vertices:
+% external
+\tikzset{extv/.style={circle, fill = white, draw, minimum size=0.5cm, inner sep=0pt}}
+% internal
+\tikzset{intv/.style={circle, fill = black, draw, minimum size = 0.3cm, inner sep = 0pt}}
+% unknown type
+\tikzset{unkv/.style={circle, fill = gray, draw, minimum size = 0.3cm, inner sep = 0pt}}
+% small point
+\tikzset{pt/.style={circle, fill = black, draw, minimum size = 0.1cm, inner sep = 0pt}}
+
+% torus
+\newcommand{\mytorus}{(-3.5,0) .. controls (-3.5,1.5) and (-1.5,2) .. (0,2)}

@@ -1,0 +1,81 @@
+% title.tex -*- mode: latex -*-
+
+\newgeometry{left=1cm, right=1cm, top=1cm, bottom=1cm}
+
+\begin{titlepage}
+\sffamily
+\begin{center}
+  \begin{minipage}{0.25\linewidth}
+    Université Lille 1
+
+    Laboratoire Paul Painlevé
+
+    École Doctorale SPI
+  \end{minipage}%
+  \begin{minipage}{0.5\linewidth}
+    \raisebox{-.5\height}{%
+      \href{http://www.univ-lille1.fr}{%
+        \includegraphics[width=0.5\linewidth]{img/logo_univ}%
+      }%
+    }%
+    \raisebox{-.5\height}{%
+      \href{https://math.univ-lille1.fr}{%
+        \includegraphics[width=0.5\linewidth]{img/logo_labo}%
+      }
+    }
+  \end{minipage}%
+  \begin{minipage}{0.25\linewidth}
+    \raggedleft
+    Thèse de Doctorat
+
+    Mathématiques
+
+    N\textsuperscript{o} 42424
+  \end{minipage}
+
+  \vspace{3.5cm}
+
+  \rule{\linewidth}{1pt}%
+  \\[1\baselineskip]%
+  {\bfseries\fontsize{40}{48}\selectfont\mytitle}\\[0.5\baselineskip]%
+  \rule{\linewidth}{1pt}
+
+  \vspace{1.5cm}
+  {\Huge\myauthor}
+
+  \vspace{3cm}
+  \textit{\Large Thèse dirigée par Benoit \textsc{Fresse}\\et soutenue le 17 novembre 2017}
+\end{center}
+
+\vfill
+\large
+\begin{center}
+  \begin{tabular}{rll}
+    \multicolumn{3}{c}{Jury} \\
+    \midrule
+    % BEGIN RECEIVE ORGTBL jury
+Directeur de thèse : & Benoit \textsc{Fresse} & Université Lille 1\\
+Rapporteurs : & Damien \textsc{Calaque} & Université de Montpellier\\
+ & Kathryn \textsc{Hess Bellwald} & École Polytechnique Fédérale de Lausanne\\
+Examinateurs : & Pascal \textsc{Lambrechts} & Université catholique de Louvain\\
+ & Patrick \textsc{Popescu-Pampu} & Université Lille 1\\
+ & Thomas \textsc{Willwacher} & École Polytechnique Fédérale de Zurich\\
+    % END RECEIVE ORGTBL jury
+\begin{comment}
+  #+ORGTBL: SEND jury orgtbl-to-latex :splice t
+| Directeur de thèse : | Benoit \textsc{Fresse}         | Université Lille 1                       |
+| Rapporteurs :        | Damien \textsc{Calaque}        | Université de Montpellier                |
+|                      | Kathryn \textsc{Hess Bellwald} | École Polytechnique Fédérale de Lausanne |
+| Examinateurs :       | Pascal \textsc{Lambrechts}     | Université catholique de Louvain         |
+|                      | Patrick \textsc{Popescu-Pampu} | Université Lille 1                       |
+|                      | Thomas \textsc{Willwacher}     | École Polytechnique Fédérale de Zurich   |
+\end{comment}
+  \end{tabular}
+\end{center}
+\end{titlepage}
+
+\restoregeometry{}
+
+% Local Variables:
+% eval: (orgtbl-mode)
+% End:

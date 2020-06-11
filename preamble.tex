@@ -1,0 +1,125 @@
+% preamble.tex -*- mode:latex -*-
+
+\documentclass[12pt,bibliography=totoc,index=totoc]{scrbook}
+
+
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage{french}
+% https://github.com/reutenauer/polyglossia/issues/182
+\makeatletter
+\newcommand{\disfrpt}{\nofrench@punctuation}
+\makeatother
+
+\usepackage{amssymb, mathtools, mathrsfs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{array,tabularx,booktabs}
+\usepackage{geometry}
+\usepackage{import}
+\usepackage{hyphenat}
+\usepackage{comment}
+
+\usepackage[final]{microtype}
+\usepackage{unicode-math}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{Linux Biolinum O}[Scale=MatchLowercase]
+\setmonofont{Inconsolata}[Scale=MatchLowercase]
+\setmathfont{TeX Gyre Pagella Math}[Scale=MatchLowercase]
+\setmathfont{Latin Modern Math}[range=\symcal,Scale=MatchLowercase]
+
+\usepackage[autostyle]{csquotes}
+\usepackage[style=alphabetic, sorting=nyt, maxnames=10]{biblatex}
+
+\usepackage{makeidx}
+\makeindex
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows,positioning,calc}
+\usepackage{todonotes}
+
+\usepackage[numbered]{bookmark}
+\usepackage{hyperref}
+\usepackage{amsthm, thmtools}
+\usepackage[xspace]{ellipsis}
+% so that links to figures go to the top of the figure
+\usepackage[all]{hypcap}
+\usepackage{wrapfig}
+
+\hypersetup{
+  pdfencoding=auto,      % https://tex.stackexchange.com/a/26193
+  colorlinks,
+  urlcolor = {blue!80!black},
+  linkcolor = {red!70!black},
+  citecolor = {green!50!black}
+}
+\setcounter{tocdepth}{2}
+
+% bibliography
+\addbibresource{thesis.bib}
+% let "publisher" and "location" change place
+\renewbibmacro*{publisher+location+date}{%
+  \printlist{publisher}%
+  \setunit*{\addcomma\space}%
+  \printlist{location}%
+  \setunit*{\addcomma\space}%
+  \usebibmacro{date}%
+  \newunit}
+% numdam
+\DeclareFieldFormat{eprint:numdam}{%
+  \textsc{Numdam}\addcolon\space%
+  \ifhyperref
+  {\href{http://www.numdam.org/item?id=#1}{\nolinkurl{#1}}}
+  {\nolinkurl{#1}}%
+}
+
+% Theorems
+\numberwithin{figure}{section}
+\numberwithin{equation}{section}
+\NewDocumentCommand{\declthm}{m m O{plain}}{% env, name, style
+  \declaretheorem[
+  name = #2,
+  sibling = equation,
+  style = #3
+  ]
+  {#1}
+}
+\declthm{theorem}{Theorem}
+\declthm{proposition}{Proposition}
+\declthm{corollary}{Corollary}
+\declthm{lemma}{Lemma}
+\declthm{definition}{Definition}[definition]
+\declthm{example}{Example}[remark]
+\declthm{remark}{Remark}[remark]
+\declthm{conjecture}{Conjecture}
+
+% in the intro
+\declaretheorem[name = Theorem]{theoremintro}
+\renewcommand{\thetheoremintro}{\Alph{theoremintro}}
+\declaretheorem[name = Corollary, sibling = theoremintro]{corollaryintro}
+\renewcommand{\thecorollaryintro}{\Alph{corollaryintro}}
+
+% Blank footnote (for chapters)
+\newcommand{\blkftnt}[1]{{\renewcommand{\thefootnote}{\fnsymbol{footnote}}\footnotetext[0]{#1}}}
+
+% VC information
+% \usepackage{shellesc}
+% \immediate\write18{vc.bat}
+% \input{vc}
+% \usepackage{scrlayer-scrpage}
+% \makeatletter
+% \ifoot*{\scriptsize\texttt{\VCinfo{}}}
+% \makeatother
+% \ihead*{DRAFT}
+
+% Metadata
+\newcommand{\mytitle}{Formalité opéradique et homotopie des espaces de configuration}
+\newcommand{\myauthor}{Najib \textsc{Idrissi Kaïtouni}}
+\title{\mytitle}
+\author{\myauthor}
+\hypersetup{pdftitle={\mytitle},pdfauthor={\myauthor}}
+
+% Math
+\input{math}

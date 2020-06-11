@@ -1,0 +1,30 @@
+\[
+  \begin{gathered}
+    \begin{tikzpicture}[scale = 0.7]
+      \filldraw [fill = gray!20] (0,0) ellipse (2 and 1);
+      \draw (-1,0) node [pt, label = 1] {};
+      \draw (1,0) node [pt, fill = blue, label = {\color{blue} 2}] {};
+    \end{tikzpicture}
+  \end{gathered}
+  \circ_{\color{blue} 2}
+  \begin{gathered}
+    \begin{tikzpicture}[scale = 0.7]
+      \filldraw [fill = white!50!blue] (0,0) ellipse (2 and 1);
+      \draw (-1,0) node [pt, label = 1] {};
+      \draw (1,0) node [pt, label = 2] {};
+    \end{tikzpicture}
+  \end{gathered}
+  =
+  \begin{gathered}
+    \begin{tikzpicture}[scale = 0.7]
+      \filldraw [fill = gray!20] (0,0) ellipse (2 and 1);
+      \draw (-1,0) node [pt, label = 1] {};
+      \filldraw [densely dotted, fill = white!50!blue] (2, 1.5) to[bend right] (1,0) to[bend right] (0, 1.5);
+      \filldraw [fill = white!60!blue] (1,1.5) ellipse (1 and 0.6);
+      \draw (0.5,1.5) node [pt, label = {\tiny 2}] {};
+      \draw (1.5,1.5) node [pt, label = {\tiny 3}] {};
+    \end{tikzpicture}
+  \end{gathered}
+\]
+
+\[ \FM_{n}(k) \times \FM_{n}(l) \xrightarrow{\circ_{i}} \FM_{n}(k+l-1), \quad 1 \leq i \leq k \]

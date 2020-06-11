@@ -1,0 +1,2046 @@
+% conf-sp-bnd.tex -*- mode: latex -*-
+
+\chapter{Configuration Spaces of Manifolds with Boundary}
+\label{chap.3}
+\blkftnt{Based on a work-in-progress in collaboration with P. Lambrechts.}
+
+We now extend the results of the previous chapter to compact manifolds with boundary which admit a ``surjective pretty model''~\cite{CordovaBulensLambrechtsStanley2015}.
+
+For concreteness, let $(M, \partial M)$ be a compact manifold with boundary.
+Given some integer $k \ge 0$, its $k$th (ordered) configuration space is:
+\[ \Conf_{k}(M) \coloneqq \{ (x_{1}, \dots, x_{k}) \in M^{\times k} \mid x_{i} \neq x_{j} \; \forall i \neq j \}. \]
+
+Suppose that the pair $(M, \partial M)$ has a surjective pretty model induced by $\psi : P \to Q$, where $P$ is a Poincaré duality CDGA and $\psi$ is surjective (see Section~\ref{cnfbnd.sec.surj-pretty-models} for the definitions).
+In short, this means that $M$ has been obtained by removing from a closed manifold $N$ (of which $P$ is a model) a sub-polyhedron $X$ (of which $Q$ is a model).
+Roughly, the pretty model construction is a way of encoding Poincaré--Lefschetz duality to obtain a model for $M = N - X$.
+This situation occurs the case if $M$ is closed (in which case $Q = 0$), if both $M$ and $\partial M$ are $2$-connected and the boundary retracts rationally onto its half-skeleton, if $M$ is a disk bundle over a closed manifold, or if $M$ is obtained by removing the thickening of a high-codimensional subpolyhedron from a closed manifold (see Theorem~\ref{cnfbnd.thm.pretty-model}).
+Then a model of $M$ is given by $A = P/I$, where $I = \im(\psi^{!})$ is an ideal of the Poincaré duality CDGA $P$.
+
+We use the same construction as in Chapter~\ref{chap.2} to get a CDGA $\GGt{A}(k)$ (Equation~\eqref{cnfbnd.eq.perturbed-model}), which is somehow a ``perturbation'' of $\GG{A}(k)$.
+We show that there is an isomorphism of graded vector spaces between $H^{*}(\GG{A}(k))$ and $H^{*}(\Conf_{k}(M))$ over $\Q$ (see Theorem~\ref{cnfbnd.thm.ga-same-cohom}), which generalizes the result of~\cite{LambrechtsStanley2008a}.
+If $M$ is closed, then $I = 0$ and we recover the model considered in Chapter~\ref{chap.2}.
+If $M$ is simply connected with simply connected boundary but does not admit a surjective pretty model, we have analogous results as soon as $\dim M \geq 7$ using what we dub ``Poincaré--Lefschetz duality models''.
+
+Just like in the previous chapter, we consider a colored version of the Fulton--MacPherson compactification $\SFM_{M}(\varnothing, \underline{k})$.
+This is a stratified space which contains $\Conf_{k}(\mathring{M})$ as its interior, and the inclusion is a weak equivalence.
+If $M$ is framed, then the collection $\SFM_{M}(\varnothing, -) = \{ \SFM_{M}(\varnothing, \underline{k}) \}_{k \geq 0}$ is equipped with an action of the Fulton--MacPherson operad, just like in the previous chapter.
+
+The first result of this chapter can be summarized as:
+\begin{theoremintro}[See Theorem~\ref{cnfbnd.thm.model-ga}]
+  \label{cnfbnd.thm.A}
+  Let $M$ be a smooth, simply connected connected compact $n$-manifold with simply connected boundary of dimension at least $5$.
+  Assume that either $M$ admits a surjective pretty model, or that $n \geq 7$ so that $M$ admits a Poincaré--Lefschetz duality model.
+  Let $A$ be the model built either out of the surjective pretty model or the Poincaré--Lefschetz duality model.
+
+  Then for all $k \geq 0$, the CDGA $\GGt{A}(\underline{k})$ is weakly equivalent to $\OmPA^{*}(\SFM_{M}(\varnothing, \underline{k}))$, and the equivalence is compatible with the action of the symmetric group $\Sigma_{k}$.
+
+  The collection $\GGt{A}$ is a Hopf right comodule over the cooperad $\enV = H^{*}(\FM_{n})$.
+  Moreover, if $M$ is framed, then the right Hopf comodule $(\GG{A}, \enV)$ is weakly equivalent to $(\OmPA^{*}(\SFM_{M}(\varnothing,-)), \OmPA^{*}(\FM_{n}))$.
+\end{theoremintro}
+
+\begin{corollaryintro}
+  \label{cnfbnd.cor.I}
+  Let $M$ be a manifold with boundary which satisfies the hypotheses of Theorem~\ref{cnfbnd.thm.A}.
+  Then the real homotopy type of $\Conf_{k}(M)$ only depends on the real homotopy type of the pair $(M, \partial M)$.
+\end{corollaryintro}
+
+One can also consider colored configuration in the manifold $M$ and study the space, for $k,l \ge 0$:
+\[ \Conf_{k,l}(M) \coloneqq \{ (x_{1}, \dots, x_{k}, y_{1}, \dots, y_{l}) \in \Conf_{k+l}(M) \mid x_{i} \in \partial M, y_{j} \in \mathring{M} \}. \]
+
+Once again, we can consider its (colored) Fulton--MacPherson compactification $\SFM_{M}(\underline{k}, \underline{l})$.
+This is a stratified space which contains $\Conf_{k,l}(M)$ as its interior, the inclusion being a homotopy equivalence.
+When $M$ is framed, the collection $\SFM_{M}$ is equipped with an action of $\SFM_{n}$, an operad weakly equivalent to the Swiss-Cheese operad~\cite{Voronov1999}.
+Willwacher~\cite{Willwacher2015a} has built a model $\SGraphs_{n}$ for $\SFM_{n}$ which is similar in spirit to Kontsevich's graph model $\Graphs_{n}$ (due to the non-formality of the Swiss-Cheese operad~\cite{Livernet2015}, it is not possible to go all the way to the cohomology $H^{*}(\SFM_{n})$).
+We then have:
+
+\begin{theoremintro}[See Theorem~\ref{cnfbnd.thm.sgraphs-sfm}]
+  \label{cnfbnd.thm.B}
+  Let $M$ be a smooth, simply connected manifold with a simply connected boundary of dimension at least $5$.
+  Assume either that $M$ admits a surjective pretty model or that $n \geq 7$.
+  Then we have an explicit model $\SGraphs_{R}(\underline{k}, \underline{l})$ of $\Conf_{k,l}(M)$ which is built out of the pretty (resp.\ PLD) model.
+  It is compatible with the action of the symmetric groups $\Sigma_{k} \times \Sigma_{l}$.
+
+  The collection $\SGraphs_{R}$ is a Hopf right comodule over Willwacher's~\cite{Willwacher2015a} model $\SGraphs_{n}$ for the Swiss-Cheese operad.
+  Moreover, if $M$ is framed, then the Hopf right comodule $(\SGraphs_{R}, \SGraphs_{n})$ is weakly equivalent to $(\OmPA^{*}(\SFM_{M}), \OmPA^{*}(\SFM_{n}))$.
+\end{theoremintro}
+
+\paragraph{Outline}
+
+In Section~\ref{cnfbnd.sec.backgr-recoll}, we recall some background on relative cooperads and comodules over them, pretty models, colored Fulton--MacPherson compactifications, and graph complexes.
+In Section~\ref{cnfbnd.sec.pretty-nice}, we define Poincaré--Lefschetz duality models, a generalization of surjective pretty models, and we prove that any simply connected manifold with simply connected boundary of dimension at least $7$ admits a Poincaré--Lefschetz duality model.
+In Section~\ref{cnfbnd.sec.model-conf-spac}, we describe the CDGA $\GGt{A}(k)$, and we prove that it computes the Betti numbers of $\Conf_{k}(M)$.
+In Section~\ref{cnfbnd.sec.sgcn}, we compute the cohomology of the Swiss-cheese version of the graph complex twisted by a Maurer--Cartan element corresponding to the HKR isomorphism.
+In Section~\ref{sec.model-right-hopf}, we show that $\GGt{A}(k)$ is actually a real model of $\Conf_{k}(M)$, and we prove that it is compatible with the action of the Fulton--MacPherson operad.
+We also build a graph complex $\SGraphs_{R}^{c_{M},\szphi}(k,l)$ and we show that it is a real model for $\Conf_{k,l}(M)$, compatible with the action of the compactified colored Fulton--MacPherson operad.
+
+
+\section{Background and recollections}
+\label{cnfbnd.sec.backgr-recoll}
+
+We mostly reuse the conventions of Section~\ref{cnf.sec.conventions}.
+
+\subsection{Colored {(co)}operads and {(co)}modules}
+\label{cnfbnd.sec.cooperads-comodules}
+
+We deal with special types of two-colored operads, called relative operads~\cite{Voronov1999}, or Swiss-Cheese type operads.
+
+\begin{definition}
+  Given an operad $\PP$, a \textbf{relative operad over}\index{relative operad} $\PP$ is an operad in the category of right $\PP$-modules (see also Definition~\ref{sw.def.rel-op}).
+  This is equivalent to an operad with two colors (traditionally called the ``closed'' color $\col{c}$ and the ``open'' color $\col{o}$) such that operations with a closed output may only have closed inputs and are given by $\PP$.
+\end{definition}
+
+We can encode the part of the operad with an open output as a \textbf{bisymmetric collection}\index{bisymmetric collection} $\QQ$, i.e.\ as a functor from the category of pairs of sets and pairs of bijections to dg-modules.
+The first set in the pair corresponds to open inputs, and the second to closed inputs.
+There is an identity $\eta_{\mathfrak{o}} \in \QQ(\{*\}, \varnothing)$, and the operadic composition structure maps are given by:
+\begin{align*}
+  \circ_{T} : \QQ(U, V/T) \otimes \PP(T)
+  & \to \QQ(U,V)
+  & T \subset V; \\
+  \circ_{W,T} : \QQ(U/W, V) \otimes \QQ(W,T)
+  & \to \QQ(U, V \sqcup T)
+  & W \subset U.
+\end{align*}
+
+As mentioned in the definition, we can equivalently view $\QQ$ as an operad in the category of right $\PP$-modules.
+The $\PP$-module in arity $U$ is given by $\QQ(U, -)$, and one checks that the operad structure maps $\circ_{W, -} : \QQ(U/W, -) \otimes \QQ(W, -) \to \QQ(U, -)$ are morphisms of right $\PP$-modules.
+
+Given a (one-colored) cooperad $\CC$, a relative cooperad over $\CC$ is defined dually as a bisymmetric collection $\DD$ equipped with structure maps:
+\begin{align}
+  \circ^{\vee}_{T} : \DD(U,V)
+  & \to \DD(U, V/T) \otimes \CC(W)
+  & T \subset V; \\
+  \circ^{\vee}_{W,T} : \DD(U, V \sqcup T)
+  & \to \DD(U/W, V) \otimes \DD(W, T)
+  & W \subset U.
+\end{align}
+
+Finally, a comodule over a relative $\CC$-cooperad $\DD$ is given by a bisymmetric collection $\NN$ equipped with structure maps:
+\begin{align}
+  \circ^{\vee}_{T} : \NN(U,V)
+  & \to \NN(U, V/T) \otimes \CC(T)
+  & T \subset V; \\
+  \circ^{\vee}_{W,T} : \NN(U, V \sqcup T)
+  & \to \NN(U/W, V) \otimes \DD(W, T)
+  & W \subset U.
+\end{align}
+
+We can also define \textbf{relative Hopf cooperads} as relative cooperads in the category of CDGAs.
+
+\subsection{Pretty models for compact manifolds with boundary}
+\label{cnfbnd.sec.surj-pretty-models}
+
+The cohomology of a compact manifold with boundary does not satisfy Poincaré duality; it satisfies Poincaré--Lefschetz duality instead.
+Cordova Bulens, Lambrechts, and Stanley~\cite{CordovaBulensLambrechtsStanley2015,CordovaBulensLambrechtsStanley2015a} use this idea to define ``pretty rational models'' for Poincaré duality pairs such as $(M, \partial M)$.
+
+The rough idea is that one can see $M$ as the complement in some closed manifold $N$ of the thickening of some subpolyhedron $K \subset N$.
+One then takes a Poincaré duality model $P$ of $N$ and a model $Q$ of $K$, and formally ``kills'' the forms that are dual to homology classes on $K$ to obtain a model of $M$.
+
+To be explicit, the starting data in the definition of a pretty model is:
+\begin{itemize}
+\item a Poincaré duality CDGA $P$ of formal dimension $n$ (in the rough picture above, it would be a model for $N$);
+\item a connected CDGA $Q$ satisfying $Q^{\ge n/2 - 1} = 0$ (representing a model for $K \subset N$);
+\item a morphism $\psi : P \to Q$ (representing the restriction $\Omega^{*}(N) \to \Omega^{*}(K)$).
+\end{itemize}
+
+The morphism $\psi$ makes $Q$ into a $P$-module.
+Moreover, the dual $P^{\vee}$ (resp.\ $Q^{\vee}$) is a $P$-module (resp.\ $Q$-module) by letting $(x \cdot f)(y) = \pm f(xy)$, and so is the desuspension $P^{\vee}[-n]$ (resp.\ $Q^{\vee}[-n]$).
+
+The Poincaré duality structure on $P$ induces an isomorphism of $P$-modules:
+\begin{equation}
+  \theta_{P} : P \tkrightarrow{\cong} P^{\vee}[-n]%
+  \label{cnfbnd.eq.theta-p}
+\end{equation}
+
+given by $a \mapsto \varepsilon_{P}(a \cdot -)$.
+The ``shriek map'' $\psi^{!}$\index{$\psi^{"!}$|see{shriek map}}\index{shriek map} is the morphism of $P$-modules defined by the composite map:
+\begin{equation}
+  \psi^{!} : Q^{\vee}[-n] \tkrightarrow{\psi^{\vee}[-n]} P^{\vee}[-n] \tkrightarrow[\cong]{\theta^{-1}_{P}} P.
+\end{equation}
+More concretely, given $\alpha \in Q^{\vee}[-n]$, $\psi^{!}(\alpha)$ is uniquely determined by:
+\begin{equation}
+  \forall x \in P, \; \varepsilon_{P}(\psi^{!}(\alpha) x) = \alpha(\psi(x)).
+\end{equation}
+
+
+One must further assume that $\psi\psi^{!}$ is ``balanced'', i.e.\ that for all $f,g \in Q^{\vee}[-n]$, one has $\psi\psi^{!}(f) \cdot g = f \cdot \psi\psi^{!}(g)$.
+Note that, under our assumptions, this is automatically the case by degree reasons (in fact, we have $\psi\psi^{!} = 0$ because of the hypothesis that $Q^{\geq n/2-1} = 0$).
+
+\begin{definition}
+  The \textbf{mapping cone}\index{mapping cone} of a chain map $f : X \to Y$, denoted either by $\cone(f)$ or $Y \oplus_{f} X[1]$, is given as a graded vector space by $Y \oplus X[1]$, and the differential is given by $d(y,x) = (d_{Y}y + f(x), d_{X}x)$.
+\end{definition}
+
+Note that $\psi\psi^{!} = 0$ implies that $\cone(\psi\psi^{!}) = Q \oplus_{\psi\psi^{!}} Q^{\vee}[1-n] = Q \oplus Q^{\vee}[1-n]$ is simply given by the direct sum of $Q$ and $Q^{\vee}[1-n]$.
+The balancedness assumption ensures that one can make the mapping cones $P \oplus_{\psi^{!}} Q^{\vee}[1-n]$ and $Q \oplus Q^{\vee}[1-n]$ into CDGAs, using the product of $P$ (resp.\ $Q$) and the $P$-module (resp. $Q$-module) structure of $Q^{\vee}[1-n]$, and by letting the product of two elements of $Q^{\vee}[1-n]$ be zero. In other words, the product is defined by:
+\[ (x,\alpha) \cdot (y,\beta) \coloneqq (xy, x \cdot \beta + \alpha \cdot y). \]
+
+\begin{definition}
+The \textbf{pretty model}\index{pretty model} associated to $(P,Q,\psi)$ is the CDGA morphism:
+\[ \lambda \coloneqq \psi \oplus \id : P \oplus_{\psi^{!}} Q^{\vee}[1-n] \rightarrow Q \oplus Q^{\vee}[1-n]. \]
+\end{definition}
+
+The pair $(M, \partial M)$ admits a \emph{surjective} pretty model if there exists a surjective morphism $\psi : P \to Q$ as above such that there is a commutative diagram of CDGAs:
+\begin{equation}
+  \begin{tikzcd}
+    B \coloneqq P \oplus_{\psi^{!}} Q^{\vee}[1-n] \dar{\lambda \coloneqq \psi \oplus \id}
+    & R \lar{f}[swap]{\sim} \rar{\sim}[swap]{g} \dar{\rho}
+    & \Omega^{*}(M) \dar{\operatorname{res}} \\
+    B_{\partial} \coloneqq Q \oplus Q^{\vee}[1-n]
+    & R_{\partial} \lar{f_{\partial}}[swap]{\sim} \rar{\sim}[swap]{g_{\partial}}
+    & \Omega^{*}(\partial M)
+  \end{tikzcd}
+  \label{cnfbnd.eq.zigzag}
+\end{equation}
+with each row a zigzag of quasi-isomorphisms.
+
+\begin{theorem}[{Cordova Bulens, Lambrechts, and Stanley~\cite{CordovaBulensLambrechtsStanley2015,CordovaBulensLambrechtsStanley2015a}}]
+  \label{cnfbnd.thm.pretty-model}
+  The pair $(M, \partial M)$ admits a surjective pretty model in the following cases:
+  \begin{itemize}
+  \item If both $M$ and $\partial M$ are $2$-connected and the boundary $\partial M$ retracts rationally on its half-skeleton~\cite[Definition~6.1]{CordovaBulensLambrechtsStanley2015};
+  \item If $M$ (resp.\ $\partial M$) is the associated disk bundle (resp.\ sphere bundle) of a vector bundle of even rank over a simply connected Poincaré duality space;
+  \item If $M$ is obtained by removing a tubular neighborhood of a $2$-connected subpolyhedron $K$ from a $2$-connected closed manifold $N$ satisfying $2 \dim K + 3 \le \dim N = \dim M$.
+  \end{itemize}
+\end{theorem}
+
+By the results from Section~\ref{cnf.sec.poinc-dual-models}, when $M$ is simply connected and $\partial M = \varnothing$, one can take a Poincaré duality model $P$ of $M$ and $Q = 0$ to obtain a surjective pretty model of $(M, \varnothing)$.
+
+The CDGA $B_{\partial}$ is a Poincaré duality CDGA of formal dimension $n-1$, with augmentation $\varepsilon_{B_{\partial}} : B_{\partial} \to \K[1-n]$ given on
+\[ (Q \oplus Q^{\vee}[1-n])^{n-1} = (Q^{0})^{\vee} \]
+by evaluation on $1_{Q} \in Q^{0}$. In other words the volume form is given by $1_{Q}^{\vee}$.
+We will also write $\varepsilon_{B} : B \to \K[-n]$ for the linear map given by $\varepsilon_{B}(x,y) = \varepsilon_{P}(x)$.
+
+\begin{remark}
+  \label{cnfbnd.rmk.epsilon-chain-map}
+  The map $\varepsilon_{B}$ is not a chain map unless $Q = 0$.
+  Indeed if $Q \neq 0$, then we have $d(1_{Q}^{\vee}) = \psi^{!}(1_{Q}^{\vee}) = \vol_{P}$, and thus $\varepsilon_{B} \circ d \neq 0$.
+  Instead, there is a Stokes-like formula:
+  \begin{equation}
+    \varepsilon_{B}(d(x,\alpha)) = \varepsilon_{B_{\partial}}(\psi(x), \alpha), \quad \forall x \in P, \; \alpha \in Q^{\vee}[1-n],
+  \end{equation}
+  which means that $\varepsilon = (\varepsilon_{B}, \varepsilon_{B_{\partial}})$ defines a chain map $\varepsilon : \cone(\psi \oplus \id) \to \R[-n+1]$.
+\end{remark}
+
+Let $I \subset P$ be the image of $\psi^{!}$, which is an ideal.
+Then when $\psi$ is surjective, the projection $P \oplus_{\psi^{!}} Q^{\vee}[1-n] \to A \coloneqq P/I$ is a quasi-isomorphism.
+Thus if $(M, \partial M)$ admits a surjective pretty model, then $M$ admits a model which is a quotient of a Poincaré duality CDGA.\@
+It is an open conjecture whether this is the case for all compact manifolds with boundary.
+
+There is an interpretation of Poincaré--Lefschetz duality in this case.
+The kernel $K \coloneqq \ker \psi \subset P$ is equal to $\ker(\psi \oplus \id)$, which is a model for
+\[ \Omega^{*}(M, \partial M) \coloneqq \hoker(\Omega^{*}(M) \to \Omega^{*}(\partial M)). \]
+
+Recall the isomorphism $\theta_{P} : P \to P^{\vee}[-n]$ from Equation~\eqref{cnfbnd.eq.theta-p}.
+It induces dual isomorphisms:
+\begin{align}
+  \label{cnfbnd.eq.lefschetz}
+  \theta_{P} : P/I
+  & \tkrightarrow{\cong} K^{\vee}[-n],
+  & \vartheta_{P} : K
+  & \tkrightarrow{\cong} (P/I)^{\vee}[-n],
+\end{align}
+that are both induced by the non-degenerate pairing $(P/I) \otimes (\ker \psi) \to \R[-n]$, $x \otimes y \mapsto \varepsilon_{P}(xy)$.
+
+\begin{example}
+  \label{cnfbnd.exa.model-dn}
+  Consider the manifold $M = D^{n}$ with boundary $\partial M = S^{n-1}$.
+  Intuitively, we can see $M$ as a sphere with a (thick) point removed.
+  Thus consider the Poincaré duality CDGA $P = H^{*}(S^{n}) = S(\vol_{n}) / (\vol_{n}^{2})$ (with a generator of degree $n$), and let $Q = H^{*}(\mathrm{pt}) = \R$.
+  Let also $\psi : P \to Q$ be the augmentation.
+
+  We get as a model for $D^{n}$ the mapping cone $B = P \oplus_{\psi^{!}} Q^{\vee}[1-n]$, which is spanned by three generators $1_{P}$, $1_{Q}^{\vee}$, and $\vol_{n}$.
+  All the nontrivial products vanish, and $d(1_{Q}^{\vee}) = \vol_{n}$.
+  The quotient $A = P/I$ is isomorphic to $H^{*}(D^{n}) = \R$, and $B_{\partial} = Q \oplus Q^{\vee}[1-n]$ is isomorphic to $H^{*}(\partial D^{n}) = H^{*}(S^{n-1})$ -- both manifolds being formal.
+\end{example}
+
+\subsection{Compactified configuration spaces}
+\label{cnfbnd.sec.comp-conf-spac}
+
+Recall the Fulton--MacPherson operad $\FM_{n}$ from Section~\ref{cnf.sec.little-disks}, defined using compactified configuration spaces.
+Recall also its right modules $\FM_{M}$, defined when $M$ is a closed framed manifold.
+These constructions generalize to manifolds with boundary.
+Given a manifold with boundary $(M, \partial M)$ and finite sets $U, V$, define the colored configuration spaces:\index{ConfUVM@$\Conf_{U,V}(M)$}
+\begin{equation}
+  \Conf_{U,V}(M) \coloneqq \{ c \in \Conf_{U \sqcup V}(M) \mid c(U) \subset \partial M, \; c(V) \subset \mathring{M} \}.
+\end{equation}
+
+If $M$ is a compact manifold, then this configuration space can be compactified into $\SFM_{M}(U,V)$.\index{SFMM@$\SFM_{M}$}
+This is a stratified manifold of dimension $(n-1) \cdot \# U + n \cdot \# V$.
+Note that $\SFM_{M}(\varnothing, \{*\}) \cong M$, as a point may be infinitesimally close to the boundary of $M$.
+
+Similarly if $M = \mathbb{H}^{n} \subset \R^{n}$ is the upper half-space, then $\Conf_{U,V}(M)$, after modding it out by the group of translations preserving $\mathbb{H}^{n}$ and positive dilatations, can be compactified into a space $\SFM_{n}(U,V)$~\cite{Voronov1999}\index{SFMn@$\SFM_{n}$}.
+It is a stratified manifold of dimension $n \cdot \# V + (n-1) \cdot \# U - n$ as soon as $\#U + 2 \#V \ge 2$, and it is reduced to a point otherwise.
+One has homeomorphisms $\SFM_{n}(U, \varnothing) \cong \FM_{n-1}(U)$ and $\SFM_{n}(\underline{1}, \underline{1}) \cong D^{n-1}$, and homotopy equivalences $\SFM_{n}(\varnothing, V) \simeq \FM_{n}(V)$.
+
+In this way, one obtains a relative operad $\SFM_{n}$ over $\FM_{n}$, weakly equivalent to the Swiss-Cheese operad~\cite{Voronov1999} where operations with no open inputs are allowed (see~\cite[Section~3]{HoefelLivernet2012} or Remark~\ref{rmk.sc-sc-vor} for an explanation of the difference).
+If $M$ is framed, then the collection $\SFM_{M}$ also assemble into a right $\SFM_{n}$-module using insertion of configurations:
+\begin{align}
+  \circ_{T} : \SFM_{M}(U, V/T) \times \FM_{n}(T)
+  & \to \SFM_{M}(U,V)
+  & T \subset V; \\
+  \circ_{W,T} : \SFM_{M}(U/W, V) \times \SFM_{n}(W,T)
+  & \to \SFM_{M}(U, V \sqcup T)
+  & W \subset U.
+\end{align}
+
+The spaces $\SFM_{n}(U,V)$ are clearly semi-algebraic sets.
+Moreover, $M$ itself can be endowed with a semi-algebraic structure.
+Indeed, it can be triangulated and is $C^{1}$-diffeomorphic to some simplicial complex in some $\R^{N}$.
+Each simplex is a semi-algebraic set, and there is a finite number of them (because $M$ is compact), hence $M$ itself is semi-algebraic.
+It follows that the spaces $\SFM_{M}(U,V)$ are semi-algebraic too.
+We can thus apply the theory of PA forms (see Section~\ref{cnf.sec.little-disks}) and obtain relative ``almost'' cooperads and comodules $\OmPA^{*}(\SFM_{n})$ and $\OmPA^{*}(\SFM_{M})$.
+
+Moreover, the projections
+\begin{equation}
+  p_{U,V} : \SFM_{M}(U \sqcup I, V \sqcup J) \to \SFM_{M}(U,V)
+\end{equation}
+which forget some of the points are semi-algebraic bundles.
+Just like in Chapter~\ref{chap.2}, we follow the proof from~\cite[Section~5.9]{LambrechtsVolic2014} step by step, and we work by induction on the number of points forgotten (because SA bundles can be composed, see~\cite[Proposition~8.5]{HardtLambrechtsTurchinVolic2011}).
+If we forget a terrestrial point, then this essentially follows from the fact that the projections $\FM_{\partial M}(U \sqcup I) \to \FM_{\partial M}(U)$ are SA bundles.
+For aerial points, let us give an idea of the key point of the proof for the projection $p : \SFM_{M}(\varnothing, \underline{2}) \to \SFM_{M}(\varnothing, \underline{1})$ which forgets the point $2$.
+Recall that $\SFM_{M}(\varnothing, \underline{1})$ is homeomorphic to $M$.
+The fiber of $p$ over a point $x$ of the interior of $M$ is given by $M$ with an open disk centered around $x$.
+The fiber over a point $x$ of the boundary has three types of points: either point $2$ is far away from point $1$, or it is infinitesimally close to point $1$.
+The set of configurations from the first case is given by $M$ with a half-disk around point $1$ removed.
+The set of configurations from the second case is given by the space $\SFM_{n}(\varnothing, \underline{2})$ which specify how the two points are infinitesimally arranged.
+The intersection of these two sets is given by $\SFM_{n}(\varnothing, \underline{1})$, i.e.\ point $2$ is infinitesimally close to $1$ but ``almost'' leaves it.
+In other words, the fiber is:
+\begin{equation}
+  p^{-1}(x) = M - \{ \text{half-disk around } x\} \cup_{\SFM_{n}(\varnothing,\underline{1})} \SFM_{n}(\varnothing, \underline{2}),
+\end{equation}
+which is also homeomorphic to $M$ with an open disk removed, see Figure~\ref{fig.fiber-proj}.
+
+\begin{figure}[htbp]
+  \centering
+  \def\svgwidth{0.7\textwidth}
+  \import{fig/}{fiber-proj.pdf_tex}
+  \caption{The fiber of $\SFM_M(\varnothing, 2) \to \SFM_M(\varnothing, 1) = M$ above a point of the boundary: $(M - \{\text{half-disk}\}) \cup_{\SFM_{n}(\varnothing,1)} \SFM_{n}(\varnothing, 2)$}
+  \label{fig.fiber-proj}
+\end{figure}
+
+\subsection{Graphs and the Swiss-Cheese operad}
+\label{cnfbnd.sec.extens-swiss-cheese}
+
+The Swiss-Cheese operad is not formal~\cite{Livernet2015,Willwacher2017a}, thus there can be no quasi-iso\-mor\-phism between $H^{*}(\SFM_{n})$ and $\OmPA^{*}(\SFM_{n})$.
+Nevertheless, there is a model $\SGraphs_{n}$\index{SGraphsn@$\SGraphs_{n}$} of $\SFM_{n}$, due to Willwacher~\cite{Willwacher2015a}, which is similar in spirit to the cooperad $\Graphs_{n}$.
+The cohomology $H^{*}(\SFM_{n}) \cong H^{*}(\FM_{n}) \otimes H^{*}(\FM_{n-1})$ splits as a Voronov product (see~\cite{Voronov1999} and Section~\ref{sw.sec.homology-dd_n-sc}), and $\SGraphs_{n}$ is a way of intertwining $\Graphs_{n}$ and $\Graphs_{n-1}$ in a way that corrects the lack of formality.
+
+\begin{remark}
+  Our notations differ slightly from the notations of~\cite{Willwacher2015a}.
+  We call $\SGraphs_{n}$ what is called $\Graphs_{n}^{1}$ there, i.e.\ the space of operations with output of ``type $1$'' (which corresponds to ``open'').
+  This is a relative Hopf cooperad over $\Graphs_{n}$ (which would be $\Graphs_{n}^{2}$ in Willwacher's paper, the space of operations with output of ``type $2$'', i.e.\ closed).
+\end{remark}
+
+Let us assume from the start that $n \geq 3$ to avoid some difficulties that arise when $n = 2$.
+Note that in the $n = 2$ case we have found a different model (Chapter~\ref{chap.1}) for $\SFM_{2}$ which is instead inspired by Tamarkin's proof of the formality of the little $2$-disks operad, obtained by intertwining the operad of parenthesized permutations and the operad of parenthesized chord diagrams.
+
+The idea is to construct a relative Hopf cooperad $\SGra_{n}$ over $\Gra_{n}$, with two types of vertices: aerial ones, corresponding to closed inputs, and terrestrial ones, corresponding to open inputs.
+Edges are oriented, and the source of an edge may only be an aerial vertex.
+More concretely, one defines:\index{SGran@$\SGra_{n}$}
+\begin{equation}
+  \SGra_{n}(U,V) \coloneqq S(e_{vu})_{u \in U, v \in V} \otimes S(e_{vv'})_{v, v' \in V}
+\end{equation}
+where the generators all have degree $n-1$ and the cooperad structure is given by formulas similar to Equation~\eqref{cnf.eq.coop-gra-n}.
+
+A monomial in $\SGra_{n}(U,V)$ can be seen as a directed graph with two kinds of vertices: aerial and terrestrial.
+The set $U$ is the set of terrestrial vertices, and the set $V$ is the set of aerial vertices.
+Note that unlike graphs in $\Gra_{n}$, double edges (of the type $e_{vu}^{2}$ or $e_{vv'}^{2}$) and loops (also known as tadpoles, of the type $e_{vv}$) are allowed.
+
+This allows us to produce a first morphism $\omega'' : \SGra_{n} \to \OmPA^{*}(\SFM_{n})$.\index{womegaprime@$\omega'(\Gamma)$}
+One can define, for $v, v' \in V$, $\omega'(e_{vv'}) \coloneqq p_{vv'}^{*}(\vol_{n-1})$, where
+\[ \vol_{n-1} \in \OmPA^{n-1}(\SFM_{n}(\varnothing, \{v,v'\})) \simeq \OmPA^{n-1}(\FM_{n}(\{v,v''\})) \simeq \OmPA^{n-1}(S^{n-1}). \]
+Recall that $\SFM_{n}(\{u\}, \{v\})$ is homeomorphic to $D^{n-1}$, and we write $\overline{\vol}^{h}_{n-1}$ for the $(n-1)$-form on $\SFM_{n}(\{u\}, \{v\})$ obtained by pulling back the volume form of $S^{n-1}$ along the map $D^{n-1} \to S^{n-1}$ given by the hyperbolic geodesic (see~\cite[Equation~(8)]{Willwacher2015a}).
+Then for $u \in U$ and $v \in V$, define $\omega'(e_{vu}) \coloneqq p_{vu}^{*}(\overline{\vol}^{h}_{n-1})$.
+
+If $\Gamma \in \SGra_{n}(U,V)$ is a graph, let\index{cgamma@$c_{\Gamma}$}
+\begin{equation}
+  \label{cnfbnd.eq.konts-coeff}
+  c(\Gamma) \coloneqq \int_{\SFM_{n}(U,V)} \omega'(\Gamma).
+\end{equation}
+Note that these are analogous to the coefficients that appear in Kontsevich's universal $L_{\infty}$ formality morphism $T_{\mathrm{poly}} \to D_{\mathrm{poly}}$, defined for $n = 2$~\cite{Kontsevich2003}.
+
+The cooperad $\SGra_{n}$ is then twisted with respect to the sum of the Maurer--Cartan element $\mu \in \Def(\hoLie_{n} \to \Gra_{n})$ with the Maurer--Cartan element defined by $c$, to obtain a relative Hopf cooperad $\Tw \SGra_{n}$\index{TwSGran@$\Tw \SGra_{n}$} over $\Tw \Gra_{n}$.
+
+Concretely, $\Tw \SGra_{n}(U,V)$ is spanned by graphs with four types of vertices: they can be either aerial or terrestrial, and either internal or external.
+Internal terrestrial vertices are of degree $1-n$ and indistinguishable among themselves, and internal aerial vertices are of degree $-n$ and indistinguishable among themselves.
+Edges remain oriented and of degree $n-1$.
+External terrestrial vertices are in bijection with $U$, and external aerial vertices are in bijection with $V$.
+The cooperad structure maps collapse subgraphs, and the product glues graphs along external vertices.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node (0) {};
+    \node (o) [right = 3cm of 0] {};
+    \draw[dotted] (0) to (o);
+    \node[extv] (u) [right = 0.5cm of 0] {$u$};
+    \node[intv] (i1) [right = 1cm of u] {};
+    \node[extv] (v1) [above = 1cm of u] {$v_{1}$};
+    \node[extv] (v2) [right = 1cm of v1] {$v_{2}$};
+    \node[intv] (i2) [right = 1cm of v2] {};
+    \draw[->] (v1) edge (u) edge (i1) edge (v2);
+    \draw[->] (v1) to (v2);
+    \draw[->] (i2) edge (v2) edge (i1);
+  \end{tikzpicture}
+  \caption{A colored graph in $\Tw \SGra_{n}(\{u\}, \{v_{1}, v_{2}\})$.
+    Terrestrial vertices are drawn on a dotted line to distinguish them, even though they are not ordered.
+    This graph is of degree $5(n-1) - n - (n-1)$.}
+  \label{cnfbnd.fig.exa-sgra_n}
+\end{figure}
+
+The differential has several summands:
+\begin{itemize}
+\item A first summand (corresponding to $\mu$) contracts edges between two aerial vertices, with at least one being internal.
+\item A second summand is given by contracting subgraphs $\Gamma' \subset \Gamma$ with at most one external vertex, which must be terrestrial, to obtain $\Gamma / \Gamma'$, with coefficient $c(\Gamma')$.
+  One should note that in $\Gamma/\Gamma'$, the new vertex representing the collapsed subgraph is terrestrial, even if $\Gamma'$ is fully aerial.
+\item Finally, a third summand is given by forgetting some internal vertices and keeping a subgraph $\Gamma' \subset \Gamma$, with coefficient $c(\Gamma / \Gamma')$.
+\end{itemize}
+
+In the second and third cases, if the graph $\Gamma / \Gamma'$ contains an edge whose source is terrestrial, then the summand is defined to be zero (see~\cite[§6.4.2.2]{Kontsevich2003}).
+
+One then checks that there is an extension $\omega : \Tw \SGra_{n} \to \OmPA^{*}(\SFM_{n})$, given by a formula analogous to Equation~\eqref{cnf.eq:4}.
+It remains to mod out by the bi-ideal of graphs with internal components to obtain a Hopf cooperad $\SGraphs_{n}$, and to check that $\omega$ factors through the quotient.
+
+\begin{theorem}[{Willwacher~\cite{Willwacher2015a}}]
+  The morphism $\omega : \SGraphs_{n} \to \OmPA^{*}(\SFM_{n})$\index{womega@$\omega(\Gamma)$} is a quasi-isomorphism of relative Hopf cooperads.
+\end{theorem}
+
+\subsection{Graph complexes}
+\label{cnfbnd.sec.graph-complexes}
+
+There is a dg-module of particular interested appearing in Kontsevich's proof of the formality of $\FM_{n}$.
+Define\index{fGCn@$\fGC_{n}$}
+\begin{equation}
+  \fGC_{n} \coloneqq \Tw \Gra_{n}(\varnothing)[-n]
+\end{equation}
+to be the full graph complex.
+It is spanned by graphs containing only internal vertices, with a degree shift: if $\gamma \in \fGC_{n}$ is a graph with $k$ edges and $l$ vertices, then its degree $k(n-1) - l n + n$.
+The differential is given by contracting edges.
+Its suspension $\fGC_{n}[n]$ is a CDGA, and the product is the disjoint union of graphs.
+Since the differential cannot create new connected components, this a free CDGA, and we have:
+\begin{equation}
+  \fGC_{n} = S(\GC_{n}[n])[-n]
+\end{equation}
+where $\GC_{n}$\index{GCn@$\GC_{n}$} is the submodule of connected graph.
+The variants $\GC_{n}^{2}$ (where bivalent vertices are allowed but univalent vertices forbidden) and $\GC_{n}^{\circlearrowright}$ (where loops are allowed) are defined similarly.
+
+\begin{remark}
+  Our notations are slightly nonstandard.
+  It is often the dual complex $\GC_{n}^{\vee}$ which is called the graph complex, with a differential that is dually given by creating internal vertices.
+  This dual is a Lie algebra using insertion of graphs.
+\end{remark}
+
+The homology of this dg-module is particularly hard to compute.
+It is known that $H^{0}(\GC_{2}^{\vee})$ is isomorphic to the Grothendieck--Teichmüller Lie algebra $\mathfrak{grt}_{1}$ and that $H^{<0}(\GC_{2}^{\vee}) = 0$~\cite{Willwacher2014}; it is a conjecture that $H^{1}(\GC_{2}) = 0$.
+The vanishing of $H^{*}(\GC^{2,\vee}_{n})$ in some degrees shows that the operad of little $n$-disks is intrinsically formal as a Hopf cooperad~\cite{FresseWillwacher2015}.
+And this homology computes the homotopy groups of the space of rational automorphisms of the little $n$-disks operad~\cite{FresseTurchinWillwacher2017}.
+
+There is also a Swiss-Cheese version of that graph complex appearing in the description of Willwacher's model for the Swiss-Cheese operad:\index{fSGCn@$\fSGC_{n}$}\index{SGCn@$\SGC_{n}$}
+\begin{equation}
+  \label{cnfbnd.eq.fsgcn}
+  \fSGC_{n} \coloneqq \Tw \SGra_{n}(\varnothing, \varnothing)[-n] = S(\SGC_{n}[n])[-n]
+\end{equation}
+is the full Swiss-Cheese graph complex, a symmetric algebra on its subcomplex of connected graphs.
+Its dual $\SGC_{n}^{\vee}$ is a Lie algebra using insertion of graphs (and the Lie algebra $\GC_{n}^{\vee}$ acts on $\SGC_{n}$), and is sometimes also denoted $\mathrm{KGC}_{n}$.
+The Kontsevich integrals $c \in \SGC_{n}^{\vee}$ define a Maurer--Cartan element in this Lie algebra.
+
+\section{Poincaré--Lefschetz duality models}
+\label{cnfbnd.sec.pretty-nice}
+
+\subsection{Motivation}
+\label{cnfbnd.sec.motivation}
+
+In Section~\ref{cnfbnd.sec.surj-pretty-models}, we recalled the definition of pretty models.
+If $M$ admits a surjective pretty model (see Theorem~\ref{cnfbnd.thm.pretty-model}) induced by $\psi : P \to Q$, then we get a diagram as in Equation~\eqref{cnfbnd.eq.zigzag}:
+\begin{equation}
+  \label{cnfbnd.eq.zigzag2}
+  \begin{tikzcd}
+    {} &
+    K \coloneqq \ker \lambda
+    \ar[d, hook]
+    \ar[dl, bend right, dashed, leftrightarrow, "\text{\tiny non degen.}" {sloped,above}, "\text{\tiny pairing}" {sloped,below}]
+    \\
+    A \coloneqq P/I
+    &
+    B \coloneqq P \oplus_{\psi^{!}} Q^{\vee}[1-n] \ar[d, "\lambda = \psi \oplus \id", two heads] \ar[l, "\pi", "\sim" swap, two heads]
+    & R \ar[l, "f", "\sim" swap] \ar[r, "\sim", "g" swap] \ar[d, "\rho", two heads]
+    & \OmPA^{*}(M) \dar{\operatorname{res}} \\
+    {}
+    & B_{\partial} \coloneqq Q \oplus Q^{\vee}[1-n]
+    & R_{\partial} \lar{f_{\partial}}[swap]{\sim} \rar{\sim}[swap]{g_{\partial}}
+    & \OmPA^{*}(\partial M)
+  \end{tikzcd}
+\end{equation}
+Recall that $I \subset P$ is the image of $\psi^{!} : Q^{\vee}[1-n] \to P$.
+We consider the diagonal cocycle $\Delta_{P} \in P^{\otimes 2}$ as in Equation~\eqref{cnf.eq.def-delta}, and we implicitly view it as an element of $B^{\otimes 2}$ using the inclusion $B \subset P$.
+We let $\Delta_{A} \in A^{\otimes 2}$ be the image of $\Delta_{P}$ under the projection $\pi : B \to A$.
+Let $K$ be the kernel of $\psi$, which is also the kernel of $\lambda = \psi \oplus \id$.
+
+While they are quite useful, we do not know whether all manifolds with boundary admit a surjective pretty model.
+We will deal with a more general notion, which we dub ``Poincaré--Lefschetz duality models'' (or ``PLD models'' for short), and which are available as soon as $\dim M \geq 7$ and $M$ and $\partial M$ are simply connected.
+The goal is to obtain a diagram similar to Equation~\eqref{cnfbnd.eq.zigzag2} without assuming that $B$ (resp.\ $B_{\partial}$) is of the form $P \oplus_{\psi^{!}} Q^{\vee}[1-n]$ (resp.\ $Q \oplus Q^{\vee}[1-n]$).
+
+Let us first motivate our definition.
+It is always possible to find a surjective model $\rho$ for $M$:\footnote{We can also assume that the maps $f$, $f_{\partial}$ factor through the sub-CDGAs of trivial forms in order to integrate along the fibers of the canonical projections, see \cite[Appendix~C]{CamposWillwacher2016}.}
+\begin{equation}
+  \label{cnfbnd.eq.surj-mod-rho}
+  \begin{tikzcd}
+    R \ar[d, two heads, "\rho"] \ar[r, "f", "\sim" swap] & \OmPA^{*}(M) \ar[d, "\operatorname{res}"] \\
+    R_{\partial} \ar[r, "f_{\partial}", "\sim" swap] & \OmPA^{*}(\partial M)
+  \end{tikzcd}
+\end{equation}
+
+We can still define a chain map $(\varepsilon, \varepsilon_{\partial}) : \cone(\rho) \to \R[-n+1]$ by $\varepsilon(x) = \int_{M} f(x)$ and $\varepsilon_{\partial}(y) = \int_{\partial M} f_{\partial}(y)$.
+If we let $K_{R} = \ker(\rho)$, this yields dual maps $\theta_{R} : R \to K_{R}^{\vee}[-n]$ and $\vartheta_{R} : K_{R} \to R^{\vee}[-n]$, which are quasi-isomorphisms by Poincaré--Lefschetz duality.
+However, they are not necessarily isomorphisms, contrary to the maps $\theta_{B}, \vartheta_{B}$ defined in the setting of surjective pretty models.
+This prevents us from carrying out the arguments of Section~\ref{cnfbnd.sec.model-conf-spac}.
+The idea of this section is to adapt the proofs of~\cite{LambrechtsStanley2008} in order to obtain a surjective model of $(M, \partial M)$ for which $\theta$ is surjective and $\vartheta$ is injective.
+
+If the morphism $\theta_{R}$ were surjective (which is equivalent to $\vartheta_{R}$ being injective), then we would obtain an induced isomorphism $R / \ker \theta \cong K^{\vee}[-n]$, and the quotient map $R \to R / \ker \theta_{R}$ would be a quasi-isomorphism by the 2-out-of-3 property.
+We would thus get an actual isomorphism between a model of $M$ and a model for the homology of $M$.
+
+\subsection{Definition and existence}
+\label{cnfbnd.sec.definition}
+
+\begin{definition}
+  A \textbf{Poincaré--Lefschetz duality pair} (or ``\textbf{PLD pair''} for short) of formal dimension $n$ is a CDGA morphism $\lambda : B \to B_{\partial}$ between two connected CDGAs, equipped with a chain map\footnote{Recall that this is equivalent to the data of two linear maps $\varepsilon_{B} : B^{n} \to \R$ and $\varepsilon_{B_{\partial}} : B_{\partial}^{n-1} \to \R$ satisfying the ``Stokes formula'' $\varepsilon_{B}(dx) = \varepsilon_{B_{\partial}}(\lambda(x))$ and $\varepsilon_{B_{\partial}}(dy) = 0$.} $\varepsilon : \cone(\lambda) \to \R[1-n]$, and such that:
+  \begin{itemize}
+  \item The pair $(B_{\partial}, \varepsilon_{B_{\partial}})$ is a Poincaré duality CDGA of formal dimension $n-1$;
+  \item Let $K \coloneqq \ker \lambda$, and let $\theta_{B} : B \to K^{\vee}[-n]$ be defined by $\theta_{B}(b)(k) = \varepsilon(bk)$; then we require $\theta_{B}$ to be surjective and to be a quasi-isomorphism.
+  \end{itemize}
+\end{definition}
+
+If $(B \xrightarrow{\lambda} B_{\partial}, \varepsilon)$ is a PLD pair, then
+\begin{itemize}
+\item the CDGA $B$ is quasi-isomorphic to its quotient $A \coloneqq B / \ker \theta_{B}$;
+\item the map $\theta : A \to K^{\vee}[-n]$ induced by $\theta_{B}$ is an isomorphism of $B^{\otimes 2}$-modules;
+\item Equivalently, the pairing $A^{i} \otimes K^{n-i} \to \R$, given by $a \otimes k \mapsto \varepsilon_{B}(ak)$, is non-degenerate for all $i \in \mathbb{Z}$.
+\end{itemize}
+
+\begin{example}
+  A surjective pretty model is an example of a PLD pair.
+\end{example}
+
+\begin{definition}
+  A \textbf{Poincaré--Lefschetz duality model}\index{Poincaré--Lefschetz duality model}\index{PLD model} of $(M, \partial M)$ is a PLD pair $\lambda : B \to B_{\partial}$ which is a model of the inclusion $\partial M \subset M$, in the sense that we can fill out the following diagram:
+  \[ \begin{tikzcd}
+      B \ar[d, "\lambda"] & R \ar[d, "\rho"] \ar[l, dashed, "\sim" swap] \ar[r, "\sim"] & \OmPA^{*}(M) \ar[d, "\text{res}"] \\
+      B_{\partial} & R_{\partial} \ar[l, dashed, "\sim" swap] \ar[r, "\sim"] & \OmPA^{*}(\partial M)
+    \end{tikzcd}
+  . \]
+\end{definition}
+
+\begin{remark}
+  In that case, $H^{*}(A) \cong H^{*}(M)$, $H^{*}(K) \cong H^{*}(M, \partial M)$, and the isomorphism $\theta$ is given by Poincaré--Lefschetz duality $H^{*}(M) \cong H_{n-*}(M, \partial M)$.
+\end{remark}
+
+\begin{proposition}
+  \label{cnfbnd.prop.more-general-model}
+  Let $M$ be a simply connected $n$-manifold with simply connected boundary, and assume that $n \geq 7$.
+  Then $(M, \partial M)$ admits a PLD model.
+\end{proposition}
+
+\begin{proof}
+  We start with  some surjective model $\rho : R \to R_{\partial}$ as in Equation~\eqref{cnfbnd.eq.surj-mod-rho}, and we will build a PLD model out of it.
+
+  We keep the terminology of~\cite{LambrechtsStanley2008}.
+  We can find a surjective quasi-iso\-mor\-phism $g_{\partial} : R_{\partial} \to B_{\partial}$, where $B_{\partial}$ is a Poincaré duality CDGA, by~\cite{LambrechtsStanley2008}.
+  We let $K_{R}$ be the kernel of $\rho''' \coloneqq g_{\partial} \circ \rho$ and we define the chain map $\varepsilon_{R} : \cone(\rho') \to \R[-n+1]$.
+  Let $\OO \coloneqq \ker \vartheta_{R} \subset K_{R}$ be the ideal of ``orphans'', i.e.\
+  \begin{equation}
+    \OO \coloneqq \ker \vartheta_{R} = \{ y \in K_{R} \mid \forall x \in R, \; \vartheta_{R}(y)(x) = \varepsilon_{R}(xy) = 0 \}.
+  \end{equation}
+  We could consider (for a moment) the new short exact sequence:
+  \begin{equation}
+    0 \to (K \coloneqq K_{R}/\OO) \to (B \coloneqq R/\OO) \tkrightarrow{\lambda} B_{\partial} \to 0.
+  \end{equation}
+  There is an induced chain map $\varepsilon_{B} : \cone(\lambda) \to \R[-n+1]$, and $\vartheta_{B} : K \to B^{\vee}[-n]$ is injective because we killed all the orphans.
+  Thus we do obtain an isomorphism $B / \ker \theta_{B} \cong K^{\vee}[-n]$ induced by $\theta_{B}$.
+
+  The problem is that the ideal $\OO$ is not necessarily acyclic, thus $\lambda$ is not necessarily a model of $(M, \partial M)$ anymore.
+  Indeed, by Poincaré--Lefschetz duality, all we know is that a cycle $o \in \OO$ is always the boundary of some element $z \in K$; but one may not always choose $z \in \OO$.
+  The idea, just like in~\cite{LambrechtsStanley2008}, is to extend the CDGA $R$ by acyclic cofibrations (over $B_{\partial}$) in order to make the ideal of orphans acyclic.
+
+  Thanks to our connectivity assumptions on the manifold and its boundary, we can assume that the model $\rho : R \to R_{\partial}$ of $(M, \partial M)$ and the chain map $\varepsilon_{R} : \cone(\rho') \to \R[-n+1]$ satisfy:
+  \begin{itemize}
+  \item $\rho$ is surjective, hence so is $\rho' \coloneqq g_{\partial} \circ \rho$, and we let $K_{R} = \ker(\rho')$;
+  \item both $R$ and $R_{\partial}$ are of finite type;
+  \item both $R$ and $R_{\partial}$ are simply connected, i.e.\ $R^{0} = R_{\partial}^{0} = \R$ and $R^{1} = R_{\partial}^{1} = 0$;
+  \item we have $R_{\partial}^{2} \subset \ker d$ and $K^{2} \subset \ker d$;\footnote{Since we require $\rho$ to be surjective, it is possible that not all elements of $R^{2}$ are cycles, because some of the classes from $H^{2}(\partial M)$ may need to be killed. Check Example~\ref{cnfbnd.exa.model-dn} when $M = D^{3}$.}
+  \item the morphisms $\theta_{R}$, $\vartheta_{R}$ induced by $\varepsilon_{R}$ are quasi-isomorphisms.
+  \end{itemize}
+
+  We say that the pair $(\rho,\varepsilon_{R})$ is a ``good'' pair if it satisfies all these assumptions.
+  Let us say that its orphans are $k$-half-acyclic if $H^{i}(\OO) = 0$ for $n/2 +1 \leq i \leq k$.
+  This condition is void when $k = n/2$, and if $k = n+1$ then Poincaré--Lefschetz duality implies that $\OO$ is acyclic (see \cite[Proposition~3.6]{LambrechtsStanley2008}).
+
+  We will now work by induction (starting at $k = n/2$) and we assume that we are given a good pair $(\rho,\varepsilon_{R})$ whose orphans are $(k-1)$-half-acyclic.
+  We will build an extension:
+  \begin{equation}
+    \begin{tikzcd}
+      0 \rar
+      & K_{R} \rar \dar[hookrightarrow]{\sim}
+      & R \rar{\rho} \dar[hookrightarrow]{\sim}
+      & R_{\partial} \rar \dar{=}
+      & 0
+      \\
+      0 \rar
+      & \hat{K}_{R} \rar
+      & \hat{R} \rar{\hat{\rho}}
+      & R_{\partial} \rar
+      & 0
+    \end{tikzcd}
+  \end{equation}
+  and an extension $\hat{\varepsilon}_{R} : \cone(\hat{\rho'}) \to \R[-n+1]$ of $\varepsilon_{R}$ such that $(\hat{\rho},\hat{\varepsilon})$ is good and its orphans are $k$-half-acyclic.
+   
+  We follow closely~\cite[Sections~4 and~5]{LambrechtsStanley2008}, adapting the proof where needed.
+  Let $l = \dim(\OO^{k} \cap \ker d) - \dim(d(\OO^{k-1}))$ and choose $l$ linearly independent cycles $\alpha_{1}, \dots, \alpha_{l} \in \OO^{k}$ such that
+  \begin{equation}
+    \OO^{k} \cap \ker d = d(\OO^{k-1}) \oplus \langle \alpha_{1}, \dots, \alpha_{l} \rangle.
+  \end{equation}
+  These are the obstructions to $\OO$ being $k$-half acyclic.
+  Because $\vartheta_{R}$ is a quasi-isomorphism and $\vartheta_{R}(\alpha_{i}) = 0$, there exists $\gamma'_{i} \in K^{k-1}$ such that $d\gamma'_{i} = \alpha_{i}$.
+   
+  Let $m \coloneqq \dim H^{*}(R) = \dim H^{*}(K_{R})$, and choose cycles $h_{1}, \dots, h_{m} \in R$ such that $([h_{1}], \dots, [h_{m}])$ is a basis of $H^{*}(R)$.
+  By Poincaré--Lefschetz duality there exists cycles $h'_{1}, \dots, h'_{m}$ in $K_{R}$ such that $\varepsilon(h_{i} h'_{j}) = \delta_{ij}$ (and these form a basis for $H^{*}(K)$).
+  Let
+  \begin{equation}
+    \gamma_{i} \coloneqq \gamma'_{i} - \sum_{j} \varepsilon(\gamma'_{i} h_{j}) h'_{j} \in K^{k-1},
+  \end{equation}
+  and let $\Gamma$ be the subspace of $K^{k-1}$ generated by the $\gamma_{i}$.
+  Then a proof similar to the proof of~\cite[Lemma~4.1]{LambrechtsStanley2008} shows that $d\gamma_{i} = \alpha_{i}$, and if $y \in R$ is a cycle, then $\varepsilon(\gamma_{i} y) = \vartheta(\gamma_{i})(y) = 0$.
+   
+  Now let
+  \begin{equation}
+    \hat{R} \coloneqq \bigl( R \otimes S(c_{1}, \dots, c_{l}, w_{1}, \dots, w_{l}), dc_{i} = \alpha_{i}, dw_{i} = c_{i} - \gamma_{i} \bigr),
+  \end{equation}
+  where the $c_{i}$ and the $w_{i}$ are new variables of degrees $k-1$ and $k-2$.
+   
+  Extend $\rho$ to $\hat{\rho} : \hat{R} \to R_{\partial}$ by declaring that $\hat{\rho}(c_{i}) = \hat{\rho}(w_{i}) = 0$.
+  It follows that
+  \begin{equation}
+    \hat{K}_{R} \coloneqq \ker \hat{\rho} = (K_{R} \otimes S(c_{i}, w_{j})_{1 \leq i, j \leq l}, d).
+  \end{equation}
+  It is not hard to see that $R \hookrightarrow \hat{R}$ is an acyclic cofibration (compare with~\cite[Lemma~4.2]{LambrechtsStanley2008}), and so is $K \hookrightarrow \hat{K}$.
+  Finally, since all the $\gamma_{i}$ and $\alpha_{i}$ are in $\ker \hat{\rho}$, one can extend $\varepsilon_{R}$ to $\hat{\varepsilon}_{R} : \cone(\hat{\rho}) \to \R[-n+1]$ by formulas identical to~\cite[Equation~4.5]{LambrechtsStanley2008}, which works because $n \geq 7$.
+  It is clear that $(\hat{\rho}, \hat{\varepsilon}_{R})$ is still a good pair.
+  We let $\hat{\theta}_{R}$, $\hat{\vartheta}_{R}$ be the quasi-isomorphisms induced by the pairing, and we finally let $\hat{\OO} \coloneqq \ker \hat{\vartheta}_{R}$.
+   
+  It remains to check that $\hat{\OO}$ is $k$-half-acyclic, knowing that $\OO$ is $(k-1)$-half-acyclic.
+  First, we can reuse the proofs of~\cite[Lemmas~5.2 and~5.3]{LambrechtsStanley2008} to check that if $i > n-k+2$ then $\OO^{i} \subseteq \hat{\OO}^{i}$, and if $i \in \{ k-2, k-1 \}$ then $\hat{\OO}^{i} \cap \ker d \subset \OO^{i} \cap \ker d$.
+  The only difference is that instead of the hypothesis $d(R^{2}) = 0$, we instead have $d(K_{R}^{2}) = 0$.
+   
+  Now, just like \cite{LambrechtsStanley2008}, we have several cases to check.
+  If we have $k \geq n/2 + 2$, or if we have $n$ odd and $k = (n+1)/2 + 1$, then the proof goes through unchanged up to slight changes of notation.
+  However, if $n$ is even and $k = n/2 + 1$, more significant adaptations are needed, even if the idea is the same.
+  We'd like to check that $\hat{\OO}^{k} \cap \ker d \subset d(\hat{\OO}^{k-1})$.
+  We already know that
+  \begin{equation}
+    \hat{\OO}^{k} \cap \ker d \subset \OO^{k} \cap \ker d = d(\OO^{k-1}) \oplus \langle \alpha_{i} \rangle.
+  \end{equation}
+  Since $\OO^{k-1} \subset \hat{\OO}^{k-1}$ (the proof is identical to~\cite[Lemma~5.7]{LambrechtsStanley2008}), it is sufficient to check that $\hat{\OO}^{k-1} \cap \langle \alpha_{i} \rangle = 0$.
+  Let us write $j : K_{R} \to R$ for the inclusion, $\bar{R} \coloneqq R / \OO$, $\bar{K}_{R} \coloneqq K_{R} / \OO$, $n = 2m$ and $k = n/2 + 1 = m + 1$.
+  Then we have long exact sequences in cohomology and morphisms between them:
+  \begin{equation}
+    \begin{tikzcd}
+      0 \rar
+      & H^{m}(R) \rar{\pi}
+      & H^{m}(\bar{R}) \rar{\delta}
+      & H^{m+1}(\OO) \rar
+      & 0
+      \\
+      0 \rar
+      & H^{m}(K) \rar{\pi} \uar{j}
+      & H^{m}(\bar{K}_{R}) \rar{\delta} \uar{\bar{\jmath}}
+      & H^{m+1}(\OO) \rar \uar{=}
+      & 0
+    \end{tikzcd}
+  \end{equation}
+   
+  The space $H^{m+1}(\OO)$ is generated by the classes of the $\alpha_{i}$.
+  We obtain a section $\sigma : H^{m+1}(\OO) \to H^{m}(\bar{K}_{R})$ of $\delta$ by letting $\sigma([\alpha_{i}]) \coloneqq [\gamma_{i}]$.
+   
+  Suppose that we have some nonzero element $\alpha \in \langle \alpha_{i} \rangle$; we'd like to show that it is not in $\hat{\OO}^{k}$, i.e.\ that it is not an orphan in $\hat{K}_{R}$.
+  The pairing $H^{m}(\bar{K}_{R}) \otimes H^{m}(\bar{R}) \to \R$ induced by $\bar{\varepsilon}_{R}$ is non-degenerate, and $\sigma(\alpha) \neq 0$, hence there exists some $\beta \in H^{m}(\bar{R})$ such that $\varepsilon(\sigma(\alpha)\beta) \neq 0$.
+  But as we saw before, for any $[h] = \sum x_{j} [h_{j}] \in H^{m}(R)$, $\varepsilon_{R}(\sigma(\alpha) h) = 0$, because $\varepsilon_{R}(\gamma_{i} h_{j}) = 0$.
+  It follows that $\varepsilon_{R}(\sigma(\alpha) \sigma(\delta(\beta))) = \varepsilon_{R}(\sigma(\alpha) \beta) \neq 0$.
+  If we write $\delta(\beta) = \sum_{j} \beta_{j} \gamma_{j} \in H^{m+1}(\OO)$, we can let $w = \sum_{j} \beta_{j} w_{j} \in \hat{R}$, and then by definition $\hat{\varepsilon}_{R}(\alpha w) = \varepsilon_{R}(\sigma(\alpha) \sigma(\delta(\beta))) \neq 0$, thus $\alpha$ is not an orphan.
+  This completes the proof that $\hat{\OO}^{k-1} \cap \langle \alpha_{i} \rangle = 0$, and thus that $\hat{\OO}^{k} \cap \ker d \subset d(\hat{\OO}^{k-1})$.
+  We have thus covered all the cases to prove that if $\OO$ is $(k-1)$-half-acyclic, then $\hat{\OO}$ is $k$-half-acyclic.
+   
+  By induction, we obtain a good pair $(\hat{\rho} : \hat{R} \to R_{\partial}, \hat{\varepsilon}_{R})$ whose ideal of orphans is $(n+1)$-half acyclic (and hence actually acyclic), obtained by a sequence of acyclic cofibrations from $R$.
+  It then remains to define $B \coloneqq \hat{R} / \hat{\OO}$ and $\varepsilon_{B}$ to be the map induced by $\hat{\varepsilon}_{R}$ on the quotient to prove Proposition~\ref{cnfbnd.prop.more-general-model}.
+\end{proof}
+
+Given a PLD model of $(M, \partial M)$, we obtain a diagram (similar to~\eqref{cnfbnd.eq.zigzag2}):
+\begin{equation}
+  \label{cnfbnd.eq.nice-diagram}
+  \begin{tikzcd}
+    {} &
+    K \coloneqq \ker \lambda
+    \ar[d, hook]
+    \ar[dl, bend right, dashed, leftrightarrow, "\text{\tiny non degen.}" {sloped,above}, "\text{\tiny pairing}" {sloped,below}]
+    \\
+    A \coloneqq B / \ker \theta_{B} &
+    B \ar[l, "\sim" swap, "\pi", two heads] \ar[d, "\lambda", two heads] &
+    R \ar[l,"g", "\sim" swap] \ar[d, "\rho", two heads] \ar[r, "f" swap, "\sim"] &
+    \OmPA^{*}(M) \ar[d, "\operatorname{res}"]
+    \\
+    {} &
+    B_{\partial} &
+    R_{\partial} \ar[l, "g_{\partial}" "\sim" swap] \ar[r, "f_{\partial}" swap, "\sim"] &
+    \OmPA^{*}(\partial M)
+  \end{tikzcd}
+\end{equation}
+
+We also see in the proof that $\varepsilon_{B}$ satisfies by construction $\varepsilon_{B} g = \int_{M} f(-)$.
+We also have $\varepsilon_{B_{\partial}} g_{\partial} = \int_{\partial M} f_{\partial}(-)$ by construction (see Remark~\ref{cnf.rmk.commute}).
+
+\subsection{Diagonal classes}
+\label{cnfbnd.sec.diagonal-classes}
+
+Let $(B \xrightarrow{\lambda} B_{\partial}, \varepsilon)$ be a Poincaré--Lefschetz duality pair, with $K = \ker \lambda$.
+Recall that we write $\theta : (A = B / \ker \theta_{B}) \to K^{\vee}[-n]$ for the isomorphism of $B^{\otimes 2}$-modules induced by the surjective $\theta_{B} : B \to K^{\vee}[-n]$.
+
+The multiplication $\mu_{K} : K^{\otimes 2} \to K$ can then be dualized into a morphism of $B^{\otimes 2}$-modules $\delta : A \to A^{\otimes 2}[-n]$, and we let\index{diagonal class@$\Delta_{A}$, diagonal class}
+\begin{equation}
+  \Delta_{A} \coloneqq \delta(1_{A}) \in (A \otimes A)^{n}
+\end{equation}
+be a representative of the diagonal class.
+Graded commutativity of $\mu_{K}$ implies that $\Delta_{A}^{21} = (-1)^{n} \Delta_{A}$.
+The fact that $\delta$ is a morphism of $B^{\otimes 2}$-modules imply that $\Delta_{A}$ satisfies
+\begin{equation}
+  \forall a \in A, \; \delta(a) = (a \otimes 1) \Delta_{A} = \Delta_{A} (1 \otimes a).
+\end{equation}
+
+\begin{remark}
+  If the PLD model comes from a surjective pretty model, then we check that this diagonal class is indeed the image of $\Delta_{P} \in P^{\otimes 2} \subset B^{\otimes 2}$ under the projection $\pi : B \to A$.
+\end{remark}
+
+The duality between $A$ and $K$ can also be turned into a cocycle $\Delta_{AK} \in A \otimes K$.
+Let $\{ a_{i} \}$ be some basis of $A$, and let $\{a_{i}^{*}\}$ be the dual basis of $K$, satisfying $\varepsilon_{B}(a_{i} a_{i}^{*}) = \delta_{ij}$.
+Then we define:\index{DeltaAK@$\Delta_{AK}$}
+\begin{equation}
+  \label{cnfbnd.def.delta-ak}
+  \Delta_{AK} \coloneqq \sum \pm a_{i} \otimes a_{i}^{*} \in (A \otimes K)^{n}.
+\end{equation}
+It is not hard to check that $\Delta_{A}$ is the image of $\Delta_{AK}$ under the composite map $1 \otimes \pi \circ \iota : A \otimes K \to A \otimes B \to A \otimes A$, and by definition:
+\begin{equation}
+  \forall a \in A, \sum_{(\Delta_{AK})} \varepsilon_{B}(a \Delta_{AK}'') \Delta_{AK}' = a.
+\end{equation}
+
+Note also that, under the multiplication map $\mu_{A} : A \otimes A \to A$, we have $\mu_{A}(\Delta_{A}) = \sum \pm \pi(a_{i}a_{i}^{*}) = \chi(A) \pi(\vol_{K})$ is equal to the Euler characteristic of $B$ multiplied by the volume form $\vol_{K} \in K$ (the only element of $B$ satisfying $\varepsilon_{B}(\vol_{K}) = 1$, representing the fundamental class of $(M, \partial M)$).
+But by degree reasons, $\vol_{K} \in K \subset B$ is in the kernel of $\theta_{B} : B \to K^{\vee}[-n]$ when $\partial M \neq \varnothing$, hence $\pi(\vol_{K}) = 0$ by definition.
+In other words,
+\begin{equation}
+  \label{cnfbnd.eq.mu-delta-zero}
+  \mu_{A}(\Delta_{A}) = 0 \text{ if } \partial M \neq \varnothing.
+\end{equation}
+
+\section{The model and its cohomology}
+\label{cnfbnd.sec.model-conf-spac}
+
+From now on, let us assume that $M$ is a smooth, simply connected manifold with nonempty boundary.
+We also fix a PLD model of $M$ as in Equation~\eqref{cnfbnd.eq.nice-diagram}.
+
+\subsection{The dg-module model of \texorpdfstring{$\Conf_{k}(M)$}{Conf\_k(M)}}
+\label{cnfbnd.sec.dgmodel}
+
+Given a finite set $V$ and an element $v \in V$, define the canonical injection $\iota_{v} : A \to A^{\otimes V}$\index{iota@$\iota_{v}$} by
+\begin{equation}
+  \iota_{v}(a) \coloneqq 1 \otimes \dots \otimes 1 \otimes \underbrace{a}_{v} \otimes 1 \otimes \dots \otimes 1.
+\end{equation}
+
+\begin{definition}
+  \label{cnfbnd.def.ga}
+  Define a symmetric collection of CDGAs $\GG{A}$\index{GA@$\GG{A}$, Lambrechts--Stanley CDGA} by:
+  \begin{equation*}
+    \GG{A}(V) \coloneqq \bigl( A^{\otimes V} \otimes \enV(V) / (\iota_{v}(a) \cdot \omega_{vv''} = \iota_{v'}(a) \cdot \omega_{vv'}), \; d(\omega_{vv'}) = (\iota_{v} \cdot \iota_{v'})(\Delta_{A}) \bigr)
+  \end{equation*}
+  with the obvious actions of the symmetric groups.
+\end{definition}
+
+This definition also makes sense when $\partial M = \varnothing$, and it yields the symmetric collection of CDGAs considered in Section~\ref{cnf.sec.model}.
+
+When $M$ is a closed manifold, as soon as its Euler characteristic $\chi(M)$ vanishes, then there is a structure of Hopf right $\enV$-comodule on $\GG{A}$ (Proposition~\ref{cnf.prop.comodule-eA}), with cocomposition structure maps characterized by (compare with Equation~\eqref{cnf.eq.coop-gra-n}):
+\begin{equation}
+  \begin{aligned}
+    \circ^{\vee}_{T}(\omega_{vv'})
+    & = 1 \otimes \omega_{vv'},
+    & \text{if } \{v, v'\} \subset T; \\
+    \circ^{\vee}_{T}(\omega_{vv'})
+    & = \omega_{[v][v']} \otimes 1,
+    & \text{if } \{v,v'\} \not \subset T; \\
+    \circ_{T}^{\vee}(\iota_{v}(a))
+    & = \iota_{[v]}(a)
+    & \text{for } a \in A, \; v \in V;
+  \end{aligned}
+\end{equation}
+where $[v] \in V/T$ is the class of $v$ in the quotient.
+
+\begin{proposition}
+  \label{cnfbnd.prop.ga-comod}
+  If $\partial M \neq \varnothing$, then the symmetric collection of CDGAs $\GG{A}$ forms a right Hopf $\enV$-comodule, with the same formulas.
+\end{proposition}
+\begin{proof}
+  Comparing with the proof of Proposition~\ref{cnf.prop.comodule-eA}, we see that almost all the arguments are the same.
+  The only difficulty is to check that the cocomposition is compatible with the differential, which required that the Euler characteristic vanished in the boundaryless case.
+
+  It is immediate to check that $d(\circ_{T}^{\vee}(\iota_{v}(a))) = \circ_{T}^{\vee}(d(\iota_{v}(a))) = \iota_{[v]}(da)$, thus it suffices to check that the same equality holds on the generators $\omega_{vv'}$.
+  If either $v \not\in T$ or $v' \not\in T$, this is again immediate; hence it suffices to check that
+  \[ d(\circ_{T}^{\vee}(\omega_{vv'})) = \circ_{T}^{\vee}(d(\omega_{vv'})) \textnormal{ for } v,v' \in T \]
+
+  The LHS of that equation always vanishes.
+  On the other hand, the RHS is equal to $\iota_{*}(\mu_{A}(\Delta_{A}))$, where $\mu_{A} : A \otimes A \to A$ is the product.
+  But by Equation~\eqref{cnfbnd.eq.mu-delta-zero}, $\mu_{A}(\Delta_{A}) = 0$.
+\end{proof}
+
+\begin{example}
+  \label{cnfbnd.exa.model-dn-deux}
+  Recall from Example~\ref{cnfbnd.exa.model-dn} the model for $(D^{n}, S^{n-1})$, with $A = \R$, and $\Delta_{A} = 0$.
+  It follows that in this case, $\GG{A}$ is isomorphic to $\enV$ seen as a Hopf right comodule over itself.
+  This is not surprising, given that $\FM_{n}$ is formal as an operad, and hence as a module over itself, and that $\SFM_{D^{n}}(\varnothing, -)$ is weakly equivalent to $\FM_{n}$ as a right $\FM_{n}$-module.
+\end{example}
+
+\subsection{Computing the homology}
+\label{sec.computing-homology}
+
+We now prove that $\GG{A}$ has the right cohomology, in the spirit of~\cite{LambrechtsStanley2008a} and using the methods of~\cite{CordovaBulensLambrechtsStanley2015a} to deal with manifolds with boundary.
+From then on and until the end of this section, we fix some integer $k \geq 0$.
+We can work over $\Q$ in this section.
+
+The general idea goes as follows.
+If $W$ is a manifold with boundary, and $X \subset W$ is a sub-polyhedron, then by~\cite{CordovaBulensLambrechtsStanley2015a}, it suffices to know a CDGA model of the square of inclusions
+\begin{equation}
+  \label{eq.square}
+  \begin{tikzcd}
+    \partial W \ar[hook]{r} & W \\
+    \partial_{W}X \coloneqq X \cap \partial W \ar[hook]{r} \ar[hook]{u} & X \ar[hook]{u}
+  \end{tikzcd}
+\end{equation}
+to obtain a complex computing the cohomology of $W - X$.
+
+Therefore, to compute the cohomology of $\Conf_{k}(M)$, we need to find such models for $W = M^{k}$ and $X = \Delta_{(k)} \coloneqq \bigcup_{1 \le i, j \le k} \Delta_{ij}$\index{Deltak@$\Delta_{(k)}$}, where $\Delta_{ij} \coloneqq \{ x \in M^{k} \mid x_{i} = x_{j} \}$\index{Deltaij@$\Delta_{ij}$}.
+Since the sub-polyhedron $\Delta_{(k)}$ can be decomposed into the sub-polyhedra $\Delta_{ij}$, we can use the techniques of~\cite{LambrechtsStanley2008a} to further simplify the description of the dg-module model as a ``total cofiber'' indexed by graphs, which will be isomorphic to $\GG{A}$.
+
+Let us now give the details.
+Let $E = \{ (i,j) \mid 1 \leq i < j \leq k \}$ be a set of pairs, and let $\Gamma$ be the poset of subsets of $E$ ordered by reverse inclusion.
+We can see an element $\gamma \in \Gamma$ as a graph on $k$ vertices, with an edge between $i$ and $j$ iff $(i,j) \in \gamma$.
+In particular $\varnothing \in \Gamma$ is the ``empty'' graph with no edges (but $k$ vertices).
+Using this point of view, we can define the ``zeroth homotopy group'' $\pi_{0}(\gamma)$ of a graph $\gamma \in \Gamma$, which is a partition of $\{1, \dots, k\}$.
+
+We obtain a functor $\nabla$\index{$\nabla(\gamma)$} from $\Gamma$ to the category of topological spaces defined by
+\begin{equation}
+  \gamma \mapsto \nabla(\gamma) \coloneqq \bigcap_{e \in E_{\gamma}} \Delta_{e} \subset M^{k},
+\end{equation}
+where $\Delta_{(i,j)}$ is simply the small diagonal $\Delta_{ij}$.
+Note that $\nabla(\varnothing) = M^{k}$, and that if $\gamma' \supset \gamma$ then there is an inclusion $\nabla(\gamma') \subset \nabla(\gamma)$.
+The space $\nabla(\gamma)$ is homeomorphic to the product $M^{\pi_{0}(\gamma)}$, and under these homeomorphisms, the inclusion $\nabla(\gamma') \subset \nabla(\gamma)$ is the cofibration induced by iterations of the diagonal map $M \to M \times M$.
+We thus obtain that:
+\begin{equation}
+  \label{cnfbnd.eq.delta-colim}
+  \Delta_{(k)} = \bigcup_{1 \leq i < j \leq k} \Delta_{ij} = \colim_{\gamma \in \Gamma} \nabla(\gamma) = \colim_{\gamma \in \Gamma} M^{\pi_{0}(\gamma)},
+\end{equation}
+and this is in fact a homotopy colimit.
+
+We will first aim to build a CDGA model for the square~\eqref{eq.square} (with $W = M^{k}$ and $X = \Delta_{(k)}$) out of the diagram~\eqref{cnfbnd.eq.zigzag2}.
+The previous description of $\Delta_{(k)}$ as a homotopy colimit tells us that a model for $\Delta_{(k)}$ is given by $\lim_{\gamma \in \Gamma^{\mathrm{op}}} B^{\otimes \pi_{0}(\gamma)}$, where the maps in the diagram are induced by iterations the multiplication $\mu_{B}$ of $B$.
+The inclusion $\Delta_{(k)}$ is modeled by the canonical map from $B^{\otimes k} = B^{\otimes \pi_{0}(\varnothing)}$ to the colimit.
+
+It remains to find a model for $\partial_{W} X = \Delta_{(k)} \cap \partial(M^{k})$ and models for the inclusion maps.
+The morphism $B \to B_{\partial}$ is surjective, hence $B_{\partial}$ is isomorphic to $B / K$ where $K \coloneqq \ker (B \to B_{\partial})$.
+We get:
+
+\begin{lemma}
+  \label{cnfbnd.lem.square}
+  For all $i \geq 0$, the left-hand side square is a CDGA model for the right-hand side square, where the horizontal maps are the diagonal maps:
+  \[ \begin{tikzcd}[cramped]
+      B \ar[two heads, d] & B^{\otimes i} \ar[two heads, d] \ar[l, "\mu_{B}^{(i)}" swap] \\
+      B / K & B^{\otimes i} / K^{\otimes i} \ar[l, "\mu_{B}^{(i)}" swap]
+    \end{tikzcd}
+    \text{ is a model for }
+    \begin{tikzcd}[cramped]
+      M \ar[r, hook, "\delta"] & M^{i} \\
+      \partial M \ar[hook, u] \ar[r, hook, "\delta"] & \partial \bigl( M^{i} \bigr) \ar[hook, u]
+    \end{tikzcd} \]
+\end{lemma}
+\begin{proof}
+  The idea is the same as in~\cite[Proposition~5.1]{CordovaBulensLambrechtsStanley2015a}.
+  We work by induction.
+
+  The case $i = 1$ is obvious (as $B_{\partial} \cong B/K$), and they prove the case $i = 2$.
+  Now let use assume that the proposition is true for a given $i \geq 2$.
+  There is a diagram, where all the inclusions are either induced by diagonal maps or induced by $\partial M \subset M$:
+  \[ \begin{tikzcd}[cramped]
+      M \times M^{i} && M \ar[ll, hook] \\
+      \partial(M \times M^{i}) \ar[u, hook] & M \times \partial(M^{i}) \ar[l, hook] \\
+      (\partial M) \times M^{i} \ar[u, hook] & (\partial M) \times (\partial(M^{i})) \ar[l, hook] \ar[u, hook] \ar[ul, phantom, "\text{\tiny (ho.\ pushout)}"] & \partial M \ar[l, hook] \ar[uu, hook]
+    \end{tikzcd}. \]
+  The diagram of the proposition is the ``outer'' diagram, and the bottom left square is a (homotopy) pushout.
+
+  Let $P$ be the (homotopy) pullback in CDGAs of
+  \[ B_{\partial} \otimes B^{\otimes i} \to B_{\partial} \otimes (B^{\otimes i} / K^{\otimes i}) \gets B \otimes (B^{\otimes i} / K^{\otimes i}). \]
+  Then the induction hypothesis and the fact that homotopy pushouts of spaces become homotopy pullbacks of models imply that the following diagram is a CDGA model of the previous one (where the maps are either induced by $\mu_{B} : B^{\otimes 2} \to B$ or $\lambda : B \to B_{\partial}$):
+  \[ \begin{tikzcd}[cramped]
+      B \otimes B^{\otimes i} && B \ar[ll, leftarrow] \\
+      P \ar[u, leftarrow] & B \otimes (B^{\otimes i} / K^{\otimes i}) \ar[l, leftarrow] \\
+      B_{\partial} \otimes B^{\otimes i} \ar[u, leftarrow] & B_{\partial} \otimes (B^{\otimes i} / K^{\otimes i}) \ar[l, leftarrow] \ar[u, leftarrow] \ar[ul, phantom, "\text{\tiny (ho.\ pullback)}"] & B_{\partial} \ar[l, leftarrow] \ar[uu, leftarrow]
+    \end{tikzcd} \]
+
+  Now, as in the proof \cite[Lemma~5.3]{CordovaBulensLambrechtsStanley2015a}, it is clear that the natural map $B^{\otimes (i+1)} \to P$ is surjective and that its kernel is $K^{\otimes(i+1)}$, in other words that $P \cong B^{\otimes(i+1)} / K^{\otimes(i+1)}$.
+  The proposition then follows immediately.
+\end{proof}
+
+The space $\Delta_{(k)} \cap \partial(M^{k})$ admits a description as a colimit similar to the one Equation~\ref{cnfbnd.eq.delta-colim}.
+Indeed, a point of $M^{k}$ is in the boundary iff one of the coordinates is in the boundary of $M$.
+Now if a point is in both $\nabla(\gamma)$ and $\partial(M^{k})$, then at least one of the coordinates (say $x_{i}$) is in the boundary, and thus all the points indexed by some $j$ in the same connected component as $i$ in $\gamma$ is also in the boundary.
+We then obtain:
+\begin{equation}
+  \Delta_{(k)} \cap \partial(M^{k}) = \colim_{\gamma \in \Gamma} \colim_{\varnothing \subsetneq S \subset \pi_{0}(\gamma)} (\partial M)^{S} \times M^{\pi_0(\gamma) - S}.
+\end{equation}
+For a fixed $\gamma$, the inner colimit is precisely the image of $\partial(M^{\pi_{0}(\gamma)})$ under the diagonal embedding $M^{\pi_{0}(\gamma)} \hookrightarrow M^{k}$.
+Combining this with the previous lemma, we then obtain:
+
+\begin{proposition}
+  A model for the square~\eqref{eq.square}, with $W = M^{k}$ and $X = \Delta_{(k)}$, is given by:
+  \[ \begin{tikzcd}
+      B^{\otimes k} \ar[r, two heads, "\alpha_{k}"] \ar[d, "\xi_{k}"] & B^{\otimes k} / K^{\otimes k} \ar[d] \\
+      \lim_{\gamma \in \Gamma^{\mathrm{op}}} R^{\otimes \pi_{0}(\gamma)} \ar[r, "\beta_{k}"] & \lim_{\gamma \in \Gamma^{\mathrm{op}}} R^{\otimes \pi_{0}(\gamma)} / K^{\otimes \pi_{0}(\gamma)}
+    \end{tikzcd}
+    \qed \]
+\end{proposition}
+
+The map $\alpha_{k}$ is surjective, thus we have a canonical quasi-isomorphism $\ker \alpha_{k} = K^{\otimes k} \qiso \hoker \alpha_{k}$.
+Therefore, by \cite[Proposition~3.1]{CordovaBulensLambrechtsStanley2015a}:
+\begin{corollary}
+  \label{cnfbnd.cor.cone-cohom}
+  The cohomology of the cone
+  \[ \cone \bigl( (\hoker \beta_{k})^{\vee}[-nk] \tkrightarrow{\bar{\xi}_{k}} (K^{\otimes k})^{\vee}[-nk] \bigr) \]
+  of the map induced by $\xi_{k}$ on the kernels is isomorphic, as a graded vector space, to the cohomology of $\Conf_{k}(M) = M^{k} - \Delta_{(k)}$.
+  \qed
+\end{corollary}
+
+Armed with this corollary, we can now define a cubical diagram $C_{\bullet}$ (see~\cite[Section~7]{LambrechtsStanley2008a}) whose total cofiber computes the cohomology of $\Conf_{k}(M)$ as a graded vector space.
+Given $\gamma \in \Gamma$, the chain complex $C_{\gamma}$ is defined to be $(K^{\otimes \pi_{0}(\gamma)})^{\vee}$; note in particular that $C_{\varnothing} = (K^{\otimes k})^{\vee}$.
+If $\gamma' \supset \gamma$, then the map $C_{\gamma' \supset \gamma} : C_{\gamma'} \to C_{\gamma}$ is induced by the dual of the multiplication of $K$.
+
+Recall that the total cofiber\index{TotCof@$\TotCof$, total cofiber} of $C_{\bullet}$ is a representative of the homotopy colimit of $C$, given by the chain complex~\cite[Definition~7.2]{LambrechtsStanley2008a}:
+\begin{equation}
+  \TotCof C_{\bullet} \coloneqq \biggl( \bigoplus_{\gamma \in \Gamma} C_{\gamma} \cdot y_{\gamma}, \; D \biggl),
+\end{equation}
+where $y_{\gamma}$ is some variable of degree $- \# E_{\gamma}$, $\deg(x \cdot y_{\gamma}) = \deg(x) + \deg(y_{\gamma})$, and
+\begin{equation}
+  D(x \cdot y_{\gamma}) = \pm (dx) \cdot y_{\gamma} + \sum_{e \in E_{\gamma}} \pm (C_{\gamma' \supset \gamma} x) \cdot y_{\gamma - e}.
+\end{equation}
+
+\begin{proposition}
+  The total cofiber of $C_{\bullet}$ computes the cohomology of $\Conf_{k}(M)$ as a graded vector space, up to suspension by $nk$.
+\end{proposition}
+\begin{proof}
+  The proof is almost identical to the proof of~\cite[Theorem~9.2]{LambrechtsStanley2008a}.
+  First define an auxiliary cubical diagram $C'_{\bullet}$ just like $C_{\bullet}$, except for $C_{\varnothing}$ which we set equal to $(\hoker \beta_{k})^{\vee}$.
+  The maps $C'_{\gamma \supset \varnothing}$ are induced by the inclusions $K^{\otimes \pi_{0}(\gamma)} \to B^{\otimes \pi_{0}(\gamma)}$, which go through the definition of $\hoker \beta_{k}$.
+  By Poincaré--Lefschetz duality, $(\hoker \beta_{k})^{\vee}$ is a model for $\Delta_{(k)} = \bigcup_{\gamma \in \Gamma} \nabla(\gamma)$, each $C_{\gamma}$ is a model for $\nabla(\gamma)$, and the maps between the $C'_{\gamma}$ are models for the inclusions by Lemma~\ref{cnfbnd.lem.square}.
+  We thus obtain that $\TotCof C'_{\bullet}$ is acyclic by~\cite[Proposition~9.1]{LambrechtsStanley2008a} and the homotopy invariance of total cofibers.
+
+  The morphism $C'_{\gamma} \to C_{\gamma}$ is given by the identity if $\gamma \neq \varnothing$, and it is given by $\bar{\xi}_{k}^{\vee}$ if $\gamma = \varnothing$.
+  This yields a morphism of cubical diagrams $C'_{\bullet} \to C_{\bullet}$.
+  Define $C''_{\bullet}$ to be the object-wise mapping cone of $C'_{\bullet} \to C_{\bullet}$, so that there is a short exact sequence
+  \[ 0 \to C'_{\bullet} \to C_{\bullet} \to C''_{\bullet} \to 0. \]
+  For $\gamma \neq \varnothing$, the map $C'_{\gamma} \to C_{\gamma}$ is the identity, hence $C''_{\gamma}$ is acyclic.
+  It follows that $\TotCof C''_{\bullet}$ is quasi-isomorphic to the cone of $\bar{\xi}_{k}^{\vee} : C'_{\varnothing} \to C_{\varnothing}$, which computes the cohomology of $\Conf_{k}(M)$ by Corollary~\ref{cnfbnd.cor.cone-cohom}.
+
+  There is a long exact sequence between the homologies of the total cofibers $C'_{\bullet}$, $C_{\bullet}$, and $C''_{\bullet}$: total cofibers commute with mapping cones up to homotopy, because both are types of homotopy colimits.
+  The proposition then follows from the fact that $H_{*}(\TotCof C'_{\bullet}) = 0$.
+\end{proof}
+
+\begin{theorem}
+  \label{cnfbnd.thm.ga-same-cohom}
+  Let $M$ be a simply connected manifold with simply connected boundary and which admits a Poincaré--Lefschetz duality model.
+  Let $A$ be the model of $M$ obtained from this PLD model (see Section~\ref{cnfbnd.sec.pretty-nice}).
+  Then there is an isomorphism of graded vector spaces between $H^{*}(\GG{A}(k); \Q)$ and $H^{*}(\Conf_{k}(M); \Q)$.
+\end{theorem}
+\begin{proof}
+  There is in fact an isomorphism of dg-modules
+  \[ \GG{A}(k) \cong (\TotCof C_{\bullet})[-nk]. \]
+  It is induced by the Poincaré--Lefschetz isomorphism $\theta : A \to K^{\vee}[-n]$.
+  We use the crucial fact that the multiplication of $K$ is dual, under this isomorphism, to the map $A \to A^{\otimes 2}$ defined by $a \mapsto (a \otimes 1) \Delta_{A} = (1 \otimes a) \Delta_{A}$ (which is true by definition of $\Delta_{A}$ in our setting).
+  The proof is then similar to the proof of Lemma~\ref{cnf.lemma.cmp-felix-thomas}.
+\end{proof}
+
+In other words, $\GG{A}(k)$ is a dg-module model of $\Conf_{k}(M)$.
+Unfortunately, in general if $\partial M \neq \varnothing$ then $\GG{A}(k)$ is \emph{not} an actual model of $\Conf_{k}(M)$: the algebra structure is not the correct one.
+
+\subsection{The perturbed model}
+\label{cnfbnd.sec.perturbed-model}
+
+We define in the next section a ``perturbed'' version of $\GG{A}(V)$, which will be the actual model for $\Conf_{k}(M)$, and we will prove that it is isomorphic to $\GG{A}(V)$ as a dg-module.
+
+Choose some section $s : B_{\partial} \to B$ of $\rho$.
+Using the Poincaré duality of $B_{\partial}$, this section $s$ corresponds to some element $\sigma_{B} \in B_{\partial} \otimes B$ of degree $n-1$.
+Note that, by definition, the image of $\sigma_{B}$ in $B_{\partial}^{\otimes 2}$ is the diagonal class of $B_{\partial}$.
+
+The map $s$ does not commute, in general, with the differential, though for any $x \in B_{\partial}$, one has $ds(x) - s(dx) \in K = \ker \rho$.
+It follows that in general $d \sigma_{B} \neq 0$, but $d \sigma_{B} \in B_{\partial} \otimes K$.
+We in fact have that $d \sigma_{B}$ is a representative of the image of $\Delta_{AK}$ under the map $B \otimes K \to B_{\partial} \otimes K$.
+
+Let\index{sigmaA@$\sigma_{A}$}
+\begin{equation}
+  \sigma_{A} = (1 \otimes \pi)(\sigma_{B}) \coloneqq \sum_{(\sigma_{A})} \sigma' \otimes \sigma'' \in B_{\partial} \otimes A.
+\end{equation}
+
+\begin{remark}
+  We are going to use Sweedler's notation as above extensively.
+  If the element $\sigma$ (or any other tensor) appears multiple times in an equation, we are going to write it as follows:
+  \[ \sigma \otimes \sigma = \sum \sigma'_{1} \otimes \sigma''_{1} \otimes \sigma'_{2} \otimes \sigma''_{2} \]
+  and so on if it appears more than twice.
+\end{remark}
+
+We define the perturbed model to be:\index{GGAt@$\GGt{A}(V)$}
+\begin{equation}
+  \label{cnfbnd.eq.perturbed-model}
+  \GGt{A}(V) \coloneq \bigl( A^{\otimes V} \otimes S(\tilde\omega_{vv'})_{v,v' \in V} / J, d \tilde\omega_{vv'} = (\iota_{v} \cdot \iota_{v'})(\Delta_{A}) \bigr)
+\end{equation}
+where the ideal of relations is generated by $\tilde\omega_{vv'}^{2} = 0$ and, for all $b \in B$ and all subsets $T \subset V$ of cardinality at least two:
+\begin{equation}
+  \sum_{v \in T} \pm \bigl( \iota_{v}(\pi(b)) \cdot \prod_{v \neq v' \in T} \tilde\omega_{vv'} \bigr) + \sum \pm \varepsilon_{\partial} \bigl( \rho(b) \prod_{v \in T} \sigma'_{v} \bigr) \prod_{v \in T} \iota_{v}(\sigma''_{v}).
+\end{equation}
+
+Note in particular that we have
+\begin{equation}
+  \tilde\omega_{12} - (-1)^{n} \tilde\omega_{21} + \sum \pm \varepsilon_{\partial}(\sigma'_{1} \sigma'_{2}) \sigma''_{1} \otimes \sigma''_{2} = 0 \in \GGt{A}(\underline{2}),
+\end{equation}
+with the last summand being a cycle.
+The relations for $\# T = 2$ are perturbations of the symmetry relation of $\GG{A}(V)$, and the relations for $\# T = 3$ are perturbations of the Arnold relations in $\enV(V)$ (where, by ``perturbation'', we informally mean that the perturbed relation is the sum of the standard relation and terms which have a strictly lower number of generators $\tilde\omega_{vv'}$).
+
+\begin{example}
+  Let us consider $M = S^{1} \times [0,1]$ (even though it doesn't satisfy our assumptions about connectivity).
+  We can find a PLD model for $M$ where:
+  \begin{itemize}
+  \item $B_{\partial} = H^{*}(\partial M)$ is four-dimensional, generated by $1$, $t$, $d\varphi$, and $t d\varphi$ with $t$ being idempotent;
+  \item $A = H^{*}(M) = H^{*}(S^{1})$ is two-dimensional, generated by $1$ and $d\varphi$;
+  \item $K = H^{*}(M, \partial M)$ is two-dimensional, generated by $dt$ and $dt \wedge d\varphi$.
+  \end{itemize}
+
+  Then one of the nontrivial relation in $\GGt{A}(2)$ is given by $(d\varphi \otimes 1) \tilde\omega_{21} + (1 \otimes d\varphi) \tilde\omega_{12} + (d\varphi \otimes d\varphi) = 0$.
+  To obtain some intuition about this relation, consider that $\Conf_{2}(M) \simeq \Conf_{2}(\R^{2} - \{0\})$ is homotopy equivalent to $\Conf_{3}(\R^{2})$.
+  The element $d\varphi$ correspond to the two points are rotating around the origin.
+  Thus we can identify $\tilde\omega_{12}$ with $\omega_{12} \in H^{*}(\Conf_{3}(\R^{2}))$, $d\varphi \otimes 1$ with $\omega_{13}$, and $1 \otimes d\varphi$ with $\omega_{23}$.
+  The perturbed relation in $\GGt{A}(2)$ is then nothing but the usual Arnold relation in $\enV[2](3) = H^{*}(\Conf_{3}(\R^{2}))$.
+\end{example}
+
+\begin{proposition}
+  There is an isomorphism of dg-modules between $\GG{A}(V)$ and $\GGt{A}(V)$.
+\end{proposition}
+
+\begin{proof}
+  Let us fix $V = \{ 1, \dots, k \}$ for some $k \geq 0$.
+  Consider the standard basis of $\enV(k)$ given by monomials of the type:
+  \[ \omega_{i_{1}j_{1}} \dots \omega_{i_{r}j_{r}}, \]
+  with $1 \leq i_{1} < \dots < i_{r} \leq r$ and $i_{l} < j_{l}$ for all $l$.
+  By choosing some basis $\{ a_{1}, \dots, a_{m} \}$ of $A$, we obtain a basis of $\GG{A}(k)$ by labeling the last element of each connected component of such a monomial by some $a_{i}$.
+
+  We claim that if we replace all the $\omega_{ij}$ by $\tilde\omega_{ij}$ in this basis, then we obtain a basis of $\GGt{A}(V)$.
+  Using the perturbed Arnold relations, it's clear that any element of $\GGt{A}(V)$ can be written as a linear combination of these elements.
+  Moreover, using the same argument that proves that there is no nontrivial relation between the elements of the standard basis of $\enV(k)$, we can prove that there is non nontrivial relation between the elements of our claimed basis.
+
+  There is thus a linear isomorphism $\GG{A}(V) \to \GGt{A}(V)$ which is defined on the basis by replacing all the $\omega_{ij}$ by $\tilde\omega_{ij}$.
+  It's then clear that this map preserves the internal differential of $A$ and the part of the differential which splits an $\omega_{i_{l}j_{l}}$ (which can be written down explicitly in the basis: it merely splits a connected component into two).
+\end{proof}
+
+\begin{corollary}
+  There is an isomorphism of graded vector spaces $H^{*}(\Conf_{k}(M)) \cong H^{*}(\GGt{A}(k))$.
+\end{corollary}
+\begin{proof}
+  This follows immediately from Theorem~\ref{cnfbnd.thm.ga-same-cohom}
+\end{proof}
+
+\begin{remark}
+  It is often the case that $\GG{A}$ and $\GGt{A}$ are actually equal.
+  For example, if $M$ is obtained by removing a point from a closed manifold, then $B_{\partial} = H^{*}(S^{n-1}) = S(v)/(v^{2})$, and $\sigma_{A} = v \otimes 1$.
+  Then in all the ``corrective terms'' in the definition of $\GGt{A}(V)$, the power of $v$ is at least two, hence the term vanishes.
+\end{remark}
+
+\begin{example}
+  \label{cnfbnd.exa.model-dn-trois}
+  If $M = D^{n}$ and we use the PLD model of Example~\ref{cnfbnd.exa.model-dn}, then $\GGt{A} = \GG{A}$ (see Example~\ref{cnfbnd.exa.model-dn-deux}).
+\end{example}
+
+\section{Computation of Swiss-Cheese graph cohomology}
+\label{cnfbnd.sec.sgcn}
+
+In this section, we prove statements related to the vanishing of the homology of a twist of $\SGC_{n}^{\vee}$ (see Section~\ref{cnfbnd.sec.graph-complexes}).
+We assume that $n \geq 3$ throughout the section.
+
+Elements of $\SGC_{n}$ are given by linear combinations of graphs; we identify an element in the dual with a (possibly infinite) sum of graphs using the dual basis.
+Let $\delta$ be the differential in $\SGC_{n}^{\vee}$: it is given by ``splitting'' an aerial vertex (in all possible ways) in two vertices connected by an edge.
+Then $\SGC_{n}^{\vee}$ is a (complete) dg-Lie algebra, with the bracket given by $[ \gamma, \gamma' ] = \gamma \circ \gamma'' - \pm \gamma' \circ \gamma$, where $\gamma \circ \gamma'$ is defined by the sum over the terrestrial vertices of $\gamma$ of the insertion of $\gamma'$ into that terrestrial vertex and reconnecting the incident edges in all possible ways.
+
+Recall the Kontsevich integrals $c \in \SGC_{n}^{\vee}$ (see Equation~\eqref{cnfbnd.eq.konts-coeff}).
+It is well-known (see e.g.~\cite[Section~6.1]{Willwacher2015a}) that $c$ starts with a linear part $c_{0}$ corresponding to the Hochschild--Kostant--Rosenberg map, which we now describe.
+Let $\gamma_{j}$\index{gammaj@$\gamma_{j}$}, for $j \geq 0$, be the graph with one aerial vertex, $j$ terrestrial vertex, and an edge from the aerial vertex to each terrestrial vertex.
+
+\begin{equation}
+  \gamma_{j} \coloneqq
+  \underbrace{
+  \begin{gathered}
+      \begin{tikzpicture}
+        \node (0) {};
+        \node (o) [right = 4.5cm of 0] {};
+        \draw[dotted] (0) to (o);
+        \node[intv] (i1) [right = 0.5cm of 0] {};
+        \node[intv] (i2) [right = 0.5cm of i1] {};
+        \node[intv] (i3) [right = 1.5cm of i2] {};
+        \node[intv] (i4) [right = 0.5cm of i3] {};
+        \node[intv] (j) [above right = 1cm of i2] {};
+        \draw[->] (j) edge (i1) edge (i2) edge (i3) edge (i4);
+      \end{tikzpicture}
+    \end{gathered}
+    }_{j \text{ vertices}}
+\end{equation}
+
+\begin{definition}
+  \label{cnfbnd.def.c0}
+  The linear part $c_{0} \in \SGC_{n}^{\vee}$\index{c0@$c_{0}$} of $c$ is given by $c_{0}(\gamma_{j}) = \frac{1}{j!}$ and $c_{0}(\gamma) = 0$ if $\gamma$ does not have exactly one aerial vertex.
+\end{definition}
+
+The element $c_{0}$ itself is a Maurer--Cartan element in $SGC_{n}^{\vee}$.
+In other words, $c - c_{0}$, which vanishes on all graphs with exactly one aerial vertex, is a Maurer--Cartan in the twisted Lie algebra
+\begin{equation}
+  \SGC_{n}^{\vee, c_{0}} \coloneqq \bigl( \SGC_{n}^{\vee}, \delta + [c_{0}, -] \bigr).
+\end{equation}
+We'd like to prove that $c$ is gauge equivalent to $c_{0}$, or equivalently that $c-c_{0}$ is gauge trivial in the twisted Lie algebra.
+
+\begin{proposition}
+  \label{cnfbnd.prop.h-sgcn}
+  For each $i \in \mathbb{Z}$, the dimension of $H^{i}(\SGC_{n}^{\vee, c_{0}})$ is at most equal to the dimension of $H^{i}(\GC_{n}^{\vee}) \oplus H^{i}(\GC_{n-1}^{\vee})$.
+\end{proposition}
+
+This is to be compared with a similar result for $n = 2$ at the beginning of~\cite[Section~5]{Willwacher2015a}, stating that $H^{*}(\SGC_{2}^{\vee, c_{0}}) \cong H^{*}(\GC_{2}^{\vee})$.
+This result relies in turn on~\cite[Appendix~F]{Willwacher2016}, and we will use similar proof techniques.
+
+\begin{proof}[Proof of Proposition~\ref{cnfbnd.prop.h-sgcn}]
+  Call an aerial vertex a ``wedge''\index{wedge} if it is bivalent and connected to two terrestrial vertices.
+  For example, the only aerial vertex of $\gamma_{2}$ is a wedge.
+  We define a complete decreasing filtration on $\SGC_{n}^{\vee,c_{0}}$ by the number of aerial vertices that are \emph{not} wedges.
+  On the $\EE^{0}$ page, the differential is given by the bracket $\gamma \mapsto [\gamma_{2}, -]$, which can be represented as follows:
+  \[
+    \begin{gathered}
+      \begin{tikzpicture}
+        \node (0) {};
+        \node (o) [right = 3cm of 0] {};
+        \draw[dotted] (0) to (o);
+        \node[intv] (i) [right=1.5cm of 0] {};
+        \draw[<-] (i) edge +(-1,1) edge +(-0.5,1) edge +(0.5,1) edge +(1,1);      
+      \end{tikzpicture}
+    \end{gathered}
+    \mapsto
+    \begin{gathered}
+      \begin{tikzpicture}
+        \node (0) {};
+        \node (o) [right = 3cm of 0] {};
+        \draw[dotted] (0) to (o);
+        \node[intv] (i1) [right=1cm of 0] {};
+        \draw[<-] (i1) edge +(-1,1) edge +(-0.5,1);
+        \node[intv] (i2) [right=1cm of i1] {};
+        \draw[<-] (i2) edge +(1,1) edge +(0.5,1);
+        \node[intv] (i) at ($(i1)+(.6,.7)$) {};
+        \draw[->] (i) edge (i1) edge (i2);
+      \end{tikzpicture}
+    \end{gathered}
+  \]
+  This roughly corresponds to the differential in $\Graphs_{n-1}^{\vee}$.
+  Note that the creations of ``dead ends'' in $\gamma \circ \gamma_{2}$ (i.e.\ when all the incoming edges at a vertex are put on one side of the wedge) are canceled with the summands coming from $\gamma_{2} \circ \gamma$.
+
+  Our goal is to prove that on $\EE^{1} = H(\EE^{0}, d^{0})$, there only remains univalent terrestrial vertices (``hairs'') and no wedges.
+  The computation is conceptually similar to the one right after~\cite[Claim~1]{Willwacher2016}, except that instead of computing the Hochschild homology of a symmetric algebra, we compute the $\en[n-1]$-cohomology of a symmetric algebra with trivial bracket.
+
+  The $\EE^{0}$ page splits in a direct sum as follows.
+  Given some $\gamma \in \EE^{0}$, we consider the ``index'' $\operatorname{idx}(\gamma)$ obtained by removing all wedges and cutting off the terrestrial vertices, keeping a half-edge.
+  We obtain in this way a possibly disconnected graph with only aerial vertices, each one having a certain number of half-edges attached to it.
+  The only restriction is that a zero-valent vertex may not have two half-edges attached to it (otherwise it would be a wedge).
+  Then $\EE^{0}_{\Gamma} \coloneqq \{ \gamma \in \EE^{0} \mid \operatorname{idx}(\gamma) = \Gamma \}$ is a subcomplex, and that $\EE^{0} = \bigoplus_{\Gamma} \EE^{0}_{\Gamma}$.
+
+  We'd like to compute $H^{*}(\EE^{0}_{\Gamma}, d^{0})$.
+  There are two cases to consider.
+  If $\Gamma = \varnothing$, then $(\EE^{0}_{\varnothing}, d^{0})$ is isomorphic to $\GC_{n-1}^{\vee}$ in the following way.
+  If $\gamma \in \GC_{n-1}^{\vee}$, then we can view it as an element of $\EE^{0}_{\varnothing}$ by viewing all its vertices as terrestrial, and by replacing all its edges by wedges.
+  The differential $d^{0}$ is then the differential of $\GC_{n-1}^{\vee}$.
+  
+  Now if $\Gamma \neq \varnothing$, then the actual shape of $\Gamma$ doesn't matter, only the number of half-edges does.
+  If we number the half-edges as $h_{1}, \dots, h_{k}$, then we see that we are actually computing the $\Graphs_{n-1}^{\vee}$-cohomology of the symmetric algebra $S(h_{1}, \dots, h_{k})$ and taking the summand where each half-edge appears exactly once.
+  Since $\Graphs_{n-1}^{\vee} \simeq \en[n-1]$, we have $H^{*}(\EE^{0}_{\Gamma}) = H^{*}_{\en[n-1]}(S(h_{1}, \dots, h_{k}); \R)^{(1, \dots, 1)}$.
+  Applying the higher HKR theorem, this cohomology is given by a symmetric algebra on a shift of the generators.
+  Going back to $\EE^{0}_{\Gamma}$, under this identification, $H^{*}(\EE^{0}_{\Gamma}, d^{0})$ is given by graphs where the code is $\Gamma$,there are no wedges, and each terrestrial vertex is univalent.
+
+  In other words, we can identify $\EE^{1}$ as a direct sum of $H^{*}(\GC_{n-1}^{\vee})$ and a version of the hairy graph complex (as a vector space) where each vertex may have multiple hairs.
+  The differential $d^{1}$ is given by the part of the differential of $\SGC_{n}^{\vee,c_{0}}$ which raises the number of non-wedge vertices by exactly one, i.e. $d^{1} = \delta + [\gamma_{0}, -] + [ \gamma_{1}, -] + \sum_{j \geq 3} [\gamma_{j}, -]$.
+
+  We can now apply the same technique which appears in the proof of~\cite[Claim~2]{Willwacher2016}.
+  The differential $d^{1}$ splits into three parts: $d^{1,-1} = [\gamma_{0},-]$ which decreases the number of terrestrial vertices by $1$, $d^{1,0} = \delta + [\gamma_{1}, -]$ which keeps it constant, and $d^{1,\geq 1} = \sum_{j \geq 3} [\gamma_{j}, -]$ which increases it.
+  Let $\EE^{1'}$ be the quotient of $\EE^{1}$ by graphs with  terrestrial vertices as well as graphs in the image of $d^{1,-1}$ (i.e.\ graphs with univalent aerial vertices connected to another aerial vertex).
+  The map $d^{1,0}$ induces a differential on $\EE^{1'}$.
+  We can then reuse the proof of~\cite[Claim~2]{Willwacher2016} to prove that $(\EE^{1}, d^{1})$ is quasi-isomorphism to the direct sum of $H^{*}(\GC_{n-1}^{\vee})$ and the quotient $(\EE^{1'}, d^{1,0})$.
+
+  Then $(\EE^{1'}, d^{1,0} = \delta)$ has the same cohomology as $\GC_{n}^{\vee}$, using an argument identical to the one in~\cite[Appendix~F.2.1]{Willwacher2016}.
+  Thus, the $\EE^{2}$ page is a direct sum of $H^{*}(\GC_{n}^{\vee})$ and $H^{*}(\GC_{n-1}^{\vee})$.
+  It follows that the dimension of the cohomology of $\SGC_{n}^{\vee,c_{0}}$ is at most the dimension of the cohomology of $\GC_{n}^{\vee} \oplus \GC_{n-1}^{\vee}$.
+\end{proof}
+
+Recall that $H^{*}(\GC_{n}^{\vee})$ and $H^{*}(\GC_{n-1}^{\vee})$ contain some special classes, the circular graphs (or loops, but this terminology clashes with our terminology for edges between a vertex and itself), see e.g.\ \cite[Proposition~3.4]{Willwacher2014}.
+We depict these circular graphs in Figure~\ref{cnfbnd.fig.circular}.
+
+\begin{figure}[htbp]
+  \centering
+  \raisebox{-.5\height}{\tikz{
+    \node[intv] (i1) {};
+    \draw (i1) edge [loop above] (i1);
+  }}
+  \;
+  \raisebox{-.5\height}{\tikz{
+    \node[intv] (i1) {};
+    \node[intv, right={1 of i1}] (i2) {};
+    \draw (i1) to[bend left] (i2);
+    \draw (i2) to[bend left] (i1);
+  }}
+  \;
+  \raisebox{-.5\height}{\tikz[scale=0.5]{
+    \node[intv] (i1) at (0:1) {};
+    \node[intv] (i2) at (120:1) {};
+    \node[intv] (i3) at (240:1) {};
+    \draw (i1) to (i2);
+    \draw (i2) to (i3);
+    \draw (i3) to (i1);
+  }}
+  \;
+  \raisebox{-.5\height}{\tikz{
+    \node (o) {};
+    \draw[dotted] (o) -- ($(o)+(1.5,0)$);
+    \node[intv, right={0.5 of o}] (i1) {};
+    \node[intv, above={1 of i1}] (j1) {};
+    \draw[->] (j1) edge[bend left] (i1) edge[bend right] (i1);
+  }}
+  \raisebox{-.5\height}{\tikz{
+    \node (o) {};
+    \draw[dotted] (o) -- ($(o)+(3,0)$);
+    \node[intv, right={0.5 of o}] (i1) {};
+    \node[intv, right={2 of i1}] (i2) {};
+    \node[intv] (j1) at ($(i1)+(0.5,1)$) {};
+    \node[intv] (j2) at ($(i2)+(-0.5,1)$) {};
+    \draw[->] (j1) edge (i1) edge (i2);
+    \draw[->] (j2) edge (i1) edge (i2);
+  }}
+  \raisebox{-.5\height}{\tikz[yscale=0.7]{
+    \node (o) {};
+    \draw[dotted] (o) -- ($(o)+(4,0)$);
+    \node[intv, right={0.5 of o}] (i1) {};
+    \node[intv, right={1 of i1}] (i2) {};
+    \node[intv] (j1) at ($(i1)+(0.6,1)$) {};
+    \draw[->] (j1) edge (i1) edge (i2);
+    \node[intv, right={1 of i2}] (i3) {};
+    \node[intv] (j2) at ($(i2)+(0.6,1)$) {};
+    \draw[->] (j2) edge (i2) edge (i3);
+    \node[intv, above={1 of i2}] (j3) {};c
+    \draw[->] (j3) edge[bend right] (i1) edge[bend left] (i3);
+  }}
+  \caption{Circular graphs in $\GC_n$ and $\GC_{n-1}$}
+  \label{cnfbnd.fig.circular}
+\end{figure}
+
+\begin{corollary}
+  The Maurer--Cartan element $c$ is gauge equivalent to $c_{0}$ in $\SGC_{n}^{\vee}$.
+\end{corollary}
+
+\begin{proof}
+  According to~\cite[Proposition~2.2.3]{FresseWillwacher2015}, the cohomology of $\GC_{n}^{\vee}$ is given by a sum of the circular graphs and a part which vanishes in degrees $* > -n$ (we work with cohomological conventions, so the degree is reversed).
+  The integral defining $c$ vanishes on all the circular graphs for degree reasons: the total degree of a circular graph with $k$ ``edges'' (either an edge between two aerial vertices or a wedge between two terrestrial vertices) is $-k < 0$.
+  It then follows from Proposition~\ref{cnfbnd.prop.h-sgcn} that $c - c_{0}$ lives in a Lie subalgebra of $\SGC_{n}^{\vee, c_{0}}$ whose cohomology vanishes in degrees $* > -(n - 1)$.
+  Hence, by obstruction theory,\footnote{The $\EE^{1}$ page of the spectral sequence computing $\pi_{*} \operatorname{Map}_{\cdga}((S(\SGC_{n}[1]), \delta_{c_{0}}), \R) = \pi_{*} \mathsf{MC}_{\bullet}(\SGC_{n}^{\vee,c_{0}})$ vanishes in the right degrees.} the Maurer--Cartan element $c - c_{0}$ is gauge trivial.
+\end{proof}
+
+The definition of the cooperad $\SGraphs_{n}$ (cf.\ Section~\ref{cnfbnd.sec.extens-swiss-cheese}) depends on the choice of this Maurer--Cartan element, $c$ or $c_{0}$.
+
+\begin{definition}
+  \label{cnfbnd.def.sgraphs0}
+  The cooperad $\SGraphs_{n}^{c_{0}}$ is defined similarly to $\SGraphs_{n}$, but the Maurer--Cartan element $c_{0}$ is used in place of $c$ in the definition of the differential.
+\end{definition}
+
+By choosing a path object for $\SGC_{n}^{\vee}$, we can turn the gauge equivalence between $c$ and $c_{0}$ into:
+\begin{corollary}
+  \label{cnfbnd.cor.sgraphs-c0}
+  There is a zigzag of quasi-isomorphism of cooperads:
+  \begin{equation*}
+    \SGraphs_{n} \qiso* \cdot \qiso \SGraphs_{n}^{c_{0}}. 
+    \qed
+  \end{equation*}
+\end{corollary}
+
+Let us also record the following observation.
+The comodule $\SGraphs_{n}^{c_{0}}(\varnothing, -)$ is not isomorphic to $\Graphs_{n}$ seen as a comodule over itself, because its graphs can contain internal terrestrial vertices.
+However, $\SFM_{n}(\varnothing, \{*\})$ is a point, and there is a weak equivalence of $\FM_{n}$-modules given by:
+\begin{equation}
+  \FM_{n}(U) \cong \SFM_{n}(\varnothing, \{*\}) \times \FM_{n}(U) \tkrightarrow{\circ_{U}} \SFM_{n}(\varnothing, U).
+\end{equation}
+
+This is modeled by the following proposition.
+Define the map
+\begin{equation}
+  \nu : \SGraphs_{n}^{c_{0}}(\varnothing, V) \to \Graphs_{n}(V)
+\end{equation}
+as follows.
+Given some $\Gamma \in \SGraphs_{n}^{c_{0}}(\varnothing, V)$, if $\Gamma$ only has univalent terrestrial vertices, then $\nu(\Gamma)$ is the graph with these univalent vertices and their incident edges removed.
+Otherwise, if $\Gamma$ has terrestrial vertices of valence greater than one, then $\nu(\Gamma) = 0$.
+
+\begin{proposition}
+  \label{cnfbnd.prop.qiso-sc}
+  The maps $\nu : \SGraphs_{n}^{c_{0}}(\varnothing, V) \to \Graphs_{n}(V)$ defines a quasi-isomorphism of Hopf right $\Graphs_{n}$-modules.
+\end{proposition}
+\begin{proof}
+  For a given $V$, the map is the composite of two quasi-isomorphisms of CDGAs (hence it is itself a CDGA map and a quasi-isomorphism):
+  \begin{itemize}
+  \item The comodule structure map
+    \[ \circ_{V}^{\vee} : \SGraphs_{n}^{c_{0}}(\varnothing, V) \to \SGraphs_{n}^{c_{0}}(\varnothing, \{*\}) \otimes \Graphs_{n}(V), \]
+    which is a quasi-isomorphism because it models the weak equivalence $\FM_{n}(\varnothing, \{*\}) \times \FM_{n}(V) \to \SFM_{n}(\varnothing, V)$;
+  \item The map $\SGraphs_{n}^{c_{0}}(\varnothing, \{*\}) \to \R$ given by $c_{0}$, tensored with the identity of $\Graphs_{n}(V)$.
+    This is a quasi-isomorphism because $\SGraphs_{n}^{c_{0}}(\varnothing, \{*\})$ is a model for $\SFM_{n}(\varnothing, \{*\})$, which is a point, and $c_{0}$ is a nontrivial cocycle.
+  \end{itemize}
+
+  The fact that $\SGraphs_{n}^{c_{0}}$ is a relative operad over $\Graphs_{n}$ also shows that this is a morphism of $\Graphs_{n}$-comodules.
+\end{proof}
+
+\section{A model of right Hopf comodules}
+\label{sec.model-right-hopf}
+
+\subsection{The propagator}
+\label{cnfbnd.sec.propagator}
+
+The proof of Theorem~\ref{cnf.thm.A} in the case of closed manifolds relied on the existence of a propagator, see Section~\ref{cnf.sec.propagator}.
+Let us briefly recall its construction in this case, before going back to the case $\partial M \neq \varnothing$.
+The propagator $\varphi$ is an $(n-1)$-form on $\FM_{M}(\underline{2})$ whose differential was the pullback of the diagonal class.
+Moreover, recall that the projection $\partial \FM_{M}(\underline{2}) \to M$ is an $S^{n-1}$-bundle, and the restriction of the propagator to the boundary is a global angular form for this bundle.
+If $M$ is framed then this bundle is trivial (with $\circ_{1} : M \times S^{n-1} \to \FM_{M}(\underline{2})$ being an isomorphism of bundles), and one can further assume that $\varphi$ is equal to $1 \times \vol_{n-1}$.
+
+This propagator was constructed by considering a global angular form of the previous bundle, pulling it back to a tubular neighborhood of the boundary inside $\FM_{n}(\underline{2})$, multiplying it by a bump function, and then extending it by zero outside of the tubular neighborhood (see~\cite[Proposition~7]{CamposWillwacher2016}).
+Moreover, it can be chosen so that it belongs to the subalgebra $\Omega^{*}_{\mathrm{triv}}(\FM_{M}(\underline{2})) \subset \OmPA^{*}(\FM_{M}(\underline{2}))$ of ``trivial'' PA forms (see~\cite[Appendix~C]{CamposWillwacher2016}), which implies that it can be integrated along the fibers of the canonical projections $p_{V}$.
+
+Let us now return to the case $\partial M \neq \varnothing$.
+Consider the double $D = M \cup_{\partial M} \bar{M}$, a closed manifold.
+One can construct a propagator $\psi \in \Omega_{\mathrm{triv}}(\FM_{D}(\underline{2}))$.
+There is an ``inclusion'' map $i : \SFM_{M}(\varnothing, \underline{2}) \to \FM_{D}(\underline{2})$ (which is not actually injective on the set of configurations $x \in \SFM_{M}(\underline{2})$ where $p_{1}(x) = p_{2}(x) \in \partial M$, just like the standard map $\SFM_{n}(\varnothing, \underline{2}) \to \FM_{n}(\underline{2})$ is not injective).
+Moreover, there is a ``mirror'' map $\tau_{1} : \SFM_{M}(\varnothing, \underline{2}) \to \FM_{D}(\underline{2})$ which is defined similarly, except that the first point of the configuration is sent to its mirror in $\bar{M} \subset D$.
+We then define the propagator on $M$ to be:
+\begin{equation}
+  \label{cnfbnd.eq.propagator}
+  \varphi \coloneqq \frac{1}{2} \bigl( i^{*}\psi - \tau_{1}^{*}\psi \bigr).
+\end{equation}
+One can write down the cohomology of $H^{*}(D)$ in terms of the cohomology of $M$ and $\partial M$ and check on a basis that $[d \varphi] \in H^{*}(M \times M)$ is indeed the diagonal class of $M$.
+Note that this propagator is not symmetrical: if the point $1$ (the ``origin'' of the propagator) becomes infinitesimally close to $\partial M$, then the two contributions cancel out and $\varphi$ become zero; this is not the case for the point $2$ (the ``target'').
+
+Consider the space:
+\begin{equation}
+  E = \{ x \in \SFM_{M}(\varnothing,\underline{2}) \mid p_{1}(x) = p_{2}(x) \}
+  \label{cnfbnd.eq.bdl-propagator}
+\end{equation}
+which is an $S^{n-1}$-bundle $\mathring{E}$ when restricted over the interior of $M$.
+Given that $\psi$ is a global angular form on $\partial \FM_{D}(\underline{2})$, we check that $\varphi$ is a global angular form on this $S^{n-1}$-bundle.
+
+\begin{remark}
+  \label{cnfbnd.rmk.triv-forms}
+  We go back to the construction of the diagram of Equation~\eqref{cnfbnd.eq.nice-diagram} and replace $\OmPA^{*}(-)$ with its quasi-isomorphic subalgebra $\Omega^{*}_{\mathrm{triv}}(-)$, and then build a PLD model from that.
+  We can then compose with the inclusion $\Omega^{*}_{\mathrm{triv}}(-) \to \OmPA^{*}(-)$ and we obtain a diagram:
+  \[ \begin{tikzcd}
+      R \ar[d, two heads, "\rho"] \ar[r, "\sim", "f" swap] & \Omega^{*}_{\mathrm{triv}}(M) \ar[r, hook, "\sim"] \ar[d, "\text{res}"] & \OmPA^{*}(M) \ar[d, "\text{res}"] \\
+      R_{\partial} \ar[r, "\sim", "f_{\partial}" swap] & \Omega^{*}_{\mathrm{triv}}(M) \ar[r, hook, "\sim"] & \OmPA^{*}(M)
+    \end{tikzcd} \]
+  This allows to assume that if $x \in R$ (resp.\ $y \in R_{\partial}$), then $g(x)$ (resp.\ $g_{\partial}(y)$) is a trivial form on $M$ (resp.\ $\partial M$) -- compare with Remark~\ref{cnf.rmk.triv-forms}.
+\end{remark}
+
+Let us fix the differential of the resulting propagator.
+Recall the diagonal class $\Delta_{AK} \in A \otimes K$ from Equation~\eqref{cnfbnd.def.delta-ak}, which gets sent to $\Delta_{A} \in A \otimes A$ under $K \subset B \xrightarrow{\pi} A$.
+Then we have:
+
+\begin{lemma}
+  \label{cnfbnd.lem.delta-r}
+  There exists an element $\Delta_{R} \in R \otimes R$ such that $(\pi \otimes \id) g^{\otimes 2}(\Delta_{R}) = \Delta_{AK}$ and $\mu_{R}(\Delta_{R}) = 0$.
+\end{lemma}
+\begin{proof}
+  The proof is identical to the proof of Proposition~\ref{cnf.lemma.zigzag-a-r-omega}, recalling that $R \to B$ and $B \to A$ are both surjective, and that $\mu_{A}(\Delta_{A}) = 0$ when $\partial M \neq 0$ (Equation~\eqref{cnfbnd.eq.mu-delta-zero}).
+\end{proof}
+
+\begin{definition}
+  \label{cnfbnd.def.delta-b}
+  For convenience, define a cocycle $\Delta_{B}$\index{DeltaB@$\Delta_{B}$} in $B^{\otimes 2}$ by:
+  \begin{equation*}
+    \Delta_{B} \coloneqq g^{\otimes2}(\Delta_{R}).
+  \end{equation*}
+\end{definition}
+
+Finally, we'd like to fix the value of the propagator on the subspace $\SFM_{M}(\{2\}, \{1\})$ of $\SFM_{M}(\varnothing, \{1,2\})$.
+In order to define the inclusion
+\begin{equation}
+  \label{cnfbnd.eq.def-j-incl}
+  j : \SFM_{M}(\{2\}, \{1\}) \hookrightarrow \SFM_{M}(\varnothing, \{1,2\}),
+\end{equation}
+we choose some inward pointing vector field on $\partial M$ and we use it to infinitesimally push the second point into the interior of $M$.
+
+Recall the element $\sigma_{B} \in B_{\partial} \otimes B$ defined in Section~\ref{cnfbnd.sec.perturbed-model}, with $d \sigma_{B} \in B_{\partial} \otimes K$ being cohomologous to the diagonal class of $M$ with the first factor restricted to $\partial M$.
+Using the fact that we have a surjective quasi-isomorphism (thanks to the five lemma):
+\begin{equation}
+  \cone(R_{\partial} \otimes \ker \rho) \to \cone(B \otimes K),
+\end{equation}
+we can find some element $\sigma_{R} \in R_{\partial} \otimes R$ with $(g_{\partial} \otimes g)(\sigma_{R}) = \sigma_{B}$ and $d \sigma_{R} \in R_{\partial} \otimes \ker \rho$.
+Then $j^{*} \varphi - (f_{\partial} \otimes f)(\sigma_{R})$ is an exact form, by checking on cohomology.
+
+\begin{proposition}
+  \label{cnfbnd.prop.propagator}
+  There exists a form $\varphi \in \OmPA^{n-1}(\SFM_{M}(\varnothing,\underline{2}))$\index{propagator@propagator $\varphi$} such that:
+  \begin{itemize}
+  \item $d\varphi$ is the pullback of $(f \otimes f)(\Delta_{R})$ along the product of the projections $\SFM_{M}(\underline{2}) \to M \times M$;
+  \item its restriction to the bundle $\mathring{E}$ from Equation~\eqref{cnfbnd.eq.bdl-propagator} is a global angular form;
+  \item if moreover $M$ is framed we choose $\varphi$ so that $\varphi|_{\mathring{E}} = 1 \times \vol_{n-1}$;
+  \item $j^{*} \varphi = \varphi|_{\SFM_{M}(\{2\},\{1\})} = (f_{\partial} \otimes f)(\sigma_{R})$;
+  \item for any $x \in R$, one has $(p_{2})_{*}(p_{1}^{*}(x) \varphi) = 0$.
+  \end{itemize}
+\end{proposition}
+\begin{proof}
+  We've already seen how to construct a propagator satisfying the first three properties, using the mirror $D = M \cup_{\partial M} \bar{M}$.
+
+  The difference $j^{*} \varphi - (f_{\partial} \otimes f)(\sigma_{R})$ is an exact form, say $d \xi$ where $\xi$ is a trivial form on $\SFM_{M}(\{1\}, \{2\})$.
+  The application $j^{*}$ is surjective (because $\SFM_{M}(\{1\}, \{2\})$ is a submanifold with corners of $\SFM_{M}(\varnothing, \{1,2\})$), hence there exists some $\hat{\xi}$ such that $j^{*} \hat{\xi} = \xi$.
+  It then suffices to replace $\varphi$ by $\varphi - d \hat{\xi}$, which still satisfies the first three properties.
+
+  Finally, for the last property, we reuse the proof technique of~\cite[Lemma~3]{CattaneoMneev2010}.
+  Namely, we consider the chain map:
+  \begin{align*}
+    r : \Omega^{*}_{\mathrm{triv}}(M) & \to R \\
+    x & \mapsto \sum_{(\Delta_{R})} \bigl( \int_{M} x \Delta' \bigr) \Delta'' + \sum_{(\sigma_{R})} (\int_{\partial M} x|_{\partial M} \sigma') \sigma'',
+  \end{align*}
+  satisfying $f = f \circ r \circ f$, and the homotopy:
+  \begin{align*}
+    h : \Omega^{*}_{\mathrm{triv}}(M) & \to \Omega^{*-1}_{\mathrm{triv}}(M) \\
+    x & \mapsto (p_{1})_{*}(p^{*}_{2}(x) \wedge \varphi).
+  \end{align*}
+
+  Then we replace $h$ by $h' \coloneqq (\id - fr) \circ h \circ (\id - fr)$ in order to obtain a new homotopy satisfying $h''''' \circ f = 0$.
+  Let us write down the integral kernel of $h'$.
+  In order to simplify notations, we write $\int_{i,j,\dots} (-)$ to indicate that we push forward along the projection which forgets the points $i, j, \dots$, we write $\Delta_{ij} = p_{ij}^{*}(\Delta_{R})$ and $\sigma_{ij} = p_{ij}^{*}(\sigma_{R})$.
+  Then the new propagator is:
+  \begin{align*}
+    \tilde\varphi_{12}
+    & \coloneq \varphi_{12} - \int_{3} \varphi_{23} \Delta_{13} - \int_{3} \varphi_{23} \sigma_{13} - \int_{3} \varphi_{13} \Delta_{23} - \int_{3} \varphi_{13} \sigma_{23} \\
+    & + \int_{3,4} \Delta_{24} \varphi_{34} \Delta_{13} + \int_{3,4} \sigma_{24} \varphi_{23} \Delta_{13} + \int_{3,4} \Delta_{24} \varphi_{34} \sigma_{13} + \int_{3,4} \sigma_{42} \varphi_{34} \sigma_{13}.
+      \qedhere
+  \end{align*}
+
+  By construction, this new propagator $\tilde\varphi$ satisfies the last property.
+  To check that the corrective term $\tilde\varphi - \varphi$ is a cycle, one needs to apply the Stokes formula and check that all the terms cancel out, which follows from the general properties of the diagonal class, the fact that $\varphi|_{\mathring{E}}$ is a global angular form, and that $j^{*}\varphi = \sigma$.
+  Similarly to check that $j^{*}(\tilde\varphi - \varphi) = 0$ and that $(\tilde\varphi - \varphi)|_{\mathring{E}}$, one need to use the functoriality property of integral along fibers~\cite[Proposition~8.9]{HardtLambrechtsTurchinVolic2011} and check that all the terms cancel out.
+\end{proof}
+
+\subsection{Colored labeled graphs}
+\label{cnfbnd.sec.colored-labeled-graphs}
+
+We now introduce a colored version of the graph comodule $\Graphs_{R}$ considered in Section~\ref{cnf.sec.label-graphs-stat}.
+Recall the cocycle $\Delta_{R}$ from Lemma~\ref{cnfbnd.lem.delta-r}.
+We also define $\Delta_{R,R_{\partial}} = (\id \otimes \rho)(\Delta_{R}) \in R \otimes R_{\partial}$\index{DeltaRpartial@$\Delta_{R,R_{\partial}}$} and $\Delta_{R, \Omega^{*}(\partial M)} \coloneqq (\id \otimes g_{\partial})(\Delta_{R,R_{\partial}})$ for notational convenience.
+
+\begin{definition}
+  The CDGA of $(R, \Omega_{\mathrm{triv}}^{*}(\partial M))$-labeled graphs on the finite sets $U$, $V$ is:
+  \[ \SGra_{R, \Omega^{*}(\partial M)}(U,V) \coloneqq \bigl( (\Omega_{\mathrm{triv}}^{*}(\partial M))^{\otimes U} \otimes R^{\otimes V} \otimes \SGra_{n}(U,V), d \bigr) \]
+  with differential defined by $de_{vv''''} = \iota_{vv'}(\Delta_{R})$ for $v, v' \in V$, and $de_{vu} = \iota_{vu}(\Delta_{R,\Omega^{*}(\partial M)})$ for $u \in U$ and $v \in V$.
+\end{definition}
+
+\begin{proposition}
+  The bisymmetric collection $\SGra_{R, \Omega^{*}(\partial M)}$ is a Hopf right comodule over $\SGra_{n}$.
+\end{proposition}
+
+\begin{proof}
+  The proof is identical to the proof of Proposition~\ref{cnf.prop.gra-tad-comod}.
+  Recall that we do not need additional assumptions on the Euler characteristic as soon as we assume $\partial M \neq \varnothing$ (see Lemma~\ref{cnfbnd.lem.delta-r}).
+\end{proof}
+
+This comodule has a graphical description similar to $\SGra_{n}$.
+The difference is that aerial points (corresponding to the interior of $M$) are labeled by $R$, while terrestrial points (corresponding to the boundary) are labeled by $R_{\partial}$.
+
+Given a graph $\Gamma$, the differential $d \Gamma$ is a sum over the set of edges of $\Gamma$.
+For each summand, one removes the edge from the graph and multiplies the endpoints of the edge by either $\Delta_{R}$ (if both endpoints are aerial) or $\Delta_{R,\partial}$ (if one endpoint is aerial and the other terrestrial).
+We call this ``splitting'' the edge, see Figure~\ref{cnfbnd.fig.d-split}.
+Recall that we write $\Delta_{R} = \sum_{(\Delta_{R})} \Delta_{R}' \otimes \Delta_{R}'' \in R^{\otimes 2}$.
+
+\begin{figure}[htbp]
+  \centering
+  \[ \begin{gathered}
+      \begin{tikzpicture}
+        \node[unkv, label = {\scriptsize $x$}] (1) {};
+        \node[unkv, label = {\scriptsize $y$}] (2) [right = 1cm of 1] {};
+        \node (x1) [left = 0.8cm of 1] {};
+        \node (y1) [above left = 1cm of 1] {};
+        \node (z1) [below left = 1cm of 1] {};
+        \node (x2) [right = 0.8cm of 2] {};
+        \node (y2) [above right = 1cm of 2] {};
+        \node (z2) [below right = 1cm of 2] {};
+        \draw (1) -- (2);
+        \draw (x1) -- (1); \draw (y1) -- (1); \draw(z1) -- (1);
+        \draw (x2) -- (2); \draw (y2) -- (2); \draw(z2) -- (2);
+      \end{tikzpicture}
+    \end{gathered}
+  \mapsto
+  \sum_{(\Delta_R)}
+  \begin{gathered}
+    \begin{tikzpicture}
+        \node[unkv, label = {\scriptsize $x \Delta_{R}'$}] (1) {};
+        \node[unkv, label = {\scriptsize $y \Delta_{R}''$}] (2) [right = 1cm of 1] {};
+        \node (x1) [left = 0.8cm of 1] {};
+        \node (y1) [above left = 1cm of 1] {};
+        \node (z1) [below left = 1cm of 1] {};
+        \node (x2) [right = 0.8cm of 2] {};
+        \node (y2) [above right = 1cm of 2] {};
+        \node (z2) [below right = 1cm of 2] {};
+        \draw (x1) -- (1); \draw (y1) -- (1); \draw(z1) -- (1);
+        \draw (x2) -- (2); \draw (y2) -- (2); \draw(z2) -- (2);
+      \end{tikzpicture}
+    \end{gathered}
+  \]
+  \caption{The splitting differential of $\SGra_{R,\Omega^{*}(\partial M)}$ (a gray vertex can be of any kind).}
+  \label{cnfbnd.fig.d-split}
+\end{figure}
+
+The product glues graphs along their vertices (multiplying the labels), and the comodule structure collapses subgraphs, multiplying the labels and applying $\rho$ to them if necessary.
+
+\begin{proposition}
+  \label{cnfbnd.prop.omega-prime-colored}
+  There is a morphism of bisymmetric collections $\omega' : \SGra_{R, \Omega^{*}(\partial M)} \to \OmPA^{*}(\SFM_{M})$\index{womegaprime@$\omega'(\Gamma)$} characterized by
+  \begin{align*}
+    \omega'(\iota_{v}(x))
+    & = p_{v}^{*}(g(x))
+    & v \in V, \; x \in R \\
+    \omega'(\iota_{u}(x))
+    & = p_{u}^{*}(x)
+    & u \in U, \; x \in \Omega_{\mathrm{triv}}^{*}(\partial M) \\
+    \omega'(e_{vv'})
+    & = p_{vv'}^{*}(\varphi)
+    & v, v' \in V \\
+    \omega'(e_{vu})
+    & = p_{vu}^{*}(j^{*}(\varphi))
+    & u \in U, \; v \in V
+  \end{align*}
+  where $j : \SFM_{M}(\underline{1}, \underline{1}) \to \SFM_{M}(\varnothing,\underline{2})$ is the inclusion.\footnote{Recall that one must choose a collar $\partial M \times [0,1) \subset M$ in order to define this inclusion.}
+  Moreover if $M$ is framed, then together with Willwacher's morphism~\cite{Willwacher2015a}, this defines a Hopf right comodule morphism
+  \[ \omega' : (\SGra_{R, \Omega^{*}(\partial M)}, \SGra_{n}) \to (\OmPA^{*}(\SFM_{M}), \OmPA^{*}(\SFM_{n})). \]
+\end{proposition}
+\begin{proof}
+  The proof is identical to the proof of Proposition~\ref{cnf.prop.zigzag-gra-r}.
+\end{proof}
+
+Let us define a Maurer--Cartan element $c_{\varphi} \in \SGC_{n}^{\vee} \otimes \Omega_{\mathrm{triv}}^{*}(\partial M)$.
+Let $\gamma \in \SGC_{n}$ be a connected graph, let $I$ be the set of its terrestrial vertices and $J$ of its aerial vertices.
+Then $\gamma$ defines a form $\omega'(\gamma)$ on $\SFM_{M}(I,J)$, which we can pull back along the composition map $\circ_{I,J} : \partial M \times \SFM_{n}(I,J) \to \SFM_{M}(I,J)$ and then integrate on the $\SFM_{n}(I,J)$ factor, in other words:
+\begin{equation}
+  c_{\varphi}(\gamma) \coloneqq (p_{\partial M})_{*}(\circ_{I,J}^{*}(\omega'(\gamma))).
+\end{equation}
+
+\begin{remark}
+  For all $\gamma$, $\omega'(\gamma)$ is a trivial form (in the sense of~\cite[Appendix~C]{CamposWillwacher2016}), hence $c_{\varphi}(\gamma)$ is obtained by pushing forward a trivial form along a trivial bundle and is therefore trivial itself.
+\end{remark}
+
+\begin{definition}
+  The \textbf{twisted colored labeled graph comodule} $\Tw \SGra_{R, \Omega^{*}(\partial M)}$\index{TwSGraR@$\Tw \SGra_{R, \Omega^{*}(\partial M)}$} is the Hopf right $(\Tw \SGra_{n})$-comodule obtained by twisting $\SGra_{R, \Omega^{*}(\partial M)}$ with respect to the Maurer--Cartan element $c_{\varphi}$.
+\end{definition}
+
+Let us give a graphical description of the module $\Tw \SGra_{R, \Omega^{*}(\partial M)}(U,V)$.
+It is spanned by graphs with four types of vertices: on the one hand, either aerial or terrestrial, and on the other hand either external or internal.
+Recall that aerial vertices are labeled by $R$ while terrestrial ones are labeled by $R_{\partial}$.
+External aerial vertices are in bijection with $V$, while external terrestrial vertices are in bijection with $U$.
+Internal aerial vertices are of degree $-n$, while internal terrestrial vertices are of degree $-(n-1)$.
+Both kinds of internal vertices are indistinguishable among themselves.
+Finally, edges are of degree $n-1$, and the source of an edge may only be aerial.
+
+\begin{figure}[htbp]
+  \centering
+    \begin{tikzpicture}[baseline = 0.5cm]
+    \node (0) {};
+    \node (o) [right = 3cm of 0] {};
+    \draw[dotted] (0) to (o);
+    \node[extv, label = {above left}:{\scriptsize $x_{1}$}] (u) [right = 0.5cm of 0] {$u$};
+    \node[intv, label = {\scriptsize $x_{2}$}] (i1) [right = 1cm of u] {};
+    \node[extv, label = {\scriptsize $y_{1}$}] (v1) [above = 1cm of u] {$v_{1}$};
+    \node[extv, label = {\scriptsize $y_{2}$}] (v2) [right = 1cm of v1] {$v_{2}$};
+    \node[intv, label = {\scriptsize $y_{3}$}] (i2) [right = 1cm of v2] {};
+    \draw[->] (v1) edge (u) edge (i1) edge (v2);
+    \draw[->] (v1) to (v2);
+    \draw[->] (i2) edge (v2) edge (i1);
+  \end{tikzpicture}
+  \quad ($x_{1}, x_{2} \in R_{\partial}$ and $y_{1}, y_{2}, y_{3} \in R$)
+  \caption{A colored labeled graph in $\Tw \SGra_{R, \Omega^{*}(\partial M)}(\{u\}, \{v_1, v_2\})$.}
+  \label{cnfbnd.fig.exa-col-lab-graph}
+\end{figure}
+
+The product glues graphs along external vertices (multiplying the labels).
+The comodule structure maps collapse subgraphs, and the label of the collapsed subgraph is the product of all the labels inside that subgraph (applying $\rho : R \to R_{\partial}$ as needed).
+Finally, the differential has several parts:
+\begin{itemize}
+\item A first part comes from $\SGra_{R, \Omega^{*}(\partial M)}$: it splits edges between vertices of any type, and then multiplies the endpoints of the removed edge by either $\Delta_{R}$ or $\Delta_{R,\partial}$.
+\item A second part contracts edges between two aerial vertices, one of them being internal, and multiplies the labels of the endpoints in the process.
+  This includes dead ends, i.e.\ edges connected to a univalent internal vertex.
+\item A third part contracts a subgraph $\Gamma'$ with at most one external vertex.
+  The label of the contracted subgraph is the product of all the labels inside it multiplied by $c_{\varphi}(\bar{\Gamma}')$, where $\bar{\Gamma}'$ is the subgraph with the labels removed.
+  If the result contains a ``bad edge'' (whose source is terrestrial), then the summand vanishes.
+\end{itemize}
+
+\begin{remark}
+  Note that there are several differences compared to the description of the differential from Section~\ref{cnfbnd.sec.extens-swiss-cheese}: dead ends are contractible, and the last part of the differential which forgets some internal vertices is not present.
+  This comes from the fact that in the definition of the twisting of a right comodule over a cooperad, the Maurer--Cartan element of the deformation complex can only act ``from the right'' on the comodule.
+
+  Dead ends aren't contractible in $\Tw \SGra_{n}$  because the contraction of a dead end appears twice in the differential, one ``from the left'' and one ``from the right'', and they cancel each other (see~\cite[Appendix~I.3]{Willwacher2014}).
+  This cancellation does not occur in $\Tw \SGra_{R, \Omega^{*}(\partial M)}$.
+  The last part of the differential on $\Tw \SGra_{n}$ came exclusively from the left action of the deformation complex on $\SGra_{n}$, and so cannot appear in $\Tw \SGra_{R, \Omega^{*}(\partial M)}$.
+\end{remark}
+
+\begin{remark}
+  \label{cnfbnd.rmk.stokes}
+  One should not forget that when a subgraph $\Gamma' \subset \Gamma$ with only internal vertices is contracted (the third part), the result may be a terrestrial vertex even though the subgraph contains only aerial vertices, see Figure~\ref{cnfbnd.fig.collapse-aerial-terrestrial}.
+\end{remark}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[baseline = 0.5cm]
+    \node (0) {};
+    \node (o) [right = 1.5cm of 0] {};
+    \draw[dotted] (0) to (o);
+    \node (u) [right = 0.5cm of 0] {};
+    \node[intv, label = {\scriptsize $x$}] (i1) [above = 0.5cm of u] {};
+  \end{tikzpicture}
+  $\mapsto$
+  \begin{tikzpicture}[baseline = 0.5cm]
+    \node (0) {};
+    \node (o) [right = 1.5cm of 0] {};
+    \draw[dotted] (0) to (o);
+    \node[intv, label = {\scriptsize $\rho(x)$}] (u) [right = 0.5cm of 0] {};
+  \end{tikzpicture}
+  \caption{Collapsing an aerial vertex into a terrestrial vertex}
+  \label{cnfbnd.fig.collapse-aerial-terrestrial}
+\end{figure}
+
+\begin{proposition}
+  The morphism $\omega' : \SGra_{R, \Omega^{*}(\partial M)} \to \OmPA^{*}(\SFM_{M})$ of Proposition~\ref{cnfbnd.prop.omega-prime-colored} extends to a morphism of bisymmetric collections $\omega : \Tw \SGra_{R, \Omega^{*}(\partial M)} \to \OmPA^{*}(\SFM_{M})$\index{womega@$\omega(\Gamma)$}, given on a graph $\Gamma \in \SGra_{R, \Omega^{*}(\partial M)}(U \sqcup I, V \sqcup J) \subset \Tw \SGra_{R, \Omega^{*}(\partial M)}(U,V)$ by:
+  \[ \omega(\Gamma) \coloneqq (p_{U,V})_{*}(\omega'(\Gamma)) = \int_{\mathrlap{\SFM_{M}(U \sqcup I, V \sqcup J) \to \SFM_{M}(U,V)}} \quad \omega'(\Gamma). \]
+  Moreover if $M$ is framed then, together with Willwacher's morphism~\cite{Willwacher2015a}, this assignment defines a morphism of Hopf right comodules
+  \[ \omega : (\Tw \SGra_{R, \Omega^{*}(\partial M)}, \Tw \SGra_{n}) \to (\OmPA^{*}(\SFM_{M}), \OmPA^{*}(\SFM_{n})). \]
+\end{proposition}
+\begin{proof}
+    First note that we have chosen the propagator $\varphi$ so that it is a trivial form, and we have assumed that the morphisms $R \to \OmPA^{*}(M)$ and $R_{\partial} \to \OmPA^{*}(\partial M)$ factor through the sub-CDGAs of trivial forms.
+  Hence for any graph $\Gamma$, $\omega'(\Gamma)$ is a trivial form and can be integrated along the fiber of $p_{U,V}$.
+
+  We can now reuse the proof of Proposition~\ref{cnf.prop.mph-tw-om}.
+  The difference is the description of the decomposition of the fiberwise boundary of $p_{U,V}$ used to show that $\omega$ is a chain map through the application of Stokes' formula.
+  This description is very similar to the one implicitly used by~\cite{Willwacher2015a} (see also~\cite[Section~5.2.1]{Kontsevich2003}) with some variations accounting from the fact that no normalization is done to compactify $M$ (see the discussion before the proof of Lemma~\ref{cnf.lemma.int-partial-omega}).
+  More concretely, the boundary of $\SFM_{M}(U,V)$ is given by:
+  \[ \partial \SFM_{M}(U,V) = \bigcup_{\hspace{-2em} \mathrlap{T \in \BF'(V)}} \im (\circ_{T}) \cup \bigcup_{\hspace{-2em} \mathrlap{(W,T) \in \BF''(U;V)}} \im (\circ_{W,T}), \]
+  where:
+  \begin{align*}
+    \BF'(V) & \coloneqq \{ T \subset V \mid \# T \geq 2 \}, \\
+    \BF''(U;V) & \coloneqq \{ (W,T) \mid W \subset U, \; T \subset V, \; 2 \cdot \#T + \#W \geq 2 \}.
+  \end{align*}
+  Note that in the description of $\partial \SFM_{n}(U,V)$, there is an additional condition $W \cup T \subsetneq U \cup V$.
+  Indeed in $\SFM_{n}$ the normalization by the affine group prevents the points from becoming infinitesimally close all at once; in $\SFM_{M}$, no such normalization occurs.
+
+  Then the fiberwise boundary of the canonical projection $p_{U,V}$ is given by:
+  \[ \SFM^{\partial}_{M}(U,V) =  \bigcup_{\hspace{-2em} \mathrlap{T \in \BF'(V,J)}} \im (\circ_{T}) \cup \bigcup_{\hspace{-2em} \mathrlap{(W,T) \in \BF''(U, I; V, J)}} \im (\circ_{W,T}) \subset \SFM_{M}(U \sqcup I, V \sqcup J), \]
+  where
+  \begin{align*}
+    T \in \BF'(V,J) \subset \BF'(V \sqcup J) & \iff \#(T \cap J) \leq 1, \\
+    (W,T) \in \BF''(U,I; V,J) \subset \BF''(U \sqcup I, V \sqcup J) & \iff V \cap T = \varnothing, \#(U \cap W) \leq 1.
+  \end{align*}
+
+  One can then check that the boundary faces of that decomposition correspond to the summands of the differential.
+\end{proof}
+
+\begin{definition}
+  Define the \textbf{full colored graph complex}\index{fSGCR@$\fSGC_{R}$}
+  \[ \fSGC_{R} \coloneqq \Tw \SGra_{R, \Omega^{*}(\partial M)}(\varnothing, \varnothing)[-n]. \]
+\end{definition}
+
+This is the (shifted) CDGA of colored, labeled graphs with only internal vertices.
+The product is the disjoint union of graphs, thus $\fSGC_{R}[n]$ is free as an algebra, generated by the graded module $\SGC_{R}[n]$ of connected graphs.
+Each $\Tw \SGra_{R}(U,V)$ is a module over the CDGA $\fSGC_{R}[n]$ by adding connected components.
+
+\begin{definition}
+  The \textbf{colored partition function} $\SZphi : \fSGC_{R}[n] \to \R$\index{ZSphi@$\SZphi$} is the CDGA morphism given by the restriction in empty arity
+  \[ \SZphi \coloneqq \omega|_{(\varnothing,\varnothing)} : \Tw \SGra_{R, \Omega^{*}(\partial M)}(\varnothing, \varnothing) \to \OmPA^{*}(\SFM_{M}(\varnothing, \varnothing)) = \OmPA^{*}(\{*\}) = \R. \]
+  Let $\R^{S}_{\varphi}$\index{RSphi@$\R^{S}_{\varphi}$} be the one-dimensional $\fSGC_{R}[n]$-module induced by $\SZphi$.
+\end{definition}
+
+\begin{remark}
+  \label{cnfbnd.rmk.maurer-cartan}
+  Since $\fSGC_{R}[n]$ is a CDGA, the dual module $\SGC_{R}^{\vee}$ is naturally an $\hoLie_{n}$-algebra.
+  The differential of $\fSGC_{R}$ cannot create more than two connected components, thus $\SGC_{R}^{\vee}$ is actually a $\Lie_{n}$-algebra.
+  The differential blows up vertices (like in $\GC_{n}^{\vee}$) and joins pairs of vertices by an edge, while the Lie bracket joins two graphs by an edge.
+  The algebra morphism $\SZphi$ is uniquely determined by its restriction $\szphi$\index{zsphi@$\szphi$} to $\SGC_{R}$, which can be seen as a Maurer--Cartan element in the $\Lie_{n}$-algebra $\SGC_{R}^{\vee}$.
+\end{remark}
+
+\begin{definition}
+  The \textbf{reduced colored labeled graph comodule} $\SGraphs_{R, \Omega^{*}(\partial M)}^{c_{\varphi}, \szphi}$\index{SGraphsRphi@$\SGraphs_{R, \Omega^{*}(\partial M)}^{c_{\varphi},\szphi}$} is the bisymmetric collection given in each arity by:
+  \[ \SGraphs_{R, \Omega^{*}(\partial M)}^{c_{\varphi},\szphi}(U, V) \coloneqq \R^{S}_{\varphi} \otimes_{\fSGC_{R}[n]} \Tw \SGra_{R, \Omega^{*}(\partial M)}(U,V). \]
+\end{definition}
+
+\begin{proposition}
+  The bisymmetric collection $\SGraphs_{R, \Omega^{*}(\partial M)}^{c_{\varphi},\szphi}$ forms a Hopf right comodule over $\SGraphs_{n}$, and the map $\omega : \Tw \SGra_{R, \Omega^{*}(\partial M)} \to \OmPA^{*}(\SFM)$ factors through a Hopf right comodule morphism:\index{womega@$\omega(\Gamma)$}
+  \[ \omega : (\SGraphs_{R,\Omega^{*}(\partial M)}^{c_{\varphi},\szphi}, \SGraphs_{n}) \to (\OmPA^{*}(\SFM_{M}), \OmPA^{*}(\SFM_{n})). \]
+\end{proposition}
+\begin{proof}
+  Identical to the proof of Proposition~\ref{cnf.prop.mph-1}.
+\end{proof}
+
+We now show that our comodule is quasi-isomorphic to a simpler one, in the spirit of Corollary~\ref{cnfbnd.cor.sgraphs-c0}.
+Recall the circular graph from Figure~\ref{cnfbnd.fig.circular}.
+We will need an explicit name for the circular graph of length $1$ in $\GC_{n-1}$, say:\index{l@$\ell_1$}
+\begin{equation}
+  \label{cnfbnd.eq.ell}
+  \ell_1 \coloneqq
+  \raisebox{-.5\height}{
+    \begin{tikzpicture}
+      \node (o) {};
+      \draw[dotted] (o) -- ($(o)+(1.5,0)$);
+      \node[intv, right={0.5 of o}] (i1) {};
+      \node[intv, above={1 of i1}] (j1) {};
+      \draw[->] (j1) edge[bend left] (i1) edge[bend right] (i1);
+    \end{tikzpicture}
+  }
+\end{equation}
+
+\begin{lemma}
+  \label{cnfbnd.lem.cphi-cm}
+  The Maurer--Cartan element $c_{\varphi} \in \SGC_{n}^{\vee} \otimes \Omega_{\mathrm{triv}}^{*}(\partial M)$ is gauge equivalent to\index{cM@$c_{M}$}
+  \begin{equation*}
+    c_{M} \coloneqq c_{0} \otimes 1 + \ell_1^{\vee} \otimes e_{\partial M},
+  \end{equation*}
+  where:
+  \begin{itemize}
+  \item $c_{0} \in \SGC_{n}^{\vee}$ is the linear part of $c$ (Definition~\ref{cnfbnd.def.c0});
+  \item $\ell_1 \in \SGC_{n}$ is the circular graph of length $1$ in $\GC_{n-1}$ (Equation~\eqref{cnfbnd.eq.ell});
+  \item $e_{\partial M} \coloneqq \chi(\partial M) \cdot \vol_{\partial M}$\index{edm@$e_{\partial M}$} is the Euler class of $\partial M$ (and $\vol_{\partial M} = g_{\partial}(\vol_{R_{\partial}})$ where $\vol_{R_{\partial}}$ is a fixed cocycle satisfying $f_{\partial}(\vol_{R_{\partial}}) = \vol_{B_{\partial}}$).
+  \end{itemize}
+\end{lemma}
+
+\begin{proof}
+  Let us first show that $c_{\varphi}$ agrees with $c_{M}$ on circular graphs, i.e.\ that $c_{\varphi}$ vanishes on circular graphs except for $\ell_1$, on which it is equal to $e_{M}$.
+    The aerial circular graphs which produce nontrivial classes have odd length,\footnote{Depending on the parity of $n$, they are congruent to either $1$ or $3$ modulo $4$.} hence they contain a vertex with in and out valences of $1$.
+    One can construct the propagator $\psi$ on $D = M \cup_{\partial M} \bar{M}$ (see Section~\ref{cnfbnd.sec.propagator}) so that $\varphi$ exhibits symmetry properties that make $c_{\varphi}$ vanish on these graphs, by an argument similar to Kontsevich's trick~\cite[Lemma~2.1]{Kontsevich1994}.
+    Moreover, using a similar argument, we see that $c_{\varphi}$ vanishes on the circular graphs from $\GC_{n-1}$, because apart from the first one, they all contain a copy of the following graph (which represent a ``bivalent'' terrestrial vertex, the ``outside'' vertices may be the same one):
+  \begin{center}
+    \begin{tikzpicture}
+      \node (o) {};
+      \draw[dotted] (o) -- ($(o)+(4,0)$);
+      \node[intv, right={0.5 of o}] (i1) {};
+      \node[intv, right={1 of i1}] (i2) {};
+      \node[intv] (j1) at ($(i1)+(0.6,1)$) {};
+      \draw[->] (j1) edge (i1) edge (i2);
+      \node[intv, right={1 of i2}] (i3) {};
+      \node[intv] (j2) at ($(i2)+(0.6,1)$) {};
+      \draw[->] (j2) edge (i2) edge (i3);
+    \end{tikzpicture}
+  \end{center}
+  Thus when computing the integral defining $c$, one can consider the automorphism of $\SFM_{n}(\{u_{1}, u_{2}, v\}, \varnothing)$ which maps $v$ to its symmetric with respect to the barycenter of $u_{1}$ and $u_{2}$ inside $\R^{n-1} \times \{ 0 \}$, which changes the sign of the integral.
+  The only exception is $\ell_1$, for which we can explicitly compute $c_{M}(\ell_1) = e_{M}$ using the fourth property of $\varphi$ in Proposition~\ref{cnfbnd.prop.propagator} and the standard fact that the Euler class $e_{\partial M}$ is the image of the diagonal class of $\partial M$ under the multiplication map.
+
+  It then follows that $c_{\varphi} - c_{M}$ is a Maurer--Cartan element in the twisted Lie algebra $\SGC_{n}^{\vee, c_{0}} \otimes \Omega^{*}(\partial M).$
+  According to Proposition~\ref{cnfbnd.prop.h-sgcn}, if we forget about circular graphs the cohomology of $\SGC_{n}^{\vee, c_{0}}$ is concentrated below degree $-(n-1)$, and the cohomology of $\partial M$ below degree $n-1$.
+  It follows that $c_{\varphi} - c_{M}$ lives in a Lie subalgebra of $\SGC_{n}^{\vee, c_{0}} \otimes \Omega^{*}(\partial M)$ whose cohomology vanishes in positive degrees.
+  Thus, by obstruction theory, $c_{\varphi} - c_{M}$ is gauge trivial and we have proved the proposition.
+\end{proof}
+
+Recall the cooperad $\SGraphs_{n}^{c_{0}}$ from Definition~\ref{cnfbnd.def.sgraphs0}.
+We can define a Hopf right comodule $\SGraphs_{R, \Omega^{*}(\partial M)}^{c_{M}, \szphi}$ over this cooperad, by twisting $\SGra_{R, \Omega^{*}(\partial M)}$ with respect to $c_{M}$ instead of $c_{\varphi}$.
+
+\begin{corollary}
+  There is zigzag of quasi-isomorphisms of Hopf right comodules:
+  \[
+    (\SGraphs_{R,\Omega^{*}(\partial M)}^{c_{\varphi},\szphi}, \SGraphs_{n}) \qiso* \cdot \qiso (\SGraphs_{R, \Omega^{*}(\partial M)}^{c_{M}, \szphi}, \SGraphs^{c_{0}}_{n}).
+    \qed
+  \]
+\end{corollary}
+
+Moreover, we can now get rid of the $\Omega^{*}(\partial M)$ and label the terrestrial vertices by elements of $R_{\partial}$ instead.
+This was not possible before vecause $c_{\varphi}$ could produce forms that were not in the image of $g_{\partial} : R_{\partial} \qiso \Omega^{*}(\partial M)$, but this is not the case for $c_{M} \otimes 1$.
+We thus define a Hopf right comodule $(\SGraphs_{R,R_{\partial}}^{c_{M}, \szphi}, \SGraphs_{n}^{c_{0}})$, and we obtain:
+\begin{lemma}
+  There is a quasi-isomorphism of Hopf right comodules induced by $g_{\partial} : R_{\partial} \qiso \Omega^{*}(\partial M)$:
+  \[ (\SGraphs_{R,R_{\partial}}^{c_{M}, \szphi}, \SGraphs_{n}^{c_{0}}) \qiso (\SGraphs_{R, \Omega^{*}(\partial M)}^{c_{0}, \szphi}, \SGraphs^{c_{0}}_{n}).
+    \qed \]
+\end{lemma}
+
+\subsection{Labeled graphs and proof of Theorem~\ref{cnfbnd.thm.A}}
+\label{cnfbnd.sec.labeled-graphs}
+
+We now introduce a variant $\Graphs^{\zphi}_{R}$ of the graph comodule from Chapter~\ref{chap.2}.
+Recall that $j^{*} \varphi = \varphi|_{\SFM_{M}(\{2\},\{1\})}$ is equal to $(g_{\partial} \otimes g)(\sigma_{R})$, where $\sigma_{R} = \sum \sigma' \otimes \sigma'' \in R_{\partial} \otimes R$ was defined in Proposition~\ref{cnfbnd.prop.propagator}.
+
+\begin{definition}
+  \label{cnfbnd.def.graphs-phi}
+  The CDGA of reduced $R$-labeled graphs $\Graphs^{\zphi}_{R}(V)$\index{GraphsRphi@$\Graphs_{R}^{\zphi}$} on the finite set $V$ is spanned by directed graphs with external (corresponding to $V$) vertices and internal vertices, with all the vertices labeled by $R$.
+  The algebra structure glues graphs along external vertices, and the comodule structure collapses subgraphs.
+  A connected component with only internal vertices is identified with the real number given by the partition function $\SZphi$, by viewing the component as having no terrestrial vertices.
+  The differential has three parts:
+  \begin{itemize}
+  \item Splitting any edge and multiplying the labels of the endpoints by $\Delta_{R}$;
+  \item Contracting an edge between an internal vertex and another vertex, multiplying the labels;
+  \item Removing one internal vertex $u$.
+    Let $x \in R$ be the label of $u$, and let $v_{1}, \dots, v_{k}$ be the vertices connected to $u$, with respective labels $y_{1}, \dots, y_{k} \in R$.
+    Then in the differential, the vertex $u$ and its incident edges are removed, the label of $v_{i}$ becomes $y_{i} \sigma''_{i}$, and the new graph is multiplied by $\varepsilon_{\partial}(\rho(x) \sigma_{1}' \dots \sigma_{k}') \in \R$.
+    See Figure~\ref{cnfbnd.fig.third-part-diff} for an example.
+  \end{itemize}
+\end{definition}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{equation*}
+    \begin{gathered}
+      \begin{tikzpicture}
+        \node[intv, label={$x$}] (i) {};
+        \node[extv, label={$y_{1}$}] (u1) at ($(i)+(-2,-1)$) {1};
+        \node[extv, label={$y_{2}$}, right={1 of u1}] (u2) {2};
+        \node[extv, label={$y_{3}$}, right={1 of u2}] (u3) {3};
+        \draw[->] (i) edge (u1) edge (u2) edge (u3);
+      \end{tikzpicture}
+    \end{gathered}
+    \mapsto
+    \varepsilon_{\partial}(\rho(x) \sigma'_{1} \sigma'_{2} \sigma'_{3})
+    \cdot
+    \begin{gathered}
+      \begin{tikzpicture}
+        \node[extv, label={$y_{1} \sigma''_{1}$}] (u1) {1};
+        \node[extv, label={$y_{2} \sigma''_{2}$}, right={1 of u1}] (u2) {2};
+        \node[extv, label={$y_{3} \sigma''_{3}$}, right={1 of u2}] (u3) {3};
+      \end{tikzpicture}
+    \end{gathered}
+  \end{equation*}
+  \caption{The third part of the differential in $\Graphs^\varphi_R$}
+  \label{cnfbnd.fig.third-part-diff}
+\end{figure}
+
+Roughly speaking, in this third part of the differential, the removed vertex becomes infinitesimally close to the boundary of $M$.
+Each edge thus becomes $j^{*}\varphi = \varphi|_{\SFM_{M}(\{1\},\{2\})} = (g_{\partial} \otimes g)(\sigma_{R})$, and we multiply the labels accordingly.
+The vertex $u$ is then alone in its connected component and is thus identified with the integral of its label.
+
+For each finite set of external vertices $V$, there is a map $\nu_{R} : \SGraphs^{c_{M}, \szphi}_{R, R_{\partial}}(\varnothing, V) \to \Graphs^{\zphi}_{R}(V)$ defined as follows.
+Given some graph $\Gamma \in \SGraphs^{c_{M}, \szphi}_{R, R_{\partial}}(\varnothing, V)$, we remove all the edges from an aerial vertex to a terrestrial vertex and we multiply their endpoints by $\sigma_{R} \in R_{\partial} \otimes R$.
+We then obtain a graph where all the terrestrial vertices are zero-valent, and we identify those with the real number given by the integral over $\partial M$ of their labels.
+In this way, we obtain an element of $\Graphs^{\zphi}_{R}(V)$.
+This is a chain map, the part of the differential described in Figure~\ref{cnfbnd.fig.third-part-diff} being induced by Figure~\ref{cnfbnd.fig.collapse-aerial-terrestrial}.
+
+\begin{proposition}
+  The symmetric collection $\Graphs^{\varphi}_{R}$ is a Hopf right co\-mo\-dule over $\Graphs_{n}$.
+  The maps
+  \[ \nu_{R} : \SGraphs^{c_{M},\szphi}_{R}(\varnothing, -) \qiso \Graphs^{\zphi}_{R} \]
+  define a quasi-iso\-mor\-phism of Hopf right $\Graphs_{n}$-comodules.
+\end{proposition}
+\begin{proof}
+  We use an argument similar to the one of Section~\ref{cnf.sec.morphisms-are-quasi}.
+  Filter both complexes by the number of edges minus the number of vertices.
+  The only part of the differential which remains on the $\EE^{0}$ page is the contraction of aerial edges and the contraction of a subgraph into a terrestrial vertex induced by $c_{M}$, which is nonzero on trees only (see Definition~\ref{cnfbnd.def.c0} and Lemma~\ref{cnfbnd.lem.cphi-cm}, the summand induced by $\ell_1 \otimes e_{\partial M}$ vanishes because it strictly decreases the filtration).
+
+  It follows that both complexes split as a direct sum in terms of connected components, just like in Lemma~\ref{cnf.lem.partition-graph}.
+  We can now reuse the same ``trick'' we used for the proof of Lemma~\ref{cnf.lemma.same-cohomology}, to show that in cohomology, there is only one label for each connected component.
+  We thus reduce to the morphism $\nu : \SGraphs^{c_{0}}_{n}(\varnothing, V) \to \Graphs_{n}(V)$ from Proposition~\ref{cnfbnd.prop.qiso-sc} (tensored with the identity of $R$ for each connected component).
+  Since that morphism is a quasi-isomorphism, we obtain that the induced morphism on the $\EE^{1}$ page is an isomorphism.
+  It follows by standard spectral sequence arguments (the filtration is bounded below for a fixed $V$) that the morphism of the proposition is a quasi-isomorphism.
+\end{proof}
+
+We would now like to connect $\Graphs^{\zphi}_{R}(V)$ with $\GGt{A}(V)$.
+
+\begin{definition}
+  The \textbf{full labeled graph complex} $\fGC_{R}$\index{fGCR@$\fGC_{R}$, full graph complex} is the CDGA of aerial graphs with only internal vertices, the differential being defined in a manner similar to Definition~\ref{cnfbnd.def.graphs-phi}.
+  The \textbf{partition function} $\Zphi : \fGC_{R}[n] \to \R$\index{partition function} is induced by $\SZphi$.
+  Let $\R_{\varphi}$\index{Rphi@$\R_{\varphi}$} be the one-dimensional $\fGC_{R}[n]$-module induced by $\Zphi$.
+\end{definition}
+
+The (shifted) commutative algebra $\fGC_{R}$ is free, generated by the submodule $\GC_{R}$ of connected graphs.
+The differential of $\fGC_{R}$ turns $\GC_{R}^{\vee}$ into a $\Lie_{n}$-algebra up to homotopy (see Remark~\ref{cnfbnd.rmk.maurer-cartan}, and note that the part of the differential that removes one vertex may produce more than two connected components, so this is not a $\Lie_{n}$-algebra), and $\Zphi$ defines a Maurer--Cartan element $\zphi \in \GC_{R}^{\vee}$.
+
+We can reuse the counting argument from Proposition~\ref{cnf.prop.strong-vanishing} (and the last property of the propagator in Proposition~\ref{cnfbnd.prop.propagator}) to show that the partition function vanishes on any graph with no bivalent vertex labeled by $1_{R}$.
+We can then define $\Ze : \fGC_{R} \to \R$\index{Ze@$\Ze$} to be the algebra morphism which vanishes on all connected graphs $\gamma$ except those with a single vertex.
+If that vertex is labeled by $x \in R$ we set $\Ze(\gamma) = \int_{M} g(x)$.
+
+Unfortunately, we still cannot prove directly that $\Zphi = \Ze$; however, we can follow the discussion at the beginning of Section~\ref{cnf.sec.proof-theorem}.
+Let $\Omega^{*}(\Delta^{1}) = S(t,dt)$ be the algebra of polynomials forms on $\Delta^{1}$, a path object in the category of CDGAs.
+We then obtain:
+
+\begin{proposition}
+  There exists a homotopy $h : \fGC_{R}[n] \to \Omega^{*}(\Delta^{1})$ such that the following diagram commutes:
+  \[ \begin{tikzcd}
+      {} & \fGC_{R}[n] \dlar[swap]{\Zphi} \drar{\Ze} \dar{h} \\
+      \R & \Omega^{*}(\Delta^{1}) \lar{\sim}[swap]{d_{1}} \rar{d_{0}}[swap]{\sim} & \R
+    \end{tikzcd}
+  \qed \]
+\end{proposition}
+
+The reduced labeled graph comodule can be viewed as a tensor product $\R_{\varphi} \otimes_{\fGC_{R}[n]} \Tw \Gra_{R}(V)$.
+We can then define $\Graphs'_{R} \coloneqq \Omega^{*}(\Delta^{1})_{h} \otimes_{\fGC_{R}[n]} \Tw \Gra_{R}$ and $\Graphs_{R}^{\ze} \coloneqq \R_{\varepsilon} \otimes_{\fGC_{R}[n]} \Tw \Gra_{R}$\index{GraphsRe@$\Graphs_{R}^{\ze}$}.
+Both symmetric collections define Hopf right $\Graphs_{n}$-comodules.
+
+\begin{proposition}
+  \label{cnfbnd.prop.zigzag-homotopy}
+  We have a zigzag of quasi-isomorphisms of comodules:
+  \[ \Graphs_{R}^{\ze} \qiso* \Graphs'_{R} \qiso \Graphs_{R}^{\zphi}. \]
+\end{proposition}
+\begin{proof}
+  The $\fGC_{R}[n]$-module $\Tw \Gra_{R}(V)$ is quasi-free and is equipped with a good filtration, hence $\Tw \Gra_{R}(V) \otimes_{\fGC_{R}[n]} (-)$ preserves quasi-isomorphisms.
+  The claim now follows from the previous proposition.
+\end{proof}
+
+We can now do the same construction as $\Graphs^{\ze}_{R}$ but with $B$ replacing $R$, $\Delta_{B}$ (from Definition~\ref{cnfbnd.def.delta-b}) replacing $\Delta_{R}$, $\sigma_{B}$ replacing $\sigma_{R}$, and taking as ``partition function'' the map which sends a graph with a single vertex labeled by $b$ to $\varepsilon_{B}(b)$ and all other connected graphs to zero.
+We obtain a Hopf right $\Graphs_{n}$-comodule $\Graphs_{B}$, where graphs with internal components containing at least two vertices vanish, and an isolated internal vertex labeled by $b \in B$ is identified with $\varepsilon_{B}(b)$.
+
+Finally, we can consider a quotient $\Graphs_{A}$\index{GraphsA@$\Graphs_{A}$} of $\Graphs_{B}$, where we apply the projection $\pi : B \to A$ to all the remaining labels.
+
+It is not necessarily the case that the two morphisms $\varepsilon, \varepsilon' : \operatorname{cone}(\rho) \to \R[-n+1]$, defined respectively by the composites $(\int_{M} g(-), \int_{\partial M} g_{\partial}(-))$ and $(\varepsilon_{B}f, \varepsilon_{B_{\partial}}f_{\partial})$, are equal.
+Nevertheless, up to rescaling $\varepsilon$ (which induces an automorphism of $\Graphs^{\ze}_{R}$), they induce the same map up to quasi-isomorphism, $H^{n-1}(\cone(\rho))$ being one-dimensional.
+Since all cochain complexes are fibrant and cofibrant, we obtain a diagram:
+\begin{equation}
+  \begin{tikzcd}
+    {} & \cone(\rho) \dlar[swap]{\varepsilon} \drar{\varepsilon'} \dar{\varepsilon_{h}} \\
+    \R[-n+1] & P[-n+1] \lar{\sim}[swap]{d_{1}} \rar{d_{0}}[swap]{\sim} & \R[-n+1]
+  \end{tikzcd}
+\end{equation}
+where $P$ is the standard path object for the base field in the category of cochain complexes.
+The chain map $\varepsilon_{h}$ is uniquely determined by a graded map $h : \cone(\rho) \to \R[-n+1]$ satisfying $\varepsilon(x) - \varepsilon'(x) = h(dx)$.
+
+Since the product of $\fGC_{R}$ is merely given by the disjoint union of graphs, this yield a homotopy between the two morphisms $\fGC_{R}[n] \to \R$ induced.
+Similarly to Proposition~\ref{cnfbnd.prop.zigzag-homotopy}, we then obtain a zigzag of quasi-isomorphisms:
+\begin{equation}
+  \Graphs^{\ze}_{R} \qiso* \Graphs''_{R} \qiso \Graphs^{\ze'}_{R}.
+\end{equation}
+
+Now $\varepsilon'$ is compatible with $(\varepsilon_{B}, \varepsilon_{B_{\partial}})$, we obtain the following proposition:
+
+\begin{proposition}
+  We have quasi-isomorphisms of Hopf right $\Graphs_{n}$-comodules
+  \[ \Graphs_{R}^{\ze'} \tkrightarrow{f_{*}} \Graphs_{B} \tkrightarrow{\pi_{*}} \Graphs_{A} \]
+  which apply $f : R \to B$ (resp.\ $\pi : B \to A$) to all the labels.
+\end{proposition}
+\begin{proof}
+  Filter the graph comodules by the number of edges.
+  On each $\EE^{0}$ page, only the differentials from $R$ (resp.\ $B$, $A$) remain.
+  Since $f$ and $\pi$ are a quasi-isomorphism, it follows that the induced morphisms on $\EE^{1}$ pages is an isomorphism.
+  Standard spectral sequence arguments then imply that $f_{*}$ and $\pi_{*}$ are quasi-iso\-mor\-phisms.
+\end{proof}
+
+We can now define a morphism $\Graphs_{A} \to \GGt{A}$ which maps all graphs with internal vertices to zero, and which sends an edge $e_{vv'}$ between external vertices to $\tilde{\omega}_{vv'}$.
+Then we can mimic the proof of Proposition~\ref{cnf.prop.graph-A-G-A} in a straightforward way (note that as soon as we filter by $\# \text{edges} - \# \text{vertices}$ the perturbed relations of $\GGt{A}$ become the usual relations of $\GG{A}$):
+\begin{proposition}
+  \label{cnfbnd.qiso-graphs-ga}
+  This defines a quasi-isomorphism of right Hopf comodules:
+  \[ (\Graphs_{A}, \Graphs_{n}) \to (\GGt{A}, \enV). \]
+\end{proposition}
+
+We can also copy the proof of Proposition~\ref{cnf.prop.surj-cohom} and use Theorem~\ref{cnfbnd.thm.ga-same-cohom} to obtain:
+\begin{proposition}
+  The morphism $\omega : \SGraphs^{c_{\varphi}, \szphi}_{R}(\varnothing, -) \to \OmPA^{*}(\SFM_{M}(\varnothing, -))$ is a quasi-isomorphism.
+\end{proposition}
+
+Finally we can summarize this section as:
+\begin{theorem}[Precise version of Theorem~\ref{cnfbnd.thm.A}]
+  \label{cnfbnd.thm.model-ga}
+  Let $M$ be a simply connected, smooth, compact manifold with boundary of dimension at least $5$, and assume either that it admits a surjective pretty model or that $\dim M \geq 7$ so that it admits a PLD.
+  Let $A$ be the CDGA model built from the resulting PLD model.
+
+  Then the symmetric collection of CDGAs $\GGt{A}$ is quasi-isomorphic to $\OmPA^{*}(\SFM_{M}(\varnothing,-))$.
+  If moreover $M$ is framed, then the Hopf right comodule $(\GGt{A}, \enV)$ is quasi-isomorphic to $(\OmPA^{*}(\SFM_{M}(\varnothing, -)), \OmPA^{*}(\FM_{n}))$.
+  \qed
+\end{theorem}
+
+\begin{corollary}[Corollary~\ref{cnfbnd.cor.I}]
+  The real homotopy type of configuration spaces on a simply connected, smooth manifold $M$ with simply connected boundary only depends on the real homotopy type of the manifold as soon as:
+  \begin{itemize}
+  \item either $\dim M \geq 5$ and $M$ admits a surjective pretty model;
+  \item or $\dim M \geq 7$.
+  \end{itemize}
+\end{corollary}
+
+\begin{example}
+  We can apply this to $M = D^{n}$, using the surjective pretty model from Example~\ref{cnfbnd.exa.model-dn}.
+  Recall that in this case, $A = \R$, $\Delta_{A} = 0$, $\sigma_{A} = 0$, and $\GGt{A}$ is isomorphic to $\enV$ as a Hopf right comodule over itself (see Example~\ref{cnfbnd.exa.model-dn-trois}).
+  We then ``recover'' the already known fact that $\SFM_{D^{n}}(\varnothing,-)$ is (Hopf) formal as a right $\FM_{n}$-module (though that ``proof'' is of course circular).
+
+  The Hopf right $\Graphs_{n}$-comodule $\Graphs_{A}$ is isomorphic to $\Graphs_{n}$ seen as a comodule over itself.
+  The augmentation $\varepsilon_{B} : B \to \R[-n+1]$ yields a Maurer--Cartan element $\ze$\index{ze@$\ze$} in the abelian $\hoLie_{n}$-algebra $\GC_{A}^{\vee}$ (see Remark~\ref{cnfbnd.rmk.maurer-cartan}), given in the dual basis by the graph with a single vertex labeled by $\vol_{n}$.
+  The twisted $\hoLie_{n}$-algebra $\GC_{A}^{\vee,\ze}$ is then isomorphic to $\GC^{\vee}_{n}$ from Section~\ref{cnfbnd.sec.graph-complexes}.\footnote{The twisting ensures that dead ends are not contractible, see the proof of Proposition~\ref{cnf.prop.mph-2}.}
+\end{example}
+
+\subsection{Proof of Theorem~\ref{cnfbnd.thm.B}}
+
+\begin{proposition}
+  Assume that $n = \dim M \ge 5$.
+  Then for all finite sets $U$ and $V$, $H^{*}(\SGraphs^{c_{\varphi},\szphi}_{R}(U,V))$ has the same dimension in each degree as
+  \[H^{*}(\SFM_{M}(U,V)) \cong H^{*}(\Conf_{U}(\partial M)) \otimes H^{*}(\Conf_{V}(M)). \]
+\end{proposition}
+\begin{proof}
+  We use a spectral sequence argument similar to the proof in~\cite[Section~5]{Willwacher2015a}.
+  The assumption about the dimension of $M$ allows us to apply Theorem~\ref{cnfbnd.thm.model-ga} to $M$ and Theorem~\ref{cnf.thm.A} to $\partial M$.
+
+  First filter $\SGraphs^{c_{\varphi}, \szphi}_{R}(U,V)$ by the number of edges minus the number of vertices as in the proof of the previous proposition.
+  We get as an $\EE^{0}$ page the graded module $\SGraphs_{R}(U,V)$ together with the differential which contracts edges connected to an aerial internal vertex.
+  Filtering this new complex by the number of vertices that are not of the type ``bivalent, internal, aerial, and labeled by $1_{R}$'' as in the proof of~\cite[Section~5]{Willwacher2015a}, and using the previous proposition, we obtain that $\EE^{0}$ is quasi-isomorphic to its quotient $\mathcal{Q}(U,V)$ in which:
+  \begin{itemize}
+  \item graphs containing bivalent internal aerial vertices labeled by $1_{R}$ other than those appearing in a zigzag of the type shown in Figure~\ref{cnfbnd.fig.zigzag-graphs_R} are set to zero;
+  \item graphs with edges between aerial and terrestrial vertices other than those appearing in a zigzag of the type shown in Figure~\ref{cnfbnd.fig.zigzag-graphs_R} are set to zero;
+  \item an edge $e_{vv'}$ between aerial vertices is identified with $(-1)^{n} e_{v'v}$.
+  \end{itemize}
+
+  \begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+      \node (0) {};
+      \node (o) [right = 3cm of 0] {};
+      \draw (0) to (o);
+      \node[extv, label = {\scriptsize $x$}] (1) [right = 0.5cm of 0] {$1$};
+      \node[extv, label = {\scriptsize $y$}] (2) [right = 1.3cm of 1] {$2$};
+      \node[intv, label = {\scriptsize $1_{R}$}] (i) [right = 0.5cm of 1, yshift=1cm] {};
+      \draw[->] (i) edge (1) edge (2);
+    \end{tikzpicture}
+    \caption{A zigzag which represents an edge in $\Graphs_{R_{\partial}}(U)$.}
+    \label{cnfbnd.fig.zigzag-graphs_R}
+  \end{figure}
+
+  We may identify the underlying graded module of $\mathcal{Q}(U,V)$ with the tensor product $\Graphs_{R}(V) \otimes \Graphs_{R_{\partial}}(U)$.
+  The induced differential $d^{0}$ contracts edges in $\Graphs_{R}(V)$ (but not $\Graphs_{R_{\partial}}(V)$).
+  We obtain that the underlying graded module of the $\EE^{1}$ page is isomorphic to
+  \[ H^{*}(\Graphs_{R}(V), d^{0}) \otimes \Graphs_{R_{\partial}}(V). \]
+
+  The differential $d^{1}$ is induced by the part of the differential which decreases the filtration by exactly $1$.
+  By comparing with the proof of Theorem~\ref{cnfbnd.thm.model-ga} (and by extension with the proof of Theorem~\ref{cnf.thm.A}), we obtain that the complex
+  \[\bigl( H^{*}(\Graphs_{R}(V), d^{0}), d^{1} \bigr) \]
+  is isomorphic to $\GG{A}(V)$, which has the same Betti numbers as $\Conf_{V}(M)$ by Theorem~\ref{cnfbnd.thm.ga-same-cohom}.
+  Moreover, by inspection, $d^{1}$ is given on $\Graphs_{R_{\partial}}(U)$ by the contraction of edges (and the multiplication of labels).
+  Applying Theorem~\ref{cnf.thm.A} to $\partial M$, we thus obtain that the $\EE^{2}$ page of the spectral sequence is isomorphic to:
+  \[ H^{*}(\GG{A}(V)) \otimes \GG{B_{\partial}}(U) \cong H^{*}(\Conf_{V}(M)) \otimes \GG{B_{\partial}}(U). \]
+
+  Since any remaining cocycle is represented by a cocycle in $\SGraphs^{c_{\varphi}, \szphi}_{R}(U,V)$, we obtain that the spectral sequence abuts at this stage.
+\end{proof}
+
+\begin{proposition}
+  Assume that $n = \dim M \ge 5$.
+  Then the morphism
+  \[ \omega : \SGraphs^{c_{\varphi},\szphi}_{R,\Omega^{*}(\partial M)}(U,V) \to \OmPA^{*}(\SFM_{M}(U,V)) \]
+  is a quasi-isomorphism of CDGAs for all $U$, $V$.
+\end{proposition}
+\begin{proof}
+  We know that $H^{*}(\SFM_{M}(U,V))$ is isomorphic to the tensor product
+  \[ H^{*}(\Conf_{V}(M)) \otimes H^{*}(\Conf_{U}(\partial M)). \]
+  We can then use the previous proposition and an inductive argument similar to the proof of Proposition~\ref{cnf.prop.surj-cohom} to obtain the result.
+  Indeed we can represent any cocycle in $H^{*}(\Conf_{V}(M))$ by a cocycle in $\Graphs^{\varphi}_{R}(V)$, and each cocycle in $H^{*}(\Conf_{U}(\partial M))$ by a cocycle in $\Graphs^{\varphi_{\partial}}_{R_{\partial}}(U)$, and then take the disjoint union of the resulting graphs.
+\end{proof}
+
+We can now bundle everything together into a theorem, with a summary of our hypotheses.
+
+\begin{theorem}[Precise version of Theorem~\ref{cnfbnd.thm.B}]
+  \label{cnfbnd.thm.sgraphs-sfm}
+  Let $M$ be a smooth, simply connected manifold with a simply connected boundary, of dimension $n \geq 5$.
+  Suppose also that $M$ admits a surjective pretty model, or that $n \geq 7$ so that it admits a PLD model as in Equation~\eqref{cnfbnd.eq.nice-diagram}.
+
+  Then for each $U$, $V$, then the CDGA $\SGraphs^{c_{M}, \szphi}_{R,R_{\partial}}(U,V)$ is quasi-isomorphic to $\OmPA^{*}(\SFM_{M}(U,V))$, and this is compatible with the symmetric group actions.
+
+  If $M$ is framed, then together with Willwacher's morphism~\cite{Willwacher2015a}, this defines a quasi-isomorphism of right Hopf comodules
+  \[ (\SGraphs^{c_{M}, \szphi}_{R, R_{\partial}}, \SGraphs^{c_{0}}_{n}) \simeq (\OmPA^{*}(\SFM_{M}), \OmPA^{*}(\SFM_{n})). \]
+\end{theorem}
+
+It would be an interesting question to know how much $\szphi$ can be simplified.
