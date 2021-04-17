@@ -1,0 +1,92 @@
+\documentclass[tikz]{standalone}
+
+\tikzset{pt/.style={circle, fill = black, draw, minimum size = 0.1cm, inner sep = 0pt}}
+\newcommand{\mytorus}{(-3.5,0) .. controls (-3.5,1.5) and (-1.5,2) .. (0,2)}
+\newcommand{\hehe}[1]{%
+  \begin{tikzpicture}
+      \draw \mytorus;
+      \draw[xscale=-1] \mytorus;
+      \draw[rotate=180] \mytorus;
+      \draw[yscale=-1] \mytorus;
+      \draw (-2,.2) .. controls (-1.5,-0.3) and (-1,-0.5) .. (0,-.5) .. controls (1,-0.5) and (1.5,-0.3) .. (2,0.2);
+      \draw (-1.75,0) .. controls (-1.5,0.3) and (-1,0.5) .. (0,.5) .. controls (1,0.5) and (1.5,0.3) .. (1.75,0);
+
+      #1
+  \end{tikzpicture}%
+}
+
+\usetikzlibrary{calc}
+
+
+\begin{document}
+\newcommand{\maxt}{15}
+\foreach \t in {0,...,\maxt} {
+  \hehe{
+    \node (a) at (-1,1) {};
+    \node (b) at (1,1) {};
+    \node (o) at (0,1) {};
+
+    \draw[->] (a) -- (o);
+    \draw[->] (b) -- (o);
+    \draw ($(a)!\t/(\maxt+1)!(o)$) node[pt, blue] {};
+    \draw ($(b)!\t/(\maxt+1)!(o)$) node[pt, red] {};
+  }
+}
+
+\hehe{
+  \filldraw [densely dotted, fill = gray!20] (-1, 2) to[bend left] (0,1) to[bend left] (1,2);
+  \filldraw [fill = gray!40] (0,2) ellipse (1 and 0.5);
+  \draw (-0.5,2) node[pt, blue] {};
+  \draw (0.5,2) node[pt, red] {};
+}
+
+\foreach \t in {0,...,\maxt}{
+  \hehe{
+    \filldraw [densely dotted, fill = gray!20] (-1, 2) to[bend left] (0,1) to[bend left] (1,2);
+    \filldraw [fill = gray!40] (0,2) ellipse (1 and 0.5);
+    \draw (-0.5,2) node[pt, blue] {};
+    \draw (0.5,2) node[pt, red] {};
+   
+    \node (c) at (-0.6,0.7) {};
+    \node (o) at (0,1) {};
+    \draw [->] (c) -- (o);
+    \draw ($(c)!\t/(\maxt+1)!(o)$) node[pt, green] {};
+  }
+}
+
+\hehe{
+  \filldraw [densely dotted, fill = gray!20] (-1, 2) to[bend left] (0,1) to[bend left] (1,2);
+  \filldraw [fill = gray!40] (0,2) ellipse (1 and 0.5);
+  \draw (-0.4,1.9) node[pt, green] {};
+  \begin{scope}[xshift=-10,yshift=5]
+    \filldraw [densely dotted, fill = gray!60] (0.1,3) to[bend left] (0.8,2) to[bend left] (1.5, 3);
+    \filldraw [fill = gray!60] (0.8, 3) ellipse (0.7 and 0.3);
+    \draw (0.4, 3) node[pt, blue] {};
+    \draw (1.2, 3) node[pt, red] {};
+  \end{scope}
+}
+
+\foreach \t in {0,...,\maxt}{
+  \hehe{
+    \node (a) at (-1,1) {};
+    \node (b) at (1,1) {};
+    \node (c) at (0, 1.8) {};
+    \node (o) at (0,1) {};
+
+    \draw[->] (a) -- (o);
+    \draw[->] (b) -- (o);
+    \draw[->] (c) -- (o);
+    \draw ($(a)!\t/(\maxt+1)!(o)$) node[pt, blue] {};
+    \draw ($(b)!\t/(\maxt+1)!(o)$) node[pt, red] {};
+    \draw ($(c)!\t/(\maxt+1)!(o)$) node[pt, green] {};
+  }
+}
+
+\hehe{
+  \filldraw [densely dotted, fill = gray!20] (-1,2) to[bend left] (0,1) to[bend left] (1,2);
+  \filldraw [fill = gray!40] (0,2) ellipse (1 and 0.5);
+  \draw (0.5, 2) node[pt, blue] {};
+  \draw (-0.5, 2) node[pt, red] {};
+  \draw (0,2.3) node[pt, green] {};
+}
+\end{document}

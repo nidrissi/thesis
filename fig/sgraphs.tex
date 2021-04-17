@@ -1,0 +1,19 @@
+\[
+  \begin{gathered}
+    \begin{tikzpicture}[scale=0.3]
+      \node (0) {};
+      \node (o) [right = 3cm of 0] {};
+      \draw[dotted] (0) to (o);
+      \node[extv] (u) [right = 0.5cm of 0] {$1$};
+      \node[intv] (i1) [right = 1cm of u] {};
+      \node[extv] (v1) [above = 1cm of u] {$1$};
+      \node[extv] (v2) [right = 1cm of v1] {$2$};
+      \node[intv] (i2) [right = 1cm of v2] {};
+      \draw[->] (v1) edge (u) edge (i1) edge (v2);
+      \draw[->] (v1) to (v2);
+      \draw[->] (i2) edge (v2) edge (i1);
+    \end{tikzpicture}
+  \end{gathered}
+  \in
+  \SGraphs_n(1,2)
+\]

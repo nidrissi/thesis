@@ -1,0 +1,2365 @@
+\chapter{The Lambrechts--Stanley Model of Configuration Spaces}
+\label{chap.2}
+\blkftnt{Based on ``The Lambrechts--Stanley Model of Configuration Spaces'', preprint (submitted), \href{https://arxiv.org/abs/1608.08054}{\nolinkurl{arXiv:1608.08054}}.}
+
+Let $M$ be a closed smooth $n$-manifold and consider the ordered configuration space of $k$ points in $M$:\index{ConfkM@$\Conf_{k}(M)$, configuration space}
+\[ \Conf_{k}(M) \coloneqq \{ (x_{1}, \dots, x_{k}) \in M^{n} \mid x_{i} \neq x_{j} \; \forall i \neq j \}. \]
+
+The homotopy type of these spaces is notoriously hard to compute.
+For example there exist two homotopy equivalent (non simply connected) closed $3$-manifolds such that their configuration spaces are not homotopy equivalent~\cite{LongoniSalvatore2005}.
+
+A theorem of Lambrechts--Stanley~\cite{LambrechtsStanley2008} shows that a simply connected closed manifold $M$ always admits a Poincaré duality model $A$ (in the sense of rational homotopy theory).
+They build a CDGA $\GG{A}(k)$~\cite{LambrechtsStanley2008a} out of $A$ and show that this CDGA is quasi-isomorphic as $\Sigma_{k}$-dg-modules to $\mathrm{A}^{*}_{\mathrm{PL}}(\Conf_{k}(M))$.
+
+When $M$ is a smooth complex projective variety, Kriz~\cite{Kriz1994} had previously shown that $\GG{H^{*}(M)}(k)$ is actually a rational CDGA model for $\Conf_{k}(M)$.
+The CDGA $\GG{H^{*}(M)}(k)$ is the $\mathsf{E}^{2}$ page of a spectral sequence of Cohen--Taylor~\cite{CohenTaylor1978} that converges to the cohomology of $\Conf_{k}(M)$.
+Totaro~\cite{Totaro1996} has shown that for a smooth complex compact projective variety, the spectral sequence only has one nonzero differential.
+When $k = 2$, $\GG{A}(2)$ is known to be a model of $\Conf_{2}(M)$ either when $M$ is $2$-connected~\cite{LambrechtsStanley2004} or when $\dim M$ is even~\cite{CordovaBulens2015}.
+Lambrechts and Stanley conjecture that $\GG{A}(k)$ is a rational model of $\Conf_{k}(M)$ for any simply connected manifold~\cite{LambrechtsStanley2008}.
+
+We prove this conjecture over $\R$ for manifolds of dimension at least $4$.
+This proves as a corollary that the real homotopy type of $\Conf_{k}(M)$ only depends on the real homotopy type of $M$ and its Poincaré duality.
+
+We use that the space $\Conf_{k}(M)$ is homotopy equivalent to its Ful\-ton--Mac\-Pher\-son compactification $\FM_{M}(k)$~\cite{FultonMacPherson1994,AxelrodSinger1994,Sinha2004}.
+When $M$ is framed, these compactifications assemble into a right module $\FM_{M}$ over the Fulton--MacPherson operad $\FM_{n}$, an operad weakly equivalent to the little $n$-disks operad~\cite{May1972,BoardmanVogt1973}.
+We show that the Lambrechts--Stanley model is compatible with this action of the little disks operad.
+
+The little $n$-disks operad $\DD_{n}$ is formal~\cite{Kontsevich1999,Tamarkin2003,LambrechtsVolic2014,FresseWillwacher2015}, i.e.\ its operad of singular chains $C_{*}(\DD_{n})$ is quasi-isomorphic to its homology $\en \coloneqq H_{*}(\DD_{n})$.
+This formality result can be strengthened~\cite{LambrechtsVolic2014,FresseWillwacher2015} so that it holds in the category of Hopf cooperads, taking into account the CDGA structures of $\OmPA^{*}(\FM_{n}(k))$ and the dual $\enV(k)$.
+
+By general arguments, the formality theorem implies that there exists a homotopy class of right $\en$-modules $\en[M]$ such that the pair $(\en[M], \en)$ is quasi-isomorphic to the chain complex of the pair $(\FM_{M}, \FM_{n})$.
+We show that $\GG{A} = \{\GG{A}(k)\}_{k \leq 0}$ is a Hopf right $\enV$-comodule whose dual is a representative of $\en[M]$.
+Our results are summarized by:
+
+\begin{theoremintro}[{Theorem~\ref{cnf.thm.Abis}}]
+  \label{cnf.thm.A}
+  Let $M$ be a smooth simply connected closed $n$-manifold, where $n \geq 4$.
+  Then for any Poincaré duality model $A$ of $M$ and for all $k \geq 0$, the CDGA $\GG{A}(k)$ defined by Lambrechts and Stanley is $\Sigma_{k}$-equivariantly weakly equivalent to $\OmPA^{*}(\FM_{M}(k))$.
+
+  If $\chi(M) = 0$, the collection $\GG{A} = \{ \GG{A}(k) \}_{k \geq 0}$ moreover forms a Hopf right $\enV$-comodule.
+  If $M$ is framed, then $(\GG{A}, \enV)$ is weakly equivalent to $(\OmPA^{*}(\FM_{M}), \OmPA^{*}(\FM_{n}))$ as a Hopf right comodule.
+\end{theoremintro}
+
+As Corollary~\ref{cnf.cor.only-depends}, we obtain that if two smooth closed simply connected manifolds of dimension at least $4$ have the same real homotopy type, then so do their configuration spaces.
+
+In dimension $3$, the only simply connected manifold is the $3$-sphere, which is framed.
+The Lambrechts--Stanley conjecture is satisfied over $\Q$ in this case (Proposition~\ref{cnf.prop.result-s3}), and the collection $\GG{H^{*}(S^{3})}$ is still a Hopf right $\enV[3]$-comodule.
+We conjecture that the model is also compatible with the action of the Fulton--MacPherson operad.
+
+Factorization homology, an invariant of framed $n$-manifolds defined from an $\DD_{n}$-algebra, may be computed via a derived tensor product over the $\DD_{n}$ operad~\cite{AyalaFrancis2015}.
+The Taylor tower in the Goowillie--Weiss calculus of embeddings may similarly be computed via a derived Hom~\cite{GoodwillieWeiss1999,BoavidaWeiss2013}.
+It follows from a result of~\cite[Section 5.1]{Turchin2013} that $\FM_{M}$ may be used for this purpose.
+Therefore our theorem shows that $\GG{A}$ may be used for computing factorization homology or the Taylor tower.
+
+The proof of this theorem is inspired by Kontsevich's proof of the formality theorem, and is radically different from the ideas of the paper~\cite{LambrechtsStanley2008a}.
+It involves an intermediary Hopf right comodule of labeled graphs $\Graphs_{R}$.
+This comodule is similar to a comodule developed by Campos--Willwacher~\cite{CamposWillwacher2016}, which is isomorphic to our construction applied to $R = S(\tilde{H}^{*}(M))$.
+Despite this similarity, their whole approach is different, and they manage to prove that $\Graphs_{S(\tilde{H}^{*}(M))}$ is quasi-isomorphic to $\OmPA^{*}(\FM_{M})$ even for non simply connected manifolds.
+They also prove that in the simply connected case, the real homotopy types of configuration spaces only depend on the real homotopy type of the manifold.
+
+\paragraph{Outline}
+
+In Section~\ref{cnf.sec.backgr-recoll}, we recall some background on the little disks operad, the Fulton--MacPherson compactification, the proof of Kontsevich formality, Poincaré duality CDGAs, and the Lambrechts--Stanley CDGAs.
+In Section~\ref{cnf.sec.model}, we build out of these CDGAs a Hopf right $\enV$-comodule $\GG{A}$.
+In Section~\ref{cnf.sec.label-graphs-stat}, inspired by the proof of the formality theorem, we construct the labeled graph complex $\Graphs_{R}$ which will be used to connect this comodule to $\OmPA^{*}(\FM_{M})$.
+In Section~\ref{cnf.sec.proof-theorem}, we prove that the zigzag of Hopf right comodule morphisms between $\GG{A}$ and $\OmPA^{*}(\FM_{M})$ is a weak equivalence.
+In Section~\ref{cnf.sec.fact-homol-e_n}, we use our model to compute factorization homology of framed manifolds and we compare the result to a complex obtained by Knudsen.
+Finally, in Section~\ref{cnf.sec.oriented-surfaces} we work out a variant of our theorem for the only simply connected surface using the formality of the framed little $2$-disks operad, and we present a conjecture about higher dimensional oriented manifolds.
+
+
+\section{Background and recollections}
+\label{cnf.sec.backgr-recoll}
+
+We assume basic proficiency with Hopf (co)operads and (co)modules over (co)operads.
+References include the book~\cite{LodayVallette2012} for (co)operads and the books~\cite{Fresse2009,Fresse2017} for (co)modules over (co)operads and for Hopf (co)operads.
+
+\subsection{Conventions}
+\label{cnf.sec.conventions}
+
+All our dg-modules will have a cohomological grading:
+\[ V = \bigoplus_{n \in \mathbb{Z}} V^{n}, \]
+and the differentials raise degrees by one: $\deg(dx) = \deg(x) + 1$.
+If $V,W$ are dg-modules and $v \otimes w \in V \otimes W$, we let $(v \otimes w)^{21} = (-1)^{(\deg v) (\deg w)} w \otimes v$ and we extend this linearly to $V \otimes W$.
+We will let $V[k]$ be the desuspension, defined by $(V[k])^{n} = V^{n+k}$.
+We will call CDGAs the (graded) commutative unital algebras in the category of dg-modules.
+
+\begin{remark}
+  \label{cnf.rmk.grading}
+  There is a Quillen adjunction between the category of $\mathbb{Z}$-graded CDGAs and the category of $\mathbb{N}$-graded CDGAs.
+  If $A$ is a cofibrant $\mathbb{N}$-graded CDGA which is connected, i.e.\ satisfying $H^{0}(A) = \Bbbk$, then it is also cofibrant when seen as a $\mathbb{Z}$-graded CDGA.
+  Therefore if two connected $\mathbb{N}$-graded CDGAs are weakly equivalent (quasi-isomorphic) in the category of $\mathbb{Z}$-graded CDGAs, then they are also weakly equivalent in the category of $\mathbb{N}$-graded CDGAs.
+\end{remark}
+
+We index our (co)operads by finite sets instead of integers to ease the writing of some formulas.
+If $W \subset U$ is a subset, we define the quotient $U/W = (U - W) \sqcup \{*\}$, where $*$ represents the class of $W$; note that $U/\varnothing = U \sqcup \{ * \}$.
+An operad $\PP$ is given by a functor from the category of finite sets and bijections (also known as a symmetric collection) to the category of dg-modules, a unit $\Bbbk \to \PP(\{*\})$, as well as composition maps for every pair of sets:
+\[ \circ_{W} : \PP(U/W) \otimes \PP(W) \to \PP(U), \]
+satisfying the usual associativity, unity and equivariance conditions.
+
+Dually, a cooperad $\CC$ is given by a symmetric collection, a counit $\CC(\{*\}) \to \Bbbk$, and cocomposition maps for every pair $(U \supset W)$
+\[ \circ_{W}^{\vee} : \CC(U) \to \CC(U/W) \otimes \CC(W). \]
+
+Using the terminology of Fresse~\cite{Fresse2017}, we call Hopf cooperads the cooperads in the category of CDGAs.
+
+\begin{remark}
+  The constructions of Fresse~\cite{Fresse2017} are done in the category of $\mathbb{N}$-graded CDGAs.
+  They extend to the setting of $\mathbb{Z}$-graded CDGAs.
+  The previous remark extends to Hopf cooperads.
+\end{remark}
+
+Let $\underline{k} = \{1,\dots,k\}$.
+We recover the usual notion of a cooperad indexed by the integers by considering the collection $\{\CC(\underline{k})\}_{k \ge 0}$, and the cocomposition maps $\circ_{i}^{\vee} : \CC(\underline{k+l-1}) \to \CC(\underline{k}) \otimes \CC(\underline{l})$ correspond to $\circ_{\{i, \dots, i+l-1\}}^{\vee}$.
+
+We do not generally assume that our (co)operads are trivial in arity zero, but they will satisfy $\PP(\varnothing) = \Bbbk$ (resp.\ $\CC(\varnothing) = \Bbbk$).
+With this assumption we get (co)operad structures which are actually equivalent to the structure of $\Lambda$-(co)operads considered by Fresse~\cite{Fresse2017}.
+
+We will consider right (co)modules over (co)operads.\index{right (co)module}
+Given an operad $\PP$, a right $\PP$-module is a symmetric collection $\MM$ equipped with composition maps:
+\[ \circ_{W} : \MM(U/W) \otimes \PP(W) \to \MM(U) \]
+satisfying the usual associativity, unity and equivariance conditions.
+A right comodule over a cooperad is defined dually.
+If $\CC$ is a Hopf cooperad, then a right Hopf $\CC$-comodule is a $\CC$-comodule $\NN$ such that all the $\NN(U)$ are CDGAs and all the maps $\circ_{W}^{\vee}$ are morphisms of CDGAs.
+
+\begin{definition}
+  \label{cnf.def.mph-comod}
+  Let $\CC$ (resp.\ $\CC'$) be a Hopf cooperad and $\NN$ (resp.\ $\NN'$) be a Hopf right comodule over $\CC$ (resp.\ $\CC'$).
+  A \textbf{morphism of Hopf right comodules}\index{morphism of Hopf right comodules} $f = (f_{\NN}, f_{\CC}) : (\NN, \CC) \to (\NN', \CC')$ is a pair consisting of a morphism of Hopf cooperads $f_{\CC} : \CC \to \CC'$, and a map of Hopf right $\CC'$-comodules $f_{\NN} : \NN \to \NN'$, where $\NN$ has the $\CC$-comodule structure induced by $f_{\CC}$.
+  It is said to be a \textbf{quasi-isomorphism} if both $f_{\CC}$ and $f_{\NN}$ are quasi-isomorphisms of dg-modules in each arity.
+\end{definition}
+
+If the context is clear, we will allow ourselves to remove the cooperads from the notation in the morphism.
+
+\begin{definition}
+  A Hopf right $\CC$-module $\NN$ is said to be \textbf{weakly equivalent} to a Hopf right $\CC'$-module $\NN'$ if the pair $(\NN, \CC)$ can be connected to the pair $(\NN', \CC')$ through a zigzag of quasi-isomorphisms.
+\end{definition}
+
+\subsection{Little disks and related objects}
+\label{cnf.sec.little-disks}
+
+The little disks operad $\DD_{n}$ is a topological operad initially introduced by May and Boardman--Vogt~\cite{May1972,BoardmanVogt1973} to study iterated loop spaces.
+Its homology $\en \coloneqq H_{*}(\DD_{n})$ is described by a theorem of Cohen~\cite{Cohen1976}: it is either the operad encoding associative algebras for $n = 1$, or the one encoding $(n-1)$-Poisson algebras for $n \ge 2$.
+
+For technical reasons, we instead consider the Fulton--MacPherson operad $\FM_{n}$\index{FMn@$\FM_{n}$, Fulton--MacPherson operad}, introduced by Fulton--MacPherson~\cite{FultonMacPherson1994} in the complex context and adapted by Axel\-rod--Sin\-ger~\cite{AxelrodSinger1994} to the real context.
+Each space $\FM_{n}(\underline{k})$ is a compactification of the configuration space $\Conf_{k}(\R^{n})$, where roughly speaking points can become ``infinitesimally close''.
+Using insertion of infinitesimal configurations, they assemble to form a topological operad, weakly equivalent to $\DD_{n}$.
+We refer to~\cite{Sinha2004} for a detailed treatment.
+
+The first two spaces $\FM_{n}(\varnothing) = \FM_{n}(\underline{1}) = *$ are singletons, and $\FM_{n}(\underline{2}) = S^{n-1}$ is a sphere.
+We will let\index{voln@$\mathrm{vol}_{n-1}$}
+\begin{equation}
+  \label{cnf.eq.def-vol}
+  \mathrm{vol}_{n-1} \in \OmPA^{n-1}(S^{n-1}) = \OmPA^{n-1}(\FM_{n}(\underline{2}))
+\end{equation}
+be the top volume form of $\FM_{n}(\underline{2})$.
+For $k \geq 2$ and $i \neq j \in \underline{k}$, we also define the projection maps\index{pij@$p_{ij}$}
+\begin{equation}
+  \label{cnf.eq.pij}
+  p_{ij} : \FM_{n}(\underline{k}) \to \FM_{n}(\underline{2})
+\end{equation}
+that forget all but two points in the configuration.
+
+To follow Kontsevich's proof of the formality theorem~\cite{Kontsevich1999}, we use the theory of semi-algebraic sets, as developed in~\cite{KontsevichSoibelman2000,HardtLambrechtsTurchinVolic2011}.
+A semi-algebraic set is a subset of $\R^{N}$ defined by finite unions of finite intersections of zero sets of polynomials and polynomial inequalities.
+There is a functor $\OmPA^{*}$\index{WOmPA@$\OmPA^{*}(-)$, PA forms} of ``piecewise algebraic differential forms'', analogous to the de Rham complex, taking a semi-algebraic set to a real CDGA.
+If $M$ is a compact semi-algebraic smooth manifold, then $\OmPA^{*}(M) \simeq \Omega^{*}_{\mathrm{dR}}(M)$.
+
+The spaces $\FM_{n}(\underline{k})$ are all semi-algebraic stratified manifolds.
+The dimension of $\FM_{n}(\underline{k})$ is $nk-n-1$ for $k \geq 2$, and is $0$ otherwise.
+
+The functor $\OmPA^{*}$ is monoidal, but contravariant; it follows that $\OmPA^{*}(\FM_{n})$ is an ``almost'' Hopf cooperad.\index{almost Hopf cooperad@``almost'' Hopf cooperad}
+It satisfies a slightly modified version of the cooperad axioms coming from the fact that $\OmPA^{*}$ is not strongly monoidal, as explained in~\cite[Definition 3.1]{LambrechtsVolic2014} (they call it a ``CDGA model''): the insertion maps $\circ_{W}$ become zigzags
+\[ \OmPA^{*}(\FM_{n}(U)) \tkrightarrow{\circ_{W}^{*}} \OmPA^{*}(\FM_{n}(U/W) \times \FM_{n}(W)) \qiso* \OmPA^{*}(\FM_{n}(U/W)) \otimes \OmPA^{*}(\FM_{n}(W)), \]
+where the second map is the Künneth quasi-isomorphism.
+If $\CC$ is a Hopf cooperad, an ``almost'' morphism $f: \CC \to \OmPA^{*}(\FM_{n})$ is a collection of CDGA morphisms $f_{U } : \CC(U) \to \OmPA^{*}(\FM_{n}(U))$ for all $U$, such that the following diagrams commute:
+\[ \begin{tikzcd}[column sep = large, row sep = small]
+    \CC(U) \ar{r}{f_{U}} \ar{dd}{\circ_{W}^{\vee}} & \OmPA^{*}(FM_{n}(U)) \ar{d}{\circ_{W}^{*}} \\
+    {} & \OmPA^{*}(\FM_{n}(U/W) \times \FM_{n}(W)) \\
+    \CC(U/W) \otimes \CC(W) \ar{r}{f_{U/W} \otimes f_{W}} & \OmPA^{*}(\FM_{n}(U/W)) \otimes \OmPA^{*}(\FM_{n}(W)) \ar{u}[swap]{\sim}
+  \end{tikzcd} \]
+
+We will generally omit the adjective ``almost'', keeping in mind that some commutative diagrams are a bit more complicated than at first glance.
+
+If $M$ is a manifold, the configuration space $\Conf_{k}(M)$ can similarly be compactified to give a space $\FM_{M}(\underline{k})$.\index{FMM@$\FM_{M}$, Fulton--MacPherson module}
+When $M$ is framed, these spaces assemble to form a topological right module over $\FM_{n}$, by inserting infinitesimal configurations.
+By the Nash--Tognoli Theorem~\cite{Nash1952,Tognoli1973}, any closed smooth manifold is homeomorphic to a semi-algebraic subset of $\R^{N}$ for some $N$, and in this way $\FM_{M}(\underline{k})$ becomes a stratified semi-algebraic manifold of dimension $nk$.
+
+By the same reasoning as above, if $M$ is framed, then $\OmPA^{*}(\FM_{M})$ becomes an ``almost'' Hopf right comodule over $\OmPA^{*}(\FM_{n})$.
+As before, if $\NN$ is a Hopf right $\CC$-comodule, where $\CC$ is a cooperad equipped with an ``almost'' morphism $f : \CC \to \OmPA^{*}(\FM_{n})$, then an ``almost'' morphism $g : \NN \to \OmPA^{*}(\FM_{M})$ is a collection of CDGA morphisms $g_{U} : \NN(U) \to \OmPA^{*}(\FM_{M}(U))$ that make the following diagrams commute:
+\[ \begin{tikzcd}[column sep = large, row sep = small]
+    \NN(U) \ar{r}{f_{U}} \ar{dd}{\circ_{W}^{\vee}} & \OmPA^{*}(\FM_{M}(U)) \ar{d}{\circ_{W}^{*}} \\
+    {} & \OmPA^{*}(\FM_{M}(U/W) \times \FM_{n}(W)) \\
+    \NN(U/W) \otimes \CC(W) \ar{r}{g_{U/W} \otimes f_{W}} & \OmPA^{*}(\FM_{M}(U/W)) \otimes \OmPA^{*}(\FM_{n}(W)) \ar{u}[swap]{\sim}
+  \end{tikzcd} \]
+
+\begin{remark}
+  Following~\cite[Section II.10.1]{Fresse2017}, there is a construction $\Omega^{*}_{\sharp}$ that turns a simplicial operad $\PP$ into a Hopf cooperad and such that a morphism of Hopf cooperads $\CC \to \Omega^{*}_{\sharp}(\PP)$ is the same thing as an ``almost'' morphism $\CC \to \Omega^{*}(\PP)$, where $\Omega^{*}$ is the functor of Sullivan forms.
+  Moreover there is a canonical collection of maps $(\Omega^{*}_{\sharp}(\PP))(U) \to \Omega^{*}(\PP(U))$, which are weak equivalences if $\PP$ is a cofibrant operad.
+  Such a functor is built by considering the right adjoint of the functor on operads induced by the Sullivan realization functor, which is monoidal.
+
+  Although we will not use it in the rest of the paper, a similar construction can be carried out for $\OmPA^{*}$.
+  The proof follows step by step the constructions carried out in~\cite[Section II.10.1]{Fresse2017}.
+  The key points are the two facts that for a given $n \geq 0$, the complex $\OmPA^{*}(\Delta^{n})$ is acyclic (a.k.a.\ the Poincaré lemma), and that for a given $k \geq 0$, the simplicial vector space $\OmPA^{k}(\Delta^{\bullet})$ is acyclic too.
+  These are respectively~\cite[Lemma~6.3 and Lemma~6.10]{HardtLambrechtsTurchinVolic2011} (where the last property is called the ``extendability'' of $\OmPA^{*}(\Delta^{\bullet})$ and is used to prove the Mayer--Vietoris theorem for PA forms).
+  Then one can define a functor $G_{\bullet}^{\mathrm{PA}}(A) \coloneqq \Hom_{\cdga}(A, \OmPA^{*}(\Delta^{\bullet}))$ on CDGAs, and use the right adjoint of its extension to the category of Hopf cooperads to define and prove the properties of $\Omega^{*}_{\mathrm{PA}, \sharp}$.
+  We can also extend this construction to modules over operads, by similar arguments.
+\end{remark}
+
+\subsection{Formality of the little disks operad}
+\label{cnf.sec.formality}
+
+Kontsevich's formality theorem~\cite{Kontsevich1999,LambrechtsVolic2014} can be summarized by the fact that $\OmPA^{*}(\FM_{n})$ is weakly equivalent to $\enV$ as a Hopf cooperads.
+We outline here the proof as we will mimic its pattern for our theorem.
+We will use the formalism of (co)operadic twisting~\cite{Willwacher2014,DolgushevWillwacher2015}, and we refer to~\cite{LambrechtsVolic2014} for proofs of most of the claims of this section.
+
+\paragraph{The cohomology of $\DD_{n}$}
+
+The classical description due to Arnold and Cohen of the cohomology $\enV(U) = H^{*}(\DD_{n}(U))$\index{enV@$\enV = H^{*}(\DD_{n})$} is:
+\begin{equation}
+  \label{cnf.eq.def-enV}
+  \enV(U) = S(\omega_{uv})_{u \neq v \in U} / I
+\end{equation}
+where $S(-)$ is the free graded commutative algebra, the generators $\omega_{uv}$\index{womegauv@$\omega_{uv} \in \enV(U)$} have cohomological degree $n-1$, and the ideal $I$ is generated by the relations:
+\begin{equation}
+  \label{cnf.eq:5}
+  \omega_{vu} = (-1)^{n} \omega_{uv}; \; \omega_{uv}^{2} = 0; \; \omega_{uv} \omega_{vw} + \omega_{vw} \omega_{wu} + \omega_{wu} \omega_{uv} = 0.
+\end{equation}
+
+The cooperadic structure maps are given on generators by:
+\begin{align}
+  \circ^{\vee}_{W} : \enV(U)
+  & \to \enV(U/W) \otimes \enV(W)
+  \notag \\
+  \omega_{uv}
+  & \mapsto
+  \begin{cases}
+    1 \otimes \omega_{uv}, & \text{if } u,v \in W; \\
+    \omega_{*v} \otimes 1, & \text{if } u \in W \text{ and } v \not\in W; \\
+    \omega_{u*} \otimes 1, & \text{if } u \not\in W \text{ and } v \in W; \\
+    \omega_{uv} \otimes 1, & \text{if } u, v \not\in W.
+  \end{cases}
+  \label{cnf.eq.coop-gra-n}
+\end{align}
+
+\paragraph{Graphs with only external vertices}
+
+The intermediary cooperad of graphs is built in several steps.
+In the first step, define a cooperad of graphs with only external vertices, with generators $e_{uv}$ of degree $n-1$:\index{Gran@$\Gra_{n}$}
+\begin{equation}
+  \label{cnf.eq.def-gra-n}
+  \Gra_{n}(U) = \bigl( S(e_{uv})_{u, v \in A} / (e_{uv}^{2} = e_{uu} = 0, e_{vu} = (-1)^{n} e_{uv}), d = 0 \bigr).
+\end{equation}
+
+The CDGA $\Gra_{n}(U)$ is spanned by words of the type $e_{u_{1} v_{1}} \dots e_{u_{r} v_{r}}$.
+Such a word can be viewed as a graph with $U$ as the set of vertices, and an edge between $u_{i}$ and $v_{i}$ for each factor $e_{u_{i} v_{i}}$.
+For example, the word $e_{uv}$ is a graph with a single edge between the vertices $u$ and $v$ (see Figure~\ref{cnf.fig.exa-graph} for another example).
+Graphs with double edges or edges between a vertex and itself are set to zero.
+Given such a graph, its set of edges $E_{\Gamma} \subset \binom{U}{2}$ is well-defined.
+The vertices of these graphs are called ``external'', in contrast with the internal vertices that are going to appear in the next part.
+
+\begin{figure}[htbp]
+  \centering
+  \[ e_{12} e_{13} e_{56} =
+    \begin{gathered} \begin{tikzpicture}
+        \node [extv] (1) {1};
+        \node [extv, right = 1cm of 1] (2) {2};
+        \node [extv, above = 1cm of 1] (3) {3};
+        \node [extv, right = 1cm of 3] (4) {4};
+        \node [extv, right = 1cm of 2] (5) {5};
+        \node [extv, above = 1cm of 5] (6) {6};
+        \draw (1) -- (2); \draw (1) -- (3); \draw (5) -- (6);
+      \end{tikzpicture} \end{gathered}
+    \in \Gra_{n}(\underline{6})
+  \]
+  \caption{Example of the correspondence between graphs and words}
+  \label{cnf.fig.exa-graph}
+\end{figure}
+
+The Hopf product map $\Gra_{n}(U) \otimes \Gra_{n}(U) \to \Gra_{n}(U)$, from this point of view, consists of gluing two graphs along their vertices.
+The cooperadic structure map $\circ^{\vee}_{W} : \Gra_{n}(U) \to \Gra_{n}(U/W) \otimes \Gra_{n}(W)$ maps a graph $\Gamma$ to $\pm \Gamma_{U/W} \otimes \Gamma_{W}$ such that $\Gamma_{W}$ is the full subgraph of $\Gamma$ with vertices $W$ and $\Gamma_{U/W}$ collapses this full subgraph to a single vertex.
+
+On the generators, the formula for $\circ_{W}^{\vee}$ is in fact identical to Equation~\eqref{cnf.eq.coop-gra-n}, replacing $\omega_{??}$ by $e_{??}$.
+This implies that the cooperad $\Gra_{n}$ maps to $\enV$ by sending $e_{uv}$ to $\omega_{uv}$.
+
+The cooperad $\Gra_{n}$ also maps to $\OmPA^{*}(\FM_{n})$ using a map given on generators by:\index{womegaprime@$\omega'(\Gamma)$}
+\begin{align}
+  \label{cnf.eq:2}
+  \omega' : \Gra_{n}(U)
+  & \to \OmPA^{*}(\FM_{n}(U))
+    \notag \\
+  \Gamma
+  & \mapsto \bigwedge_{(u,v) \in E_{\Gamma}} p_{uv}^{*}(\mathrm{vol}_{n-1}),
+\end{align}
+where $\mathrm{vol}_{n-1}$ is the volume form of $\FM_{n}(2) \cong S^{n-1}$~\eqref{cnf.eq.def-vol}.
+
+\paragraph{Twisting}
+
+The second step of the construction is cooperadic twisting, for which our general reference is the appendix of~\cite{Willwacher2016} (see also~\cite{DolgushevWillwacher2015}).
+Let $\hoLie_{k}$\index{hoLiek@$\hoLie_{k}$} be the operad controlling homotopy Lie algebras shifted by $k+1$ (with $\Lie_{k}$\index{Liek@$\Lie_{k}$, shifted Lie operad} being the operad controlling shifted Lie algebras).
+Let $\CC$ be a cooperad, finite-dimensional in every arity and equipped with a map to the dual of $\hoLie_{k}$.
+This map can equivalently be seen as a Maurer--Cartan element $\mu$ in the deformation complex $\operatorname{Def}(\hoLie_{k} \to \CC^{\vee})$, a convolution dg-Lie algebra.
+Then define:\index{TwC@$\Tw \CC$, twisted cooperad}
+\[ \Tw \CC (U) \coloneqq \bigoplus_{i \geq 0} \bigl( \CC(U \sqcup \underline{i}) \otimes \R[k]^{\otimes i} \bigr)_{\Sigma_{i}}. \]
+
+The symmetric module $\Tw \CC$ can be given a cooperad structure induced by $\CC$.
+Its differential is the sum of the internal differential of $\CC$ and a differential coming from the action of $\mu$, acting on both sides of $\CC$.
+Roughly speaking, $\Tw \CC$ encodes coalgebras over $\CC$ with a differential twisted by a ``Maurer--Cartan element''.%
+\footnote{A coalgebra over $\CC$ is automatically a $\hoLie_{k}^{\vee}$-coalgebra due to the fixed morphism $\CC \to \hoLie_{k}^{\vee}$, therefore the notion of Maurer--Cartan element in a $\CC$-coalgebra is well-defined.}
+There is also an obvious inclusion $\CC \to \Tw \CC$ that commutes with differentials and cooperad maps.
+We refer to~\cite{Willwacher2016} for the details -- one needs to formally dualize the appendix to twist cooperads instead of operads.
+
+If $\CC$ satisfies $\CC(\varnothing) = \Bbbk$ and is a Hopf cooperad, then $\Tw\CC$ inherits a Hopf cooperad structure.
+To multiply an element of $\CC(U \sqcup I) \subset \Tw\CC(U)$ with an element of $\CC(U \sqcup J) \subset \Tw\CC(U)$, first use the maps
+\[ \CC(V) \tkrightarrow{\circ_{\varnothing}^{\vee}} \CC(V / \varnothing) \otimes \CC(\varnothing) \cong \CC(V \sqcup \{*\}) \]
+several times to map both elements to $\CC(U \sqcup I \sqcup J)$, and then use the CDGA structure of $\CC(U \sqcup I \sqcup J)$ to multiply them.
+
+We now turn our attention to graphs.
+The Hopf cooperad $\Gra_{n}$ maps into $\Lie_{n}^{\vee}$ as follows.
+The cooperad $\Lie_{n}^{\vee}$ is cogenerated by $\Lie_{n}^{\vee}(\underline{2})$, and on cogenerators the cooperad map is given by sending $e_{12} \in \Gra_{n}(\underline{2})$ to the cobracket in $\Lie_{n}^{\vee}(\underline{2})$ and all the other graphs to zero.
+This map to $\Lie_{n}^{\vee}$ yields a map to $\hoLie_{n}^{\vee}$ by composition with the canonical map $\Lie_{n}^{\vee} \qiso \hoLie_{n}^{\vee}$.
+Roughly speaking, the Maurer--Cartan element $\mu$ is given by Figure~\ref{cnf.fig.maurer-cartan-element}.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \node[extv] (1) {$1$};
+    \node[extv] (2) [right = 1cm of 1] {$2$};
+    \draw (1) -- (2);
+  \end{tikzpicture}
+  \caption{The Maurer--Cartan element $\mu = e_{12}^{\vee} \in \Gra_n^\vee(2)$}
+  \label{cnf.fig.maurer-cartan-element}
+\end{figure}
+
+The cooperad $\Gra_{n}$ satisfies $\Gra_{n}(\varnothing) = \R$.
+The induced maps $\Gra_{n}(U) \to \Gra_{n}(U')$ (for $U \subset U'$) add new vertices with no incident edges.
+Thus the general framework makes $\Tw \Gra_{n}$\index{TwGran@$\Tw \Gra_{n}$} into a Hopf cooperad, which we now explicitly describe.
+
+The dg-module $\Tw\Gra_{n}(U)$ is spanned by graphs with two types of vertices: external vertices, which correspond to elements of $U$, and indistinguishable internal vertices (usually drawn in black).
+The degree of an edge is $n-1$, and the degree of an internal vertex is $-n$.
+The differential sends a graph $\Gamma$ to the sum:
+\[ d\Gamma = \sum_{\substack{e \in E_{\Gamma} \\ \text{contractible}}} \pm \Gamma / e, \]
+where $\Gamma/e$ is $\Gamma$ with the edge $e$ collapsed and $e$ ranges over all ``contractible'' edges, i.e.\ edges connecting an internal vertex to another vertex of either kind.
+See Figure~\ref{cnf.fig.diff-gra-n} for an example.
+
+\begin{figure}[htbp]
+  \centering
+  \[
+    d \left(
+  \begin{gathered} \begin{tikzpicture}
+      \node[intv] (int) {};
+      \node[extv] (1) [above = 0.3cm of int] {$1$};
+      \node[extv] (2) [below left = 0.4cm of int] {$2$};
+      \node[extv] (3) [below right = 0.4cm of int] {$3$};
+      \draw (1) -- (int); \draw (2) -- (int); \draw (3) -- (int);
+    \end{tikzpicture} \end{gathered}
+  \right) =
+  \pm
+  \begin{gathered} \begin{tikzpicture}
+      \node (int) {};
+      \node[extv] (1) [above = 0.3cm of int] {$1$};
+      \node[extv] (2) [below left = 0.4cm of int] {$2$};
+      \node[extv] (3) [below right = 0.4cm of int] {$3$};
+      \draw (1) -- (2); \draw (2) -- (3);
+    \end{tikzpicture} \end{gathered}
+  \pm
+  \begin{gathered} \begin{tikzpicture}
+      \node (int) {};
+      \node[extv] (1) [above = 0.3cm of int] {$1$};
+      \node[extv] (2) [below left = 0.4cm of int] {$2$};
+      \node[extv] (3) [below right = 0.4cm of int] {$3$};
+      \draw (2) -- (3); \draw (3) -- (1);
+    \end{tikzpicture} \end{gathered}
+  \pm
+  \begin{gathered} \begin{tikzpicture}
+      \node (int) {};
+      \node[extv] (1) [above = 0.3cm of int] {$1$};
+      \node[extv] (2) [below left = 0.4cm of int] {$2$};
+      \node[extv] (3) [below right = 0.4cm of int] {$3$};
+      \draw (3) -- (1); \draw (1) -- (2);
+    \end{tikzpicture} \end{gathered}
+  \]
+  \caption{The differential of $\Tw\Gra_n$}
+  \label{cnf.fig.diff-gra-n}
+\end{figure}
+
+\begin{remark}
+  \label{cnf.rmk.dead-end}
+  An edge connected to a univalent internal vertex is not considered contractible: the Maurer--Cartan element $\mu \in \operatorname{Def}(\CC \to \hoLie_{k}^{\vee})$ ``acts'' on both sides of $\Tw\CC$ in the definition of the differential, and for such edges the two contributions cancel out.
+  Such vertices are called \textbf{dead ends} by Lambrechts--Voli\'{c}~\cite{LambrechtsVolic2014}.%
+  \footnote{Their definition is slightly different, but since we forbid multiple edges and loops, the two definitions are equivalent.}
+\end{remark}
+
+The product of two graphs glues them along their external vertices only (which is the same thing as adding disjoint internal vertices to both graphs and gluing along all vertices).
+
+The two morphisms $\enV \gets \Gra_{n} \tkrightarrow{\omega'} \OmPA^{*}(\FM_{n})$ extend along the inclusion $\Gra_{n} \subset \Tw\Gra_{n}$ as follows.
+The extended morphism $\Tw\Gra_{n} \to \enV$ simply sends a graph with internal vertices to zero; since dead ends are not contractible, this commutes with differentials.
+The extended morphism $\omega : \Tw\Gra_{n} \to \OmPA^{*}(\FM_{n})$\index{womega@$\omega(\Gamma)$} sends a graph $\Gamma \in \Gra_{n}(U \sqcup I) \subset \Tw\Gra_{n}(U)$ to:
+\begin{equation}
+  \label{cnf.eq:4}
+  \omega(\Gamma) \coloneqq (p_{U})_{*}(\omega'(\Gamma)) = \int_{\mathrlap{\FM_{n}(U \sqcup I) \to \FM_{n}(U)}} \quad \omega'(\Gamma),
+\end{equation}
+where $p_{U}$ is the projection that forgets the points of the configuration corresponding to $I$, and the integral is an integral along the fiber of this semi-algebraic bundle.
+
+\paragraph{Reduction of the graph complex}
+
+The cooperad $\Tw\Gra_{n}$ does not have the right homotopy type yet.
+It is reduced by quotienting out all the graphs with connected components consisting exclusively of internal vertices.
+This is a Hopf cooperad bi-ideal and thus the resulting quotient $\Graphs_{n}$\index{Graphsn@$\Graphs_{n}$} is still a Hopf cooperad.
+One checks that the two morphisms $\enV \gets \Tw\Gra_{n} \to \OmPA^{*}(\FM_{n})$ factor through the quotient (the first one because dead ends are not contractible, the second one because $\omega$ vanishes on graphs with only internal vertices).
+The resulting zigzag:
+\begin{equation}
+  \label{cnf.eq.zigzag-coop}
+  \enV \gets \Graphs_{n} \to \OmPA^{*}(\FM_{n})
+\end{equation}
+is then a zigzag of weak equivalence of Hopf cooperads by the work of Kontsevich~\cite{Kontsevich1999}, which proves the formality theorem.
+
+\subsection{Poincaré duality CDGA models}
+\label{cnf.sec.poinc-dual-models}
+
+The model for $\OmPA^{*}(\FM_{M})$ relies on a Poincaré duality model of $M$.
+We mostly borrow the terminology and notations from~\cite{LambrechtsStanley2008}.
+Recall that we only consider simply connected manifolds, which are necessarily orientable and thus satisfy Poincaré duality.
+
+Fix an integer $n$ and let $A$ be a connected CDGA (i.e.\ $A = \Bbbk \oplus A^{\ge 1}$).
+A Poincaré duality pairing on $A$ is a dg-form $\varepsilon : A \to \Bbbk[-n]$ (i.e.\ a linear map $A^{n} \to \Bbbk$ with $\varepsilon \circ d = 0$) such that the induced pairing
+\begin{align}
+  \label{cnf.eq:7}
+  A^{k} \otimes A^{n-k}
+  & \to \Bbbk
+    \notag \\
+  a \otimes b
+  & \mapsto \varepsilon(ab)
+\end{align}
+is non-degenerate for all $k$.
+This implies that $A = A^{\leq n}$, and that $\varepsilon : A^{n} \to \Bbbk$ is an isomorphism.
+The pair $(A,\varepsilon)$ is called a \textbf{Poincaré duality algebra}.\index{Poincaré duality algebra}
+
+If $A$ is such a Poincaré duality CDGA, then so is its cohomology.
+The theorem of Lambrechts--Stanley~\cite{LambrechtsStanley2008} implies that if $\Omega$ is a CDGA (over any field) whose minimal model is $1$-connected and of finite type,%
+\footnote{A chain complex is of ``finite type'' if it is finite dimensional in each degree.
+  Looking closely at the proof of the theorem, we see that $\Omega$ does not need to be of finite type, only its minimal model does.}
+and if $\int : \Omega \to \Bbbk[-n]$ is a dg-form inducing a Poincaré duality structure of dimension $n$ on $H^{*}(\Omega)$, then $\Omega$ is quasi-isomorphic to a Poincaré duality algebra $(A, \varepsilon)$ of the same dimension through a zigzag of CDGA morphisms which respect the dg-forms:
+\[ \begin{tikzcd}
+    \Omega \drar[swap]{\int} & \cdot \lar[swap]{\sim} \rar{\sim} & \exists A \dlar{\exists \varepsilon} \\
+    {} & \Bbbk
+  \end{tikzcd} \]
+
+\begin{remark}
+  \label{cnf.rmk.commute}
+  Even though it is not written in the statement of the theorem in~\cite{LambrechtsStanley2008}, studying of the proof shows that the diagram above does commute.
+\end{remark}
+
+Let $A$ be a Poincaré duality CDGA of finite type and let $\{a_{i}\}$ be a graded basis of $A$.
+Consider the dual basis $\{ a_{i}^{\vee} \}$ with respect to the duality pairing, i.e.\ $\varepsilon(a_{i} a_{j}^{\vee}) = \delta_{ij}$ is given by the Kronecker symbol.
+Then the \textbf{diagonal cocycle}\index{diagonal class@$\Delta_{A}$, diagonal class} is defined by the following formula and is independent of the chosen graded basis (see e.g.~\cite{FelixOpreaTanre2008}):
+\begin{equation}
+  \label{cnf.eq.def-delta}
+  \Delta_{A} = \sum_{i} (-1)^{|a_{i}|} a_{i} \otimes a_{i}^{\vee} \in A \otimes A.
+\end{equation}
+
+The element $\Delta_{A}$ is a cocycle of degree $n$ (this follows from $\varepsilon \circ d = 0$).
+It satisfies $\Delta^{21} = (-1)^{n} \Delta$, and for all $a \in A$ it satisfies the equation $(a \otimes 1) \Delta_{A} = (1 \otimes a) \Delta_{A}$.
+Finally, the product $\mu_{A} : A \otimes A \to A$ sends $\Delta_{A}$ to $\chi(A) \cdot \mathrm{vol}_{A}$, where $\chi(A)$ is the Euler characteristic of $A$ and $\mathrm{vol}_{A} \in A^{n}$ is the preimage of $1 \in \Bbbk$ by $\varepsilon : A^{n} \to \Bbbk$.
+
+\subsection{The Lambrechts--Stanley CDGAs}
+\label{cnf.sec.kriz-lambr-stanl}
+
+We will give the definition of the CDGA $\GG{A}(k)$, constructed in~\cite{LambrechtsStanley2008a} in the general case of a Poincaré duality CDGA (see the introduction for a more detailed history).
+
+Let $A$ be a Poincaré duality CDGA of dimension $n$ and let $k$ be an integer.
+For $1 \leq i \neq j \leq k$, let $\iota_{i} : A \to A^{\otimes k}$\index{iota@$\iota_{v}$} be defined by $\iota_{i}(a) = 1^{\otimes i-1} \otimes a \otimes 1^{\otimes k-i-1}$, and let $\iota_{ij} : A \otimes A \to A^{\otimes k}$ be given by $\iota_{ij}(a \otimes b) = \iota_{i}(a) \cdot \iota_{j}(b)$.
+
+Recalling the description of $\enV$ in Equation~\eqref{cnf.eq.def-enV}, the CDGA $\GG{A}(k)$\index{GA@$\GG{A}$, Lambrechts--Stanley CDGA} is then defined by:
+\begin{equation}
+  \label{cnf.eq:9}
+  \GG{A}(k) = \bigl( A^{\otimes k} \otimes \enV(k) / ( \iota_{i}(a) \cdot \omega_{ij} = \iota_{j}(a) \cdot \omega_{ij} ), d \omega_{ij} = \iota_{ij}(\Delta_{A}) \bigr).
+\end{equation}
+
+We will call these CDGAs the Lambrechts--Stanley CDGAs, or \textbf{LS CDGAs} for short.
+For example $\GG{A}(0) = \Bbbk$, $\GG{A}(1) = A$, and $\GG{A}(2)$ is isomorphic to:
+\[ \GG{A}(2) \cong \bigl( (A \otimes A) \oplus (A \otimes \omega_{12}), d(a \otimes \omega_{12}) = (a \otimes 1) \cdot \Delta_{A} = (1 \otimes a) \cdot \Delta_{A}). \]
+
+When $M$ is any simply connected closed manifold, a theorem of Lambrechts and Stanley~\cite{LambrechtsStanley2008a} implies that there exists a Poincaré duality CDGA $A$ which is a rational model for $M$ and such that
+\begin{equation}
+  \label{cnf.eq.ea-fmm-same-cohom}
+  H^{*}(\GG{A}(k); \mathbb{Q}) \cong H^{*}(\FM_{M}(k); \mathbb{Q}) \; \text{as graded vector spaces}.
+\end{equation}
+
+\section{The Hopf right comodule model \texorpdfstring{$\GG{A}$}{G\_A}}
+\label{cnf.sec.model}
+
+In this section we describe the Hopf right $\enV$-comodule derived from the LS CDGAs of Section~\ref{cnf.sec.kriz-lambr-stanl}.
+From now on we work over $\R$, and we fix a simply connected smooth closed manifold $M$ of dimension at least $4$.
+Following Section~\ref{cnf.sec.little-disks}, we endow $M$ with a fixed semi-algebraic structure.
+
+For now we fix an arbitrary Poincaré duality CDGA model $A$ of $M$; we will choose one in the next section.
+We then define the right comodule structure of $\GG{A}$ as follows, using the cooperad structure of $\enV$ given by Equation~\eqref{cnf.eq.coop-gra-n}:
+
+\begin{proposition}
+  \label{cnf.prop.comodule-eA}
+  If $\chi(M) = 0$, then the following maps go through the quotients defining $\GG{A} = \{ \GG{A}(k) \}_{k \geq 0}$ and endow it with a Hopf right $\enV$-comodule structure:
+  \begin{align}
+    \circ_{W}^{\vee} : A^{\otimes U} \otimes \enV(U)
+    & \to \bigl( A^{\otimes (U/W)} \otimes \enV(U/W) \bigr) \otimes \enV(W)
+    \notag \\
+    (a_{u})_{u \in U} \otimes \omega
+    & \mapsto
+      \underbrace{ ((a_{u})_{u \in U - W} \otimes \prod_{w \in W} a_{w}) }_{\in A^{\otimes (U/W)}}
+      \otimes
+      \underbrace{ \vphantom{\prod_{w \in W}} \circ_{W}^{\vee}(\omega) }_{\in \enV(U/W) \otimes \enV(W)}
+      \label{cnf.eq.comodule}
+  \end{align}
+\end{proposition}
+
+In informal terms, $\circ_{W}^{\vee}$ multiplies together all the elements of $A$ indexed by $W$ on the $A^{\otimes U}$ factor and indexes the result by $* \in U/W$, and it applies the cooperadic structure map of $\enV$ on the other factor.
+Note that if $W = \varnothing$, then $\circ_{W}^{\vee}$ adds a factor of $1_{A}$ (the empty product) indexed by $* \in U/\varnothing = U \sqcup \{*\}$.
+
+We split the proof in three parts: compatibility of the maps with the cooperadic structure of $\enV$, factorization of the maps through the quotient, and compatibility with the differential.
+
+\begin{proof}[Proposition~\ref{cnf.prop.comodule-eA}, part 1: Factorization through the quotient]
+  Since the algebra $A$ is commutative, the maps of the proposition commute with multiplication.
+The ideals defining $\GG{A}(U)$ are multiplicative ideals, hence it suffices to show that the maps~\eqref{cnf.eq.comodule} take the generators $(\iota_{u}(a) - \iota_{v}(a)) \cdot \omega_{uv}$ of the ideal to elements of the ideal in the target.
+We simply check each case:
+  \begin{itemize}
+  \item If $u,v \in W$, then $\circ_{W}^{\vee}(\iota_{u}(a) \omega_{uv}) = \iota_{*}(a) \otimes \omega_{uv}$, which is equal to $\circ_{W}^{\vee}(\iota_{v}(a) \omega_{uv})$.
+  \item If $u \in W$ and $v \not\in W$, then
+    \[ \circ_{W}^{\vee}(\iota_{u}(a) \omega_{uv}) = \iota_{*}(a) \omega_{*v} \otimes 1 \equiv \circ_{W}^{\vee}(\iota_{v}(a) \omega_{uv}) \]
+    are congruent modulo the ideal, and the case $u \not\in W$, $v \in W$ is symmetric.
+  \item Finally if $u,v \not\in W$ then
+    \[ \circ_{W}^{\vee}(\iota_{u}(a) \omega_{uv}) = \iota_{u}(a) \omega_{uv} \otimes 1 \equiv \circ_{W}^{\vee}(\iota_{v}(a) \omega_{uv}).
+      \qedhere \]
+  \end{itemize}
+\end{proof}
+
+\begin{proof}[Proposition~\ref{cnf.prop.comodule-eA}, part 2: Compatibility with the differential]
+  All the maps involved are respectively morphisms of algebras or derivations of algebras, thus it suffices to check the compatibility on the generators $\iota_{u}(a)$ and $\omega_{uv}$.
+
+  The equality $\circ_{W}^{\vee}(d(\iota_{u}(a))) = d(\circ_{W}^{\vee}(\iota_{u}(a)))$ is immediate.
+  For $\omega_{uv}$ we again check the three cases.
+  Recall that since our manifold has vanishing Euler characteristic, $\mu_{A}(\Delta_{A}) = 0$.
+  \begin{itemize}
+  \item If $u,v \in W$, then \[ \circ_{W}^{\vee}(d\omega_{uv}) = \iota_{*}(\mu_{A}(\Delta_{A})) = 0, \] whereas $\circ_{W}^{\vee}(\omega_{uv}) = 1 \otimes \omega_{uv}$ and thus $d(\circ_{W}^{\vee}(\omega_{uv})) = 0$ (since $d_{\enV} = 0$).
+  \item If $u \not\in W$ and $v \in W$, then
+    \[ \circ_{W}^{\vee}(d \omega_{uv}) = \iota_{*v}(\Delta_{A}) \otimes 1 = d(\omega_{*v} \otimes 1) = d (\circ_{W}^{\vee}(\omega_{uv})), \]
+    and the case $u \in W$, $v \not\in W$ is symmetric.
+  \item Finally if $u,v \not\in W$, then
+    \[ \circ_{W}^{\vee}(d \omega_{uv}) = \iota_{uv}(\Delta_{A}) \otimes 1 = d (\omega_{uv} \otimes 1) = d (\circ_{W}^{\vee}(\omega_{uv})).
+      \qedhere \]
+  \end{itemize}
+\end{proof}
+
+\begin{proof}[Proposition~\ref{cnf.prop.comodule-eA}, part 3: Comodule structure]
+  Although the fact that the cocomposition maps are compatible with the coproduct of $\enV$ can easily be proved ``by hand'', it also follows from general arguments.
+
+  Let $\Com^{\vee}$ be the cooperad of counital cocommutative coalgebras, which is a right comodule over itself, and view $A$ as an operad concentrated in arity $1$.
+  We apply the result of the next lemma (Lemma~\ref{cnf.lemma.comod-circle}) to $\CC = \Com^{\vee}$.
+  We get that the collection $\Com^{\vee} \circ A = \{ A^{\otimes k} \}_{k \geq 0}$ forms a $\Com^{\vee}$-comodule.
+  Then the arity-wise tensor product (see~\cite[Section 5.1.12]{LodayVallette2012}, where this operation is called the Hadamard product):
+  \[ (\Com^{\vee} \circ A) \hadprod \enV = \{ A^{\otimes k} \otimes \enV(k) \}_{k \geq 0} \]
+  is the arity-wise tensor product of a $\Com^{\vee}$-comodule and an $\enV$-comodule, hence it is a $(\Com^{\vee} \hadprod \enV)$-comodule.
+  The cooperad $\Com^{\vee}$ is the unit of the arity-wise tensor product of cooperads, hence the result is an $\enV$-comodule.
+  It remains to make the easy check that the resulting comodule maps are given by Equation~\eqref{cnf.eq.comodule}.
+\end{proof}
+
+The next very general lemma can for example be found in~\cite[Section 5.2]{CamposWillwacher2016}.
+Let $\CC$ be a cooperad, and see the CDGA $A$ as an operad concentrated in arity $1$.
+Then the commutativity of $A$ implies the existence of a distributive law $t : \CC \circ A \to A \circ \CC$, given in each arity by:
+\begin{align*}
+  t : (\CC \circ A)(\underline{n}) = \CC(\underline{n}) \otimes A^{\otimes n}
+  & \to (A \circ \CC)(\underline{n}) = A \otimes \CC(\underline{n}) \\
+  x \otimes a_{1} \otimes \dots \otimes a_{n}
+  & \mapsto a_{1} \dots a_{n} \otimes x
+\end{align*}
+
+\begin{lemma}
+  \label{cnf.lemma.comod-circle}
+  Let $\NN$ be a right $\CC$-comodule, and see $A$ as a symmetric collection concentrated in arity $1$.
+  Then $\NN \circ A$ is a right $\CC$-comodule through the map:
+  \[ \NN \circ A \tkrightarrow{\Delta_{\NN} \circ 1} \NN \circ \CC \circ A \tkrightarrow{1 \circ t} \NN \circ A \circ \CC.
+    \qed \]
+\end{lemma}
+
+\section{Labeled graph complexes}
+\label{cnf.sec.label-graphs-stat}
+
+In this section we construct the intermediary comodule used to prove the theorem.
+We will construct a zigzag of CDGAs of the form:
+\[ \GG{A} \gets \Graphs_{R} \to \OmPA^{*}(\FM_{M}). \]
+
+The construction of $\Graphs_{R}$ follows the same pattern as the one of $\Graphs_{n}$ from Section~\ref{cnf.sec.formality}, using labeled graphs.
+If $\chi(M) = 0$, then the collections $\GG{A}$ and $\Graphs_{R}$ are Hopf right comodules respectively over $\enV$ and a $\Graphs_{n}$, and the left arrow is a morphism of comodules between $(\GG{A}, \enV)$ and $(\Graphs_{R}, \Graphs_{n})$.
+When $M$ is moreover framed, $\OmPA^{*}(\FM_{M})$ becomes a Hopf right comodule over $\OmPA^{*}(\FM_{n})$, and the right arrow is a morphism of comodules.
+
+\subsection{Graphs with loops and multiple edges}
+\label{cnf.sec.graphs-with-loops}
+
+We first define a variant $\Graphs^{\circlearrowleft}_{n}$ of $\Graphs_{n}$, where graphs are allowed to have ``loops'' (also sometimes known as ``tadpoles'') and multiple edges.
+For a finite set $U$, the CDGA $\Gra^{\circlearrowleft}_{n}(U)$ is given by:\index{Granloop@$\Gra^{\circlearrowleft}_{n}$}
+\[ \Gra^{\circlearrowleft}_{n}(U) = \bigl( S(e_{uv})_{u, v \in A} / (e_{vu} = (-1)^{n} e_{uv}), d = 0 \bigr). \]
+
+The difference with Equation~\eqref{cnf.eq.def-gra-n} is that we no longer set $e_{uu} = e_{uv}^{2} = 0$.
+
+\begin{remark}
+  When $n$ is even, $e_{uv}^{2} = 0$ since $\deg e_{uv} = n-1$ is odd; and when $n$ is odd, $e_{uu} = (-1)^{n} e_{uu} = -e_{uu} \implies e_{uu} = 0$.
+\end{remark}
+
+Like $\Gra_{n}$, this defines a Hopf cooperad with cocomposition given by an equation similar to Equation~\eqref{cnf.eq.coop-gra-n}:
+\begin{align}
+  \circ^{\vee}_{W} : \Gra_{n}^{\circlearrowleft}(U)
+  & \to \Gra_{n}^{\circlearrowleft}(U/W) \otimes \Gra_{n}^{\circlearrowleft}(W)
+  \nonumber \\
+  e_{uv}
+  & \mapsto
+  \begin{cases}
+    e_{**} \otimes 1 + 1 \otimes e_{uv}, & \text{if } u,v \in W; \\
+    e_{*v} \otimes 1, & \text{if } u \in W \text{ and } v \not\in W; \\
+    e_{u*} \otimes 1, & \text{if } u \not\in W \text{ and } v \in W; \\
+    e_{uv} \otimes 1, & \text{if } u, v \not\in W.
+  \end{cases}
+\end{align}
+
+This new cooperad has a graphical description similar to $\Gra_{n}$.
+The difference in the cooperad structure is that when we collapse a subgraph, we sum over all ways of choosing whether edges are in the subgraph or not; if they aren't, then they yield a loop.
+See Figure~\ref{cnf.fig.exa-cocomp-gra-circ} for an example.
+The cooperad $\Gra_{n}$ is the quotient of $\Gra^{\circlearrowleft}_{n}$ by the ideal generated by the loops and the multiple edges.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{equation*}
+    \begin{gathered} \begin{tikzpicture}
+        \node [extv] (1) {1};
+        \node [extv, right = 1cm of 1] (2) {2};
+        \node [extv, above right = 0.5cm of 1] (3) {3};
+        \draw[red] (1) -- (2);
+        \draw (2) -- (3) -- (1);
+      \end{tikzpicture} \end{gathered}
+    \mapsto
+    \left(
+    \begin{gathered} \begin{tikzpicture}
+        \node [extv] (1) {$*$};
+        \node [extv, above = 0.5cm of 1] (3) {3};
+        \draw (1) to[bend left] (3);
+        \draw (1) to[bend right] (3);
+        \draw[red] (1) to[loop right] (1);
+      \end{tikzpicture} \end{gathered}
+    \otimes
+    \begin{gathered} \begin{tikzpicture}
+        \node [extv] (1) {1};
+        \node [extv, right = 0.5cm of 1] (2) {2};
+      \end{tikzpicture} \end{gathered}
+    \right)
+    +
+    \left(
+    \begin{gathered} \begin{tikzpicture}
+        \node [extv] (1) {$*$};
+        \node [extv, above = 0.5cm of 1] (3) {3};
+        \draw (1) to[bend left] (3);
+        \draw (1) to[bend right] (3);
+      \end{tikzpicture} \end{gathered}
+    \otimes
+    \begin{gathered} \begin{tikzpicture}
+        \node [extv] (1) {1};
+        \node [extv, right = 0.5cm of 1] (2) {2};
+        \draw[red] (1) -- (2);
+      \end{tikzpicture} \end{gathered}
+    \right)
+  \end{equation*}
+  \caption{Example of cocomposition in $\Gra_{n}^{\circlearrowleft}$}
+  \label{cnf.fig.exa-cocomp-gra-circ}
+\end{figure}
+
+The element $e_{12}^{\vee} \in (\Gra^{\circlearrowleft}_{n})^{\vee}(\underline{2})$ still defines a Maurer--Cartan element
+\[ \mu \coloneqq e_{12}^{\vee} \in \operatorname{Def}(\hoLie_{n} \to (\Gra^{\circlearrowleft}_{n})^{\vee}), \]
+which allows us to define the twisted Hopf cooperad $\Tw \Gra^{\circlearrowleft}_{n}$.
+It has a graphical description similar to $\Tw\Gra_{n}$ with internal and external vertices.
+Finally we can quotient by graphs containing connected component consisting exclusively of internal vertices to get a Hopf cooperad $\Graphs^{\circlearrowleft}_{n}$.
+
+\subsection{External vertices: \texorpdfstring{$\Gra_{R}$}{Gra\_R}}
+\label{cnf.sec.external-vertices}
+
+We construct a collection of CDGAs $\Gra_{R}$, corresponding to the first step in the construction of $\Graphs_{n}$ of Section~\ref{cnf.sec.formality}.
+We first apply the formalism of Section~\ref{cnf.sec.poinc-dual-models} to $\OmPA^{*}(M)$ in order to obtain a Poincaré duality CDGA out of $M$:
+
+\begin{theorem}[{Lambrechts--Stanley~\cite{LambrechtsStanley2008}}]
+  \label{cnf.thm.lambrechts-stanley}
+  There exists a zigzag of weak equivalences of CDGAs
+  \[ A \tkleftarrow{\rho} R \tkrightarrow{\sigma} \OmPA^{*}(M), \]
+  such that:
+  \begin{enumerate}
+  \item $A$ is a Poincaré duality CDGA of dimension $n$;
+  \item $R$ is a quasi-free CDGA generated in degrees $\geq 2$;
+  \item For all $x \in R$, $\varepsilon_{A}(\rho(x)) = \int_{M} \sigma(x)$ (see Remark~\ref{cnf.rmk.commute}.
+  \end{enumerate}
+\end{theorem}
+
+If $\chi(M) = 0$ then the diagonal cocycle of any Poincaré duality model $A$ of $M$ satisfies $\mu_{A}(\Delta_{A}) = 0$.
+We will require the following technical lemma.
+
+\begin{proposition}
+  \label{cnf.lemma.zigzag-a-r-omega}
+  One can choose the zigzag of Theorem~\ref{cnf.thm.lambrechts-stanley} such there exists a symmetric cocycle $\Delta_{R} \in R \otimes R$ of degree $n$ satisfying $(\rho \otimes \rho)(\Delta_{R}) = \Delta_{A}$.
+  If $\chi(M) = 0$ we can moreover choose it so that $\mu_{R}(\Delta_{R}) = 0$.
+\end{proposition}
+
+We follow closely the proof of~\cite{LambrechtsStanley2008} to obtain the result.
+
+\begin{proof}[Proof (case $n \leq 6$)]
+  When $n \leq 6$, the CDGA $\OmPA^{*}(M)$ is formal~\cite[Proposition 4.6]{NeisendorferMiller1978}.
+  We choose $A = (H^{*}(M), d_{A} = 0)$, and $R$ to be the minimal model of $M$.
+
+  By Künneth's formula, $R \otimes R \to A \otimes A$ is a quasi-isomorphism.
+  Since $d \Delta_{A} = 0$, there exists some cocycle $\Delta' \in R \otimes R$ such that $\rho(\Delta') = \Delta_{A} + d \alpha = \Delta_{A}$ (since $d_{A} = 0$).
+
+  Let us now assume that $\chi(M) = 0$.
+  Then $\rho(\mu_{R}(\Delta')) = \mu_{A}(\Delta_{A}) = \chi(A) \mathrm{vol}_{A} = 0$.
+  Since $\rho$ is a quasi-isomorphism and hence injective in cohomology, $\mu_{R}(\Delta') = d\beta$ for some $\beta \in R \otimes R$.
+  We now let $\Delta'' = \Delta' - d\beta \otimes 1$, so that $\mu_{R}(\Delta'') = 0$, and
+  \[ \rho(\Delta'') = \rho(\Delta') - \rho(d\beta) \otimes 1 = \Delta_{A}.\]
+
+  If $\chi(M) \neq 0$ we simply let $\Delta'' = \Delta'$.
+  We finally set $\Delta_{R} = \frac{1}{2} (\Delta'' + (-1^{n}) (\Delta'')^{21})$, which is symmetric and still satisfies all the required properties.
+\end{proof}
+
+\begin{proof}[Proof (case $n \geq 7$)]
+  When $n \geq 7$, the proof of Lambrechts and Stanley builds a zigzag of weak equivalences:
+  \[ A \tkleftarrow{\rho} R \gets R' \to \OmPA^{*}(M), \]
+  where $R'$ is the minimal model of $M$, the CDGA $R$ is obtained from $R'$ by successively adjoining cells of degree $\geq n/2+1$, and the Poincaré duality CDGA $A$ is a quotient of $R$ by an ideal of ``orphans''.
+  By construction, this zigzag is compatible with $\varepsilon_{A}$ and $\int_{M}$.
+
+  The minimal model $R'$ is quasi-free, and since $M$ is simply connected it is generated in degrees $\geq 2$.
+  The CDGA $R$ is obtained from $R'$ by a cofibrant cellular extension, adjoining cells of degree greater than $2$.
+  It follows that $R$ is cofibrant and quasi-free generated in degrees $\geq 2$.
+  Since $R' \to R$ is an acyclic cofibration and $\varepsilon : R' \to \R$ is a fibration, we can invert $R' \to R$ up to homotopy while preserving $\varepsilon$.
+  Composing with $R' \to \OmPA^{*}(M)$ yields a morphism $\sigma : R \to \OmPA^{*}(M)$ that still satisfies $\varepsilon_{A} \circ \rho = \int_{M} \sigma(-)$, and we therefore get a zigzag $A \gets R \to \OmPA^{*}(M)$.
+
+  The morphism $\rho$ is a quasi-isomorphism, so there exists some cocycle $\tilde\Delta \in R \otimes R$ such that $\rho(\tilde\Delta) = \Delta_{A} + d\alpha$ for some $\alpha$.
+  By surjectivity of $\rho$ (it is a quotient map) there is some $\beta$ such that $\rho(\beta) = \alpha$; we let $\Delta' = \tilde\Delta - d\beta$, and now $\rho(\Delta') = \Delta_{A}$.
+
+  Let us assume for the moment that $\chi(M) = 0$.
+  Then the cocycle $\mu_{R}(\Delta') \in R$ satisfies $\rho(\mu_{R}(\Delta')) = \mu_{A}(\Delta_{A}) = 0$, i.e.\ it is in the kernel of $\rho$.
+  It follows that the cocycle $\Delta'' = \Delta' - \mu_{R}(\Delta') \otimes 1$ is still mapped to $\Delta_{A}$ by $\rho$, and satisfies $\mu_{R}(\Delta'') = 0$.
+
+  If $\chi(M) \neq 0$ we just let $\Delta'' = \Delta'$.
+  Finally we symmetrize $\Delta''$ to get the $\Delta_{R}$ of the lemma, which satisfies all the requirements.
+\end{proof}
+
+From now on we keep the zigzag and the element $\Delta_{R}$ of the previous lemma fixed until the end of Section~\ref{cnf.sec.proof-theorem}.
+
+\begin{definition}
+  \label{cnf.def.gra-r}
+  The CDGA of \textbf{$R$-labeled graphs with loops} on the set $U$ is given by:\index{GraRloop@$\Gra^{\circlearrowleft}_{R}$}
+  \[ \Gra^{\circlearrowleft}_{R}(U) = \bigl( R^{\otimes U} \otimes \Gra^{\circlearrowleft}_{n}(U), d e_{uv} = \iota_{uv}(\Delta_{R}) \bigr). \]
+\end{definition}
+
+\begin{remark}
+  \label{cnf.rmk.loop-multi}
+  It follows from the definition that $d e_{uu} = \iota_{uu}(\Delta_{R}) = \iota_{u}(\mu_{R}(\Delta_{R}))$, which is zero when $\chi(M) = 0$.
+\end{remark}
+
+\begin{proposition}
+  \label{cnf.prop.gra-tad-comod}
+  The CDGAs $\Gra^{\circlearrowleft}_{R}(U)$ assemble to form a Hopf right $\Gra^{\circlearrowleft}_{n}$-comodule.
+\end{proposition}
+\begin{proof}
+  The proof of this proposition is almost identical to the proof of Proposition~\ref{cnf.prop.comodule-eA}.
+  If we forget the extra differential (keeping only the internal differential of $R$), then $\Gra_{R}$ is the arity-wise tensor product $(\Com^{\vee} \circ R) \hadprod \Gra_{n}$, which is automatically a Hopf $\Gra_{n}$-right comodule.
+  Checking the compatibility with the differential involves almost exactly the same equations as Proposition~\ref{cnf.prop.comodule-eA}, except that when $u,v \in W$ we have:
+  \[ \circ_{W}^{\vee}(d(e_{uv})) = \iota_{*}(\mu_{R}(\Delta_{R})) \otimes 1 = d(e_{**} \otimes 1 + 1 \otimes e_{uv}) = d(\circ_{W}^{\vee}(e_{uv})).
+    \qedhere \]
+\end{proof}
+
+We now give a graphical interpretation of Definition~\ref{cnf.def.gra-r}, in the spirit of Section~\ref{cnf.sec.graphs-with-loops}.
+We view $\Gra^{\circlearrowleft}_{R}(U)$ as spanned by graphs with $U$ as set of vertices, and each vertex has a label which is an element of $R$.
+The $\Gra^{\circlearrowleft}_{n}$-comodule structure collapses subgraphs as before, and the label of the collapsed vertex is the product of all the labels in the subgraph.
+
+Let $\Gamma \in \Gra_{R}^{\circlearrowleft}(U)$ be some graph.
+The differential of $\Gamma$, as defined in Definition~\ref{cnf.def.gra-r}, is the sum over the edges $e \in E_{\Gamma}$ of the graph $\Gamma - e$ with that edge removed and the labels of the endpoints multiplied by the factors of
+\[ \Delta_{R} = \sum_{(\Delta_{R})} \Delta_{R}' \otimes \Delta_{R}'' \in R \otimes R. \]
+
+In particular if $e$ is a loop, then in the corresponding factor of $d\Gamma$ the vertex incident to $e$ has its label multiplied by $\mu_{R}(\Delta_{R})$.
+We will often write $d_{\mathrm{split}}$ for this differential, to contrast it with the differential that contracts edges which will occur in the complex $\Tw\Gra^{\circlearrowleft}_{R}$ defined later on.
+See Figure~\ref{cnf.fig.d-split} for an example -- gray vertices can be either internal or external.
+
+\begin{figure}[htbp]
+  \centering
+  \[ \begin{gathered} \begin{tikzpicture}
+        \node[unkv, label = {\scriptsize $x$}] (1) {};
+        \node[unkv, label = {\scriptsize $y$}] (2) [right = 1cm of 1] {};
+        \node (x1) [left = 0.8cm of 1] {};
+        \node (y1) [above left = 1cm of 1] {};
+        \node (z1) [below left = 1cm of 1] {};
+        \node (x2) [right = 0.8cm of 2] {};
+        \node (y2) [above right = 1cm of 2] {};
+        \node (z2) [below right = 1cm of 2] {};
+        \draw (1) -- (2);
+        \draw (x1) -- (1); \draw (y1) -- (1); \draw(z1) -- (1);
+        \draw (x2) -- (2); \draw (y2) -- (2); \draw(z2) -- (2);
+    \end{tikzpicture} \end{gathered}
+  \mapsto
+  \sum_{(\Delta_R)}
+  \begin{gathered} \begin{tikzpicture}
+        \node[unkv, label = {\scriptsize $x \Delta_{R}'$}] (1) {};
+        \node[unkv, label = {\scriptsize $y \Delta_{R}''$}] (2) [right = 1cm of 1] {};
+        \node (x1) [left = 0.8cm of 1] {};
+        \node (y1) [above left = 1cm of 1] {};
+        \node (z1) [below left = 1cm of 1] {};
+        \node (x2) [right = 0.8cm of 2] {};
+        \node (y2) [above right = 1cm of 2] {};
+        \node (z2) [below right = 1cm of 2] {};
+        \draw (x1) -- (1); \draw (y1) -- (1); \draw(z1) -- (1);
+        \draw (x2) -- (2); \draw (y2) -- (2); \draw(z2) -- (2);
+    \end{tikzpicture} \end{gathered}
+  \]
+  \caption{The splitting part of the differential (on one edge)}
+  \label{cnf.fig.d-split}
+\end{figure}
+
+Finally the Hopf structure glues two graphs along their vertices, multiplying the labels in the process.
+
+If $\chi(M) \neq 0$, we cannot directly map $\Gra^{\circlearrowleft}_{R}$ to $\OmPA^{*}(\FM_{M})$, as the Euler class in $\OmPA^{*}(M)$ would need to be the boundary of the image of the loop $e_{11} \in \Gra^{\circlearrowleft}_{R}(\underline{1})$.
+We thus define a sub-CDGA which will map to $\OmPA^{*}(\FM_{M})$ whether $\chi(M)$ vanishes or not.
+
+\begin{definition}
+  \label{cnf.def.no-loops}
+  For a given finite set $U$, let $\Gra_{R}(U)$\index{GraR@$\Gra_{R}$} be the sub-CDGA of $\Gra_{R}^{\circlearrowleft}(U)$ spanned by graphs without loops.
+\end{definition}
+
+\begin{proposition}
+  The space $\Gra_{R}(U)$ is a sub-CDGA, and if $\chi(M) = 0$ the collection $\Gra_{R}$ assembles to form a Hopf right $\Gra_{n}$-comodule.
+\end{proposition}
+\begin{proof}
+  Clearly, neither the splitting part of the differential nor the internal differential coming from $R$ can create new loops, nor can the product of two graphs without loops contain a loop, thus $\Gra_{R}(U)$ is indeed a sub-CDGA of $\Gra_{R}^{\circlearrowleft}(U)$.
+
+  Let us now assume that $\chi(M) = 0$.
+  The proof that $\Gra_{R}$ is a $\Gra_{n}$-comodule is now almost the same as the proof of Proposition~\ref{cnf.prop.gra-tad-comod}, except that we need to use the fact that $\mu_{R}(\Delta_{R}) = 0$ to check that $d(\circ_{W}^{\vee}(e_{uv})) = \circ^{\vee}_{W}(d(e_{uv}))$ when $u,v \in W$.
+\end{proof}
+
+\subsection{The propagator}
+\label{cnf.sec.propagator}
+
+To define $\omega' : \Gra_{R} \to \OmPA(\FM_{M})$, we need a ``propagator''\index{propagator@propagator $\varphi$} $\varphi \in \OmPA^{n-1}(\FM_{M}(2))$, for which a reference is~\cite[Section 4]{CattaneoMneev2010}, who refine constructions of Axelrod--Singer~\cite{AxelrodSinger1994}.
+
+For a given $u \in U$, we define the projection $p_{u} : \FM_{M}(U) \to M$ to be the map that forgets all the points of the configuration except the one labeled by $u$.
+The two projections $p_{1} , p_{2} : \FM_{M}(\underline{2}) \to M$ are equal when restricted to the boundary, and form a sphere bundle $\partial \FM_{M}(\underline{2}) \to M$ ($\FM_{M}(2)$ is the blow-up of $M \times M$ along the diagonal).
+When $M$ is framed, this bundle is trivial, and the operadic insertion map
+\[ M \times S^{n-1} \cong \FM_{M}(\underline{1}) \times \FM_{n}(\underline{2}) \tkrightarrow{\circ_{1}} \partial \FM_{M}(2) \]
+is an isomorphism of bundles.
+
+\begin{proposition}[{\cite[Proposition 7]{CamposWillwacher2016}}]
+  \label{cnf.def.propagator}
+  There exists a form $\varphi \in \OmPA^{n-1}(\FM_{M}(\underline{2}))$ such that $\varphi^{21} = (-1)^{n} \varphi$, $d \varphi = (p_{1} \times p_{2})^{*}(\sigma(\Delta_{R}))$ and such that the restriction of $\varphi$ to $\partial \FM_{M}(2)$ is a global angular form, i.e.\ it is a volume form of $S^{n-1}$ when restricted to each fiber.
+  When $M$ is framed one can moreover choose $\varphi|_{\partial \FM_{M}(2)} = 1 \times \mathrm{vol}_{S^{n-1}} \in \Omega^{n-1}_{PA}(M \times S^{n-1})$.
+\end{proposition}
+
+One can see from the proofs of~\cite[Section 4]{CattaneoMneev2010} that $d\varphi$ can in fact be chosen to be any pullback of a form cohomologous to the diagonal class $\Delta_{M} \in \OmPA^{n}(M \times M)$.
+We will make further adjustments to the propagator $\varphi$ in Proposition~\ref{cnf.prop.phi-phi}.
+
+\begin{proposition}
+  \label{cnf.prop.zigzag-gra-r}
+  There is a morphism of collections of CDGAs:\index{womegaprime@$\omega'(\Gamma)$}
+  \begin{align*}
+    \Gra_{R}
+    & \tkrightarrow{\omega'} \OmPA(\FM_{M}) \\
+    \bigotimes_{u \in U} x_{u} \in R^{\otimes U}
+    & \mapsto \bigwedge_{u \in U} p_{u}^{*}(\sigma(x_{u})) \\
+    e_{uv}
+    & \mapsto p_{uv}^{*}(\varphi),
+  \end{align*}
+  where $p_{uv}$ was defined in Equation~\eqref{cnf.eq.pij}.
+
+  Moreover, if $M$ is framed, then $\omega'$ defines a morphism of comodules:
+  \[ (\Gra_{R}, \Gra_{n}) \tkrightarrow{(\omega', \omega')} (\OmPA^{*}(\FM_{M}), \OmPA^{*}(\FM_{n})) \]
+  where $\omega' : \Gra_{n} \to \OmPA^{*}(\FM_{n})$ was defined in Section~\ref{cnf.sec.formality}.
+\end{proposition}
+
+\begin{proof}
+  The property $d \varphi = (p_{1} \times p_{2})^{*}(\Delta_{R})$ shows that the map $\omega'$ preserves the differential.
+
+  Let us now assume that $M$ is framed to prove that this is a morphism of right comodules.
+  Cocomposition commutes with $\omega'$ on the generators coming from $A^{\otimes U}$, since the comodule structure of $\OmPA^{*}(\FM_{M})$ multiplies together forms that are pullbacks of forms on $M$:
+  \[ \circ_{W}^{\vee}(p_{u}^{*}(x)) = \begin{cases}
+      p_{u}^{*}(x) \otimes 1 & \text{if } u \not\in W; \\
+      p_{*}^{*}(x) \otimes 1 & \text{if } u \in W.
+    \end{cases} \]
+
+  We now check the compatibility of the cocomposition $\circ_{W}^{\vee}$ with $\omega'$ on the generator $\omega_{uv}$, for some $W \subset U$.
+  \begin{itemize}
+  \item If one of $u,v$, or both, is not in $W$, then the equality
+    \[ \circ_{W}^{\vee}(\omega'(e_{uv})) = (\omega' \otimes \omega')(\circ_{W}^{\vee}(e_{uv})) \]
+    is clear by the previous relation.
+  \item  Otherwise suppose $\{u,v\} \subset W$.
+    We may assume that $U = W = \underline{2}$ (it suffices to pull back the result along $p_{uv}$ to get the general case), so that we are considering the insertion of an infinitesimal configuration $M \times \FM_{n}(\underline{2}) \to \FM_{M}(\underline{2})$.
+    This insertion factors through the boundary $\partial \FM_{M}(\underline{2})$.
+    We have (recall Definition~\ref{cnf.def.propagator}):
+    \[ \circ_{\underline{2}}^{\vee}(\varphi) = 1 \otimes \mathrm{vol}_{S^{n-1}} \in \OmPA^{*}(M) \otimes \OmPA^{*}(\FM_{n}(\underline{2})) = \OmPA^{*}(M) \otimes \OmPA^{*}(S^{n-1}).
+    \]
+    Going back to the general case, we find:
+    \[ \circ_{W}^{\vee}(\omega'(e_{uv})) = \circ_{W}^{\vee}(p_{uv}^{*}(\varphi)) = 1 \otimes p_{uv}^{*}(\mathrm{vol}_{S^{n-1}}), \]
+    which is indeed the image of $\circ_{W}^{\vee}(\omega_{uv}) = 1 \otimes \omega_{uv}$ by $\omega' \otimes \omega'$.
+    \qedhere
+\end{itemize}
+\end{proof}
+
+\subsection{Twisting: \texorpdfstring{$\Tw\Gra_{R}$}{Tw Gra\_R}}
+\label{cnf.sec.twisting-twgra_r}
+
+The general framework of~\cite[Appendix C]{Willwacher2016} shows that to twist a right (co)module, one only needs to twist the (co)operad.
+As before, the condition on the arity zero component of the Hopf cooperad provides the Hopf structure on the twisted comodule.
+
+\begin{definition}
+  The \textbf{twisted labeled graph comodule} $\Tw\Gra^{\circlearrowleft}_{R}$\index{TwGraRloop@$\Tw\Gra^{\circlearrowleft}_{R}$} is a Hopf right comodule over $(\Tw\Gra^{\circlearrowleft}_{n})$, obtained from $\Gra^{\circlearrowleft}_{R}$ by twisting with respect to the Maurer--Cartan element $\mu \in (\Gra^{\circlearrowleft}_{n})^{\vee}(\underline{2})$ of Section~\ref{cnf.sec.formality}.
+\end{definition}
+
+We now explicitly describe this comodule in terms of graphs.
+
+The dg-module $\Tw \Gra^{\circlearrowleft}_{R} (U)$ is spanned by graphs with two kinds of vertices, external vertices corresponding to elements of $U$, and indistinguishable internal vertices (usually drawn in black).
+The degree of an edge is still $n-1$, while the degree of an internal vertex is $-n$.
+All the vertices are labeled by elements of $R$, and their degree is added to the degree of the graph.
+
+The Hopf structure glues two graphs along their external vertices, multiplying labels in the process.
+The differential is a sum of two terms $d_{\mathrm{split}} + d_{\mathrm{contr}}$ (in addition to the internal differential coming from $R$).
+The first part comes from $\Gra^{\circlearrowleft}_{R}$ and splits edges, multiplying by $\Delta_{R}$ the labels of the endpoints.
+The second part is similar to the differential of $\Tw \Gra^{\circlearrowleft}_{n}$: it contracts edges connecting an internal vertex to another vertex of either kind, multiplying the labels of the endpoints (see Figure~\ref{cnf.fig.diff-gra-n}).
+
+\begin{remark}
+  \label{cnf.rmk.tw-gra-r-dead-end}
+  Unlike $\Tw\Gra_{n}$, dead ends \emph{are} contractible in $\Tw\Gra^{\circlearrowleft}_{R}$.
+  This is because the Maurer--Cartan element in $(\Gra^{\circlearrowleft}_{n})^{\vee}(\underline{2})$ can only ``act'' while coming from the right side on $\Gra^{\circlearrowleft}_{R}$ in the definition of the differential, and so there is nothing to cancel out the contraction of a dead end.
+\end{remark}
+
+Finally, the comodule structure is similar to the cooperad structure of $\Tw\Gra^{\circlearrowleft}_{n}$: for $\Gamma \in \Gra^{\circlearrowleft}_{R}(U \sqcup I) \subset \Tw\Gra^{\circlearrowleft}_{R}(U)$, the cocomposition $\circ_{W}^{\vee}(\Gamma)$ is the sum over tensors of the type $\pm \Gamma_{U/W} \otimes \Gamma_{W}$, where $\Gamma_{U/W} \in \Gra^{\circlearrowleft}_{R}(U/W \sqcup J)$, $\Gamma_{W} \in \Gra_{n}(W \sqcup J')$, $J \sqcup J' = I$, and there exists a way of inserting $\Gamma_{W}$ in the vertex $*$ of $\Gamma_{U/W}$ and reconnecting edges to get back $\Gamma$.
+See Figure~\ref{cnf.fig.exa-comod} for an example.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{equation*}
+    \begin{gathered} \begin{tikzpicture}[scale = 0.8]
+        \node [extv, label={above right}:{\footnotesize $x$}] (1) {1};
+        \node [intv, label={\footnotesize $y$}, above = 0.7cm of 1] (i) {};
+        \draw (1) -- (i);
+      \end{tikzpicture} \end{gathered}
+    \;
+    \mapsto
+    \;
+    \left(
+    \begin{gathered} \begin{tikzpicture}[scale = 0.8]
+        \node [extv, label={above right}:{\footnotesize $x$}] (1) {$*$};
+        \node [intv, label={\footnotesize $y$}, above = 0.7cm of 1] (i) {};
+        \draw (1) -- (i);
+      \end{tikzpicture} \end{gathered}
+    \otimes
+    \begin{gathered} \begin{tikzpicture}[scale = 0.8]
+        \node [extv] (1) {1};
+      \end{tikzpicture} \end{gathered}
+    \right)
+    \; \pm
+    \left(
+    \begin{gathered} \begin{tikzpicture}[scale = 0.8]
+        \node [extv, label={\footnotesize $xy$}] (1) {$*$};
+        \draw (1) to [loop right] (1);
+      \end{tikzpicture} \end{gathered}
+    \otimes
+    \begin{gathered} \begin{tikzpicture}[scale = 0.8]
+        \node [extv] (1) {1};
+        \node [intv, above = 0.7cm of 1] (i) {};
+      \end{tikzpicture} \end{gathered}
+    \right)
+    \; \pm
+    \left(
+    \begin{gathered} \begin{tikzpicture}[scale = 0.8]
+        \node [extv, label={\footnotesize $xy$}] (1) {$*$};
+      \end{tikzpicture} \end{gathered}
+    \otimes
+    \begin{gathered} \begin{tikzpicture}[scale = 0.8]
+        \node [extv] (1) {1};
+        \node [intv, above = 0.7cm of 1] (i) {};
+        \draw (1) -- (i);
+      \end{tikzpicture} \end{gathered}
+    \right)
+  \end{equation*}
+  \caption{Example of cocomposition $\Tw\Gra^{\circlearrowleft}_R(\underline{1}) \to \Tw\Gra^{\circlearrowleft}_{R}(\underline{1}) \otimes \Tw\Gra^{\circlearrowleft}_{n}(\underline{1})$}
+  \label{cnf.fig.exa-comod}
+\end{figure}
+
+\begin{lemma}
+  \label{cnf.lemma.trick}
+  The subspace $\Tw\Gra_{R}(U) \subset \Tw\Gra^{\circlearrowleft}_{R}(U)$\index{TwGraR@$\Tw\Gra_{R}$} spanned by graphs with no loops is a sub-CDGA.
+\end{lemma}
+\begin{proof}
+  It is clear that this defines a subalgebra.
+  We need to check that it is preserved by the differential, i.e.\ that the differential cannot create new loops if there are none in a graph.
+  This is clear for the internal differential coming from $R$ and for the splitting part of the differential.
+  The contracting part of the differential could create a loop from a double edge; however for even $n$ multiple edges are zero for degree reasons, and for odd $n$ loops are zero because of the antisymmetry relation (see Remark~\ref{cnf.rmk.loop-multi}).
+\end{proof}
+
+Note that despite the notation, $\Tw\Gra_{R}$ is a priori not defined as the twisting of the $\Gra_{n}$-comodule $\Gra_{R}$: when $\chi(M) \neq 0$, the collection $\Gra_{R}$ is not even a $\Gra_{n}$-comodule.
+However, the following proposition is clear and shows that we can get away with this abuse of notation:
+
+\begin{proposition}
+  If $\chi(M) = 0$, then $\Tw\Gra_{R}$ assembles to a right Hopf comodule over $(\Tw\Gra_{n})$, isomorphic to the twisting of the right Hopf $\Gra_{n}$-comodule $\Gra_{R}$ of Definition~\ref{cnf.def.no-loops}.
+  \qed
+\end{proposition}
+
+\begin{remark}
+  We could have defined the algebra $\Tw\Gra_{R}$ explicitly in terms of labeled graphs, and then defined the differential $d$ using an ad-hoc formula.
+  The difficult part would have then been to check that $d^{2} = 0$ (involving difficult signs), which is a consequence of the general operadic twisting framework.
+\end{remark}
+
+\begin{proposition}
+  \label{cnf.prop.mph-tw-om}
+  There is a morphism of collections of CDGAs $\omega : \Tw\Gra_{R} \to \OmPA^{*}(\FM_{M})$\index{womega@$\omega(\Gamma)$} extending $\omega'$, given on a graph $\Gamma \in \Gra_{R}(U \sqcup I) \subset \Tw\Gra_{R}(U)$ by:
+  \[ \omega(\Gamma) \coloneqq (p_{U})_{*}(\omega'(\Gamma)) = \int_{\mathrlap{\FM_{M}(U \sqcup I) \to \FM_{M}(U)}} \quad \omega'(\Gamma). \]
+
+  Moreover, if $M$ is framed, then this defines a morphism of Hopf right comodules:
+  \[ (\omega, \omega) : (\Tw\Gra_{R}, \Tw\Gra_{n}) \to (\OmPA^{*}(\FM_{M}), \OmPA^{*}(\FM_{n})). \]
+\end{proposition}
+
+\begin{remark}
+  \label{cnf.rmk.triv-forms}
+  It is not a priori possible to integrate any arbitrary form along the fiber of the projection $p_{U}$, see~\cite[Section~9.4]{HardtLambrechtsTurchinVolic2011}.
+  However, following~\cite[Appendix~C]{CamposWillwacher2016}, we can assume that the morphism $\sigma : R \to \OmPA^{*}(M)$ factors through the quasi-isomorphism sub-CDGA of ``trivial forms'' and that the propagator is a trivial form.
+  This makes $\omega(\Gamma)$ well-defined.
+\end{remark}
+
+\begin{proof}
+  The proof of the compatibility with the Hopf structure and, in the framed case, the comodule structure, is formally similar to the proof of the same facts about $\omega : \Tw\Gra_{n} \to \OmPA^{*}(\FM_{n})$.
+  We refer to~\cite[Sections 9.2, 9.5]{LambrechtsVolic2014}.
+  The proof is exactly the same proof, but writing $\FM_{M}$ or $\FM_{n}$ instead of $C[-]$ and $\varphi$ instead of $\mathrm{vol}_{S^{n-1}}$ in every relevant sentence, and recalling that when $M$ is framed, we choose $\varphi$ such that $\circ_{\underline{2}}^{\vee}(\varphi) = 1 \otimes \mathrm{vol}_{S^{n-1}}$.
+
+  The proof that $\omega$ is a chain map is different albeit similar.
+  The rest of the section is dedicated to that proof.
+\end{proof}
+
+We recall Stokes' formula for integrals along fibers of semi-algebraic bundles.
+If $\pi : E \to B$ is a semi-algebraic bundle, the fiberwise boundary $\pi^{\partial} : E^{\partial} \to B$ is the bundle with total space
+\[ E^{\partial} = \bigcup_{b \in B} \partial \pi^{-1}(b). \]
+
+\begin{remark}
+  The space $E^{\partial}$ is neither $\partial E$ nor $\bigcup_{b \in B} \pi^{-1}(b) \cap \partial E$ in general.
+  Consider for example the projection on the first coordinate $[0,1]^{\times 2} \to [0,1]$.
+\end{remark}
+
+Stokes' formula is given in the semi-algebraic context by~\cite[Proposition 8.12]{HardtLambrechtsTurchinVolic2011}:
+\[ d \left( \int_{\pi : E \to B} \alpha \right) = \int_{\pi : E \to B} d\alpha \pm \int_{\pi^{\partial} : E^{\partial} \to B} \alpha|_{E^{\partial}}. \]
+
+If we apply this formula to compute $d \omega(\Gamma)$, we find that the first part is given by:\index{Stokes formula}
+\begin{equation}
+  \label{cnf.eq.int-d-omega}
+  \int_{p_{U}} d \omega'(\Gamma) = \int_{p_{U}} \omega'(d_{R} \Gamma + d_{\mathrm{split}} \Gamma) = \omega(d_{R} \Gamma + d_{\mathrm{split}} \Gamma),
+\end{equation}
+since $\omega'$ was a chain map.
+It thus remain to check that the second summand satisfies:
+\[ \int_{p_{U}^{\partial} : \FM_{M}^{\partial}(U \sqcup I) \to \FM_{M}(U)} \omega'(\Gamma) = \int_{p_{U}} \omega'(d_{\mathrm{contr}} \Gamma) = \omega(d_{\mathrm{contr}} \Gamma). \]
+
+The fiberwise boundary of the projection $p_{U} : \FM_{n}(U \sqcup I) \to \FM_{n}(U)$ is rather complex~\cite[Section 5.7]{LambrechtsVolic2014}, essentially due to the quotient by the affine group in the definition of $\FM_{n}$ which lowers dimensions.
+We will not repeat its explicit decomposition into cells as we do not need it here.
+
+The fiberwise boundary of $p_{U} : \FM_{M}(U \sqcup I) \to \FM_{M}(U)$ is simpler.
+Let $V = U \sqcup I$.
+The interior of $\FM_{M}(U)$ is the space $\Conf_{U}(M)$, and thus $\FM^{\partial}_{M}(V)$ is the closure of $(\partial \FM_{M}(V)) \cap \pi^{-1}(\Conf_{U}(M))$.
+Let
+\[ \BF(V,U) = \{ W \subset V \mid \# W \geq 2 \text{ and } \# W \cap U \leq 1 \}. \]
+
+\begin{lemma}
+  The subspace $\FM_{M}^{\partial}(V) \subset \FM_{M}(V)$ is equal to:\index{FMMpartial@$\FM_{M}^{\partial}(V)$, fiberwise boundary}
+  \[ \smashoperator{\bigcup_{W \in \BF(V,U)}} \im \bigl( \circ_{W} : \FM_{M}(V/W) \times \FM_{n}(W) \to \FM_{M}(V) \bigr). \]
+\end{lemma}
+
+In the description of $\FM_{n}^{\partial}(V)$, there was an additional part which corresponds to $U \subset W$.
+But unlike $\FM_{n}$, for $\FM_{M}$ the image of $p_{U} (- \circ_{W} -)$ is always included in the boundary of $\FM_{M}(U)$ when $U \subset W$.
+We follow a pattern similar to the one used in the proof of~\cite[Proposition 5.7.1]{LambrechtsVolic2014}.
+
+\begin{proof}
+  Let $\operatorname{cls}$ denote the closure operator.
+  Since $\Conf_{U}(M)$ is the interior of $\FM_{M}(U)$ and $p : \FM_{M}(V) \to \FM_{M}(U)$ is a bundle, it follows that:
+  \begin{align*}
+    \FM_{M}^{\partial}(V)
+    & = \operatorname{cls} \bigl( \FM_{M}^{\partial}(V) \cap p^{-1}(\Conf_{U}(M)) \bigr) \\
+    & = \operatorname{cls} \bigl( \partial \FM_{M}(V) \cap p^{-1}(\Conf_{U}(M)) \bigr).
+  \end{align*}
+  The boundary $\partial \FM_{M}(V)$ is the union of the $\im(\circ_{W})$ for $\# W \geq 2$ (note that the case $W = V$ is included, unlike for $\FM_{n}$).
+  If $\# W \cap U \geq 2 \iff W \not\in \BF(V,U)$, then $\im(p_{U}(- \circ_{W} -)) \subset \partial \FM_{M}(U)$, because if a configuration belongs to this image then at least two points of $U$ are infinitesimally close.
+  Therefore:
+  \begin{align*}
+    \FM_{M}^{\partial}(V)
+    & = \operatorname{cls} \bigl( \partial \FM_{M}(V) \cap p^{-1}(\Conf_{U}(M)) \bigr) \\
+    & = \operatorname{cls} \biggl( \bigcup_{\hspace{-1em} \mathrlap{\# W \geq 2}} \im (\circ_{W}) \cap \pi^{-1}(\Conf_{U}(M)) \biggr) \\
+    & = \operatorname{cls} \biggl( \bigcup_{\hspace{-1em} \mathrlap{\# W \in \BF(V,U)}} \im (\circ_{W}) \cap \pi^{-1}(\Conf_{U}(M)) \biggr) \\
+    & = \bigcup_{\hspace{-2em} \mathrlap{W \in \BF(V,U)}} \operatorname{cls} \bigl( \im(\circ_{W}) \cap \pi^{-1}(\Conf_{U}(M)) \bigr) \\
+    & = \bigcup_{\hspace{-2em} \mathrlap{W \in \BF(V,U)}} \im(\circ_{W}).
+      \qedhere
+  \end{align*}
+\end{proof}
+
+\begin{lemma}
+  \label{cnf.lemma.int-partial-omega}
+  For a given graph $\Gamma \in \Tw\Gra_{R}(U)$, the integral over the fiberwise boundary is given by:
+  \[ \int_{p_{U}^{\partial}} \omega'(\Gamma)|_{\FM_{M}^{\partial}(V)} = \omega(d_{\mathrm{contr}} \Gamma). \]
+\end{lemma}
+
+\begin{proof}
+  The maps $\circ_{W} : \FM_{M}(V/W) \times \FM_{n}(W) \to \FM_{M}(V)$ are smooth injective map and their domains are compact, thus they are homeomorphisms onto their images.
+  Recall $\# W \geq 2$ for $W \in \BF(V,U)$, hence $\dim \FM_{n}(W) = n \#W - n - 1$.
+  The dimension of the image of $\circ_{W}$ is then:
+  \begin{equation}
+    \begin{aligned}
+      \dim \im(\circ_{W})
+      & = \dim \FM_{M}(V/W) + \dim \FM_{n}(W) \\
+      & = n \# (V/W) + (n \#W - n - 1) \\
+      & = n \#V - 1,
+    \end{aligned}
+  \end{equation}
+  i.e.\ the image is of codimension $1$ in $\FM_{M}(V)$.
+  It is also easy to check that if $W \neq W'$, then $\im(\circ_{W}) \cap \im(\circ_{W'})$ is of codimension strictly bigger than $1$.
+
+  We now fix $W \in \BF(V,U)$.
+  Since $\# W \cap U \leq 1$, the composition $U \subset V \to V/W$ is injective and identifies $U$ with a subset of $V/W$.
+  There is then a forgetful map $p_{U}' : \FM_{M}(V/W) \to \FM_{M}(U)$.
+  We then have a commutative diagram:
+  \begin{equation}
+    \begin{tikzcd}
+      \FM_{M}(V/W) \times \FM_{n}(W) \dar{\circ_{W}} \rar{p_{1}} & \FM_{M}(V/W) \dar{p_{U}'} \\
+      \FM_{M}(V) \rar{p_{U}} & \FM_{M}(U)
+    \end{tikzcd}
+    \label{cnf.eq:6}
+  \end{equation}
+
+  It follows that $p_{U}(- \circ_{W} -) = p'_{U} \circ p_{1}$ is the composite of two semi-algebraic bundles, hence it is a semi-algebraic bundle itself~\cite[Proposition 8.5]{HardtLambrechtsTurchinVolic2011}.
+  Combined with the fact about codimensions above, we can therefore apply the summation formula~\cite[Proposition 8.11]{HardtLambrechtsTurchinVolic2011}:
+  \begin{equation}
+    \label{cnf.eq.sum-chain-map}
+    \int_{p_{U}^{\partial}} \omega'(\Gamma) = \sum_{W \in \BF(V,U)} \int_{p_{U}(- \circ_{W} -)} \omega'(\Gamma)|_{\FM_{M}(V/W) \times \FM_{n}(W)}
+  \end{equation}
+
+  Now we can directly adapt the proof of Lambrechts and Volić.
+  For a fixed $W$, by~\cite[Proposition 8.13]{HardtLambrechtsTurchinVolic2011}, the corresponding summand is equal to $\pm \omega(\Gamma_{V/W}) \cdot \int_{\FM_{n}(W)} \omega'(\Gamma_{W})$, where
+  \begin{itemize}
+  \item $\Gamma_{V/W} \in \Tw\Gra_{R}(U)$ is the graph with $W$ collapsed to a vertex and $U \hookrightarrow V/W$ is identified with its image;
+  \item $\Gamma_{W} \in \Tw\Gra_{n}(W)$ is the full subgraph of $\Gamma$ with vertices $W$ and the labels removed.
+  \end{itemize}
+
+  The vanishing lemmas in the proof of Lambrechts and Volić then imply that the integral $\int_{\FM_{n}(W)} \omega'(\Gamma_{W})$ is zero unless $\Gamma_{W}$ is the graph with exactly two vertices and one edge, in which case the integral is equal to $1$.
+  In this case, $\Gamma_{V/W}$ is the graph $\Gamma$ with one edge connecting an internal vertex to some other vertex collapsed.
+  The sum runs over all such edges, and dealing with signs carefully we see that Equation~\eqref{cnf.eq.sum-chain-map} is precisely equal to $\omega(d_{\mathrm{contr}} \Gamma)$.
+\end{proof}
+
+\begin{proof}[End of the proof of Proposition~\ref{cnf.prop.mph-tw-om}]
+  By Equation~\eqref{cnf.eq.int-d-omega} and Lemma~\ref{cnf.lemma.int-partial-omega}, we can apply Stokes' formula to $d \omega(\Gamma)$ to show that it is equal to $\omega(d \Gamma) = \omega(d_{R} \Gamma + d_{\mathrm{split}} \Gamma) + \omega(d_{\mathrm{split}} \Gamma)$.
+\end{proof}
+
+\subsection{Reduction: \texorpdfstring{$\Graphs_R$}{Graphs\_R}}
+\label{cnf.sec.reduct-graphs_r}
+
+The last step in the construction of $\Graphs_{R}$ is the reduction of $\Tw\Gra_{R}$ so that it has the right cohomology.
+We borrow the terminology of Campos--Willwacher~\cite{CamposWillwacher2016} for the next two definitions.
+
+\begin{definition}
+  Let the \textbf{full graph complex} be:\index{fGCR@$\fGC_{R}$, full graph complex}
+  \[ \fGC_{R} = \Tw\Gra_{R}(\varnothing)[-n]. \]
+  It consists of graphs with only internal vertices, and the product is disjoint union of graphs.
+  The degree of a graph $\gamma$ is $n + (n-1) \#E_{\gamma} - n \#V_{\gamma}$, where $E_{\gamma}$ is the set of edges and $V_{\gamma}$ the set of vertices.
+\end{definition}
+
+\begin{remark}
+  The degree shift is there to be consistent with the definition of the standard graph complex $\GC_{n}$.
+\end{remark}
+
+As an algebra, $\fGC_{R}[n]$ is free and generated by connected graphs.
+In general we will call ``internal components'' the connected components of a graph that only contain internal vertices.
+The full graph complex naturally acts on $\Tw\Gra_{R}(U)$ by adding extra internal components.
+
+\begin{definition}
+  The \textbf{partition function} $\Zphi : \fGC_{R}[n] \to \R$\index{Zphi@$\Zphi$|see{partition function}}\index{partition function} is the restriction:
+  \[\Zphi = \omega|_{\varnothing} : \Tw\Gra_{R}(\varnothing) = \fGC_{R}[n] \to \OmPA^{*}(\FM_{M}(\varnothing)) = \OmPA^{*}(\mathrm{pt}) = \R. \]
+\end{definition}
+
+By the double-pushforward formula and Fubini's theorem, $\Zphi$ is an algebra morphism and
+\begin{equation}
+  \label{cnf.eq.z-r-prod}
+  \forall \gamma \in \fGC_{R}[n], \forall \Gamma \in \Tw\Gra_{R}(U), \; \omega(\gamma \cdot \Gamma) = \Zphi(\gamma) \cdot \omega(\Gamma).
+\end{equation}
+
+\begin{definition}
+  Let $\R_{\varphi}$\index{Rphi@$\R_{\varphi}$} be the $\fGC_{R}[n]$-module of dimension $1$ induced by $\Zphi : \fGC_{R}[n] \to \R$.
+  The \textbf{reduced graph comodule} $\Graphs^{\varphi}_{R}$\index{GraphsRphi@$\Graphs_{R}^{\varphi}$} is the tensor product:
+  \[ \Graphs^{\varphi}_{R}(U) = \R_{\varphi} \otimes_{\fGC_{R}[n]} \Tw\Gra_{R}(U). \]
+\end{definition}
+
+In other words, a graph of the type $\Gamma \sqcup \gamma$ containing an internal component $\gamma \in \fGC_{R}[n]$ is identified with $\Zphi(\gamma) \cdot \Gamma$.
+It is spanned by representative classes of graphs with no internal connected component; we call such graphs \textbf{reduced}.
+The notation is meant to evoke the fact that $\Graphs^{\varphi}_{R}$ depends on the choice of the propagator $\varphi$, unlike the collection $\Graphs^{\varepsilon}_{R}$ that will appear in Section~\ref{cnf.sec.constr-graphs_n-to}.
+
+\begin{proposition}
+  \label{cnf.prop.mph-1}
+  The map $\omega : \Tw\Gra_{R}(U) \to \OmPA^{*}(\FM_{M}(U))$ defined in Proposition~\ref{cnf.prop.mph-tw-om} factors through the quotient defining $\Graphs^{\varphi}_{R}$.
+
+  If $\chi(M) = 0$, the symmetric collection $\Graphs^{\varphi}_{R}$ forms a Hopf right comodule over $\Graphs_{n}$.
+  If moreover $M$ is framed, the map $\omega$ defines a Hopf right comodule morphism.
+\end{proposition}
+
+\begin{proof}
+  Equation~\eqref{cnf.eq.z-r-prod} immediately implies that $\omega$ factors through the quotient.
+
+  The vanishing lemmas shows that if $\Gamma \in \Tw\Gra_{n}(U)$ has internal components, then $\omega(\Gamma)$ vanishes~\cite[Proposition 9.3.1]{LambrechtsVolic2014}, so it is straightforward to check that if $\chi(M) = 0$, then $\Graphs^{\varphi}_{R}$ becomes a Hopf right comodule over $\Graphs_{n}$.
+  It is also clear that for $M$ framed, the quotient map $\omega$ remains a Hopf right comodule morphism.
+\end{proof}
+
+\begin{proposition}[{\cite[Lemma 3]{CattaneoMneev2010}}]
+  \label{cnf.prop.phi-phi}
+  The propagator $\varphi$ can be chosen such that the additional property (P4) holds:
+  \[ \int_{p_{1} : \FM_{M}(\underline{2}) \to  \FM_{M}(\underline{1}) = M} p_{2}^{*}(\sigma(x)) \wedge \varphi = 0, \; \forall x \in R; \tag{P4} \]
+\end{proposition}
+
+\begin{remark}
+  \label{cnf.rmk.pfive}
+  The additional property (P5) of the paper mentioned above would be helpful in order to get a direct morphism $\Graphs^{\varphi}_{R} \to \GG{A}$, because then the partition function would vanish on all connected graphs with at least two vertices. However we run into difficulties when trying to adapt the proof in the setting of PA forms, mainly due to the lack of an operator $d_{M}$ acting on $\OmPA^{*}(M \times N)$ differentiating ``only in the first slot''.
+\end{remark}
+
+From now on and until the end of the paper, we assume that $\varphi$ satisfies (P4).
+
+\begin{corollary}
+  \label{cnf.cor.weak-vanishing}
+  The morphism $\omega$ vanishes on graphs containing univalent internal vertices (i.e.\ dead ends).
+\end{corollary}
+\begin{proof}
+  Let $\Gamma \in \Gra_{R}(U \sqcup I) \subset \Tw\Gra_{R}(U)$ be a graph with a univalent internal vertex $u \in I$, labeled by $x$, and let $v$ be the only vertex connected to $u$.
+  Let $\tilde\Gamma$ be the full subgraph of $\Gamma$ on the set of vertices $U \sqcup I - \{u\}$.
+  Then using~\cite[Propositions 8.10 and 8.15]{HardtLambrechtsTurchinVolic2011} (in a way similar to the end of the proof of~\cite[Lemma 9.3.9]{LambrechtsVolic2014}), we find:
+  \begin{align*}
+    \omega(\Gamma)
+    & = \int_{\FM_{M}(U \sqcup I) \to \FM_{M}(U)} \omega'(\Gamma) \\
+    & = \int_{\FM_{M}(U \sqcup I) \to \FM_{M}(U)} \omega'(\tilde\Gamma) p_{uv}^{*}(\varphi) p_{u}^{*}(\sigma(x)) \\
+    & = \int_{\FM_{M}(U \sqcup I - \{u\}) \to \FM_{M}(U)} \omega'(\tilde\Gamma) \wedge p_{v}^{*} \left( \int_{\FM_{M}(\{u,v\}) \to \FM_{M}(\{v\})} p_{uv}^{*}(\varphi) p_{u}^{*}(\sigma(x)) \right),
+  \end{align*}
+  which vanishes by (P4).
+\end{proof}
+
+Almost everything we have done so far works for non-simply connected manifolds.
+We now prove a proposition which sets simply connected manifolds apart.
+
+\begin{proposition}
+  \label{cnf.prop.strong-vanishing}
+  The partition function $\Zphi$ vanishes on any connected graph with no bivalent vertices labeled by $1_{R}$ and containing at least two vertices.
+\end{proposition}
+
+\begin{remark}
+  If $\gamma \in \fGC_{R}$ has only one vertex, labeled by $x$, then $\Zphi(\gamma) = \int_{M} \sigma(x)$ which can be nonzero.
+\end{remark}
+
+\begin{proof}
+  Let $\gamma \in \fGC_{R}[n]$ be a connected graph with at least two vertices and no bivalent vertices labeled by $1_{R}$.
+  By Corollary~\ref{cnf.cor.weak-vanishing}, we can assume that all the vertices of $\gamma$ are at least bivalent.
+  By hypothesis, if a vertex is bivalent then it is labeled by an element of $R^{> 0} = R^{\geq 2}$.
+
+  Let $k = i + j$ be the number of vertices of $\gamma$, with $i$ vertices that are at least trivalent and $j$ vertices that are bivalent and labeled by $R^{\geq 2}$.
+  It follows that $\gamma$ has at least $\frac{1}{2} (3i + 2j)$ edges, all of degree $n-1$.
+  Since bivalent vertices are labeled by $R^{\geq 2}$, their labels contribute at least $2j$ to the degree of $\gamma$.
+  The (internal) vertices contribute $-kn$ to the degree, and the other labels have a nonnegative contribution.
+  Thus:
+  \begin{align*}
+    \deg \gamma
+    & \geq \left( \frac{3}{2} i + j \right) (n-1) + 2j - kn \\
+    & = \left( \frac{3}{2} k - \frac{3}{2}j + j \right) (n-1) + 2j - kn \\
+    & = \frac{1}{2} \bigl( k (n-3) - j (n-5) \bigr).
+  \end{align*}
+  This last number is always positive for $0 \leq j \leq k$: it is an affine function of $j$, and it is positive when $j = 0$ and $j = k$ (recall that $n \geq 4$).
+  The degree of $\gamma \in \fGC_{R}[n]$ must be zero for the integral defining $\Zphi(\gamma)$ to be the integral of a top form of $\FM_{M}(\underline{k})$ and hence possibly nonzero.
+  But by the above computation, $\deg \gamma > 0 \implies \Zphi(\gamma) = 0$.
+ \end{proof}
+
+\begin{remark}
+  When $n = 3$, the manifold $M$ is the $3$-sphere $S^{3}$ thanks to Perelman's proof~\cite{Perelman2002,Perelman2003} of the Poincaré conjecture.
+  The partition function $\Zphi$ is conjectured to be trivial on $S^{3}$ for a proper choice of framing, thus bypassing the need for the above degree counting argument.
+  See also Proposition~\ref{cnf.prop.result-s3}.
+\end{remark}
+
+
+\section{From the model to forms via graphs}
+\label{cnf.sec.proof-theorem}
+
+In this section we connect $\GG{A}$ to $\OmPA^{*}(\FM_{M})$ and we prove that the connecting morphisms are quasi-isomorphisms.
+
+\subsection{Construction of the morphism to \texorpdfstring{$\GG{A}$}{G\_A}}
+\label{cnf.sec.constr-graphs_n-to}
+
+\begin{proposition}
+  \label{cnf.prop.gra-r-g-a}
+  For each finite set $U$, there is a CDGA morphism $\rho'_{*} : \Gra_{R}(U) \to \GG{A}(U)$\index{rhoprime@$\rho'_{*}$} given by $\rho$ on the $R^{\otimes U}$ factor and sending the generators $e_{uv}$ to $\omega_{uv}$ on the $\Gra_{n}$ factor.
+  When $\chi(M) = 0$, this defines a Hopf right comodule morphism $(\Gra_{R}, \Gra_{n}) \to (\GG{A}, \enV)$.
+  \qed
+\end{proposition}
+
+If we could find a propagator for which property (P5) held (see Remark~\ref{cnf.rmk.pfive}), then we could just send all graphs containing internal vertices to zero and obtain an extension $\Graphs^{\varphi}_{R} \to \GG{A}$.
+Since we cannot assume that (P5) holds, the definition of the extension is more complex.
+However we still have Proposition~\ref{cnf.prop.strong-vanishing}, and homotopically speaking, graphs with bivalent vertices are irrelevant.
+
+\begin{definition}
+  Let $\fGC^{0}_{R}$\index{fGCRzero@$\fGC^{0}_{R}$} be the quotient of $\fGC_{R}$ defined by identifying a disconnected vertex labeled by $x$ with the number $\varepsilon(\rho(x)) = \int_{M} \sigma(x)$.
+\end{definition}
+
+It's clear that $\Zphi$ factors through a map $\fGC^{0}_{R}[n] \to \R$, for which we will keep the same notation $\Zphi$.
+
+\begin{lemma}
+  \label{cnf.lem.fgczero}
+  The subspace $I \subset \fGC^{0}_{R}$ spanned by graphs with at least one univalent vertex, or at least one bivalent vertex labeled by $1_{R}$, or at least one label in $\ker(\rho : R \to A)$, is a (shifted) CDGA ideal.
+\end{lemma}
+
+\begin{proof}
+  It is clear that $I$ is an algebra ideal.
+  Let us prove that it is a differential ideal.
+  If one of the labels of $\Gamma$ is in $\ker \rho$, then so do all the summands of $d \Gamma$, because $\ker \rho$ is a CDGA ideal of $R$.
+
+  If $\Gamma$ contains a bivalent vertex $u$ labeled by $1_{R}$, then so does $d_{R} \Gamma$. In $d_{\mathrm{split}} \Gamma$, splitting one of the two edges connected to $u$ produces a univalent vertex; and in $d_{\mathrm{contr}} \Gamma$, the contraction of the two edges connected to $u$ cancel each other.
+
+  Finally let us prove that if $\Gamma$ has a univalent vertex $u$, then $d\Gamma$ lies in $I$. It's clear that $d_{R} \Gamma \in I$.
+  Contracting or splitting the only edge connected to the univalent vertex could remove the univalent vertex.
+  Let us prove that these two summands cancel each other up to $\ker \rho$.
+
+
+  Let $x$ be the label of $u$, and let $y$ be the label of the only vertex incident to $u$.
+  Contracting the edge yields a new vertex labeled by $xy$.
+  Due to the definition of $\fGC^{0}_{R}$, splitting the edge yields a new vertex labeled by
+  \begin{align*}
+    \alpha
+    & = \sum_{(\Delta_{R})} \varepsilon(\rho(y \Delta''_{R})) x \Delta'_{R} \\
+    \implies \rho(\alpha)
+    & = \rho(x) \cdot \sum_{(\Delta_{A})} \pm \varepsilon_{A}(\rho(y) \Delta_{A}'') \Delta_{A}'.
+  \end{align*}
+
+  It is a standard property of the diagonal class $\Delta_{A}$ that $\sum_{(\Delta_{A})} \pm \varepsilon_{A}(a \Delta_{A}'') \Delta_{A}' = a$ for all $a \in A$, directly from Equation~\eqref{cnf.eq.def-delta}.
+  Applied to $a = \rho(y)$, it follows from the previous equation $\rho(\alpha) = \pm \rho(xy)$; examining the signs, this summand cancels from the summand that comes from contracting the edge.
+\end{proof}
+
+\begin{definition}
+  The algebra $\fGC'_{R}$\index{fGCRprime@$\fGC'_{R}$} is the quotient of $\fGC^{0}_{R}$ by the ideal $I$.
+\end{definition}
+
+Note that $\fGC'_{R}[n]$ is also free as an algebra, with generators given by connected graphs with no univalent vertices nor bivalent vertices labeled by $1_{R}$, and where the labels in $R / \ker(\rho) = A$.
+
+\begin{definition}
+  Let $\fLoop_{R} \subset \fGC^{0}_{R}$\index{fLoopR@$\fLoop_{R}$} be the sub-CDGA generated by graphs with univalent vertices and by circular graphs (i.e.\ graphs of the type $e_{12} e_{23} \dots e_{(k-1)k} e_{k1}$).
+\end{definition}
+
+\begin{lemma}
+  The morphism $\Zphi : \fGC^{0}_{R}[n] \to \R$ vanishes on $\fLoop_{R}[n]$.
+\end{lemma}
+
+\begin{proof}
+  The map $\Zphi$ vanishes on graphs with univalent vertices by Corollary~\ref{cnf.cor.weak-vanishing}.
+  The degree of a circular graph with $k$ vertices is $-k < 0$, but $\Zphi$ can only be nonzero on graphs of degree zero.
+\end{proof}
+
+\begin{proposition}
+  \label{cnf.prop.fgcr-cofib}
+  The sequence $\fLoop_{R} \to \fGC^{0}_{R} \to \fGC'_{R}$ is a homotopy cofiber sequence.
+\end{proposition}
+
+\begin{proof}
+  The underlying algebra of $\fGC^{0}_{R}$ is a quasi-free extension of $\fLoop_{R}$ by the algebra generated by graphs that are not circular and that do not contain any univalent vertices.
+  The homotopy cofiber of the inclusion $\fLoop_{R} \to \fGC^{0}_{R}$ is this algebra $\fGC''_{R}$, together with a differential induced by the quotient $\fGC^{0}_{R} / (\fLoop_{R})$.
+  We aim to prove that the induced morphism $\fGC''_{R} \to \fGC'_{R}$ is a quasi-iso\-mor\-phism.
+
+  Let us define an increasing filtration on both CDGAs by letting $F_{s}\fGC'_{R}$ (resp.\ $F_{s}\fGC''_{R}$) be the submodule spanned by graphs $\Gamma$ such that $\# \text{edges} - \# \text{vertices} \leq s$ (see also the proof of Proposition~\ref{cnf.prop.graph-A-G-A} where a similar technique is reused).
+
+  The splitting part of the differential strictly decreases the filtration, so only $d_{R}$ and $d_{\mathrm{contr}}$ remain on the first page of the associated spectral sequences.
+
+  One can then filter by the number of edges.
+  On the first page of the spectral sequence associated to this new filtration, there is only the internal differential $d_{R}$.
+  Thus on the second page, the vertices are labeled by $H^{*}(R) = H^{*}(M)$. The contracting part of the differential decreases the new filtration by exactly one, and so on the second page we see all of $d_{\mathrm{contr}}$.
+
+  We can now adapt the proof of~\cite[Proposition 3.4]{Willwacher2014} to show that on the part of the complex with bivalent vertices, only the circular graphs contribute to the cohomology (we work dually so we consider a quotient instead of an ideal, but the idea is the same).
+  To adapt the proof, one must see the labels of positive degree as formally adding one to the valence of the vertex, thus ``breaking'' a line of bivalent vertices.
+  These label break the symmetry (recall the coinvariants in the definition of the twisting) that allow cohomology classes to be produced.
+\end{proof}
+
+\begin{corollary}
+  The morphism $\fGC_{R}[n] \to \R$ factors through $\fGC'_{R}[n]$ up to homotopy.
+  \qed
+\end{corollary}
+
+Let $\pi : \fGC_{R} \to \fGC'_{R}$ be the quotient map.
+Let also $\Omega^{*}(\Delta^{1}) = S(t, dt)$\index{WOmegaDelta@$\Omega^{*}(\Delta^{1})$} be the algebra of polynomials forms on $\Delta^{1}$, which is a path object for $\R$ in the model category of CDGAs.
+
+The CDGAs $\fGC_{R}[n]$ and $\fGC'_{R}[n]$ are both quasi-free with a good filtration: the generators are graphs (with some conditions for $\fGC'_{R}[n]$), and the filtration is given by the number of edges.
+Therefore they are cofibrant as CDGAs.
+Thus there exists some morphism $\Zphi' : \fGC'_{R}[n] \to \R$ and some homotopy $h : \fGC_{R}[n] \to \Omega^{*}(\Delta^{1})$ such that the following diagram commutes:
+\[ \begin{tikzcd}
+    {} & \fGC_{R}[n] \dlar[swap]{\Zphi} \drar{\Zphi' \pi} \dar{h} \\
+    \R & \Omega^{*}(\Delta^{1}) \lar{\sim}[swap]{d_{1}} \rar{d_{0}}[swap]{\sim} & \R
+  \end{tikzcd} \]
+
+\begin{definition}
+  Let $\Omega^{*}(\Delta^{1})_{h}$ be the $\fGC_{R}[n]$-module induced by $h$, and let
+  \[ \Graphs'_{R}(U) = \Omega^{*}(\Delta^{1})_{h} \otimes_{\fGC_{R}[n]} \Tw \Gra_{R}(U). \]
+\end{definition}
+
+\begin{definition}
+  Let $\Ze : \fGC_{R}[n] \to \R$\index{Ze@$\Ze$} be the algebra morphism that sends a graph $\Gamma$ with a single vertex labeled by $x \in R$ to $\int_{M} \sigma(x) = \varepsilon(\rho(x))$, and that sends all the other connected graphs to zero.
+  Let $\R_{\varepsilon}$\index{Re@$\R_{\varepsilon}$} be the one-dimensional $\fGC_{R}[n]$-module induced by $\Ze$, and let\index{GraphsRe@$\Graphs_{R}^{\varepsilon}$}
+  \[ \Graphs^{\varepsilon}_{R}(U) = \R_{\varepsilon} \otimes_{\fGC_{R}[n]} \Tw \Gra_{R}(U). \]
+\end{definition}
+
+Explicitly, in $\Graphs^{\varepsilon}_{R}$, all internal components with at least two vertices are identified with zero, whereas an internal component with a single vertex labeled by $x \in R$ is identified with the number $\int_{M} \sigma(x) = \varepsilon(\rho(x))$.
+
+\begin{lemma}
+  The morphism $\Zphi' \pi$ is equal to $\Ze$.
+\end{lemma}
+
+\begin{proof}
+  This is a rephrasing of Proposition~\ref{cnf.prop.strong-vanishing}.
+  Using the same degree counting argument, all the connected graphs with more than one vertex in $\fGC'_{R}[n]$ are of positive degree.
+  Since $\R$ is concentrated in degree zero, $\Zphi' \pi$ must vanish on these graphs, just like $\Ze$.
+
+  Besides the morphism $\pi : \fGC_{R} \to \fGC'_{R} = \fGC^{0}_{R} / I$ factors through $\fGC^{0}_{R}$, where graphs $\gamma$ with a single vertex are already identified with the numbers $\Zphi(\gamma) = \Ze(\gamma)$.
+\end{proof}
+
+\begin{proposition}
+  \label{cnf.prop.zig-gra-e-phi}
+  For each finite set $U$, we have a zigzag of quasi-isomorphisms of CDGAs:
+  \[ \Graphs^{\varepsilon}_{R}(U) \qiso* \Graphs'_{R}(U) \qiso \Graphs^{\varphi}_{R}(U). \]
+
+  If $\chi(M) = 0$, then $\Graphs'_{R}$ and $\Graphs^{\varepsilon}_{R}$ are right Hopf $\Graphs_{n}$-comodules, and the zigzag defines a zigzag of Hopf right comodule morphisms.
+\end{proposition}
+
+\begin{proof}
+  We have two commutative diagrams:
+  \[ \begin{tikzcd}[cramped]
+      \Graphs^{\varepsilon}_{R}(U) & \Graphs'_{R}(U) \lar{} \\
+      \Tw\Gra_{R}(U) \otimes_{\fGC_{R}[n]} \R_{\varepsilon} \uar{=}
+      & \Tw\Gra_{R}(U) \otimes_{\fGC_{R}[n]} \Omega^{*}(\Delta^{1})_{h} \uar{=} \lar[swap]{1 \otimes d_{1}}
+    \end{tikzcd} \]
+\[ \begin{tikzcd}
+    \Graphs'_{R}(U) \rar{} & \Graphs^{\varphi}_{R}(U) \\
+    \Tw\Gra_{R}(U) \otimes_{\fGC_{R}[n]} \Omega^{*}(\Delta^{1})_{h} \uar{=} \rar{1 \otimes d_{0}}
+      & \Tw\Gra_{R}(U) \otimes_{\fGC_{R}[n]} \R_{\varphi} \uar{=}
+  \end{tikzcd} \]
+
+  The action of $\fGC_{R}[n]$ on $\Tw\Gra_{R}(U)$ is quasi-free with a good filtration, thus the functor $\Tw \Gra_{R}(U) \otimes_{\fGC_{R}[n]} (-)$ preserves quasi-isomorphisms.
+  The two maps $d_{0}, d_{1} : \Omega^{*}(\Delta^{1}) \to \R$ are quasi-isomorphisms, therefore all the maps in the diagram are quasi-isomorphisms.
+
+  If $\chi(M) = 0$, the proof that $\Graphs'_{R}$ and $\Graphs^{\varepsilon}_{R}$ assemble to $\Graphs_{n}$-co\-mo\-dules is identical to the proof for $\Graphs^{\varphi}_{R}$ (see Proposition~\ref{cnf.prop.mph-1}).
+  It's also clear that the two zigzags define morphisms of comodules: in $\Graphs_{n}$, all internal components are identified with zero anyway.
+\end{proof}
+
+\begin{proposition}
+  \label{cnf.prop.mph-2}
+  The CDGA morphisms $\rho'_{*} : \Gra_{R}(U) \to \GG{A}(U)$ extend to CDGA morphisms $\rho_{*} : \Graphs^{\varepsilon}_{R}(U) \to \GG{A}(U)$\index{rhostar@$\rho_{*}$} by sending all the graphs containing internal vertices to zero.
+  If $\chi(M) = 0$ this extension defines a Hopf right comodule morphism.
+\end{proposition}
+
+\begin{proof}
+  The submodule of graphs containing internal vertices is a multiplicative ideal and a cooperadic coideal, so all we are left to prove is that $\rho_{*}$ is compatible with differentials.
+  Since $\rho'_{*}$ was a chain map, we must only prove that if $\Gamma$ has internal vertices, then $\rho_{*}(d \Gamma) = 0$.
+
+  If a summand of $d\Gamma$ still contains an internal vertex, then it is mapped to zero by definition of $\rho_{*}$.
+  The only parts of the differential that can remove all internal vertices are the contraction of dead ends and the splitting off of an internal component containing all the internal vertices of $\Gamma$.
+  By the definition of $\Graphs^{\varepsilon}_{R}$, splitting off an internal component can yield a nonzero graph only if that internal component contains a single vertex, i.e.\ if we are dealing with a dead end.
+
+  Reusing the proof of Lemma~\ref{cnf.lem.fgczero}, we can see that the contraction of that dead end cancels out with the splitting of that dead end after applying $\rho_{*}$.
+  We thus get $\rho_{*}(d \Gamma) = 0$ as expected.
+\end{proof}
+
+\subsection{The morphisms are quasi-isomorphisms}
+\label{cnf.sec.morphisms-are-quasi}
+
+In this section we prove that the morphisms constructed in Proposition~\ref{cnf.prop.mph-1} and Proposition~\ref{cnf.prop.mph-2} are quasi-isomorphisms, completing the proof of Theorem~\ref{cnf.thm.A}.
+
+\begin{theorem}[{Precise version of Theorem~\ref{cnf.thm.A}}]
+  \label{cnf.thm.Abis}
+  The following zigzag, where the maps were constructed in Propositions~\ref{cnf.prop.mph-1}, \ref{cnf.prop.zig-gra-e-phi}, and \ref{cnf.prop.mph-2}, is a zigzag of quasi-isomorphisms of CDGAs for all finite sets $U$:
+  \[ \GG{A}(U) \qiso* \Graphs^{\varepsilon}_{R}(U) \qiso* \Graphs'_{R}(U) \qiso \Graphs^{\varphi}_{R}(U) \qiso \OmPA^{*}(\FM_{M}(U)).\]
+
+  If $\chi(M) = 0$, the left-pointing maps form a quasi-isomorphism of Hopf right comodules:
+  \[ (\GG{A}, \enV) \qiso* (\Graphs^{\varepsilon}_{R}, \Graphs_{n}) \qiso* (\Graphs'_{R}, \Graphs_{n}). \]
+
+  If $M$ is moreover framed, then the right-pointing maps also form a quasi-isomorphism of Hopf right comodules:
+  \[ (\Graphs'_{R}, \Graphs_{n}) \qiso (\Graphs^{\varphi}_{R}, \Graphs_{n}) \qiso (\OmPA^{*}(\FM_{M}), \OmPA^{*}(\FM_{n})). \]
+\end{theorem}
+
+The rest of the section is dedicated to the proof of Theorem~\ref{cnf.thm.Abis}.
+
+\begin{remark}
+  The graph complexes are, in general, nonzero even in negative degrees; see Remark~\ref{cnf.rmk.grading}.
+\end{remark}
+
+\begin{lemma}
+  \label{cnf.lemma.graph-r-graph-A}
+  The morphisms $\Graphs^{\varepsilon}_{R}(U) \to \GG{A}(U)$ factors through a quasi-iso\-mor\-phism $\Graphs^{\varepsilon}_{R}(U) \to \Graphs_{A}(U)$, where $\Graphs_{A}(U)$\index{GraphsA@$\Graphs_{A}$} is the CDGA obtained by modding graphs with a label in $\ker(\rho : R \to A)$ in $\Graphs^{\varepsilon}_{R}(U)$.
+\end{lemma}
+
+\begin{proof}
+  The morphism $\Graphs^{\varepsilon}_{R} \to \Graphs_{A}$ simply applies the surjective map $\rho : R \to A$ to all the labels.
+  It is clear that $\Graphs^{\varepsilon}_{R} \to \GG{A}$ factors through the quotient.
+
+  We can consider the spectral sequences associated to the filtrations of both $\Graphs^{\varepsilon}_{R}$ and $\Graphs_{A}$ by the number of edges, and we obtain a morphism $\EE^{0} \Graphs^{\varepsilon}_{R} \to \EE^{0} \Graphs_{A}$.
+  On both $\EE^{0}$ pages, only the internal differentials coming from $R$ and $A$ remain.
+  The chain map $R \to A$ is a quasi-isomorphism, and so the morphism induces an isomorphism on the $\EE^{1}$ page.
+  By standard spectral sequence arguments, it follows that $\Graphs^{\varepsilon}_{R} \to \Graphs_{A}$ is a quasi-isomorphism.
+\end{proof}
+
+The CDGA $\Graphs_{A}(U)$ has the same graphical description as $\Graphs^{\varepsilon}_{R}(U)$, except that now vertices are labeled by elements of $A$.
+An internal component with a single vertex labeled by $a \in A$ is identified with $\varepsilon(a)$, and an internal component with more than one vertex is identified with zero.
+
+\begin{proposition}
+  \label{cnf.prop.graph-A-G-A}
+  The morphism $\Graphs_{A} \to \GG{A}$ is a quasi-isomorphism.
+\end{proposition}
+
+Before starting to prove this proposition, let us outline the different steps.
+We filter our complex in such a way that on the $\EE^{0}$ page, only the contracting part of the differential remains.
+Using a splitting result, we can focus on connected graphs.
+Finally, we use a ``trick'' (Figure~\ref{cnf.fig.move-labels}) for moving labels around in a connected component, reducing ourselves to the case where only one vertex is labeled.
+We then get a chain map $A \otimes \Graphs_{n} \to A \otimes \enV(U)$, which is a quasi-isomorphism thanks to the formality theorem.
+
+Let us start with the first part of the outlined program, removing the splitting part of the differential from the picture.
+Define an increasing filtration on $\Graphs_{A}$ by counting the number of edges and vertices in a reduced graph:\index{FsGraphsA@$F_{s} \Graphs_{A}$}
+\[ F_{s} \Graphs_{A} = \{ \Gamma \mid \# \text{edges} - \# \text{vertices} \leq s \}. \]
+
+\begin{lemma}
+  This is a filtration of chain complexes.
+  It is bounded below for each finite set $U$: $F_{-\#U-1} \Graphs_{A}(U) = 0$.
+
+    The $\EE^{0}$ page of the spectral sequence associated to this previous filtration is isomorphic as a module to $\Graphs_{A}$.
+  Under this isomorphism the differential $d^{0}$ is equal to $d_{A} + d'_{\mathrm{contr}}$, where $d_{A}$ is the internal differential coming from $A$ and $d'_{\mathrm{contr}}$ is the part of the differential that contracts all edges but dead ends.
+\end{lemma}
+\begin{proof}
+  If $\Gamma \in \Graphs_{A}(U)$ is the graph with no edges and no internal vertices, then it lives in filtration level $-\#U$. Adding edges can only increase the filtration. Since we consider reduced graphs (i.e.\ no internal components), each time we add an internal vertex (decreasing the filtration) we must add at least one edge (bringing it back up). By induction on the number of internal vertices, each graph is of filtration at least $-\#U$.
+
+  Let us now prove that the differential preserves the filtration and check which parts remain on the associated graded complex.
+  The internal differential $d_{A}$ doesn't change either the number of edges nor the number of vertices and so keeps the filtration constant.
+  The contracting part $d_{\mathrm{contr}}$ of the differential decreases both by exactly one, and so keeps the filtration constant too.
+
+  The splitting part $d_{\mathrm{split}}$ of the differential removes one edge.
+  If the resulting graph is still connected, then nothing else changes and this decreases the filtration by exactly $1$.
+  Otherwise, it means that a whole internal component $\gamma$ was connected to the rest of the graph by a single edge, and then split off and identified with a number.
+  If $\gamma$ has a single vertex labeled by $a$ (i.e.\ we split a dead end), then this number is $\varepsilon(a)$, and the filtration is kept constant.
+  Otherwise, the summand is zero (and so the filtration is obviously preserved).
+
+  In all cases, the differential preserves the filtration, and so we get a filtered chain complex.
+  On the associated graded complex, the only remaining parts of the differential are $d_{A}$, $d_{\mathrm{contr}}$, and the part that splits off dead ends.
+  But by the proof of Proposition~\ref{cnf.prop.mph-2} this last part cancels out with the part that contracts the dead ends.
+\end{proof}
+
+The symmetric algebra $S(\omega_{uv})_{u \neq v \in U}$ is weight graded, which induces a weight grading on $\enV(U)$.
+This grading in turn induces an increasing filtration $F'_{s} \GG{A}$ on $\GG{A}$ (the extra differential strictly decreases the weight).
+Define a shifted filtration on $\GG{A}$ by:
+\[ F_{s} \GG{A}(U) = F'_{s + \# U} \GG{A}(U). \]
+
+\begin{lemma}
+  The $\EE^{0}$ page of the spectral sequence associated to $F_{*} \GG{A}$ is isomorphic as a module to $\GG{A}$.
+  Under this isomorphism the $d^{0}$ differential is just the internal differential of $A$.
+  \qed
+\end{lemma}
+
+\begin{lemma}
+  The morphism $\Graphs_{A} \to \GG{A}$ preserves the filtration and induces a chain map, for each $U$:
+  \[ \EE^{0} \Graphs_{A}(U) \to \EE^{0} \GG{A}(U). \]
+  It maps graphs with internal vertices to zero, an edge $e_{uv}$ between external vertices to $\omega_{uv}$, and a label $a$ of an external vertex $u$ to $\iota_{u}(a)$.
+\end{lemma}
+
+\begin{proof}
+  The morphism $\Graphs_{A}(U) \to \GG{A}(U)$ preserves the filtration by construction.
+
+  If a graph has internal vertices, then its image in $\GG{A}(U)$ is of strictly lower filtration unless the graph is a forest (i.e.\ a product of trees).
+  But trees have leaves, therefore by Corollary~\ref{cnf.cor.weak-vanishing} and the formula defining $\Graphs_{A} \to \GG{A}$ they are mapped to zero in $\GG{A}(U)$ anyway.
+  It's clear that the rest of the morphism preserves filtrations exactly, and so is given on the associated graded complex as stated in the lemma.
+\end{proof}
+
+For a partition $\pi$ of $U$, define the submodule $\Graphs_{A}\langle \pi \rangle \subset \EE^{0} \Graphs_{A}(U)$ spanned by reduced graphs $\Gamma$ such that the partition of $U$ induced by the connected components of $\Gamma$ is exactly $\pi$.
+In particular let $\Graphs_{A}\langle U \rangle$ be the submodule of connected graphs.
+
+\begin{lemma}
+  \label{cnf.lem.partition-graph}
+  For each partition $\pi$ of $U$, $\Graphs_{A}\langle\pi\rangle$ is a subcomplex, and the complex $\EE^{0} \Graphs_{A}(U)$ splits as the sum over all partitions $\pi$ of $U$:
+  \[ \EE^{0} \Graphs_{A}(U) = \bigoplus_{\pi} \bigotimes_{V \in \pi} \Graphs_{A}\langle V \rangle. \]
+\end{lemma}
+
+\begin{proof}
+  Since there is no longer any part of the differential that can split off connected components in $\EE^{0} \Graphs_{A}$, it is clear that $\Graphs_{A}\langle U \rangle$ is a subcomplex.
+  The splitting result is immediate.
+\end{proof}
+
+The complex $\EE^{0} \GG{A}(U)$ splits in a similar fashion.
+For a monomial in $S(\omega_{uv})$, we say that $u$ and $v$ are ``connected'' if the term $\omega_{uv}$ appears in the monomial.
+Consider the equivalence relation generated by ``$u$ and $v$ are connected''.
+The monomial induces in this way a partition $\pi$ of $U$, and this definition factors through the quotient defining $\enV(U)$ (draw a picture of the $3$-term relation).
+Finally, for a given monomial in $\GG{A}(U)$, the induced partition of $U$ is still well-defined.
+
+Thus for a given partition $\pi$ of $U$, we can define $\enV \langle \pi\rangle$\index{enVpi@$\enV\langle\pi\rangle$} and $\GG{A}\langle \pi \rangle$\index{GApi@$\GG{A}\langle\pi\rangle$} to be the submodules of $\enV(U)$ and $\EE^{0} \GG{A}(U)$ spanned by monomials inducing the partition $\pi$.
+It is a standard fact that $\enV \langle U \rangle = \Lie_{n}^{\vee}(U)$~\cite{Sinh2007}.
+The proof of the following lemma is similar to the proof of the previous lemma:
+
+\begin{lemma}
+  \label{cnf.lemma.partition}
+  For each partition $\pi$ of $U$, $\GG{A} \langle \pi \rangle$ is a subcomplex of $\EE^{0} \GG{A}(U)$, and there is a splitting as the sum over all partitions $\pi$ of $U$:
+  \[ \EE^{0} \GG{A}(U) = \bigoplus_{\pi} \bigotimes_{V \in \pi} \GG{A}\langle V \rangle.
+    \qed \]
+\end{lemma}
+
+\begin{lemma}
+  The morphism $\EE^{0} \Graphs_{A}(U) \to \EE^{0} \GG{A}(U)$ preserves the splitting.
+  \qed
+\end{lemma}
+
+We can now focus on connected graphs to prove Proposition~\ref{cnf.prop.graph-A-G-A}.
+
+\begin{lemma}
+  The complex $\GG{A} \langle U \rangle$ is isomorphic to $A \otimes \enV \langle U \rangle$.
+\end{lemma}
+
+\begin{proof}
+  We define explicit isomorphisms in both directions.
+
+  Define $A^{\otimes U} \otimes \enV \langle U \rangle \to A \otimes \enV \langle U \rangle$ using the multiplication of $A$.
+  This induces a map on the quotient $\EE^{0} \GG{A}(U) \to A \otimes \enV \langle U \rangle$, which restricts to a map $\GG{A} \langle U \rangle \to \enV \langle U \rangle$.
+  Since $d_{A}$ is a derivation, this is a chain map.
+
+  Conversely, define $A \otimes \enV \langle U \rangle \to A^{\otimes U} \otimes \enV \langle U \rangle$ by $a \otimes x \mapsto \iota_{u}(a) \otimes x$ for some fixed $u \in U$ (it does not matter which one since $x \in \enV \langle U \rangle$ is ``connected'').
+  This induces a map $A \otimes \enV \langle U \rangle \to \GG{A} \langle U \rangle$, and it is straightforward to check that this map is the inverse isomorphism of the previous map.
+\end{proof}
+
+We have a commutative diagram of complexes:
+\[ \begin{tikzcd}
+    \Graphs_{A} \langle U \rangle \rar \dar & A \otimes \Graphs'_{n} \langle U \rangle \dar{\sim} \\
+    \GG{A} \langle U \rangle \rar{\cong} & A \otimes \enV \langle U \rangle
+  \end{tikzcd} \]
+
+Here $\Graphs'_{n}(U)$ is defined similarly to $\Graphs_{n}(U)$ except that multiple edges are allowed.
+It is known that the quotient map $\Graphs'_{n}(U) \to \enV(U)$ (which factors through $\Graphs_{n}(U)$) is a quasi-isomorphism~\cite[Proposition 3.9]{Willwacher2014}.
+The subcomplex $\Graphs'_{n} \langle U \rangle$ is spanned by connected graphs.
+The upper horizontal map in the diagram multiplies all the labels of a graph.
+
+The right vertical map is the tensor product of $\operatorname{id}_{A}$ and $\Graphs_{n} \langle U \rangle \qiso \enV \langle U \rangle$ (see~\ref{cnf.sec.formality}).
+The bottom row is the isomorphism of the previous lemma.
+
+It then remains to prove that $\Graphs_{A} \langle U \rangle \to A \otimes \Graphs'_{n} \langle U \rangle$ is a quasi-iso\-mor\-phism to prove Proposition~\ref{cnf.prop.graph-A-G-A}.
+If $U = \varnothing$, then $\Graphs'_{A}(\varnothing) = \R = \GG{A}(\varnothing)$ and the morphism is the identity, so there is nothing to do.
+From now on we assume that $\# U \geq 1$.
+
+\begin{lemma}
+  \label{cnf.lemma.graphs-a-surj}
+  The morphism $\Graphs_{A} \langle U \rangle \to A \otimes \Graphs'_{n} \langle U \rangle$ is surjective on cohomology.
+\end{lemma}
+
+\begin{proof}
+  Choose some $u \in U$.
+  There is an explicit chain-level section of the morphism, sending $x \otimes \Gamma$ to $\Gamma_{u,x}$, the same graph with the vertex $u$ labeled by $x$ and all the other vertices labeled by $1_{R}$.
+  It is a well-defined chain map.
+  It is clear that this is a section of the morphism in the lemma, hence the morphism of the lemma is surjective on cohomology.
+\end{proof}
+
+We now use a proof technique similar to the proof of~\cite[Lemma 8.3]{LambrechtsVolic2014}, working by induction.
+The dimension of $H^{*}(\Graphs'_{n}\langle U \rangle) = \enV \langle U \rangle = \Lie_{n}^{\vee}(U)$ is well-known:
+\begin{equation}
+  \label{cnf.eq.dim-graphs_n}
+  \dim H^{i} ( \Graphs'_{n} \langle U \rangle ) =
+  \begin{cases}
+    (\#U - 1) !, & \text{if } i = (n-1)(\#U - 1); \\
+    0, & \text{otherwise.}
+  \end{cases}
+\end{equation}
+
+\begin{lemma}
+  \label{cnf.lemma.same-cohomology}
+  For all sets $U$ with $\#U \geq 1$, the dimension of $H^{i}(\Graphs_{A} \langle U \rangle)$ is the same as the dimension:
+  \begin{equation*}
+    \dim H^{i}(A \otimes \Graphs'_{n} \langle U \rangle) = (\#U - 1)! \cdot \dim H^{i - (n-1)(\#U-1)}(A).
+  \end{equation*}
+\end{lemma}
+
+The proof will be by induction on the cardinality of $U$.
+
+\begin{lemma}
+  \label{cnf.lemma.case-u-1}
+  The complex $\Graphs_{A} \langle \underline{1} \rangle$ has the same cohomology as $A$.
+\end{lemma}
+
+\begin{proof}
+  Let $\mathcal{I}$ be the subcomplex spanned by graphs with at least one internal vertex.
+  We will show that $\mathcal{I}$ is acyclic; as $\Graphs_{A} \langle \underline{1} \rangle / \mathcal{I} \cong A$, this will prove the lemma.
+
+  There is an explicit homotopy $h$ that shows that $\mathcal{I}$ is acyclic.
+  Given a graph $\Gamma$ with a single external vertex and at least one internal vertex, define $h(\Gamma)$ to be the same graph with the external vertex replaced by an internal vertex, a new external vertex labeled by $1_{A}$, and an edge connecting the external vertex to the new internal vertex (see Figure~\ref{cnf.fig.homotopy-h}).
+
+  \begin{figure}[htbp]
+    \centering
+    \[
+    \begin{gathered} \begin{tikzpicture}
+        \node [extv, label = {\small $x$}] (u) {$u$};
+        \node (1) [right = 1cm of u] {};
+        \node (2) [above right = 1.2cm of u] {};
+        \node (3) [below right = 1.2cm of u] {};
+        \draw (u) -- (1); \draw (u) -- (2); \draw (u) -- (3);
+      \end{tikzpicture} \end{gathered}
+    \mapsto
+    \begin{gathered} \begin{tikzpicture}
+        \node [extv, label = {\small $1_{A}$}] (newu) {$u$};
+        \node [intv, label = {\small $x$}] (u) [right = 1cm of newu] {};
+        \node (1) [right = 1cm of u] {};
+        \node (2) [above right = 1.2cm of u] {};
+        \node (3) [below right = 1.2cm of u] {};
+        \draw (newu) -- (u);
+        \draw (u) -- (1); \draw (u) -- (2); \draw (u) -- (3);
+      \end{tikzpicture} \end{gathered}
+    \]
+    \caption{The homotopy $h$}
+    \label{cnf.fig.homotopy-h}
+  \end{figure}
+
+  The differential in $\Graphs_{A} \langle \underline{1} \rangle$ only retains the internal differential of $A$ and the contracting part of the differential.
+  Contracting the new edge in $h(\Gamma)$ gives back $\Gamma$, and it is now straightforward to check that:
+  \[ d h(\Gamma) = \Gamma \pm h(d \Gamma).
+    \qedhere \]
+\end{proof}
+
+Now let $U$ be a set with at least two elements, and fix some element $u \in U$.
+Let $\Graphs^{u}_{A} \langle U\rangle \subset \Graphs_{A} \langle U \rangle$ be the subcomplex spanned by graphs $\Gamma$ such that $u$ has valence $1$, is labeled by $1_{A}$, and is connected to another external vertex.
+
+We now get to the core of the proof.
+The idea (adapted from~\cite[Lemma 8.3]{LambrechtsVolic2014}) is to ``push'' the labels of positive degree away from the chosen vertex $u$ through a homotopy.
+Roughly speaking, we use Figure~\ref{cnf.fig.move-labels} to move labels around up to homotopy.
+
+\begin{figure}[htbp]
+  \centering
+  \[
+    d_{\mathrm{contr}}
+    \left(
+    \begin{gathered} \begin{tikzpicture}
+      \node [unkv] (1) {};
+      \node [intv, label = {$x$}, right = 1cm of 1] (i) {};
+      \node [unkv, right = 1cm of i] (2) {};
+      \draw (1) -- (i) -- (2);
+    \end{tikzpicture} \end{gathered}
+    \right)
+    =
+    \begin{gathered} \begin{tikzpicture}
+      \node [unkv, label = {$x$}] (1) {};
+      \node [unkv, right = 1cm of 1] (2) {};
+      \draw (1) -- (2);
+    \end{tikzpicture} \end{gathered}
+    -
+    \begin{gathered} \begin{tikzpicture}
+      \node [unkv] (1) {};
+      \node [unkv, right = 1cm of 1, label = {$x$}] (2) {};
+      \draw (1) -- (2);
+    \end{tikzpicture} \end{gathered}
+  \]
+  \caption{Trick for moving labels around (gray vertices are either internal or external)}
+  \label{cnf.fig.move-labels}
+\end{figure}
+
+\begin{lemma}
+  \label{cnf.lemma.incl-q-iso}
+  The inclusion $\Graphs^{u}_{A} \langle U \rangle \subset \Graphs_{A} \langle U \rangle$ is a quasi-isomorphism.
+\end{lemma}
+
+\begin{proof}
+  Let $\mathcal{Q}$ be the quotient.
+  We will prove that it is acyclic.
+  The module $\mathcal{Q}$ further decomposes into a direct sum of modules (but the differential does not preserve the direct sum):
+  \begin{itemize}
+  \item The module $\mathcal{Q}_{1}$ spanned by graphs where $u$ is of valence $1$, labeled by $1_{A}$, and connected to an internal vertex;
+  \item The module $\mathcal{Q}_{2}$ spanned by graphs where $u$ is of valence $\geq 2$ or has a label in $A^{> 0}$.
+  \end{itemize}
+
+  We now filter $\mathcal{Q}$ as follows.
+  For $s \in \mathbb{Z}$, let $F_{s} \mathcal{Q}_{1}$ be the submodule of $\mathcal{Q}_{1}$ spanned by graphs with at most $s+1$ edges, and let $F_{s} \mathcal{Q}_{2}$ be the submodule spanned by graphs with at most $s$ edges.
+  This filtration is preserved by the differential of $\mathcal{Q}$.
+
+  Consider the $\EE^{0}$ page of the spectral sequence associated to this filtration.
+  Then the differential $d^{0}$ is an morphism $\EE^{0} \mathcal{Q}_{1} \to \EE^{0} \mathcal{Q}_{2}$ by counting the number of edges (and using the crucial fact that dead ends are not contractible).
+  It contracts the only edge incident to $u$.
+  It is an isomorphism, with an inverse similar to the homotopy defined in Lemma~\ref{cnf.lemma.case-u-1}, ``blowing up'' the point $u$ into a new edge connecting $u$ to a new internal vertex that replaces $u$.
+
+  This shows that $(\EE^{0} \mathcal{Q}, d^{0})$ is acyclic, hence $\EE^{1} \mathcal{Q} = 0$.
+  It follows that $\mathcal{Q}$ is acyclic.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{cnf.lemma.same-cohomology}]
+  The case $\# U = 0$ is obvious, and the case $\# U = 1$ of the lemma was covered in Lemma~\ref{cnf.lemma.case-u-1}.
+  We now work by induction and assumes the claim proved for $\# U \leq k$, for some $k \geq 1$.
+
+  Let $U$ be of cardinality $k+1$.
+  Choose some $u \in U$ and define $\Graphs^{u}_{A} \langle U \rangle$ as before.
+  By Lemma~\ref{cnf.lemma.incl-q-iso} we only need to show that this complex has the right cohomology.
+  It splits as:
+  \begin{equation}
+    \label{cnf.eq:13}
+    \Graphs^{u}_{A} \langle U \rangle \cong \bigoplus_{v \in U - \{u\}} e_{uv} \cdot \Graphs_{A} \langle U - \{u\} \rangle
+  \end{equation}
+
+  And therefore using the induction hypothesis:
+  \begin{align*}
+    \dim H^{i}(\Graphs^{u}_{A} \langle U \rangle)
+    & = k \cdot \dim H^{i - (n-1)} ( \Graphs_{A} \langle U - \{u\} \rangle ) \\
+    & = k! \cdot \dim H^{i - k (n-1)}(A).
+      \qedhere
+  \end{align*}
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{cnf.prop.graph-A-G-A}]
+  By Lemma~\ref{cnf.lemma.graphs-a-surj}, the morphism induced by $\Graphs_{A} \to \GG{A}$ on the $\EE^{0}$ page is surjective on cohomology.
+  By Lemma~\ref{cnf.lemma.same-cohomology} and Equation~\eqref{cnf.eq.dim-graphs_n}, both $\EE^{0}$ pages have the same cohomology, and so the induced morphism is a quasi-isomorphism.
+  Standard spectral arguments imply the proposition.
+\end{proof}
+
+\begin{proposition}
+  \label{cnf.prop.surj-cohom}
+  The morphism $\omega : \Graphs'_{R}(U) \to \OmPA^{*}(\FM_{M}(U))$ is a quasi-iso\-mor\-phism.
+\end{proposition}
+
+\begin{proof}
+  From Equation~\eqref{cnf.eq.ea-fmm-same-cohom}, Proposition~\ref{cnf.prop.zig-gra-e-phi}, Lemma~\ref{cnf.lemma.graph-r-graph-A}, and Proposition~\ref{cnf.prop.graph-A-G-A}, both CDGAs have the same cohomology of finite type, so it will suffice to show that the map is surjective on cohomology to prove that it is a quasi-isomorphism.
+
+  We work by induction.
+  The case $U = \varnothing$ is immediate, as we get
+  \[ \Graphs'_{R}(\varnothing) \qiso \Graphs^{\varphi}_{R}(\varnothing) = \OmPA^{*}(\FM_{M}(\varnothing)) = \R \]
+  and the last map is the identity.
+
+  Suppose that $U = \{ u \}$ is a singleton.
+  Since $\rho$ is a quasi-isomorphism, for every cocycle $\alpha \in \OmPA^{*}(\FM_{M}(U)) = \OmPA^{*}(M)$ there is some cocycle $x \in R$ such that $\rho(x)$ is cohomologous to $\alpha$.
+  Then the graph $\gamma_{x}$ with a single (external) vertex labeled by $x$ is a cocycle in $\Graphs'_{R}(U)$, and $\omega(\gamma_{x}) = \rho(x)$ is cohomologous to $\alpha$.
+  This proves that $\Graphs'_{R}(\{u\}) \to \OmPA^{*}(M)$ is surjective on cohomology, and hence a quasi-isomorphism.
+
+  Now assume that $U = \{ u \} \sqcup V$, where $\# V \geq 1$, and assume that the claim is proved for sets of vertices of size at most $\# V = \#U - 1$.
+  By Equation~\eqref{cnf.eq.ea-fmm-same-cohom}, we may represent any cohomology class of $\FM_{M}(U)$ by an element $z \in \GG{A}(U)$ satisfying $dz = 0$.
+  Using the relations defining $\GG{A}(U)$, we may write $z$ as
+  \[ z = z' + \sum_{v \in V} \omega_{uv} z_{v}, \]
+  where $z' \in A \otimes \GG{A}(V)$ and $z_{v} \in \GG{A}(V)$.
+  The relation $dz = 0$ is equivalent to
+  \begin{align}
+    dz' + \sum_{v \in V} (p_{u} \times p_{v})^{*}(\Delta_{A}) \cdot z_{v} = 0, \label{cnf.eq.some-label} \\
+    \text{and } dz_{v} = 0 \text{ for all } v.
+  \end{align}
+
+  By the induction hypothesis, for all $v \in V$ there exists a cocycle $\gamma_{v} \in \Graphs'_{R}(V)$ such that $\omega(\gamma_{v})$ represents the cohomology class of the cocycle $z_{v}$ in $H^{*}(\FM_{M}(V))$, and such that $\sigma_{*}(\gamma_{v})$ is equal to $z_{v}$ up to a coboundary.
+
+  By Equation~\eqref{cnf.eq.some-label}, the cocycle
+  \[ \tilde\gamma = \sum_{v \in V} (p_{u} \times p_{v})^{*}(\Delta_{R}) \cdot \gamma_{v} \in R \otimes \Graphs'_{R}(V) \]
+  is mapped to a coboundary in $A \otimes \GG{A}(V)$.
+  The map $\sigma_{*} : R \otimes \Graphs'_{R}(V) \to A \otimes \GG{A}(V)$ is a quasi-isomorphism, hence $\tilde\gamma = d \tilde\gamma_{1}$ is a coboundary too.
+
+  It follows that $z' - \sigma_{*}(\tilde\gamma_{1}) \in A \otimes \GG{A}(V)$ is a cocycle.
+  Thus by the induction hypothesis there exists some $\tilde\gamma_{2} \in R \otimes \Graphs'_{R}(V)$ whose cohomology class represents the same cohomology class as $z' - \sigma_{*}(\tilde\gamma_{1})$ in $H^{*}(A \otimes \GG{A}(V)) = H^{*}(M \times \FM_{M}(V))$.
+
+  We now let $\gamma' = -\tilde\gamma_{1} + \tilde\gamma_{2}$, hence $d\gamma' = -\tilde\gamma + 0 = - \tilde\gamma$ and $\sigma_{*}(\gamma')$ is equal to $z'$ up to a coboundary.
+  By abuse of notation we still let $\gamma'$ be the image of $\gamma'$ under the obvious map $R \otimes \Graphs'_{R}(V) \to \Graphs'_{R}(U)$, $x \otimes \Gamma \mapsto \iota_{u}(x) \cdot \Gamma$.
+  Then
+  \[ \gamma = \gamma' + \sum_{v \in V} e_{uv} \cdot \gamma_{v} \in \Graphs'_{R}(U) \]
+  is a cocycle, and $\omega(\gamma)$ represents the cohomology class of $z$ in $\OmPA^{*}(\FM_{M}(U))$.
+  We've shown that the morphism $\Graphs'_{R}(U) \to \OmPA^{*}(\FM_{M}(U))$ is surjective on cohomology, and hence it is a quasi-isomorphism.
+\end{proof}
+
+\begin{proposition}
+  \label{cnf.prop.ga-gb}
+  If $A'$ is another Poincaré duality model of $M$, then we have a weak equivalence of symmetric collections $\GG{A} \simeq \GG{A'}$.
+  If moreover $\chi(M) = 0$ then this weak equivalence is a weak equivalence of right Hopf $\enV$-comodules.
+\end{proposition}
+
+\begin{proof}
+  The CDGAs $A$ and $A'$ are models of the manifold, hence there exists some cofibrant CDGA $S$ and quasi-isomorphisms $f : S \qiso A$ and $f' : S \qiso A'$.
+  This yields two chain maps $\varepsilon, \varepsilon' : S \to \R[-n]$ defined by $\varepsilon = \varepsilon_{A} \circ f$ and $\varepsilon' = \varepsilon_{A'} \circ f'$.
+  Mimicking the proof of Proposition~\ref{cnf.lemma.zigzag-a-r-omega}, we can also find cocycles $\Delta, \Delta' \in S \otimes S$ which satisfy $\Delta^{21} = (-1)^{n} \Delta$ (and the same equation for $\Delta'$) and mapped respectively to $\Delta_{A}$ and $\Delta_{A'}$ under $f$ and $f'$.
+
+  We can then build symmetric collections $\Graphs_{S}^{\varepsilon, \Delta}$ and $\Graphs_{S}^{\varepsilon', \Delta'}$ and quasi-isomorphisms $f_{*} : \Graphs_{S}^{\varepsilon, \Delta} \to \GG{A}$ and $f'_{*} : \Graphs_{S}^{\varepsilon', \Delta'} \to \GG{A'}$ like before.
+  The differential of an edge $e_{uv}$ in $\Graphs_{S}^{\varepsilon,\Delta}$ (resp.\ $\Graphs_{S}^{\varepsilon',\Delta'}$ is $\iota_{uv}(\Delta)$ (resp.\ $\iota_{uv}(\Delta')$), and an isolated internal vertex labeled by $x \in S$ is identified with $\varepsilon(x)$ (resp. $\varepsilon'(x)$).
+
+  If moreover $\chi(M) = 0$, we can choose $\Delta$ and $\Delta'$ such that their product vanishes, thus both $\Graphs_{S}$ become right Hopf $\Graphs_{n}$-comodules and the projections $f_{*}$, $f'_{*}$ are compatible with the comodule structure.
+  It thus suffices to prove that we have a quasi-isomorphism between $\Graphs_{S}^{\varepsilon,\Delta}$ and $\Graphs_{S}^{\varepsilon',\Delta'}$ to prove the proposition.
+
+  We first have an isomorphism $\Graphs_{S}^{\varepsilon',\Delta'} \cong \Graphs_{S}^{\varepsilon',\Delta}$ (with the obvious notations).
+  Indeed, the two cocycles $\Delta$ and $\Delta'$ are cohomologous, say $\Delta' = \Delta - d\alpha$ for some $\alpha \in S \otimes S$ of degree $n-1$.
+  If we replace $\alpha$ by $(\alpha + (-1)^{n} \alpha^{21})/2$, we can assume that $\alpha^{21} = (-1)^{n} \alpha$.
+  Moreover if $\chi(M) = 0$, one can replace $\alpha$ by $\alpha - (\mu_{S}(\alpha) \otimes 1 + (-1)^{n} 1 \otimes \mu_{S}(\alpha))/2$ to be able to assume that $\mu_{S}(\alpha) = 0$.
+  We then obtain an isomorphism by mapping an edge $e_{uv}$ to $e_{uv} \pm \iota_{uv}(\alpha)$ (the sign depending on the direction of the isomorphism).
+  This is clearly compatible with differentials, and if $\chi(M) = 0$ with the comodule structure.
+
+  The dg-module $S$ is cofibrant and $\R[-n]$ is fibrant (like all dg-modules).
+  Moreover we can assume that $\varepsilon$ and $\varepsilon'$ induce the same map on cohomology (it suffices to rescale, say, $\varepsilon'$, and there is an automorphism of $\Graphs_{S}^{\varepsilon',\Delta}$ which takes care of this rescaling).
+  Thus the two maps $\varepsilon, \varepsilon' : S \to \R[-n]$ are homotopic, and there exists some $h : S[1] \to \R[-n]$ such that $\varepsilon(x) - \varepsilon'(x) = h(dx)$ for all $x \in S$.
+
+  This homotopy induces a homotopy between the two morphisms $\Ze, \ZZ{\varepsilon'} : \fGC_{S}[n] \to \R$.
+  Because $\Tw \Gra_{S}^{\Delta}(U)$ and $\Tw \Gra_{S}^{\Delta'}(U)$ are cofibrant as modules over $\fGC_{S}[n]$, we obtain quasi-isomorphisms
+  \[ \Graphs_{S}^{\varepsilon,\Delta} \simeq \Graphs_{S}^{\varepsilon',\Delta} \]
+  which are compatible with the comodule structure when $\chi(M) = 0$ (see the proof of Proposition~\ref{cnf.prop.zig-gra-e-phi}).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{cnf.thm.Abis}]
+  The zigzag of the theorem becomes, after factorizing the first map through $\Graphs_{A}$:
+  \[ \begin{tikzcd}[cramped]
+      \Graphs_{A}(U) \ar[d] & \Graphs^{\varepsilon}_{R}(U) \ar[l] & \Graphs'_{R}(U) \ar[l] \ar[r] & \Graphs^{\varepsilon}_{R}(U) \ar[d] \\
+      \GG{A}(U) &&& \OmPA^{*}(\FM_{M}(U))
+  \end{tikzcd} \]
+
+  All these maps are quasi-isomorphisms by Lemma~\ref{cnf.lemma.graph-r-graph-A}, Proposition~\ref{cnf.prop.zig-gra-e-phi}, Proposition~\ref{cnf.prop.graph-A-G-A}, and Proposition~\ref{cnf.prop.surj-cohom}.
+  Their compatibility with the comodule structures (under the relevant hypotheses) are due to Proposition~\ref{cnf.prop.mph-1}, Proposition~\ref{cnf.prop.zig-gra-e-phi}, and Proposition~\ref{cnf.prop.mph-2}.
+
+  The only thing missing from the theorem is that we must be able to choose any Poincaré duality model of the manifold, and not necessarily $A$; this is the content of Proposition~\ref{cnf.prop.ga-gb}.
+\end{proof}
+
+We can thus settle the conjecture of Lambrechts--Stanley over $\R$ for the class of manifolds that we consider:
+
+\begin{corollary}
+  Let $M$ be a smooth simply connected closed manifold of dimension at least $4$, and let $A$ be any Poincaré duality model of $M$.
+  Then the CDGA $\GG{A}(\underline{k})$ is a real model for $\Conf_{k}(M)$.
+  \qed
+\end{corollary}
+
+And this implies the real homotopy invariance of configuration spaces:
+
+\begin{corollary}
+  \label{cnf.cor.only-depends}
+  The real homotopy type of the configuration space of a smooth simply connected closed manifold of dimension at least $4$ only depends on the real homotopy type of $M$.
+\end{corollary}
+
+\begin{proof}
+  When $\dim M \geq 3$, the Fadell--Neuwirth fibrations~\cite{FadellNeuwirth1962} $\Conf_{k-1}(M - *) \hookrightarrow \Conf_{k}(M) \to M$ show by induction that if $M$ is simply connected, then so is $\Conf_{k}(M)$ for all $k \geq 1$.
+  Hence the real model $\GG{A}(\underline{k})$ completely encodes the real homotopy type of $\Conf_{k}(M)$.
+\end{proof}
+
+The degree-counting argument of Proposition~\ref{cnf.prop.strong-vanishing} does not work in dimension $3$, and so we cannot directly apply our results to $S^{3}$ (the only simply connected $3$-manifold).
+We however record the following partial result, communicated to us by Thomas Willwacher:
+
+\begin{proposition}
+  \label{cnf.prop.result-s3}
+  The CDGA $\GG{A}(\underline{k})$, where $A = H^{*}(S^{3}; \Q)$, is a rational model of $\Conf_{k}(S^{3})$ for all $k \ge 0$.
+\end{proposition}
+
+\begin{proof}
+  The claim is clear for $k = 0$.
+  Since $S^{3}$ is a Lie  group, the Fadell--Neuwirth fibration
+  \[ \Conf_{k}(\R^{3}) \hookrightarrow \Conf_{k+1}(S^{3}) \to S^{3} \]
+  is trivial~\cite[Theorem 4]{FadellNeuwirth1962}.
+  The space $\Conf_{k+1}(S^{3})$ is thus identified with $S^{3} \times \Conf_{k}(\R^{3})$, which is rationally formal with cohomology $H^{*}(S^{3}) \otimes \enV[3](\underline{k})$.
+  It thus suffices to build a quasi-isomorphism between $\GG{A}(\underline{k+1})$ and $H^{*}(S_{3}) \otimes \enV(k)$ to prove the proposition.
+
+  To simplify notation, we consider $\GG{A}(\underline{k}_{+})$ (where $\underline{k}_{+} = \{ 0, \dots, k \}$), which is obviously isomorphic to $\GG{A}(\underline{k+1})$.
+  Let us denote by $\upsilon \in H^{3}(S^{3}) = A^{3}$ the volume form of $S^{3}$, and recall that the diagonal class $\Delta_{A}$ is given by $1 \otimes \upsilon - \upsilon \otimes 1$.
+  We have an explicit map given on generators by:
+  \begin{align*}
+    f : H^{*}(S^{3}) \otimes \enV[3](\underline{k})
+    & \to \GG{A}(\underline{k}_{+}) \\
+    \upsilon \otimes 1
+    & \mapsto \iota_{0}(\upsilon) \\
+    1 \otimes \omega_{ij}
+    & \mapsto \omega_{ij} + \omega_{0i} - \omega_{0j}
+  \end{align*}
+
+  The Arnold relations show that this is a well-defined algebra morphism.
+  Let us prove that $d \circ f = 0$ on the generator $\omega_{ij}$ (the vanishing on $\upsilon \otimes 1$ is clear).
+  We may assume that $k = 2$ and $(i,j) = (1,2)$, and then apply $\iota_{ij}$ to get the general case.
+  Then we have:
+  \begin{align*}
+    df(\omega_{12}) & = (1 \otimes 1 \otimes \upsilon - 1 \otimes \upsilon \otimes 1) \\
+               & + (1 \otimes \upsilon \otimes 1 - \upsilon \otimes 1 \otimes 1) \\
+               & - (1 \otimes 1 \otimes \upsilon - \upsilon \otimes 1 \otimes 1) \\
+               & = 0
+  \end{align*}
+
+  We know that both CDGAs have the same cohomology (Equation~\eqref{cnf.eq.ea-fmm-same-cohom}), so to check that $f$ is a quasi-isomorphism it suffices to check that it is surjective in cohomology.
+  The cohomology $H^{*}(\GG{A}(\underline{k}_{+})) \cong H^{*}(S^{3}) \otimes \enV[3](\underline{k})$ is generated in degrees $2$ (by the $\omega_{ij}$) and $3$ (by the $\iota_{i}(\upsilon)$), so it suffices to check surjectivity in these degrees.
+
+  In degree $3$, the cocycle $\upsilon \otimes 1$ is sent to a generator of $H^{3}(\GG{A}(\underline{k}_{+})) \cong H^{3}(S^{3}) = \Q$.
+  Indeed, assume $\iota_{0}(\upsilon) = d\omega$, where $\omega$ is a linear combination of the $\omega_{ij}$ for degree reasons.
+  In $d\omega$, the sum of the coefficients of each $\iota_{i}(\upsilon)$ is zero, because they all come in pairs ($d\omega_{ij} = \iota_{j}(\upsilon) - \iota_{i}(\upsilon)$).
+  We want the coefficient of $\iota_{0}(\upsilon)$ to be $1$, so at least one of the other coefficient must be nonzero to compensate, hence $d\omega \neq \iota_{0}(\upsilon)$.
+
+  It remains to prove that $H^{2}(f)$ is surjective.
+  We consider the quotient map $p : \GG{A}(\underline{k}_{+}) \to \enV[3](\underline{k})$ that maps $\iota_{i}(\upsilon)$ and $\omega_{0i}$ to zero for all $1 \leq i \leq k$.
+  We also consider the quotient map $q : H^{*}(S^{3}) \otimes \enV[3](\underline{k}) \to \enV[3](\underline{k})$ sending $\upsilon \otimes 1$ to zero.
+  We get a morphism of short exact sequences:
+  \[ \begin{tikzcd}
+      0 \rar & \ker q \rar \dar & H^{*}(S^{3}) \otimes \enV[3](\underline{k}) \rar{q} \dar{f} & \enV[3](\underline{k}) \dar{=} \rar & 0 \\
+      0 \rar & \ker p \rar & \GG{A}(\underline{k}) \rar{p} & \enV[3](\underline{k}) \rar & 0
+    \end{tikzcd} \]
+
+  We consider part of the long exact sequence in cohomology induced by these short exact sequences of complexes:
+  \[ \begin{tikzcd}
+      \enV[3](\underline{k})^{1} \rar \dar{=} & H^{2}(\ker q) \rar \dar{(1)} & H^{2}(H^{*}(S^{3}) \otimes \enV[3](\underline{k})) = \enV[3](\underline{k})^{2} \rar \dar{H^{2}(f)} & \enV[3](\underline{k})^{2} \dar{=} \\
+      \enV[3](\underline{k})^{1} \rar & H^{2}(\ker p) \rar & H^{2}(\GG{A}(\underline{k}_{+})) \rar & \enV[3](\underline{k})^{2}
+    \end{tikzcd} \]
+
+  For degree reasons, $H^{2}(\ker q) = 0$ and so the map (1) is injective.
+  By the four lemma, it follows that $H^{2}(f)$ is injective too.
+  Both its domain and its codomain have the same finite dimension, thus $H^{2}(f)$ is an isomorphism.
+\end{proof}
+
+\section{Factorization homology of universal enveloping \texorpdfstring{$E_{n}$}{E\_n}-algebras}
+\label{cnf.sec.fact-homol-e_n}
+
+\subsection{Factorization homology and formality}
+\label{cnf.sec.fact-homol}
+
+Fix some dimension $n$.
+Let $U$ be a finite set and consider the space of framed embeddings of $U$ copies of $\R^{n}$ in itself, endowed with the compact open topology:\index{Disknfr@$\Disk_{n}^{\mathrm{fr}}$}
+\begin{equation}
+  \Disk_{n}^{\mathrm{fr}}(U) \coloneqq  \Embfr(\R^{n} \times U, \R^{n}) \subset \operatorname{Map}(\R^{n} \times U, \R^{n}).
+\end{equation}
+
+Using composition of embeddings, these spaces assemble to form a topological operad $\Disk_{n}^{\mathrm{fr}}$.
+This operad is weakly equivalent to the operad of little $n$-disks~\cite[Remark 2.10]{AyalaFrancis2015}, and the application that takes $f \in \Disk_{n}^{\mathrm{fr}}(U)$ to $\{ f(0 \times u) \}_{u \in U} \in \Conf_{U}(\R^{n})$ is a homotopy equivalence.
+
+Similarly if $M$ is a framed manifold, then the spaces $\Embfr(\R^{n} \times -, M)$ assemble to form a topological right $\Disk_{n}^{\mathrm{fr}}$-module, again given by composition of embeddings.
+We call it $\Disk_{M}^{\mathrm{fr}}$.\index{DiskMfr@$\Disk_{M}^{\mathrm{fr}}$}
+If $B$ is a $\Disk_{n}^{\mathrm{fr}}$-algebra, factorization homology is given by a derived composition product~\cite[Definition 3.2]{AyalaFrancis2015}:\index{factorization homology $\int_{M} B$}
+\begin{equation}
+  \int_{M} B \coloneqq \Disk_{M}^{\mathrm{fr}} \circ_{\Disk_{n}^{\mathrm{fr}}}^{\mathbb{L}} B = \operatorname{hocoeq} \bigl( \Disk_{M}^{\mathrm{fr}} \circ \Disk_{n}^{\mathrm{fr}} \circ B \rightrightarrows \Disk_{M}^{\mathrm{fr}} \circ B \bigr).
+\end{equation}
+
+Thanks to~\cite[Section 2]{Turchin2013}, the pair $(\FM_{M}, \FM_{n})$ is weakly equivalent to the pair $(\Disk_{M}^{\mathrm{fr}}, \Disk_{n}^{\mathrm{fr}})$.
+So if $B$ is an $\FM_{n}$-algebra, its factorization homology can be computed as:
+\begin{equation}
+  \label{cnf.eq:15}
+  \int_{M} B \simeq \FM_{M} \circ_{\FM_{n}}^{\mathbb{L}} B = \operatorname{hocoeq} \bigl( \FM_{M} \circ \FM_{n} \circ B \rightrightarrows \FM_{M} \circ B \bigr).
+\end{equation}
+
+We now work in the category of chain complexes over $\R$.
+We use the formality theorem (Equation~\eqref{cnf.eq.zigzag-coop}) and the fact that weak equivalences of operads induce Quillen equivalence between categories of right modules (resp.\ categories of algebras)~\cite[Theorems 16.A and 16.B]{Fresse2009}.
+Thus, to any homotopy class $[B]$ of $E_{n}$-algebras in the category of chain complexes, there corresponds a homotopy class $[\tilde{B}]$ of $\en$-algebras (which is generally not easy to describe).
+
+Using Theorem~\ref{cnf.thm.Abis}, a game of adjunctions~\cite[Theorems 15.1.A and 15.2.A]{Fresse2009} shows that:
+\begin{equation}
+  \label{cnf.eq:16}
+  \int_{M} B \simeq \GG{A}^{\vee} \circ_{\en}^{\mathbb{L}} \tilde{B},
+\end{equation}
+where $A$ is the Poincaré duality model of $M$ mentioned in the theorem, and $\GG{A}^{\vee}$ is the right $\en$-module dual to $\GG{A}$.
+Note that we forget the Hopf structure of $\GG{A}$ in Equation~\ref{cnf.eq:16}.
+
+
+\subsection{Higher enveloping algebras}
+\label{cnf.sec.high-envel-algebr}
+
+Consider the forgetful functor from nonunital $E_{n}$-algebras to homotopy Lie algebras.
+Knudsen~\cite[Theorem A]{Knudsen2016} constructs a left adjoint $U_{n}$\index{Ung@$U_{n}(\mathfrak{g})$} to this forgetful functor, called the higher enveloping algebra functor.
+He also gives a way of computing factorization homology of higher enveloping algebras
+If $\mathfrak{g}$ is a Lie algebra, then so is $A \otimes \mathfrak{g}$ for any CDGA $A$.
+Then the factorization homology of $U_{n}(\mathfrak{g})$ on $M$ is given by~\cite[Theorem 3.16]{Knudsen2017}.:
+\begin{equation}
+  \label{cnf.eq.thm-knudsen}
+  \int_{M} U_{n}(\mathfrak{g}) \simeq \CCE(\mathrm{A}^{-*}_{\mathrm{PL}}(M) \otimes \mathfrak{g})
+\end{equation}
+where $\CCE$\index{CCE@$\CCE$, Chevalley--Eilenberg complex} is the Chevalley--Eilenberg complex and $\mathrm{A}^{-*}_{\mathrm{PL}}(M)$ is the CDGA of rational piecewise polynomial differential forms, with the usual grading reversed to obtain a homological grading.
+
+Let $n$ be at least $2$.
+We use again the formality theorem and standard facts about Quillen equivalences induced by weak equivalences of operads.
+Consider the canonical resolution $\hoLie_{n} \qiso \Lie_{n}$, the standard inclusion $\Lie_{n} \subset \en$, and the maps of operads $\Lie_{n} \to \Graphs_{n}^{\vee}$ which sends the generator (the bracket) to the graph with two external vertex and an edge between the two (see the part about twisting in Section~\ref{cnf.sec.formality}).
+We can find a morphism of operads $\hoLie_{n} \to C_{*}(\FM_{n})$ which makes the following diagram commute (the square on the right only up to homotopy):
+\[
+  \begin{tikzcd}
+    \en \ar[r, "\sim"] & \Graphs_{n}^{\vee} & C_{*}(\FM_{n}) \ar[l, "\sim" swap] \\
+    \Lie_{n} \ar[u, hook] \ar[r, "="] & \Lie_{n} \ar[u] & \hoLie_{n} \ar[l, "\sim" swap] \ar[u, "\exists"] \ar[ul, phantom, "\scriptstyle (h)"]
+  \end{tikzcd}
+\]
+
+These morphisms of operads yield functors between the corresponding categories of algebras.
+The forgetful functor $U_{n}$ in Knudsen's work corresponds (in an informal sense) to the right adjoint (obtained by a Kan extension) of the induced functor $C_{*}(\FM_{n})\text{-Alg} \to \hoLie\text{-Alg}$ which is the composite of the functor induced by the morphism of operads and a shift in degree.
+
+The inclusion $\Lie_{n} \subset \en$ induces a functor $\en\text{-Alg} \to \Lie\text{-Alg}$ that maps an $(n-1)$-Poisson algebra $B$ to its underlying Lie algebra $B[1-n]$.
+Its left adjoint $\tilde{U}_{n}$ corresponds to $U_{n}$, thanks to the commutative diagram above; in other words, given a Lie algebra $\mathfrak{g}$, which we can also see as an $\hoLie$-algebra, we have $U_{n}(\mathfrak{g}) \simeq \tilde{U}_{n}(\mathfrak{g})$.
+It is given by a symmetric algebra $\tilde{U}_{n}(\mathfrak{g}) = S(\mathfrak{g}[n-1])$, with a shifted Lie bracket is defined using the Leibniz rule.
+
+\begin{proposition}
+  \label{cnf.prop.cmp-knudsen}
+  Let $A$ be a Poincaré duality CDGA.
+  Then we have a quasi-iso\-mor\-phism of chain complexes:
+  \[ \GG{A}^{\vee} \circ^{\mathbb{L}}_{\en} S(\mathfrak{g}[n-1]) \qiso \CCE(A^{-*} \otimes \mathfrak{g}). \]
+\end{proposition}
+
+If $A$ is a Poincaré duality model of $M$, we have $A \simeq \OmPA^{*}(M) \simeq \mathrm{A}^{*}_{\mathrm{PL}}(M) \otimes_{\Q} \R$~\cite[Theorem 6.1]{HardtLambrechtsTurchinVolic2011}.
+It follows that the Chevalley--Eilenberg complex of the previous proposition is weakly equivalent to the Chevalley--Eilenberg complex of Equation~\eqref{cnf.eq.thm-knudsen}.
+By Equation~\eqref{cnf.eq:15}, the derived circle product over $\en$ computes the factorization homology of $U_{n}(\mathfrak{g})$ on $M$, and so we recover a variant of Knudsen's theorem (over the reals) for closed framed simply connected manifolds.
+
+Let $\II$\index{I@$\II$, unit operad} be the unit of the composition product, defined by $\II(\underline{1}) = \R$ and $\II(U) = 0$ for $\# U \neq 1$.
+Let $\Lambda$\index{Lambda@$\Lambda$, operadic suspension} be the suspension of operads, satisfying
+\[ \Lambda \PP \circ (X [-1]) = (\PP \circ X) [-1] = \II[-1] \circ (\PP \circ X). \]
+As as symmetric collection, $\Lambda \PP$ is simply given by $\Lambda \PP = \II[-1] \circ \PP \circ \II[1]$.
+Recall that we let $\Lie_{n} = \Lambda^{1-n} \Lie$.
+
+The symmetric collection\index{Ln@$\Ln$}
+\begin{equation}
+  \label{cnf.eq:20}
+  \Ln \coloneqq \Lie \circ \II[1-n] = \II[1-n] \circ \Lie_{n}
+\end{equation}
+is a $(\Lie, \Lie_{n})$-bimodule, i.e.\ a $\Lie$-algebra in the category of $\Lie_{n}$-right modules.
+We have $\Ln(U) = (\Lie_{n}(U))[1-n]$.
+This bimodule satisfies, for any Lie algebra $\mathfrak{g}$,
+\begin{equation}
+  \label{cnf.eq:19}
+  \Ln \circ_{\Lie_{n}} \mathfrak{g}[n-1] \cong \mathfrak{g} \text{ as Lie algebras.}
+\end{equation}
+
+We can view the CDGA $A^{-*}$ as a symmetric collection concentrated in arity $0$, and as such it is a commutative algebra in the category of symmetric collections.
+Thus the tensor product
+\[ A^{-*} \otimes \Ln = \{ A^{-*} \otimes \Ln(k) \}_{k \geq 0} \]
+becomes a $\Lie$-algebra in right $\Lie_{n}$-modules, where the right $\Lie_{n}$-module structure comes from $\Ln$ and the Lie algebra structure combines the Lie algebra structure of $\Ln$ and the CDGA structure of $A^{-*}$.
+Its Chevalley--Eilenberg complex $\CCE(A^{-*} \otimes \Ln)$ is well-defined, and by functoriality of $\CCE$, it is a right $\Lie_{n}$-module.
+
+The proof of the following lemma is essentially found (in a different language) in the work of Félix and Thomas~\cite[Section 2]{FelixThomas2004}.
+
+\begin{lemma}
+  \label{cnf.lemma.cmp-felix-thomas}
+  The right $\Lie_{n}$-modules $\GG{A}^{\vee}$ and $\CCE(A^{-*} \otimes \Ln)$ are isomorphic.
+\end{lemma}
+
+\begin{proof}
+  We will actually define a non-degenerate pairing
+  \[ \langle -, - \rangle : \GG{A}(U) \otimes \CCE(A^{-*} \otimes \Ln)(U) \to \R \]
+  for each finite set $U$, compatible with differentials and the right $\Lie_{n}$-(co)module structures. As both complexes are finite-dimensional in each degree, this is sufficient to prove that they are isomorphic.
+
+  Recall that the Chevalley--Eilenberg complex $\CCE(\mathfrak{g})$ is given by the cofree cocommutative conilpotent coalgebra $S^{c}(\mathfrak{g}[-1])$, together with a differential induced by the Koszul duality morphism $\Lambda^{-1} \Com^{\vee} \to \Lie$.
+  It follows that as a module, $\CCE(A^{-*} \otimes \Ln)(U)$ is given by:
+  \begin{align}
+    & \bigoplus_{r \geq 0} \left( \bigoplus_{\pi \in \operatorname{Part}_{r}(U)} A^{-*} \otimes \Ln(U_{1})[-1] \otimes \dots \otimes A^{-*} \otimes \Ln(U_{r})[-1] \right)^{\Sigma_{r}}
+      \nonumber
+    \\
+    & = \bigoplus_{r \geq 0} \left( \bigoplus_{\pi \in \operatorname{Part}_{r}(U)} (A^{n-*})^{\otimes r} \otimes \Lie_{n}(U_{1}) \otimes \dots \otimes \Lie_{n}(U_{r}) \right)^{\Sigma_{r}}
+      \label{cnf.eq.split-cce}
+  \end{align}
+  where the sums run over all partitions $\pi = \{ U_{1} \sqcup \dots \sqcup U_{r} \}$ of $U$ and $A^{n-*} = A^{-*}[-n]$ (which is a CDGA, Poincaré dual to $A$).
+
+  Fix some $r \geq 0$ and some partition $\pi = \{ U_{1} \sqcup \dots \sqcup U_{r} \}$.
+  We define a first pairing:
+  \begin{equation}
+    \label{cnf.eq:18}
+    \bigr( A^{\otimes U} \otimes \enV(U) \bigl) \otimes \bigl( (A^{n-*})^{\otimes r} \otimes \Lie_{n}(U_{1}) \otimes \dots \otimes \Lie_{n}(U_{r}) \bigr) \to \R
+  \end{equation}
+  as follows:
+  \begin{itemize}
+  \item On the $A$ factors, the pairing uses the Poincaré duality pairing $\varepsilon_{A}$.
+    It is given by:
+    \[ (a_{u})_{u \in U} \otimes (a'_{1} \otimes \dots \otimes a'_{r}) \mapsto \pm \varepsilon_{A} (a_{U_{1}} \cdot a'_{1}) \dots \varepsilon_{A} (a_{U_{r}} \cdot a'_{r}), \]
+    where $a_{U_{i}} = \prod_{u \in U_{i}} a_{u}$.
+  \item On the factor $\enV(U) \otimes \bigotimes_{i=1}^{r} \Lie_{n}(U_{i})$, it uses the duality pairing on $\enV(U) \otimes \en(U)$ (recalling that $\en = \Com \circ \Lie_{n}$ so we can view $\bigotimes_{i=1}^{r} \Lie_{n}(U_{i})$ as a submodule of $\en(U)$).
+  \end{itemize}
+
+  The pairing in Equation~\eqref{cnf.eq:18} is the product of the two pairings we just defined.
+  It is extended linearly on all of $(A^{\otimes U} \otimes \enV(U)) \otimes \CCE(A^{-*} \otimes \Ln)(U)$, and it factors through the quotient defining $\GG{A}(U)$ from $A^{\otimes U} \otimes \enV(U)$.
+
+  To check the non-degeneracy of this pairing, recall the vector subspaces $\GG{A}\langle \pi \rangle$ of Lemma~\ref{cnf.lemma.partition}, which are well-defined even though they are not preserved by the differential if we do not consider the graded space $\EE^{0} \GG{A}$.
+  Fix some partition $\pi = \{ U_{1}, \dots, U_{r} \}$ of $U$, then we have an isomorphism of vector spaces:
+  \[ \GG{A} \langle \pi \rangle \cong A^{\otimes r} \otimes \Lie_{n}^{\vee}(U_{1}) \otimes \dots \otimes A \otimes \Lie_{n}^{\vee}(U_{r}).
+  \]
+
+  It is clear that $\GG{A}\langle \pi \rangle$ is paired with the factor corresponding to $\pi$ in Equation~\eqref{cnf.eq.split-cce}, using the Poincaré duality pairing of $A$ and the pairing between $\Lie_{n}$ and its dual; and if two elements correspond to different partitions, then their pairing is equal to zero.
+  Since both $\varepsilon_{A}$ and the pairing between $\Lie_{n}$ and its dual are non-degenerate, the total pairing is non-degenerate.
+
+  The pairing is compatible with the $\Lie_{n}$-(co)module structures, i.e.\ the following diagram commutes (a relatively easy but notationally tedious check):
+  \[ \begin{tikzcd}[ampersand replacement=\&]
+      \begin{matrix}
+        \GG{A}(U) & \otimes & \CCE(A^{-*} \otimes \Ln)(U/W) \\
+        & \otimes & \Lie_{n}(W)
+      \end{matrix}
+      \rar{1 \otimes \circ_{W}} \dar{\circ_{W}^{\vee} \otimes 1}
+      \& \GG{A}(U) \otimes \CCE(A^{-*} \otimes \Ln)(U) \dar{\langle -, -\rangle} \\
+      \begin{matrix}
+        \GG{A}(U/W) & \otimes & \CCE(A^{-*} \otimes \Ln)(U/W) \\
+        \Lie_{n}^{\vee}(W) & \otimes & \Lie_{n}(W)
+      \end{matrix}
+      \rar{%
+        \begin{smallmatrix}
+          \langle -, -\rangle \\ \langle -, -\rangle_{\Lie_{n}}
+        \end{smallmatrix}%
+      }
+      \& \R
+    \end{tikzcd} \]
+
+  Finally, it is a straightforward but long computation that the pairing commutes with differentials (i.e.\ $\langle d(-), - \rangle = \pm \langle -, d(-) \rangle$).
+  It follows directly from the fact that $\varepsilon_{A}(aa') = \sum_{(\Delta_{A})} \pm \varepsilon_{A}(a \Delta_{A}') \varepsilon_{A}(a' \Delta_{A}'')$, which in turns stems from the definition of $\Delta_{A}$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{cnf.prop.cmp-knudsen}]
+  The operad $\en$ is given by the composition product $\Com \circ \Lie_{n}$ equipped with a distributive law that encodes the Leibniz rule.
+  We get the following isomorphism (natural in $\mathfrak{g}$):
+  \begin{align*}
+    \GG{A}^{\vee} \circ_{\en} S(\mathfrak{g}[n-1])
+    & = \GG{A}^{\vee} \circ_{\en} (\Com \circ \mathfrak{g}[n-1]) \\
+    & \cong \GG{A}^{\vee} \circ_{\en} (\en \circ_{\Lie_{n}} \mathfrak{g}[n-1]) \\
+    & \cong \GG{A}^{\vee} \circ_{\Lie_{n}} \mathfrak{g}[n-1].
+  \end{align*}
+
+  According to Lemma~\ref{cnf.lemma.cmp-felix-thomas}, the right $\Lie_{n}$-module $\GG{A}^{\vee}$ is isomorphic to $\CCE(A^{-*} \otimes \Ln)$.
+  The functoriality of $A^{-*} \otimes -$ and $\CCE(-)$, as well as Equation~\eqref{cnf.eq:19}, imply that we have the following isomorphism (natural in $\mathfrak{g}$):
+  \begin{align*}
+    \GG{A}^{\vee} \circ_{\Lie_{n}} \mathfrak{g}[n-1]
+    & \cong \CCE(A^{-*} \otimes \Ln) \circ_{\Lie_{n}} \mathfrak{g}[n-1] \\
+    & \cong \CCE \bigl( A^{-*} \otimes ((\Ln) \circ_{\Lie_{n}} \mathfrak{g}[n-1]) \bigr) \\
+    & \cong \CCE(A^{-*} \otimes \mathfrak{g}).
+  \end{align*}
+
+  The derived circle product is computed by taking a cofibrant resolution of $S(\mathfrak{g}[n-1])$.
+  Let $Q_{\mathfrak{g}} \qiso \mathfrak{g}$ be a cofibrant resolution of the Lie algebra $\mathfrak{g}$.
+  Then $S(Q_{\mathfrak{g}}[n-1])$ is a cofibrant $\en$-algebra, and by Künneth's formula $S(Q_{\mathfrak{g}}[n-1]) \to S(\mathfrak{g}[n-1])$ is a quasi-isomorphism.
+  It follows that:
+  \[ \GG{A}^{\vee} \circ_{\en}^{\mathbb{L}} S(\mathfrak{g}[n-1]) = \GG{A}^{\vee} \circ_{\en} S(Q_{\mathfrak{g}}[n-1]).
+  \]
+
+  We therefore have a commutative diagram:
+  \[ \begin{tikzcd}
+      \GG{A}^{\vee} \circ_{\en}^{\mathbb{L}} S(\mathfrak{g}[n-1])
+      \dar{\cong} \rar
+      & \GG{A}^{\vee} \circ_{\en} S(\mathfrak{g}[n-1])
+      \dar{\cong} \\
+      \CCE(A^{-*} \otimes Q_{\mathfrak{g}})
+      \rar
+      & \CCE(A^{-*} \otimes \mathfrak{g})
+    \end{tikzcd} \]
+
+  The Chevalley--Eilenberg functor preserves quasi-isomorphisms of Lie algebras, and therefore the bottom map is a quasi-isomorphism.
+  The proposition follows.
+\end{proof}
+
+\section{Outlook: The case of the 2-sphere and oriented manifolds}
+\label{cnf.sec.oriented-surfaces}
+
+We provide a generalization of the previous work for the $2$-sphere, and we formulate a conjecture for higher dimensional closed manifolds that are not necessarily framed.
+
+\subsection{Framed little disks and framed configurations}
+\label{cnf.sec.framed-little-disks}
+
+Following Salvatore--Wahl~\cite[Definition 2.1]{SalvatoreWahl2003}, we describe the framed little disks operad as a semi-direct product.
+If $G$ is a topological group and $\PP$ is an operad in $G$-spaces, the semi-direct product $\PP \rtimes G$ is the topological operad defined by $(\PP \rtimes G)(n) = \PP(n) \times G^{n}$ and explicit formulas for the composition.
+Similarly if $H$ is a commutative Hopf algebra and $\CC$ is a Hopf cooperad in $H$-comodules, then the semi-direct product $\CC \rtimes H$ is defined by formally dual formulas.
+
+The operad $\FM_{n}$ is an operad in $\mathrm{SO}(n)$-spaces, the action rotating configurations.
+There is thus an operad $\ff\FM_{n} = \FM_{n} \rtimes \mathrm{SO}(n)$\index{fFMn@$\ff\FM_{n}$, framed F--M operad}, the framed Fulton--MacPherson operad, weakly equivalent to the standard framed little disks operad.
+
+Given an oriented $n$-manifold $M$, there is a corresponding right module over $\ff\FM_{n}$, which we call $\ff\FM_{M}$~\cite[Section 2]{Turchin2013}.\index{fFMM@$\ff\FM_{M}$, framed F--M module}
+The space $\ff\FM_{M}(U)$ is a principal $\mathrm{SO}(n)^{\times U}$-bundle over $\FM_{M}(U)$.
+Since $\mathrm{SO}(n)$ is an algebraic group, $\ff\FM_{n}$ and $\ff\FM_{M}(U)$ are respectively an operad and a module in semi-algebraic spaces.
+
+\subsection{Cohomology of \texorpdfstring{$\ff\FM_n$}{fFM\_n} and potential model}
+\label{cnf.sec.cohom-ffm_n-right}
+
+The cohomology of $\mathrm{SO}(n)$ is classically given by Pontryagin classes and Euler classes:
+\begin{align*}
+  H^{*}(\mathrm{SO}(2n); \Q)
+  & = S(\beta_{1}, \dots, \beta_{n-1}, \alpha_{2n-1})
+  & (\deg \alpha_{2n-1} = 2n-1)
+  \\
+  H^{*}(\mathrm{SO}(2n+1))
+  & = S(\beta_{1}, \dots, \beta_{n})
+  & (\deg \beta_{i} = 4i-1)
+\end{align*}
+
+By the Künneth formula, $\ff\enV(U) = \enV(U) \otimes H^{*}(\mathrm{SO}(n))^{\otimes U}$.\index{fenV@$\ff\enV = H^{*}(\ff\FM_{n})$}
+We now provide explicit formulas for the cocomposition~\cite{SalvatoreWahl2003}.
+If $x \in H^{*}(\mathrm{SO}(n))$ and $u \in U$, denote as before $\iota_{u}(x) \in H^{*}(\mathrm{SO}(n))^{\otimes U}$.
+Let $W \subset U$, then if $x$ is either $\beta_{i}$ or $\alpha_{2n-1}$ in the even case, we have:
+\begin{equation}
+  \label{cnf.eq.cocomp-alpha}
+  \circ_{W}^{\vee}(\iota_{u}(x)) =
+  \begin{cases}
+    \iota_{*}(x) \otimes 1 + 1 \otimes \iota_{u}(x), & \text{if } u \in W; \\
+    \iota_{u}(x) \otimes 1, & \text{otherwise.}
+  \end{cases}
+\end{equation}
+
+The formula for $\circ_{W}^{\vee}(\omega_{uv})$ depends on the parity of $n$.
+If $n$ is odd, then $\circ_{W}^{\vee}(\omega_{uv})$ is still given by Equation~\eqref{cnf.eq.coop-gra-n}.
+Otherwise, in $\ff\enV[2n]$ we have:
+\begin{equation}
+  \label{cnf.eq.cocomp-w}
+  \circ_{W}^{\vee}(\omega_{uv}) = \begin{cases}
+    \iota_{*}(\alpha_{2n-1}) \otimes 1 + 1 \otimes \omega_{uv}, & \text{if } u,v \in W; \\
+    \omega_{uv} \otimes 1, & \text{if } u,v \not\in W; \\
+    \omega_{u*} \otimes 1, & \text{if } v \in W, u \not\in W.
+  \end{cases}
+\end{equation}
+
+From now on, we focus on the case of oriented surfaces.
+Let $M = S^{2}$ be the $2$-sphere, the only simply connected compact surface.
+We can choose $A = H^{*}(S^{2}) = S(\upsilon)/(\upsilon^{2})$ as our Poincaré duality model for $S^{2}$.
+The Euler class of $A$ is $e_{A} = \chi(S^{2}) \mathrm{vol}_{A} = 2 \upsilon$, and the diagonal class is given by $\Delta_{A} = \upsilon \otimes 1 + 1 \otimes \upsilon$.
+It is a standard fact about diagonal classes that $\mu_{A}(\Delta_{A}) = e_{A}$.
+Let also $\alpha \in H^{1}(S^{1})$ be the generator (the ``Euler class'').
+
+\begin{definition}
+  \label{cnf.def.framed-kls}
+  The \textbf{framed LS CDGA} $\ff\GG{A}(U)$\index{fGA@$\ff\GG{A}$} is given by:
+  \[ \ff\GG{A}(U) = (A^{\otimes U} \otimes \ff\enV[2](U) / (\iota_{u} (a) \cdot \omega_{uv} = \iota_{v}(a) \cdot \omega_{uv}), d), \]
+  where the differential is given by $d\omega_{uv} = \iota_{uv}(\Delta_{A})$ and $d \iota_{u}(\alpha) = \iota_{u}(e_{A})$.
+\end{definition}
+
+\begin{proposition}
+  \label{cnf.prop.fea-comod}
+  The collection $\{ \ff\GG{A}(U) \}_{U}$ is a Hopf right $\ff\enV[2]$-comodule, with cocomposition given by the same formula as Equation~\eqref{cnf.eq.comodule}.
+\end{proposition}
+
+\begin{proof}
+  The proofs that the cocomposition is compatible with the cooperad structure of $\ff\enV[2]$, and that this is compatible with the quotient, is the same as in the proof of Proposition~\ref{cnf.prop.comodule-eA}.
+  It remains to check compatibility with differentials.
+
+  We check this compatibility on generators.
+  The internal differential of $A = H^{*}(S^{2})$ is zero, so it is easy to check that $\circ_{W}^{\vee}(d(\iota_{u}(a))) = d(\circ_{W}^{\vee}(\iota_{u}(a))) = 0$.
+  Similarly, using Equation~\eqref{cnf.eq.cocomp-alpha}, checking the equality on $\alpha$ is immediate.
+
+  As before there several are cases to check for $\omega_{uv}$.
+  If $u,v \in W$, then by Equation~\eqref{cnf.eq.cocomp-w},
+  \begin{align*}
+    d(\circ_{W}^{\vee}(\omega_{uv}))
+    & = d(\iota_{*}(\alpha) \otimes 1 + 1 \otimes \omega_{uv}) = \iota_{*}(e_{A}) \otimes 1 \\
+    & = \iota_{*}(\mu_{A}(\Delta_{A})) \otimes 1 = \circ_{W}^{\vee}(d \omega_{uv}),
+  \end{align*}
+  and otherwise the proof is identical to the proof of Proposition~\ref{cnf.prop.comodule-eA}.
+\end{proof}
+
+\subsection{Connecting \texorpdfstring{$\ff\GG{A}$}{G\_A} to \texorpdfstring{$\OmPA^*(\ff\FM_{S^{2}})$}{Omega(fFM\_S2)}}
+\label{cnf.sec.connecting-e_a-with}
+
+The framed little $2$-disks operad is known to be formal~\cite{GiansiracusaSalvatore2010,Severa2010}.
+We will focus on the proof of Giansiracusa--Salvatore~\cite{GiansiracusaSalvatore2010}, which goes along the same line as the proof of Kontsevich of the formality of $\FM_{n}$.
+To simplify notations, let $H = H^{*}(S^{1})$, which is a Hopf algebra.
+
+The operad $\Graphs_{2}$ is an operad in $H$-comodules, so we may consider the semi-direct product $\Graphs_{2} \rtimes H$.
+Giansiracusa and Salvatore construct a zigzag:
+\begin{equation}
+  \label{cnf.eq:14}
+  \ff\enV[2] \qiso* \Graphs_{2} \rtimes H \qiso \OmPA(\ff\FM_{2}).
+\end{equation}
+
+The first map is the tensor product of $\Graphs_{2} \qiso \enV[2]$ and the identity of $H$.
+The second map is given by the Kontsevich integral on $\Graphs_{2}$ and by sending the generator $\alpha \in H$ to the volume form of $\OmPA^{*}(S^{1})$ (pulled back by the relevant projection).
+They check that both maps are maps of Hopf (almost) cooperads, and they are quasi-isomorphisms by the Künneth formula.
+
+\begin{theorem}
+  \label{cnf.thm.framed}
+  The Hopf right comodule $(\ff\GG{A}, \ff\enV[2])$, where $A = H^{*}(S^{2}; \R)$, is quasi-isomorphic to the Hopf right comodule $(\OmPA^{*}(\ff\FM_{S^2}), \OmPA^{*}(\ff\FM_{2}))$.
+\end{theorem}
+\begin{proof}
+  It is now straightforward to adapt the proof of Theorem~\ref{cnf.thm.A} to this setting, reusing the proof of Giansiracusa--Salvatore~\cite{GiansiracusaSalvatore2010}.
+  We build the zigzag:
+  \[ \ff\GG{A} \gets \Graphs_{A} \rtimes H \to \OmPA^{*}(\ff\FM_{S^2}). \]
+
+  We simply choose $R = A = H^{*}(S^{2})$, mapping $\upsilon \in H^{2}(S^{2})$ to the volume form of $S^{2}$.
+  Note that the propagator can be made completely explicit on $S^{2}$, and it can be checked that $Z_{\varphi}$ vanishes on all connected graphs with more than one vertex~\cite[Proposition 80]{CamposWillwacher2016}.
+  The middle term is a Hopf right $(\Graphs_{2} \rtimes H)$-comodule built out of $\Graphs_{A}$ and $H$, using formulas similar to the formulas defining $\Graphs_{2} \rtimes H$ out of $\Graphs_{2}$ and $H$.
+  The first map is given by the tensor product of $\Graphs_{R} \to \GG{A}$ and the identity of $H$.
+
+  The second map is given by the morphism of Proposition~\ref{cnf.prop.mph-1} on the $\Graphs_{A}$ factor, composed with the pullback along the projection $\ff\FM_{S^2} \to \FM_{S^2}$.
+  The generator $\alpha \in H$ is sent to a pullback of a global angular form $\psi$ of the principal $\mathrm{SO}(2)$-bundle $\ff\FM_{S^{2}}(\underline{1}) \to \FM_{S^{2}}(\underline{1}) = S^2$ induced by the orientation of $S^2$.
+  This form satisfies $d\psi = \chi(S^2) \mathrm{vol}_{S^2}$.
+
+  The proof of Giansiracusa--Salvatore~\cite{GiansiracusaSalvatore2010} then adapts itself to prove that these two maps are maps of Hopf right comodules.
+  The Künneth formula implies that the first map is a quasi-isomorphism, and the second map induces an isomorphism on the $\EE^{2}$-page of the Serre spectral sequence associated to the bundle $\ff\FM_{S^2} \to \FM_{S^2}$ and hence is itself a quasi-isomorphism.
+\end{proof}
+
+\begin{corollary}
+  The CDGA $\ff\GG{H^{*}(S^2)}(\underline{k})$ is a real model for $\Conf^{\mathrm{or}}_{k}(S^2)$, the principal $\mathrm{SO}(2)^{\times k}$-bundle over $\Conf_{k}(S^2)$ induced by the orientation of $S^2$.
+\end{corollary}
+
+\paragraph{A conjecture in higher dimensions}
+
+If $M$ is an oriented $n$-manifold, Definition~\ref{cnf.def.framed-kls} readily adapts to define $\ff\GG{H^{*}(M)}$, by setting $d\alpha$ to be the Euler class of $M$ (when $n$ is even), and $d\beta_{i}$ to be the $i$th Pontryagin class of $M$.
+The proof of Proposition~\ref{cnf.prop.fea-comod} adapts easily to this new setting, and $\ff\GG{H^{*}(M)}$ becomes a Hopf right $\ff\enV$-comodule.
+
+It was recently proved that the framed little disks operads is formal for even $n$ and not formal for odd $n \ge 3$~\cite{Moriya2016,KhoroshkinWillwacher2017}.
+
+\begin{conjecture}
+  If $M$ is a formal, simply connected, oriented closed $2n$-manifold, then the pair $(\ff\GG{H^{*}(M)}, \ff\enV[2n])$ is quasi-isomorphic to the pair $(\OmPA^{*}(\ff\FM_{M}), \OmPA^{*}(\ff\FM_{2n}))$.
+\end{conjecture}
+
+To adapt our proof directly to this conjecture, the difficulty would be the same as encountered by Giansiracusa--Salvatore~\cite{GiansiracusaSalvatore2010}, namely finding forms in $\OmPA^{*}(\ff\FM_{n})$ corresponding to the generators of $H^{*}(\mathrm{SO}(n))$ and compatible with the Kontsevich integral.
+The proof of the formality of $\ff\FM_{2n}$ for $n > 1$~\cite{KhoroshkinWillwacher2017} is rather more involved than the proof for $n = 1$, and it would be an interesting question to try and adapt it for the conjecture.
+
+If $M$ itself is not formal, it is also not clear how to define Pontryagin classes in some Poincaré duality model of $M$ -- the Euler class was simply given the Euler characteristic.
+Nevertheless, for any oriented manifold $M$ we get invariants of $\ff\en$-algebras by considering the functor $\ff\GG{A}^{\vee} \circ^{\mathbb{L}}_{\ff\en} (-)$.
+Despite not necessarily computing factorization homology, these invariants could prove to be interesting.

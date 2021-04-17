@@ -1,0 +1,31 @@
+# .gitignore
+
+# garbage
+auto/
+*.pdf
+*.eps
+*.eps_tex
+*.bak
+*-blx.bib
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.run.xml
+*.synctex*
+*.toc
+*.bbl
+*.blg
+*.bcf
+_region_.*
+*.idx
+*.ilg
+*.ind
+*.tdo
+*.out
+*.nav
+*.snm
+
+vc.tex
+!img/*.pdf
+!fig/*.pdf

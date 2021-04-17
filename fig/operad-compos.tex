@@ -1,0 +1,22 @@
+\begin{wrapfigure}{l}{0.3\textwidth}
+  \centering
+  \vspace{-5mm}
+  \begin{tikzpicture}[font=\scriptsize, grow'=up, level 1/.style={sibling distance=2em, level distance=2em}]
+    \node{}
+    child {
+      node[draw, circle, inner sep = 1 pt] {$p$}
+      child {node {$1$}}
+      child {node {\dots}}
+      child {
+        node[draw, circle, inner sep = 1pt] {$q$}
+        child {node {$i$}}
+        child {node {\dots}}
+        child {node {$i+l-1$}}
+      }
+      child {node {\dots}}
+      child {node{$k+l-1$}}
+    }
+    ;
+  \end{tikzpicture}
+  \vspace{-5mm}
+\end{wrapfigure}

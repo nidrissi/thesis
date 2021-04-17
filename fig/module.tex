@@ -1,0 +1,48 @@
+\[
+  \begin{gathered}
+    \begin{tikzpicture}[scale = 0.5]
+      \draw \mytorus;
+      \draw[xscale=-1] \mytorus;
+      \draw[rotate=180] \mytorus;
+      \draw[yscale=-1] \mytorus;
+      \draw (-2,.2) .. controls (-1.5,-0.3) and (-1,-0.5) .. (0,-.5) .. controls (1,-0.5) and (1.5,-0.3) .. (2,0.2);
+      \draw (-1.75,0) .. controls (-1.5,0.3) and (-1,0.5) .. (0,.5) .. controls (1,0.5) and (1.5,0.3) .. (1.75,0);
+
+      \draw (-2.5,0.5) node[pt, label = {\tiny 1}] {};
+      \draw (-1,-1.5) node[pt, label = {\tiny 2}] {};
+      \draw (2,1) node[pt, fill = blue, label = {\color{blue} \tiny 3}] {};
+    \end{tikzpicture}
+  \end{gathered}
+  \circ_{\color{blue} 3}
+  \begin{gathered}
+    \begin{tikzpicture}[scale = 0.6]
+      \filldraw[fill = white!50!blue] (2,3) ellipse (2 and 1);
+      \draw (1,2.5) node[pt, label = {\tiny 1}] {};
+      \draw (3,3.3) node[pt, label = {\tiny 2}] {};
+      \draw (2,2.7) node[pt, label = {\tiny 3}] {};
+    \end{tikzpicture}
+  \end{gathered}
+  =
+  \begin{gathered}
+    \begin{tikzpicture}[scale = 0.5]
+      \draw \mytorus;
+      \draw[xscale=-1] \mytorus;
+      \draw[rotate=180] \mytorus;
+      \draw[yscale=-1] \mytorus;
+      \draw (-2,.2) .. controls (-1.5,-0.3) and (-1,-0.5) .. (0,-.5) .. controls (1,-0.5) and (1.5,-0.3) .. (2,0.2);
+      \draw (-1.75,0) .. controls (-1.5,0.3) and (-1,0.5) .. (0,.5) .. controls (1,0.5) and (1.5,0.3) .. (1.75,0);
+
+      \draw (-2.5,0.5) node[pt, label = {\tiny 1}] {};
+      \draw (-1,-1.5) node[pt, label = {\tiny 2}] {};
+
+      \filldraw [densely dotted, fill = white!50!blue] (0, 3) to[bend left] (2,1) to[bend left] (4,3);
+      \filldraw[fill = white!60!blue] (2,3) ellipse (2 and 1);
+
+      \draw (1,2.5) node[pt, label = {\tiny 3}] {};
+      \draw (3,3.3) node[pt, label = {\tiny 4}] {};
+      \draw (2,2.7) node[pt, label = {\tiny 5}] {};
+    \end{tikzpicture}
+  \end{gathered}
+\]
+
+\[ \FM_{M}(k) \times \FM_{\R^{n}}(l) \xrightarrow{\circ_{i}} \FM_{M}(k+l-1), \quad 1 \leq i \leq k \]
